@@ -1,0 +1,13 @@
+<div class="ui vertical segment">
+  <div class="ui huge header">
+    <div class="ui label">
+      <i class="pencil icon"></i>
+      <%=t 'sidebar.wikis' %>
+    </div>
+    <div class="ui label">
+      <%=t '.modify' %>
+    </div>
+    <%= @wiki.title %>
+  </div>
+</div>
+<%= render 'form' %>

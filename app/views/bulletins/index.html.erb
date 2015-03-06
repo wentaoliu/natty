@@ -1,0 +1,46 @@
+<div class="ui vertical segment">
+  <h2 class="ui header">
+    <i class="circular inverted blue bullhorn icon"></i>
+    <div class="content">
+      <%=t 'sidebar.bulletin' %>
+    </div>
+  </h2>
+  <%= form_tag bulletins_path, method:'GET', class:"ui form" do %>
+    <div class="inline fields">
+      <div class="field">
+        <%= text_field_tag :search, params[:search] %>
+      </div>
+      <div class="field">
+        <%= submit_tag t('.button.search'), class:"ui blue button" %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to new_bulletin_path, class:"ui green labeled icon button" do %>
+    <span class="icon fa fa-plus"></span><%=t '.button.new' %>
+  <% end %>
+</div>
+
+<table class="ui table segment">
+  <thead>
+    <tr>
+      <th class="six wide"><%=t '.table.title' %></th>
+      <th class="two wide"><%=t '.table.author' %></th>
+      <th class="two wide"><%=t '.table.time' %></th>
+      <th class="two wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @bulletins.each do |item| %>
+      <tr>
+        <td><%= link_to item.title, bulletin_path(item) %></td>
+        <td><%= item.user.name %></td>
+        <td><%=l item.created_at, :format=>:short %></td>
+        <td><%= link_to 'Show', item %>
+          <%= link_to 'Edit', edit_bulletin_path(item) %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= pagination bulletins_path, params[:page], @pages %>

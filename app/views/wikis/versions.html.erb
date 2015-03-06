@@ -1,0 +1,35 @@
+<div class="ui vertical segment">
+  <div class="ui huge header">
+    <div class="ui label">
+      <i class="pencil icon"></i>
+      <%=t 'sidebar.wikis' %>
+    </div>
+    <div class="ui label">
+      <%=t '.versions' %>
+    </div>
+    <%= @wiki.title %>
+  </div>
+</div>
+
+<table class="ui table segment">
+  <thead>
+    <tr>
+      <th class="one wide"><%=t '.table.number' %></th>
+      <th class="nine wide"><%=t '.table.comment' %></th>
+      <th class="three wide"><%=t '.table.time' %></th>
+      <th class="three wide"><%=t '.table.author' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @wiki.versions.each do |item| %>
+      <tr>
+        <td><%= item.version %>
+        <td>
+          <%= link_to item.comment, wiki_path(@wiki,version: item.version) %>
+        </td>
+        <td><%=l item.updated_at, :format=>:long %></td>
+        <td><%= item.user.name %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

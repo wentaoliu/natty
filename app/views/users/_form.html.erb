@@ -1,0 +1,41 @@
+<% if @user.errors.any? %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for(@user, html:{class:'ui form segment'}) do |f| %>
+
+  <div class="field">
+    <%= f.label :username, t('.username') %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name, t('.name') %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, t('.email') %>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, t('.password') %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, t('.password_confirmation') %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+
+<% end %>

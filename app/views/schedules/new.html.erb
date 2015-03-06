@@ -1,0 +1,14 @@
+<div class="ui vertical segment">
+  <div class="ui huge header">
+    <div class="ui label">
+      <i class="calendar icon"></i>
+      <%=t 'sidebar.schedule' %>
+    </div>
+    <%=t '.new' %>
+  </div>
+</div>
+
+<%= form_for @schedule, html:{ class:"ui form" } do |f| %>
+  <%= render 'form', f: f %>
+  <%= f.submit class:'ui button' %>
+<% end %>

@@ -1,0 +1,11 @@
+en:
+  sessions:
+    new:
+      signin: Sign In
+      username: Username
+      password: Password
+      remember_me: Remember me?
+      submit: Sign In
+      or: Or
+      apply: Apply To Join
+      powered_by_html: Powered by %{link}

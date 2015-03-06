@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{{sub_uri}}/static/lib/simditor/styles/font-awesome.css" />
+    <link rel="stylesheet" href="{{sub_uri}}/static/lib/simditor/styles/simditor.css" />
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>个人中心</h2>
+</div>
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation"><a href="{{sub_uri}}/account/index">个人信息</a></li>
+  <li role="presentation" class="active"><a href="{{sub_uri}}/account/resume">个人简历</a></li>
+  <li role="presentation"><a href="{{sub_uri}}/account/secure">账户安全</a></li>
+</ul>
+<br/>
+<form method="post" action="{{sub_uri}}/account/resume" enctype="multipart/form-data">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="postion">职务/学历</label>
+            <select id="position" name="position" class="form-control">
+            {% set positions={0:"毕业生",1:"本科生",2:"硕士生",3:"博士生",4:"博士后",5:"讲师",6:"副教授",7:"教授"} %}
+            {% for key,value in positions.items() %}
+                {% if key==user.position %}
+                <option value="{{key}}" selected="selected">{{value}}</option>
+                {% else %}
+                <option value="{{key}}">{{value}}</option>
+                {% endif %}
+            {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="grade">年级（仅学生）</label>
+            <input id="grade" name="grade" type="text" class="form-control" value={{user.grade}} />
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="photo">个人照片</label>
+            <p>
+                {% if user.photo %}
+                <img style="max-width:200px;max-height:300px;"
+                    src="{{sub_uri}}/static/upload/{{user.photo}}" alt="{{user.name}}" class="img-thumbnail">
+                {% else %}
+                暂无照片
+                {% endif %}
+            </p>
+            <input type="file" id="photo" name="photo"/>
+        </div>
+
+        <div class="form-group">
+            <label for="resume">详细简历</label>
+            <textarea class="editor" id="resume" name="resume">{{ user.resume }}</textarea>
+        </div>
+        <p>
+            <input class="btn btn-primary" name="commit" type="submit" value="保存修改" />
+        </p>
+    </div>
+</form>
+<script type="text/javascript" src="{{sub_uri}}/static/lib/simditor/scripts/module.min.js"></script>
+<script type="text/javascript" src="{{sub_uri}}/static/lib/simditor/scripts/uploader.min.js"></script>
+<script type="text/javascript" src="{{sub_uri}}/static/lib/simditor/scripts/simditor.min.js"></script>
+
+<script>
+(function() {
+    $(function() {
+        var editor;
+        return editor = new Simditor({
+            textarea: $('.editor'),
+            placeholder: '简历内容',
+            pasteImage: true,
+            toolbar: ['title', 'bold', 'italic', 'underline', 'strikethrough', 'color', '|', 'ol', 'ul', 'blockquote', 'code', 'table', '|', 'link', 'image', 'hr', '|', 'indent', 'outdent'],
+            defaultImage: '{{sub_uri}}/static/lib/simditor/images/image.png',
+            upload: {
+              url: '{{sub_uri}}/upload/image'
+            }
+        });
+    });
+}).call(this);
+</script>
+{% endblock %}

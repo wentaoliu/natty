@@ -1,0 +1,19 @@
+en:
+  app:
+    name:
+      short: "RTISS"
+      long: "Research Team Information Sharing System"
+  sidebar:
+    home: "Home"
+    topics: "Topics"
+    wikis: "Wikis"
+    schedule: "Schedule"
+    resources: "Resources"
+    teamworks: "Teamworks"
+    news: "News"
+    meetings: "Meetings"
+    achievements: "Achievements"
+    equipments: "Equipments"
+    expense: "Expense"
+    bulletin: "Bulletin"
+    users: "Users"

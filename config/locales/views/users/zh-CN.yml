@@ -1,0 +1,21 @@
+zh-CN:
+  users:
+    index:
+      new: 新增用户
+      table:
+        name: 姓名
+        username: 用户名
+        email: 邮箱
+        state: 状态
+        state_names:
+        - 正常
+        - 禁用
+        admin: 管理员？
+        delete_confirm: 你确定吗？
+    form:
+      username: 用户名
+      name: 姓名
+      email: 电子邮箱
+      password: 密码
+      password_confirmation: 确认密码
+      submit: 确认

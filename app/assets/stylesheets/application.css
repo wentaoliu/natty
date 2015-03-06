@@ -1,0 +1,35 @@
+/*
+ *= require semantic-ui
+ *= require froala_editor.min.css
+ *= require froala_style.min.css
+ *= require_tree .
+ *= require_self
+ */
+
+@media only screen and (max-width : 768px) {
+  .hidden-xs { display: none !important; }
+  .visible-xs-block { display: block; }
+  .visible-xs-inline { display: inline; }
+  .visible-xs-inline-block { display: inline-block; }
+}
+
+@media only screen and (min-width : 768px) and (max-width : 992px) {
+  .hidden-sm { display: none !important; }
+  .visible-sm-block { display: block; }
+  .visible-sm-block { display: inline; }
+  .visible-sm-inline-block { display: inline-block; }
+}
+
+@media only screen and (min-width : 992px) and (max-width : 1200px) {
+  .hidden-md { display: none !important; }
+  .visible-md-block { display: block; }
+  .visible-md-block { display: inline; }
+  .visible-md-inline-block { display: inline-block; }
+}
+
+@media only screen and (min-width : 1200px) {
+  .hidden-lg { display: none !important; }
+  .visible-lg-block { display: block; }
+  .visible-lg-block { display: inline; }
+  .visible-lg-inline-block { display: inline-block; }
+}

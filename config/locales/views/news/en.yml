@@ -1,0 +1,29 @@
+en:
+  news:
+    index:
+      button:
+        search: "Search"
+        new: "Post News"
+      previous: "Previous"
+      next: "Next"
+      table:
+        title: "Title"
+        author: "Author"
+        time: "Time"
+        hits: "Hits"
+    show:
+      message: "This page was last modified on %{time} by %{author}."
+      edit: "Edit"
+      modify: "Modify"
+    form:
+      title: "Title"
+      category: "Category"
+      submit: Submit
+    edit:
+      modify: "Modify"
+    new:
+      new: "New"
+      steps:
+        step1: "Create an entry"
+        step2: "Enrich the content"
+        step3: "Complete"

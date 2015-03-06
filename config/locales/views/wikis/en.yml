@@ -1,0 +1,33 @@
+en:
+  wikis:
+    index:
+      search: Search
+      new: New Item
+      table:
+        title: Title
+        updated_at: Updated at
+        delete_confirm: Are you sure?
+    show:
+      info: This page was last modified by %{author} on %{time}.
+      warning: This is an old version of this page, as edited by %{author} on %{time}.
+      back: Back
+      latest: Latest Version
+      edit: Edit
+      versions: Version History
+    form:
+      title: Title
+      content: Content
+      comment: Comment
+      submit: Submit
+      cancel: Cancel
+    edit:
+      edit: Edit
+    new:
+      new: New
+    versions:
+      versions: Version
+      table:
+        number: No.
+        comment: Comment
+        time: Time
+        author: Author

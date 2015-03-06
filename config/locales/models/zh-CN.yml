@@ -1,0 +1,17 @@
+zh-CN:
+  activerecord:
+    models:
+      topic: 话题
+      comment: 评论
+      wiki: 维基
+      article: 维基内容
+
+    attributes:
+      topic:
+        title: 标题
+        content: 内容
+        category: 分类
+        tags: 标签
+      wiki:
+        title: 标题
+        category: 分类

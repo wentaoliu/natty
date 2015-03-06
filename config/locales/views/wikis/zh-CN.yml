@@ -1,0 +1,33 @@
+zh-CN:
+  wikis:
+    index:
+      search: 搜索
+      new: 新增条目
+      table:
+        title: 标题
+        updated_at: 最后更新
+        delete_confirm: 你确定吗？
+    show:
+      info: 本条目由%{author}最后编辑于%{time}。
+      warning: 这是本条目的历史版本，由%{author}编辑于%{time}。
+      back: 返回
+      latest: 最新版本
+      edit: 编辑
+      versions: 历史版本
+    form:
+      title: 标题
+      content: 内容
+      comment: 注释
+      submit: 确认
+      cancel: 取消
+    edit:
+      edit: 编辑
+    new:
+      new: 新增
+    versions:
+      versions: 版本
+      table:
+        number: 序号
+        comment: 注释
+        time: 时间
+        author: 作者

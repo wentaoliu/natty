@@ -1,0 +1,11 @@
+<%= form_for(@wiki,:html=>{:class => "ui form segment"}) do |f| %>
+  <div class="field">
+    <%= f.label :title, t('.title') %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :category, t('.category') %>
+    <%= f.text_field :category %>
+  </div>
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+<% end %>

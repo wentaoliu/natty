@@ -1,0 +1,20 @@
+ja:
+  app_name: "RTISS"
+  app_name_full: "研究チームの情報管理システム"
+
+  home: "ホームページ"
+  forum: "フォーラム"
+  wiki: "ウィキ"
+  calendar: "スケジュール"
+  file: "ファイル"
+  cooperation: "協力"
+  news: "ニュース"
+  meeting: "会議"
+  achievement: "成果"
+  equipment: "計器"
+  expense: "財務"
+  bulletin: "公告"
+  management: "管理"
+  manage:
+    user: "ユーザー"
+    message: "ニュース"

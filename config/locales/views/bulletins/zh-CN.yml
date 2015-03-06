@@ -1,0 +1,24 @@
+zh-CN:
+  bulletins:
+    index:
+      button:
+        search: "搜索"
+        new: "新增公告"
+        previous: "上一页"
+        next: "下一页"
+      table:
+        title: "标题"
+        author: "作者"
+        time: "时间"
+    show:
+      message: "本条目由%{author}最后编辑于%{time}。"
+      edit: "编辑"
+      modify: "修改"
+    form:
+      title: "标题"
+      content: "内容"
+      submit: "确认"
+    edit:
+      modify: "修改"
+    new:
+      new: "新增"

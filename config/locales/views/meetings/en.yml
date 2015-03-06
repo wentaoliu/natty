@@ -1,0 +1,26 @@
+en:
+  meetings:
+    index:
+      search: Search
+      new: New Meeting
+      table:
+        title: Title
+        time: Time
+        place: Place
+        public: Public?
+        delete_confirm: Are you sure?
+    show:
+      edit: Edit
+    form:
+      title: Title
+      starts_at: Starts at
+      ends_at: Ends at
+      place: Place
+      public: Public?
+      category: Category
+      submit: Submit
+      cancel: Cancel
+    edit:
+      edit: Edit
+    new:
+      new: New

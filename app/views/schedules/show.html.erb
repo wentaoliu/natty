@@ -1,0 +1,26 @@
+<div class="ui vertical segment">
+  <div class="ui huge header">
+    <div class="ui label">
+      <i class="calendar icon"></i>
+      <%=t 'sidebar.schedule' %>
+    </div>
+    <%= @schedule.title %>
+  </div>
+  <div class="ui visible message">
+    <% if !@schedule.public %>
+      <i class="lock icon"></i>
+    <% end %>
+    <%= t '.info', { starts_at: (l @schedule.starts_at, :format=>:long),
+      ends_at:(l @schedule.ends_at, :format=>:long),
+      place: @schedule.place } %>
+  </div>
+  <p>
+    <%= link_to t('.edit'), edit_schedule_path(@schedule), class:"ui button" %>
+    <% if current_user?(@schedule.user) %>
+      <%= link_to t('.delete'), @schedule, method: :delete,
+          data: { confirm: t('.delete_confirm') }, class:'ui red button' %>
+    <% end %>
+  </p>
+</div>
+
+<div class="ui segment"><%=raw @schedule.content %></div>

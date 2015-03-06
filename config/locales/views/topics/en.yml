@@ -1,0 +1,28 @@
+en:
+  topics:
+    index:
+      search: Search
+      new: New Topic
+      table:
+        title: Title
+        author: Author
+        time: Time
+        comments: Comments
+        delete_confirm: Are you sure?
+    show:
+      reply: Reply
+      delete: Delete
+      comment: Add Comment
+      modal:
+        submit: Submit
+        cancel: Cancel
+    new:
+      new: New
+    form:
+      title: Title
+      content: Content
+      category: Category
+      tags: Tags
+      tags_helper: Separate tags with slashes (/)
+      submit: Submit
+      cancel: Cancel

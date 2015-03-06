@@ -1,0 +1,30 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'editor', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'editor', media: 'all', 'data-turbolinks-track' => true %>
+<% end %>
+
+<%= form_for(@bulletin, html:{class:'ui form segment'}) do |f| %>
+  <% if @bulletin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bulletin.errors.count, "error") %> prohibited this bulletin from being saved:</h2>
+
+      <ul>
+      <% @bulletin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title, t('.title') %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :content, t('.content') %>
+    <%= f.text_area :content, class:'editor'%>
+  </div>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+<% end %>

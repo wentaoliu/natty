@@ -1,0 +1,21 @@
+en:
+  users:
+    index:
+      new: Add New
+      table:
+        name: Name
+        username: Username
+        email: Email
+        state: State
+        state_names:
+        - Normal
+        - Disabled
+        admin: Administrator?
+        delete_confirm: Are you sure?
+    form:
+      username: Username
+      name: Name
+      email: Email
+      password: Password
+      password_confirmation: Password Confirmation
+      submit: Submit

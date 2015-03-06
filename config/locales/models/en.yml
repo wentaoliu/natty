@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    models:
+      topic: Topic
+    attributes:
+      topic:
+        title: Title
+        content: Content

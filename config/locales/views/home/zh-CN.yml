@@ -1,0 +1,9 @@
+zh-CN:
+  home:
+    index:
+      welcome: "欢迎来到%{app_name}!"
+      messages:
+        header: 消息
+        none: 您没有未读消息。
+        only_one: 您有1条未读消息。
+        more_than_one: 您有%{number}条未读消息。

@@ -1,0 +1,24 @@
+zh-CN:
+  resources:
+    index:
+      new:
+        folder: 新建文件夹
+        resource: 上传资源
+      breadcrumb:
+        root: 根目录
+      table:
+        title: 名称
+        author: 创建者
+        created_at: 时间
+        delete: 删除
+      modal:
+        button:
+          submit: 确认
+          cancel: 取消
+        folder:
+          title: 名称
+        resource:
+          title: 名称
+          file: 文件
+          public: 公开?
+          help: 公开的文件可以通过应用程序编程接口（API）访问。请确认您拥有该文件的版权。

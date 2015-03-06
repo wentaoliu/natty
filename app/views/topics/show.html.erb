@@ -1,0 +1,117 @@
+<div class="ui vertical segment">
+  <div class="ui huge header">
+    <div class="ui label">
+      <i class="comments icon"></i>
+      <%=t 'sidebar.topics' %>
+    </div>
+    <%= @topic.title %>
+  </div>
+</div>
+
+<div class="ui stacked segment">
+  <p><%=raw @topic.content %></p>
+  <div class="ui label">
+    <i class="user icon"></i>
+    <%= @topic.user.name %>
+  </div>
+  <div class="ui label"><%=l @topic.updated_at,:format=>:long %></div>
+  <% if @topic.tags %>
+    <% @topic.tags.each do |tag| %>
+      <div class="ui label">
+        <%= tag %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="ui comments">
+  <% @topic.comments.where(reply_to: nil).each do |comment| %>
+    <div class="comment">
+      <a class="avatar">
+        <img src="/images/avatar/small/matt.jpg">
+      </a>
+      <div class="content">
+        <a class="author"><%= comment.user.name %></a>
+        <div class="metadata">
+          <span class="date"><%= time_ago_in_words(comment.updated_at) %></span>
+        </div>
+        <div class="text"><%= comment.content %></div>
+        <div class="actions">
+          <a class="reply reply-btn" data-id="<%= comment.id %>">
+            <%=t '.reply' %>
+          </a>
+          <%= link_to t('.delete'), [@topic, comment], method: :delete,
+            data: { confirm: 'Are you sure?' }, class:'delete' if is_admin? %>
+        </div>
+        <% if comment.replies.size > 0 %>
+          <div class="comments">
+            <% comment.replies.each do |reply| %>
+              <div class="comment">
+                <a class="avatar">
+                  <img src="/images/avatar/small/jenny.jpg">
+                </a>
+                <div class="content">
+                  <a class="author"><%= reply.user.name %></a>
+                  <div class="metadata">
+                    <span class="date">
+                      <%= time_ago_in_words(reply.updated_at) %>
+                    </span>
+                  </div>
+                  <div class="text"><%= reply.content %></div>
+                  <div class="actions">
+                    <a class="reply reply-btn" data-id="<%= comment.id %>">
+                      <%=t '.reply' %>
+                    </a>
+                    <%= link_to t('.delete'), [@topic, comment], method: :delete,
+                          data: { confirm: 'Are you sure?' },
+                          class:'delete' if is_admin? %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
+        html:{class:"ui reply form"} do |f| %>
+    <div class="field">
+      <%= f.text_area :content %>
+    </div>
+    <%= f.button class:"ui fluid blue labeled submit icon button" do %>
+      <i class="edit icon"></i><%= t('.comment') %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="ui small modal" id="reply-modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <h4><%=t '.reply' %></h4>
+  </div>
+  <div class="content">
+    <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
+          html:{class:"ui form",id:"reply-form"} do |f| %>
+      <div class="field">
+        <%= f.text_area :content %>
+      </div>
+      <%= f.hidden_field :reply_to %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <button type="button" class="ui blue button"
+        onClick="$('#reply-form').submit();"><%=t '.modal.submit' %></button>
+    <button type="button" class="ui button"><%=t '.modal.cancel' %></button>
+  </div>
+</div>
+
+<script>
+$(document).on("ready page:load", function() {
+  $('.reply-btn').click(function(){
+    var reply_to = $(this).attr('data-id');
+    $('#comment_reply_to').val(reply_to);
+    $('#reply-modal').modal('show');
+  });
+});
+</script>

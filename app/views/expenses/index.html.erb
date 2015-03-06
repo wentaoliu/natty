@@ -1,0 +1,71 @@
+<div class="ui vertical segment">
+  <h2 class="ui header">
+    <i class="circular inverted blue dollar icon"></i>
+    <div class="content">
+      <%=t 'sidebar.expense' %>
+    </div>
+  </h2>
+  <%= form_tag expenses_path, method:'GET', class:"ui form" do %>
+    <div class="inline fields">
+      <div class="field">
+        <%= text_field_tag :search, params[:search] %>
+      </div>
+      <div class="field">
+        <%= submit_tag t('.button.search'), class:"ui blue button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<table class="ui table segment">
+  <thead>
+    <tr>
+      <th class="four wide"><%=t '.table.title' %></th>
+      <th class="two wide"><%=t '.table.author' %></th>
+      <th class="two wide"><%=t '.table.serial' %></th>
+      <th class="two wide"><%=t '.table.date' %></th>
+      <th class="two wide"><%=t '.table.sum' %></th>
+      <th class="four wide"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expenses.each do |item| %>
+      <tr>
+        <td><%= link_to item.title, news_path(item) %></td>
+        <td><%= item.user.name %></td>
+        <td><%= item.serial %></td>
+        <td><%=l item.date %></td>
+        <td><%= item.sum %></td>
+        <td><%= link_to 'Show', item %>
+          <%= link_to 'Edit', edit_news_path(item) %>
+          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="6">
+        <%= link_to new_expense_path, class:"ui green labeled icon button" do %>
+          <i class="plus icon"></i><%=t '.button.new' %>
+        <% end %>
+      </th>
+    </tr>
+  </tfoot>
+</table>
+
+<div class="ui borderless pagination menu">
+  <% if @offset != 0 %>
+    <%= link_to wikis_path(:page => @offset / @per_page), class:"item" do %>
+      <span class="fa fa-chevron-left" ></span> <%=t '.previous' %>
+    <% end %>
+  <% end %>
+  <% 1.upto((@count - 1) / @per_page + 1) do |i| %>
+    <%= link_to i, wikis_path(:page => i), class:"item" %>
+  <% end %>
+  <% if @offset / @per_page != (@count - 1) / @per_page %>
+    <%= link_to wikis_path(:page => @offset / @per_page + 2), class:"item" do %>
+      <%=t '.next' %> <span class="fa fa-chevron-right"></span>
+    <% end %>
+  <% end %>
+</div>

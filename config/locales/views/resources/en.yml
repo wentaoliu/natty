@@ -1,0 +1,24 @@
+en:
+  resources:
+    index:
+      new:
+        folder: New Folder
+        resource: Upload Resource
+      breadcrumb:
+        root: Root
+      table:
+        title: Title
+        author: Author
+        created_at: Created at
+        delete: Delete
+      modal:
+        button:
+          submit: Submit
+          cancel: Cancel
+        folder:
+          title: Title
+        resource:
+          title: Title
+          file: File
+          public: Public?
+          help: Public files can be accessed from Application Programming Interface (API). Make sure you have the right distributing this file.

@@ -1,0 +1,26 @@
+<% if @wiki.errors.any? %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <% @wiki.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= form_for(@wiki,:html=>{:class => "ui form segment"}) do |f| %>
+  <div class="field">
+    <%= f.label :title, t('.title') %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+      <%= f.label :content, t('.content') %>
+      <%= f.text_area :content, class:'editor'%>
+  </div>
+  <div class="field">
+      <%= f.label :comment, t('.comment') %>
+      <%= f.text_field :comment %>
+  </div>
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), wikis_path, class:"ui button" %>
+<% end %>

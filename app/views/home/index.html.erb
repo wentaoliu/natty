@@ -1,0 +1,23 @@
+<div class="ui vertical segment">
+  <h1 class="ui header"><%= t '.welcome', {app_name: t('app.name.short')} %></h1>
+  <p class="ui medium header">Research Team Information Sharing System</p>
+</div>
+<div class="ui internally celled grid">
+  <div class="row">
+    <div class="eight wide column">
+      <div class="ui info message">
+          <div class="header">
+            <i class="envelope icon"></i><%=t '.messages.header' %>
+          </div>
+          <% @messages = 2 %>
+          <% if @messages == 0 %>
+            <p><%= link_to t('.messages.none'), nil %></p>
+          <% elsif @messages == 1 %>
+            <p><%= link_to t('.messages.only_one'), nil %></p>
+          <% else %>
+            <p><%= link_to t('.messages.more_than_one',{number: @messages}), nil %></p>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

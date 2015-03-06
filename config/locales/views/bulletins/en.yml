@@ -1,0 +1,24 @@
+en:
+  bulletins:
+    index:
+      button:
+        search: "Search"
+        new: "New Bulletin"
+        previous: "Previous"
+        next: "Next"
+      table:
+        title: "Title"
+        author: "Author"
+        time: "Time"
+    show:
+      message: "This page was last modified on %{time} by %{author}."
+      edit: "Edit"
+      modify: "Modify"
+    form:
+      title: "Title"
+      content: "Content"
+      submit: Submit
+    edit:
+      modify: "Modify"
+    new:
+      new: "New"

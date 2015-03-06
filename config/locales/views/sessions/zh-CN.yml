@@ -1,0 +1,11 @@
+zh-CN:
+  sessions:
+    new:
+      signin: 登录
+      username: 用户名
+      password: 密码
+      remember_me: 记住我？
+      submit: 登录
+      or: 或
+      apply: 申请加入
+      powered_by_html: 由%{link}提供技术支持

@@ -1,0 +1,31 @@
+<% if @topic.errors.any? %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <% @topic.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= form_for @topic, html: { class: 'ui form segment' } do |f| %>
+  <div class="field">
+    <%= f.label :title, t('.title') %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :category, t('.category') %>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :tags, t('.tags') %>
+    <%= f.text_field :tags %>
+    <p><%=t '.tags_helper' %></p>
+  </div>
+  <div class="field">
+    <%= f.label :content, t('.content') %>
+    <%= f.text_area :content, class:"editor" %>
+  </div>
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), topics_path, class:"ui button" %>
+<% end %>

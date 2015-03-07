@@ -6,6 +6,6 @@ en:
       password: Password
       remember_me: Remember me?
       submit: Sign In
-      or: Or
+      or: or
       apply: Apply To Join
       powered_by_html: Powered by %{link}

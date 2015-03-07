@@ -1,7 +1,6 @@
 /*
  *= require semantic-ui
- *= require froala_editor.min.css
- *= require froala_style.min.css
+ *= require simditor
  *= require_tree .
  *= require_self
  */

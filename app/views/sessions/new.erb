@@ -1,4 +1,4 @@
-<%= form_for(:session, url: session_path,html:{class:'ui form segment'}) do |f| %>
+<%= form_for(:session, url: sessions_path,html:{class:'ui form segment'}) do |f| %>
   <div class="ui dividing header"><%= t '.signin' %></div>
   <% if flash[:error] %>
     <div class="alert alert-danger" role="alert">
@@ -19,13 +19,13 @@
       <%= f.label :remember_me, t('.remember_me') %>
     </div>
   </div>
-  <%= f.submit t('.submit'), class: "fluid ui blue button" %>
-  <div class="ui horizontal divider">
-    <%= t('.or') %>
+
+  <div class="2 fluid ui buttons">
+    <%= f.submit t('.submit'), class: "ui blue button" %>
+    <div class="or" data-text="<%= t('.or') %>"></div>
+    <div class="ui green button"><%= t('.apply') %></div>
   </div>
-  <div class="fluid ui green button">
-    <%= t('.apply') %>
-  </div>
+
   <div class="ui hidden divider"></div>
   <div class="ui bottom right attached label">
     <%= t('.powered_by_html',

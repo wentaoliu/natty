@@ -1,5 +1,5 @@
-#source 'https://rubygems.org'
-source 'https://ruby.taobao.org/'
+source 'https://rubygems.org'
+#source 'https://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
@@ -35,9 +35,8 @@ gem 'mongoid', '~> 4.0.1'
 gem 'mongoid-paranoia', '~> 1.0.0'
 gem 'mongoid-versioning', '~> 1.0.0'
 
-# Use Froala WYSIWGY editor
-gem 'wysiwyg-rails', '~> 1.2.5'
-gem 'font-awesome-rails', '~> 4.2.0.0'
+# Use simditor
+gem 'simditor', '~> 2.1.5.1'
 
 # Use Semantic UI
 gem 'semantic-ui-sass', '~> 1.8.1.0'

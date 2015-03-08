@@ -1,6 +1,5 @@
 class NewsController < ApplicationController
   before_filter :require_signin
-  skip_before_filter :require_signin, only: [:index, :show], if: :format_json?
   before_filter :require_admin, only: [:destroy]
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 

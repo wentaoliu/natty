@@ -1,8 +1,15 @@
 en:
-  activerecord:
+  mongoid:
     models:
       topic: Topic
+      comment: Comment
+      wiki: Wiki
     attributes:
       topic:
         title: Title
         content: Content
+        category: Category
+        tags: Tags
+      wiki:
+        title: Title
+        category: Category

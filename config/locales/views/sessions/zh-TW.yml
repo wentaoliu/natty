@@ -1,6 +1,15 @@
 zh-TW:
-  signin: "登錄"
-  username: "用戶名"
-  password: "密碼"
-  remember_me: "記住我？"
-  submit: "確認"
+  sessions:
+    new:
+      signin: 登錄
+      username: 用戶名
+      password: 密碼
+      remember_me: 記住我？
+      submit: 確認
+      or: 或
+      apply: 申請加入
+      powered_by_html: 由%{link}提供技術支援
+    create:
+      password_error: 使用者名或密碼錯誤
+      code_error: 驗證碼輸入錯誤
+      success_html: <div class="header">登錄成功</div><p>%{username}，歡迎回來！</p>

@@ -1,21 +1,19 @@
-
 zh-TW:
-  app_name: "RTISS"
-  app_name_full: "科研團隊信息管理系統"
-
-  home: "主頁"
-  forum: "討論"
-  wiki: "維基"
-  calendar: "日程"
-  file: "文件"
-  cooperation: "協作"
-  news: "新聞"
-  meeting: "會議"
-  achievement: "成果"
-  equipment: "儀器"
-  expense: "財務"
-  bulletin: "公告"
-  management: "管理"
-  manage:
-    user: "用戶"
-    message: "消息"
+  app:
+    name:
+      short: RTISS
+      long: 科研團隊資訊管理系統
+  sidebar:
+    home: 主頁
+    topics: 話題
+    wikis: 維琪
+    schedule: 日程
+    resources: 資源
+    teamworks: 協作
+    news: 新聞
+    meetings: 會議
+    achievements: 成果
+    instruments: 儀器
+    expense: 財務
+    bulletin: 公告
+    users: 用戶

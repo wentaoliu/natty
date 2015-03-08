@@ -1,11 +1,9 @@
 zh-CN:
-  activerecord:
+  mongoid:
     models:
       topic: 话题
       comment: 评论
       wiki: 维基
-      article: 维基内容
-
     attributes:
       topic:
         title: 标题

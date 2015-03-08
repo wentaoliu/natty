@@ -1,0 +1,5 @@
+ja:
+  simple_captcha:
+    placeholder: グラフ内の文字を入力してください
+    label: キャプチャ
+    refresh_button_text: 更新

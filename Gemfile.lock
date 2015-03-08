@@ -143,6 +143,8 @@ GEM
     semantic-ui-sass (1.8.1.0)
       sass (~> 3.2)
     simditor (2.1.5.1)
+    simple_captcha2 (0.3.4)
+      rails (>= 4.1)
     slop (3.6.0)
     spring (1.3.1)
     sprockets (2.12.3)
@@ -188,6 +190,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   semantic-ui-sass (~> 1.8.1.0)
   simditor (~> 2.1.5.1)
+  simple_captcha2 (~> 0.3.4)
   spring
   turbolinks
   uglifier (>= 1.3.0)

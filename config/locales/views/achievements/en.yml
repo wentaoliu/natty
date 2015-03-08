@@ -2,28 +2,28 @@ en:
   achievements:
     index:
       button:
-        search: "Search"
-        new: "New Achievement"
-      previous: "Previous"
-      next: "Next"
+        search: Search
+        new: New Achievement
+      previous: Previous
+      next: Next
       table:
-        title: "Title"
-        author: "Author"
-        time: "Time"
-        read_times: "Read Times"
+        title: Title
+        author: Author
+        time: Time
+        read_times: Read Times
     show:
-      message: "This page was last modified on %{time} by %{author}."
-      edit: "Edit"
-      modify: "Modify"
+      message: This page was last modified on %{time} by %{author}.
+      edit: Edit
+      modify: Modify
     form:
-      title: "Title"
-      category: "Category"
+      title: Title
+      category: Category
       submit: Submit
     edit:
-      modify: "Modify"
+      modify: Modify
     new:
-      new: "New"
+      new: New
       steps:
-        step1: "Create an entry"
-        step2: "Enrich the content"
-        step3: "Complete"
+        step1: Create an entry
+        step2: Enrich the content
+        step3: Complete

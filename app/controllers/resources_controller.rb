@@ -1,4 +1,6 @@
 class ResourcesController < ApplicationController
+  before_filter :require_signin
+  before_filter :require_admin, only: [:destroy]
   include Uploader
 
   def index

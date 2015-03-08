@@ -1,24 +1,27 @@
 en:
-  news:
+  instruments:
     index:
       search: Search
-      new: Post News
+      new: Add Instrument
       table:
         title: Title
-        author: Author
         time: Time
-        hits: Hits
-        delete_confirm: Are you sure?
     show:
       message: This page was last modified on %{time} by %{author}.
       edit: Edit
       modify: Modify
+      history: View history
     form:
       title: Title
       category: Category
+      save: Save
+      tags: Tags
       submit: Submit
     edit:
       modify: Modify
+      title: Title
+      category: Category
+      save: Save
     new:
       new: New
       steps:

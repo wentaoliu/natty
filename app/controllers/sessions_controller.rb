@@ -1,21 +1,32 @@
 class SessionsController < ApplicationController
   before_filter :require_signin, only: [:destroy]
+  include SimpleCaptcha::ControllerHelpers
 
   def new
     redirect_to root_path if signed_in?
   end
 
   def create
-    user = User.find_by(username: params[:session][:username].downcase)
-    if user and user.authenticate(params[:session][:password])
-      # Sign in successful
-      sign_in user
-      save_sign_in_info user
-      set_custom_locale user
-      redirect_to root_path
+    if simple_captcha_valid?
+      user = User.where(username: params[:session][:username].downcase).first
+      if user and user.authenticate(params[:session][:password])
+        # Sign in successful
+        if params[:session][:remember_me] == '1'
+          sign_in_permanent user
+        else
+          sign_in user
+        end
+        save_sign_in_info user
+        set_custom_locale user
+        redirect_to root_path, notice: t('.success_html',username:current_user.name)
+      else
+        # Failed!
+        flash.now[:error] = t('.password_error')
+        render 'new'
+      end
     else
       # Failed!
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.now[:error] = t('.code_error')
       render 'new'
     end
   end

@@ -1,7 +1,6 @@
 en:
   home:
     index:
-      welcome: "Welcome to %{app_name}!"
       messages:
         header: Messages
         none: No unread message.

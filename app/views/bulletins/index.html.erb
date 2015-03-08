@@ -8,15 +8,15 @@
   <%= form_tag bulletins_path, method:'GET', class:"ui form" do %>
     <div class="inline fields">
       <div class="field">
-        <%= text_field_tag :search, params[:search] %>
+        <%= text_field_tag :search, params[:search], placeholder:t('.search') %>
       </div>
       <div class="field">
-        <%= submit_tag t('.button.search'), class:"ui blue button" %>
+        <%= submit_tag t('.search'), class:"ui blue button" %>
       </div>
     </div>
   <% end %>
   <%= link_to new_bulletin_path, class:"ui green labeled icon button" do %>
-    <span class="icon fa fa-plus"></span><%=t '.button.new' %>
+    <i class="plus icon"></i><%=t '.new' %>
   <% end %>
 </div>
 
@@ -35,7 +35,7 @@
         <td><%= link_to item.title, bulletin_path(item) %></td>
         <td><%= item.user.name %></td>
         <td><%=l item.created_at, :format=>:short %></td>
-        <td><%= link_to 'Show', item %>
+        <td>
           <%= link_to 'Edit', edit_bulletin_path(item) %>
           <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

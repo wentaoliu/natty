@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'signin' => 'sessions#new', as: :signin
   delete 'signout' => 'sessions#destroy', as: :signout
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
 
   resources :users
   resources :wikis do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       get :versions
     end
   end
-  resources :equipments
+  resources :instruments
   resources :topics, except: [:edit, :update] do
     resources :comments, only: [:create, :destroy]
   end

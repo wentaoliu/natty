@@ -1,19 +1,19 @@
 zh-CN:
   app:
     name:
-      short: "RTISS"
-      long: "科研团队信息管理系统"
+      short: RTISS
+      long: 科研团队信息管理系统
   sidebar:
-    home: "主页"
-    topics: "话题"
-    wikis: "维基"
-    schedule: "日程"
-    resources: "资源"
-    teamworks: "协作"
-    news: "新闻"
-    meetings: "会议"
-    achievements: "成果"
-    equipments: "仪器"
-    expense: "财务"
-    bulletin: "公告"
-    users: "用户"
+    home: 主页
+    topics: 话题
+    wikis: 维基
+    schedule: 日程
+    resources: 资源
+    teamworks: 协作
+    news: 新闻
+    meetings: 会议
+    achievements: 成果
+    instruments: 仪器
+    expense: 财务
+    bulletin: 公告
+    users: 用户

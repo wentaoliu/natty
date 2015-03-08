@@ -8,7 +8,7 @@
   <%= form_tag meetings_path, method:'GET', class:"ui form" do %>
     <div class="inline fields">
       <div class="field">
-        <%= text_field_tag :search, params[:search], placehoder: t('.search') %>
+        <%= text_field_tag :search, params[:search], placeholder: t('.search') %>
       </div>
       <div class="field">
         <%= submit_tag t('.search'), class:"ui blue button" %>

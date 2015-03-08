@@ -9,3 +9,7 @@ en:
       or: or
       apply: Apply To Join
       powered_by_html: Powered by %{link}
+    create:
+      password_error: Invalid username/password combination
+      code_error: Validation Code did not match with the Image
+      success_html: <div class="header">Login successful</div><p>%{username},welcome back!</p>

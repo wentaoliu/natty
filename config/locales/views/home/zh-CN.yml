@@ -1,7 +1,6 @@
 zh-CN:
   home:
     index:
-      welcome: "欢迎来到%{app_name}!"
       messages:
         header: 消息
         none: 您没有未读消息。

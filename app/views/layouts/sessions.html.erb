@@ -6,18 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style media="screen">
-    body {
-      background-image: url(<%= image_path("signin_bg.jpg") %>);
-      background-size: cover;
-      background-attachment: fixed;
-    }
+
   </style>
 </head>
-<body>
+<body class="sessions" style="background-image: url(<%= image_path("signin_bg.jpg") %>);">
   <div class="ui menu">
-    <a class="item">
+    <%= link_to root_path, class:"item" do %>
       <b><%= t 'app.name.long' %></b>
-    </a>
+    <% end %>
     <div class="ui locale dropdown item">
       <i class="world icon"></i>
       <div class="menu">

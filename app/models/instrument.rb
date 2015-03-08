@@ -1,4 +1,4 @@
-class Equipment
+class Instrument
   include Mongoid::Document
   include Mongoid::Timestamps
 

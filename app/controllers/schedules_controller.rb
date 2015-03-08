@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
-
+  before_filter :require_signin
+  before_filter :require_admin, only: [:destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /schedule

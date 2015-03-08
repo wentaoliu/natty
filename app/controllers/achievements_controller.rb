@@ -1,5 +1,7 @@
 class AchievementsController < ApplicationController
-
+  before_filter :require_signin
+  before_filter :require_admin, only: [:destroy]
+  
   # GET /admin/research/
   # GET /admin/research/index
   def index

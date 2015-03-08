@@ -8,6 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <div class="ui vertical inverted blue thin icon labeled sidebar menu left">
     <%= link_to content_tag('i',nil,class:'large home icon') +
           t('sidebar.home'), root_path, class:'item' %>
@@ -26,7 +27,7 @@
     <%= link_to content_tag('i',nil,class:'large flag icon') +
           t('sidebar.achievements'), achievements_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large cube icon') +
-          t('sidebar.equipments'), equipments_path, class:'item' %>
+          t('sidebar.instruments'), instruments_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large bullhorn icon') +
           t('sidebar.bulletin'), bulletins_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large male icon') +
@@ -67,6 +68,12 @@
 
     <div class="ui page grid">
       <div class="ui column">
+        <% if notice %>
+          <div class="ui blue message" style="position:absolute;z-index:1000;width:100%;">
+            <i class="close icon"></i>
+            <%=raw notice %>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

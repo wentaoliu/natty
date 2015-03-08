@@ -4,10 +4,10 @@ module ApplicationHelper
       'en'=>'English',
       #'en-GB'=>'English (UK)',
       #'en-US'=>'English (US)',
-      'zh-CN'=>'中文(简体)',
+      'zh-CN'=>'中文-中国',
       #'zh-HK'=>'中文(香港)',
-      #'zh-TW'=>'中文(臺灣)',
-      #'ja'=>'日本語'
+      'zh-TW'=>'中文-臺灣地区 (incomplete)',
+      'ja'=>'日本語 (incomplete)'
     }
   end
 

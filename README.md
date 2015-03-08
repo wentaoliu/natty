@@ -1,28 +1,15 @@
-== README
+# RTISS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RTISS (Research Team Information Sharing System) is a web application based on Ruby on Rails, providing a platform for research team members to publish and obtain information quickly and easily.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Topics - forum for discussing issues
+* Wikis - encyclopedia that anyone can edit
+* Schedule -
+* Resources -
+* News -
+* Meetings -
+* Achievements -
+* Instruments - 
+* Bulletins -

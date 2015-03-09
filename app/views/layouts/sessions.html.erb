@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=0.5">
   <title>RTISS</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -21,6 +22,14 @@
         <% for k,v in all_locales %>
           <%= link_to v, {:locale=> k}, class:'item' %>
         <% end %>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="item">
+        <%= link_to t('sessions.new.signin'), signin_path, class:'ui blue button' %>
+      </div>
+      <div class="item">
+        <a class="ui green button"><%= t('sessions.new.apply') %></a>
       </div>
     </div>
   </div>

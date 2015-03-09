@@ -1,0 +1,19 @@
+zh-HK:
+  app:
+    name:
+      short: RTISS
+      long: 科研團隊資訊管理系統
+  sidebar:
+    home: 主頁
+    topics: 話題
+    wikis: 維琪
+    schedule: 日程
+    resources: 資源
+    teamworks: 協作
+    news: 新聞
+    meetings: 會議
+    achievements: 成果
+    instruments: 儀器
+    expense: 財務
+    bulletin: 公告
+    users: 用戶

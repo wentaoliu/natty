@@ -1,12 +1,16 @@
 <div class="ui vertical segment">
 
-  <div class="ui huge header">
-    <div class="ui label">
-      <i class="pencil icon"></i>
-      <%=t 'sidebar.wikis' %>
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to wikis_path, class:'section' do %>
+        <i class="blue pencil icon"></i>
+        <%=t 'sidebar.wikis' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= @wiki.title %></div>
     </div>
-    <%= @wiki.title %>
   </div>
+
   <% if params[:version] %>
     <div class="ui warning message">
       <%=t '.warning',{ author: @wiki.user.name,

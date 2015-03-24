@@ -1,0 +1,15 @@
+en:
+  passwords:
+    new:
+      forgot_password: Forgot Password
+      username: Username
+      email: Email
+      submit: Send verification email
+    create:
+      code_error: Validation Code did not match with the Image
+      success_html: <div class="header">Login successful</div><p>%{username},welcome back!</p>
+    edit:
+      reset_password: Reset Password
+      new: New password
+      repeat: Re-type password
+      submit: Submit

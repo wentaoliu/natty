@@ -17,3 +17,19 @@ en:
     expense: Expense
     bulletin: Bulletin
     users: Users
+  menu:
+    language: Language
+    profile: Profile
+    settings: Settings
+    signout: Sign out
+    popup:
+      languages: Languages and locales
+      username: Profile and settings
+      messages: Messages
+      chat: Chat online
+  chat:
+    chat_online: Chat Online
+    chat_room: Chat room
+    users_list: Users List
+    say_something: Say something...
+    send: Send

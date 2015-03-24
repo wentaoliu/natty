@@ -1,6 +1,6 @@
 <div class="ui vertical segment">
   <h2 class="ui header">
-    <i class="circular inverted blue photo icon"></i>
+    <i class="circular inverted blue newspaper outline icon"></i>
     <div class="content">
       <%=t 'sidebar.news' %>
     </div>
@@ -38,9 +38,11 @@
         <td><%= item.user.name %></td>
         <td><%=l item.created_at, :format=>:short %></td>
         <td><%= item.hits %></td>
-        <td><%= link_to 'Edit', edit_news_path(item) %>
-          <%= link_to 'Destroy', item, method: :delete,
-              data: { confirm: t('.table.delete_confirm') } %></td>
+        <td>
+          <%= link_to content_tag('i',nil,class:'edit icon'), edit_news_path(item) %>
+          <%= link_to content_tag('i',nil,class:'red trash icon'), item, method: :delete,
+                data: { confirm: t('.table.delete_confirm') } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

@@ -1,0 +1,112 @@
+
+#content{
+  position: absolute;
+  top: 0;
+  right: 200px;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+#user_label{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height:30px;
+  border-top-left-radius: 5px;
+  background: #aaa;
+  background: rgba(0,0,0,0.4);
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  color: #eee;
+}
+#users_list{
+  position: absolute;
+  top: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-bottom-left-radius: 5px;
+  padding: 10px 0 10px 10px;
+}
+#users_list ul{
+  width:100%;
+  height:100%;
+  list-style: none;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+#users_list ul li{
+  width: 155px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 5px;
+  cursor: pointer;
+  border-bottom: 1px dashed #666;
+}
+#users_list ul li:hover{
+  background: #eee;
+  background:  rgba(0,0,0,0.2);
+  border-radius: 5px;
+}
+.sayingto{
+  background: #ddd;
+  background: rgba(0,0,0,0.3);
+  border-radius: 5px;
+  color: #39F;
+}
+#contents{
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  background: #eee;
+  background: rgba(0,0,0,0.1);
+  border-radius: 5px;
+  padding: 10px;
+  overflow: auto;
+}
+#input_content{
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  right: 105px;
+  bottom: 30px;
+  border-top-left-radius: 5px;
+  outline: none;
+  padding: 10px;
+  overflow:auto;
+  background: #eee;
+  background: rgba(0,0,0,0.1);
+}
+#sayingto{
+  background: #999;
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  left: 5px;
+  right: 105px;
+  bottom: 5px;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 10px;
+  border-bottom-left-radius: 5px;
+}
+#from
+{
+  color:#F90;
+  font-weight:bold;
+}
+#to{
+  color:#39F;
+  font-weight:bold
+}
+#say{
+  bottom: 5px;
+}

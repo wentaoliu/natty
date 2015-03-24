@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_filter :require_admin
+  before_filter :require_admin, except: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  layout 'layouts/visitor', only: [:new]
 
   # GET /users
   # GET /users.json

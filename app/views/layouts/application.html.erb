@@ -2,16 +2,16 @@
 <html>
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="initial-scale=0.5">
+  <meta name="viewport" content="initial-scale=0.5,user-scalable=no">
   <title>RTISS</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
-  <%=  yield :head %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <div class="ui vertical inverted blue thin icon labeled sidebar menu left">
+  <!-- left navigation sidebar -->
+  <div class="ui left vertical inverted blue thin icon labeled sidebar menu">
     <%= link_to content_tag('i',nil,class:'large home icon') +
           t('sidebar.home'), root_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large comments icon') +
@@ -22,7 +22,7 @@
           t('sidebar.schedule'), schedules_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large folder open icon') +
           t('sidebar.resources'), resources_path, class:'item' %>
-    <%= link_to content_tag('i',nil,class:'large photo icon') +
+    <%= link_to content_tag('i',nil,class:'large newspaper outline icon') +
           t('sidebar.news'), news_index_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large briefcase icon') +
           t('sidebar.meetings'), meetings_path, class:'item' %>
@@ -32,54 +32,76 @@
           t('sidebar.instruments'), instruments_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large bullhorn icon') +
           t('sidebar.bulletin'), bulletins_path, class:'item' %>
-    <%= link_to content_tag('i',nil,class:'large male icon') +
+    <%= link_to content_tag('i',nil,class:'large users icon') +
           t('sidebar.users'), users_path, class:'item' if is_admin? %>
   </div>
-
-  <div class="pusher">
-    <div class="ui inverted blue menu">
-      <a class="item sidebar-toggle">
-        <i class="content icon"></i>
-        <b class="hidden-xs"><%= t 'app.name.long' %></b>
-        <b class="visible-xs-inline-block hidden-sm hidden-md hidden-lg">
-          <%= t 'app.name.short' %>
-        </b>
-      </a>
-      <div class="ui locale dropdown item">
-        <i class="world icon"></i>
+  <!-- right chat room sidebar -->
+  <div class="ui right vertical wide sidebar segment">
+    <%= render 'layouts/chat'%>
+  </div>
+  <!-- top fixed menu -->
+  <div class="ui top fixed inverted blue menu">
+    <a class="item left-sidebar-toggle">
+      <i class="content icon"></i>
+      <b class="hidden-xs"><%= t 'app.name.long' %></b>
+      <b class="visible-xs-inline-block hidden-sm hidden-md hidden-lg">
+        <%= t 'app.name.short' %>
+      </b>
+    </a>
+    <div class="ui locale dropdown item" data-content="<%=t 'menu.popup.languages' %>">
+      <i class="world icon"></i>
+      <div class="menu">
+        <% for k,v in all_locales %>
+          <%= link_to v, {:locale=> k}, class:'item' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="ui dropdown item" data-content="<%=t 'menu.popup.username' %>"
+        style="padding-top:5px;padding-bottom:5px;">
+        <div class="ui image label"
+          style="padding-left:3px;padding-top:7px;padding-bottom:7px;margin-top:0;margin-bottom:0;">
+          <%= image_tag current_user.avatar.url(:thumb) %>
+          <%= current_user.name %>
+        </div>
         <div class="menu">
-          <% for k,v in all_locales %>
-            <%= link_to v, {:locale=> k}, class:'item' %>
+          <%= link_to profile_path, class:'item' do %>
+            <i class="user icon"></i><%=t 'menu.profile' %>
+          <% end %>
+          <%= link_to settings_path, class:'item' do %>
+            <i class="settings icon"></i><%=t 'menu.settings' %>
+          <% end %>
+          <%= link_to signout_path, method: :delete,class:'item' do %>
+            <i class="sign out icon"></i><%=t 'menu.signout' %>
           <% end %>
         </div>
       </div>
-
-      <div class="right menu">
-        <%= link_to messages_path, class:'item' do %>
-          <%= content_tag('i',nil,class:'envelope icon') %>
-          <% if false %>
-            <div class="ui red circular label"></div>
-          <% end %>
-        <% end %>
-        <%= link_to content_tag('i',nil,class:'user icon'), profile_path, class:'item' %>
-        <%= link_to content_tag('i',nil,class:'setting icon'), setting_path, class:'item' %>
-        <%= link_to content_tag('i',nil,class:'sign out icon'), signout_path,
-              method: :delete,class:'item' %>
-      </div>
+      <%= link_to content_tag('i',nil,class:'envelope icon'), messages_path,
+          class:'item', 'data-content':t('menu.popup.messages') %>
+      <a class="item right-sidebar-toggle" data-content="<%=t 'menu.popup.chat' %>">
+        <i class="chat icon"></i>
+      </a>
     </div>
-
-    <div class="ui page grid">
-      <div class="ui column">
-        <% if notice %>
-          <div class="ui blue message" style="position:absolute;z-index:1000;width:100%;">
-            <i class="close icon"></i>
-            <%=raw notice %>
+  </div>
+  <!-- main -->
+  <div class="pusher">
+    <div class="ui page grid" style="padding-top:40px;">
+      <% if notice %>
+        <div class="row">
+          <div class="sixteen wide column">
+            <div class="ui blue message">
+              <i class="close icon"></i>
+              <%=raw notice %>
+            </div>
           </div>
-        <% end %>
-        <%= yield %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="sixteen wide column">
+          <%= yield %>
+        </div>
       </div>
     </div>
-
   </div>
 </body>
 </html>

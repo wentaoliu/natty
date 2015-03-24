@@ -1,10 +1,13 @@
 <div class="ui vertical segment">
-  <div class="ui huge header">
-    <div class="ui label">
-      <i class="comments icon"></i>
-      <%=t 'sidebar.topics' %>
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to topics_path, class:'section' do %>
+        <i class="blue comments icon"></i>
+        <%=t 'sidebar.topics' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%=t '.new' %></div>
     </div>
-    <%=t '.new' %>
   </div>
 </div>
 <%= render 'form' %>

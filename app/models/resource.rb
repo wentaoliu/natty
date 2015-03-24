@@ -1,6 +1,7 @@
 class Resource
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::Paperclip
 
   belongs_to :user
 
@@ -8,10 +9,15 @@ class Resource
   field :parent, type: BSON::ObjectId
   field :ancestors, type: Array, default: []
   field :is_folder, type: Boolean
+
   # only for files
-  field :content_type, type: String
-  field :size, type: Integer
-  field :filename, type: String
+  has_mongoid_attached_file :document
+
+  validates_attachment :document,
+    size: { in: 0..10.megabytes },
+    file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/, /docx?\Z/, /xlsx?\Z/,
+      /pptx?\X/, /rar\Z/, /zip\Z/, /exe\Z/, /pdf\Z/] }
+
   field :public, type: Boolean, default: false
   field :hits, type: Integer, default: 0
 

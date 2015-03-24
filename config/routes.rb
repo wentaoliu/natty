@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete 'signout' => 'sessions#destroy', as: :signout
   resources :sessions, only: [:new, :create, :destroy]
 
+  resource :password, only: [:new, :create, :edit, :update]
   resources :users
   resources :wikis do
     member do
@@ -23,6 +24,10 @@ Rails.application.routes.draw do
   resources :schedules
   resources :meetings
   resources :messages
-  resource :profile, :setting
-
+  resource :profile
+  namespace :settings, only: [:edit, :update] do
+    get '/' => 'avatars#edit'
+    resource :avatar
+  end
+  resources :pictures, only: [:create]
 end

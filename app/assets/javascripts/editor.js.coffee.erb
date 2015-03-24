@@ -1,0 +1,16 @@
+$(document).on 'ready page:load', ->
+  # Initialize Simditor
+  textarea = $('.editor')
+  if textarea.length > 0
+    Simditor.locale = $.cookie 'locale'
+    editor = new Simditor(
+      textarea: textarea
+      toolbar: [
+        'title','bold','italic','underline','strikethrough','color','|'
+        'ol','ul','blockquote','code','table','link','image','hr','|'
+        'indent','outdent','|'
+        'source'
+      ]
+      pasteImage: true
+      defaultImage: '<%= image_path "upload-loading" %>'
+      upload: url: '/pictures')

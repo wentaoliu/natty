@@ -41,3 +41,11 @@
   <%= f.submit t('.submit'), class:'ui blue button' %>
   <%= link_to t('.cancel'), schedules_path, class:'ui button' %>
 <% end %>
+
+<script>
+$(document).on("ready page:load", function() {
+  $('.ui.checkbox')
+    .checkbox()
+  ;
+});
+</script>

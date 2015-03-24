@@ -1,8 +1,3 @@
-<% content_for :head do %>
-  <%= javascript_include_tag 'editor', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'editor', media: 'all', 'data-turbolinks-track' => true %>
-<% end %>
-
 <%= form_for(@achievement, html:{class:'ui form segment'}) do |f| %>
   <% if @achievement.errors.any? %>
     <div id="error_explanation">
@@ -39,8 +34,8 @@
       <%= f.date_field :date %>
     </div>
     <div class="field">
-      <%= f.label :context, t('.context') %>
-      <%= f.select :context, [['Paper','paper'],['Patent','patent'],['Award','award']],
+      <%= f.label :type, t('.context') %>
+      <%= f.select :type, [['Paper','paper'],['Patent','patent'],['Award','award']],
         {},{class:"ui dropdown"} %>
     </div>
   </div>

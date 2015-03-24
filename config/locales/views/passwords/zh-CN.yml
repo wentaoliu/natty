@@ -1,0 +1,15 @@
+zh-CN:
+  passwords:
+    new:
+      forgot_password: 忘记密码
+      username: 用户名
+      email: 邮箱
+      submit: 发送验证邮件
+    create:
+      code_error: 验证码输入错误
+      success_html: <div class="header">登录成功</div><p>%{username}，欢迎回来！</p>
+    edit:
+      reset_password: 重置密码
+      new: 新密码
+      repeat: 重复密码
+      submit: 确认

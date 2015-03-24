@@ -1,6 +1,13 @@
-<h1>Editing User</h1>
-
+<div class="ui vertical segment">
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to wikis_path, class:'section' do %>
+        <i class="blue users icon"></i>
+        <%=t 'sidebar.users' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%=t '.edit' %></div>
+    </div>
+  </div>
+</div>
 <%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

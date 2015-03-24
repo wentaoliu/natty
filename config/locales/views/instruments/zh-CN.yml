@@ -17,6 +17,7 @@ zh-CN:
       save: 保存
       tags: 标签
       submit: 确认
+      cancel: 取消
     edit:
       modify: 修改
     new:

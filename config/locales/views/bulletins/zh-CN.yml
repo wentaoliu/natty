@@ -15,6 +15,7 @@ zh-CN:
       title: 标题
       content: 内容
       submit: 确认
+      cancel: 取消
     edit:
       modify: 修改
     new:

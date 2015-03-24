@@ -1,0 +1,10 @@
+zh-CN:
+  settings:
+    avatars:
+      edit:
+        avatar: 头像
+        submit: 确认
+      update:
+        password_error: 用户名或密码错误
+        code_error: 验证码输入错误
+        success_html: <div class="header">登录成功</div><p>%{username}，欢迎回来！</p>

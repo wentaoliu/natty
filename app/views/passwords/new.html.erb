@@ -1,0 +1,26 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular lock icon"></i>
+  <%= t '.forgot_password' %>
+</h2>
+<% if flash[:error] %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <p><%= flash[:error] %></p>
+    </div>
+  </div>
+<% end %>
+<%= form_for(:user, url: password_path,html:{class:'ui form segment'}) do |f| %>
+  <div class="field">
+    <%= f.label :username, t('.username') %>
+    <%= f.text_field :username, placeholder: t('.username'), required: :required %>
+  </div>
+  <div class="field">
+    <%= f.label :email, t('.email') %>
+    <%= f.email_field :email, placeholder: t('.email'), required: :required  %>
+  </div>
+  <div class="field">
+    <%= show_simple_captcha %>
+  </div>
+  <%= f.submit t('.submit'), class: "fluid ui blue button" %>
+<% end %>

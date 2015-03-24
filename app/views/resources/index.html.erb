@@ -43,7 +43,7 @@
               <i class="folder icon"></i><%= item.title %>
             <% end %>
           <% else %>
-            <%= link_to item do %>
+            <%= link_to item.document.url do %>
               <i class="file icon"></i><%= item.title %>
             <% end %>
           <% end %>
@@ -99,8 +99,8 @@
         <%= f.text_field :title %>
       </div>
       <div class="field">
-        <%= f.label :file, t('.modal.file') %>
-        <%= f.file_field :file %>
+        <%= f.label :document, t('.modal.document') %>
+        <%= f.file_field :document %>
       </div>
       <div class="field">
         <div class="ui toggle checkbox">

@@ -5,6 +5,7 @@ en:
       username: Username
       password: Password
       remember_me: Remember me?
+      forgot_password: Forgot password?
       submit: Sign In
       or: or
       apply: Apply To Join

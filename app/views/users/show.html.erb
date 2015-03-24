@@ -1,5 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="ui vertical segment">
 
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to users_path, class:'section' do %>
+        <i class="blue users icon"></i>
+        <%=t 'sidebar.users' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= @user.name %></div>
+    </div>
+  </div>
+
+  <p>
+    <%= link_to t('.edit'), edit_user_path(@user), class:"ui button" %>
+  </p>
+</div>
 <p>
   <strong>Username:</strong>
   <%= @user.username %>

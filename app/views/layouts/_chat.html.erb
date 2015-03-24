@@ -1,0 +1,114 @@
+<div class="ui grid chat">
+  <div class="sixteen wide column">
+    <div class="ui header">
+      <i class="comments icon"></i>
+      <div class="content">
+          <%=t 'chat.chat_online' %>
+      </div>
+    </div>
+
+    <div class="ui divider"></div>
+
+    <div class="ui top attached tabular menu">
+      <a class="active item" data-tab="chat_room"><%=t 'chat.chat_room' %></a>
+      <a class="item" data-tab="users_list"><%=t 'chat.users_list' %></a>
+    </div>
+
+    <div class="ui bottom attached active tab segment" data-tab="chat_room"
+      style="overflow-y:scroll;">
+
+      <div class="ui feed">
+<!--        <div class="event">
+          <div class="label">
+            <img src="/images/avatar/small/elliot.jpg">
+          </div>
+          <div class="content">
+            <div class="summary">
+              <a class="user">
+                Elliot Fu
+              </a> added you as a friend
+              <div class="date">1 Hour Ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <i class="circular inverted blue user icon"></i>
+          </div>
+          <div class="content">
+            <div class="summary">You submitted a new post to the page
+              <div class="date">3 days ago</div>
+            </div>
+            <div class="extra text">
+              I'm having a BBQ this weekend. Come by around 4pm if you can.
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label">
+            <i class="info icon"></i>
+          </div>
+          <div class="content">
+            <div class="summary">系统消息
+              <div class="date">3 days ago</div>
+            </div>
+            <div class="extra text">
+              I'm having a BBQ this weekend. Come by around 4pm if you can.
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label"><img src="/images/avatar/small/jenny.jpg"></div>
+          <div class="content">
+            <div class="summary">
+              <a class="user">Jenny Hess</a> added you as a friend
+              <div class="date">2 Days Ago</div>
+            </div>
+          </div>
+        </div>
+        <div class="event">
+          <div class="label"><img src="/images/avatar/small/joe.jpg"></div>
+          <div class="content">
+            <div class="summary">
+              <a>Joe Henderson</a> posted on his page
+              <div class="date">3 days ago</div>
+            </div>
+            <div class="extra text">
+              Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all over again. Even if we don't run extra laps that day, we surely will come back for more of the same another day soon.
+            </div>
+          </div>
+        </div>
+
+        -->
+      </div>
+
+    </div>
+
+    <div class="ui bottom attached tab segment" data-tab="users_list"
+      style="overflow-y:scroll;">
+
+      <div class="ui divided list">
+  <!--
+        <div class="item">
+          <img class="ui avatar image" src="/images/avatar/small/justen.jpg">
+          <div class="content">
+            <div class="header">Justen Kitsune</div>
+          </div>
+        </div>
+        <div class="item">
+          <img class="ui avatar image" src="/images/avatar/small/justen.jpg">
+          <div class="content">
+            <div class="header">Justen Kitsune</div>
+          </div>
+        </div>
+      -->
+      </div>
+
+    </div>
+
+    <div class="ui fluid action input" id="say">
+      <input type="text" id="send_text" placeholder="<%=t 'chat.say_something' %>">
+      <a class="ui blue button" id="send"><%=t 'chat.send' %></a>
+    </div>
+  </div>
+</div>

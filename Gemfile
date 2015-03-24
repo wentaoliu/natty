@@ -1,8 +1,8 @@
-source 'https://rubygems.org'
-#source 'https://ruby.taobao.org/'
+#source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '4.2.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -14,6 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-cookie-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -30,20 +31,25 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Use Mongoid, ODM Framework for MongoDB
-gem 'mongoid', '~> 4.0.1'
+# Mongoid
+gem 'mongoid', '~> 4.0.2'
 gem 'mongoid-paranoia', '~> 1.0.0'
 gem 'mongoid-versioning', '~> 1.0.0'
-
-# Use simditor
+# Simditor
 gem 'simditor', '~> 2.1.5.1'
-
-# Use Semantic UI
-gem 'semantic-ui-sass', '~> 1.8.1.0'
-
+# Semantic UI
+gem 'semantic-ui-sass', '~> 1.11.4.0'
+# I18n
 gem 'rails-i18n', '~> 4.0.0'
-
+# Captcha
 gem 'simple_captcha2', '~> 0.3.4'
+# Socket.io
+gem 'socket.io-rails', '~> 1.3.3'
+# ImageMagick
+gem 'mini_magick', '~> 4.1.0'
+# Paperclip
+gem 'paperclip', '~> 4.2.1'
+gem 'mongoid-paperclip', '~> 0.0.9', :require => "mongoid_paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

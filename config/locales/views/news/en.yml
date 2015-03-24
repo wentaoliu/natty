@@ -17,8 +17,9 @@ en:
       title: Title
       category: Category
       submit: Submit
+      cancel: Cancel
     edit:
-      modify: Modify
+      edit: Edit
     new:
       new: New
       steps:

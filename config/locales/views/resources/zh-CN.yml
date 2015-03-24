@@ -19,6 +19,6 @@ zh-CN:
           title: 名称
         resource:
           title: 名称
-          file: 文件
+          document: 文件
           public: 公开?
           help: 公开的文件可以通过应用程序编程接口（API）访问。请确认您拥有该文件的版权。

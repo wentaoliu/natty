@@ -26,8 +26,9 @@
       <%= submit_tag t('.search'), class:"ui blue button" %>
     </div>
   <% end %>
-  <button type="button" id="new-schedule-btn" class="ui green labeled icon button">
-    <i class="plus icon"></i><%=t '.new' %></button>
+  <%= link_to new_schedule_path, class:"ui green labeled icon button" do %>
+    <i class="plus icon"></i><%=t '.new' %>
+  <% end %>
 </div>
 
 <table class="ui celled table">
@@ -69,26 +70,3 @@
     <% end %>
     </tr>
 </table>
-
-<div class="ui long modal" id="new-schedule-modal">
-  <i class="close icon"></i>
-  <div class="header">
-    <h4><%=t '.new' %></h4>
-  </div>
-  <div class="content">
-    <%= form_for @schedule, html:{class:"ui form",id:"new-schedule-form"} do |f| %>
-      <%= render 'form', f: f %>
-    <% end %>
-  </div>
-</div>
-
-<script>
-$(document).on("ready page:load", function() {
-  $('#new-schedule-modal')
-    .modal('attach events', '#new-schedule-btn', 'show')
-  ;
-  $('.ui.checkbox')
-    .checkbox()
-  ;
-});
-</script>

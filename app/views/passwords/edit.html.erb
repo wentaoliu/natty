@@ -1,0 +1,23 @@
+<h2 class="ui center aligned icon header">
+  <i class="circular unlock icon"></i>
+  <%= t '.reset_password' %>
+</h2>
+<% if flash[:error] %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <p><%= flash[:error] %></p>
+    </div>
+  </div>
+<% end %>
+<%= form_for(:password, url: edit_password_path,html:{class:'ui form segment'}) do |f| %>
+  <div class="field">
+    <%= f.label :new, t('.new') %>
+    <%= f.password_field :new, placeholder: t('.new'), required: :required  %>
+  </div>
+  <div class="field">
+    <%= f.label :repeat, t('.repeat') %>
+    <%= f.password_field :repeat, placeholder: t('.repeat'), required: :required  %>
+  </div>
+  <%= f.submit t('.submit'), class: "fluid ui blue button" %>
+<% end %>

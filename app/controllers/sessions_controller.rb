@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
   before_filter :require_signin, only: [:destroy]
   include SimpleCaptcha::ControllerHelpers
 
+  layout 'layouts/visitor'
+
   def new
     redirect_to root_path if signed_in?
   end
@@ -9,13 +11,9 @@ class SessionsController < ApplicationController
   def create
     if simple_captcha_valid?
       user = User.where(username: params[:session][:username].downcase).first
-      if user and user.authenticate(params[:session][:password])
+      if user and user.authenticate(params[:session][:password]) and user.normal?
         # Sign in successful
-        if params[:session][:remember_me] == '1'
-          sign_in_permanent user
-        else
-          sign_in user
-        end
+        sign_in(user = user, permanent = params[:session][:remember_me] == '1')
         save_sign_in_info user
         set_custom_locale user
         redirect_to root_path, notice: t('.success_html',username:current_user.name)

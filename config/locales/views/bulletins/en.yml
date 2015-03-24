@@ -15,6 +15,7 @@ en:
       title: Title
       content: Content
       submit: Submit
+      cancel: Cancel
     edit:
       modify: Modify
     new:

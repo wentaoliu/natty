@@ -1,13 +1,13 @@
 <div class="ui vertical segment">
-  <div class="ui huge header">
-    <div class="ui label">
-      <span class="fa fa-pencil fa-fw"></span>
-      <%=t 'sidebar.wikis' %>
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to instruments_path, class:'section' do %>
+        <i class="blue cube icon"></i>
+        <%=t 'sidebar.instruments' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%=t '.edit' %></div>
     </div>
-    <div class="ui label">
-      <%=t '.modify' %>
-    </div>
-    <%= @wiki.title %>
   </div>
 </div>
 <%= render 'form' %>

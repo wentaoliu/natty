@@ -19,6 +19,6 @@ en:
           title: Title
         resource:
           title: Title
-          file: File
+          document: Document
           public: Public?
           help: Public files can be accessed from Application Programming Interface (API). Make sure you have the right distributing this file.

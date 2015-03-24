@@ -22,23 +22,27 @@
   <div class="field">
     <%= show_simple_captcha %>
   </div>
-  <div class="field">
-    <div class="ui toggle checkbox">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me, t('.remember_me') %>
+  <div class="two fields">
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, t('.remember_me') %>
+      </div>
+    </div>
+    <div class="field" style="text-align:right;">
+      <%= link_to t('.forgot_password'), new_password_path %>
     </div>
   </div>
-
   <div class="2 fluid ui buttons">
     <%= f.submit t('.submit'), class: "ui blue button" %>
     <div class="or" data-text="<%= t('.or') %>"></div>
-    <div class="ui green button"><%= t('.apply') %></div>
+    <%= link_to t('.apply'), new_user_path, class:'ui green button' %>
   </div>
 
   <div class="ui hidden divider"></div>
   <div class="ui bottom right attached label">
     <%= t('.powered_by_html',
-      :link => link_to('RTISS', 'http://rtiss.org')) %>
+      :link => link_to('RTISS', 'https://github.com/wentaoliu/rtiss')) %>
   </div>
 <% end %>
 

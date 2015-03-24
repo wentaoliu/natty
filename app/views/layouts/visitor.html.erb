@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="initial-scale=0.5,user-scalable=no">
+  <title>RTISS</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="sessions" style="background-image: url('<%= asset_path("background.jpg") %>');">
+  <div class="ui menu">
+    <%= link_to root_path, class:"item" do %>
+      <b><%= t 'app.name.long' %></b>
+    <% end %>
+    <div class="ui dropdown item" data-content="<%=t 'menu.popup.languages' %>">
+      <i class="world icon"></i>
+      <div class="menu">
+        <% for k,v in all_locales %>
+          <%= link_to v, {:locale=> k}, class:'item' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="right menu">
+      <div class="item">
+        <%= link_to t('sessions.new.signin'), signin_path, class:'ui blue button' %>
+      </div>
+      <div class="item">
+        <%= link_to t('sessions.new.apply'), new_user_path, class:'ui green button' %>
+      </div>
+    </div>
+  </div>
+  <div class="ui page grid">
+    <div class="ui column">
+      <div class="ui one column centered grid">
+        <div class="doubling two column centered row">
+          <div class="column">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include SessionsHelper
-  
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale]
-      session[:locale] = params[:locale]
+      cookies.permanent[:locale] = params[:locale]
     else
-      session[:locale] ||= I18n.default_locale
+      cookies.permanent[:locale] ||= I18n.default_locale
     end
-    I18n.locale = session[:locale]
+    I18n.locale = cookies.permanent[:locale]
   end
 
 end

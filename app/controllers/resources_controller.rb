@@ -1,7 +1,6 @@
 class ResourcesController < ApplicationController
   before_filter :require_signin
   before_filter :require_admin, only: [:destroy]
-  include Uploader
 
   def index
     parent = params[:parent]
@@ -14,23 +13,13 @@ class ResourcesController < ApplicationController
     @resource = Resource.new(parent: parent)
   end
 
-  def show
-    resource = Resource.find(params[:id])
-    send_file("#{Rails.root}/public/uploads/files/#{resource.filename}",
-              filename: "#{resource.filename}")
-  end
-
   def create
     if params[:resource][:is_folder] == true
       @resource = Resource.new(params.require(:resource)
                     .permit(:title, :parent, :is_folder))
     else
       @resource = Resource.new(params.require(:resource)
-                    .permit(:title, :parent, :public, :is_folder))
-      file = params[:resource][:file]
-      if file.is_a? ActionDispatch::Http::UploadedFile
-        @resource.filename = save_file_local(file)
-      end
+                    .permit(:title, :parent, :public, :is_folder, :document))
     end
     @resource.user = current_user
     # Attempt to save into the datebase
@@ -45,13 +34,6 @@ class ResourcesController < ApplicationController
     #access_denied unless @resource.author == current_user.username or admin?
     @resource.destroy
     redirect_to resources_path
-  end
-
-  private
-
-  def allowed_file(filename)
-    #return filename.include?('.') and
-    #  ALLOWED_EXTENSIONS.include?(filename.split('.')[-1].downcase)
   end
 
 end

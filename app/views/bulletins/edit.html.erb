@@ -1,8 +1,12 @@
 <div class="ui vertical segment">
-  <div class="ui huge header">
-    <div class="ui label">
-      <span class="fa fa-newspaper-o fa-fw"></span>
-      <%=t 'sidebar.news' %>
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to bulletins_path, class:'section' do %>
+        <i class="blue bullhorn icon"></i>
+        <%=t 'sidebar.bulletin' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%=t '.edit' %></div>
     </div>
   </div>
 </div>

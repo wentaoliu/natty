@@ -1,8 +1,3 @@
-<% content_for :head do %>
-  <%= javascript_include_tag 'editor', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'editor', media: 'all', 'data-turbolinks-track' => true %>
-<% end %>
-
 <%= form_for(@bulletin, html:{class:'ui form segment'}) do |f| %>
   <% if @bulletin.errors.any? %>
     <div id="error_explanation">
@@ -27,4 +22,5 @@
   </div>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), bulletins_path, class:"ui button" %>
 <% end %>

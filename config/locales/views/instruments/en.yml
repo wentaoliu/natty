@@ -5,27 +5,20 @@ en:
       new: Add Instrument
       table:
         title: Title
-        time: Time
+        maintainer: Maintainer
     show:
-      message: This page was last modified on %{time} by %{author}.
+      maintainer: Maintainer
       edit: Edit
-      modify: Modify
-      history: View history
+      delete: Delete
+      delete_confirm: Are you sure?
     form:
       title: Title
-      category: Category
-      save: Save
-      tags: Tags
+      maintainer: Maintainer
+      content: Content
+      public: Public?
       submit: Submit
       cancel: Cancel
     edit:
-      modify: Modify
-      title: Title
-      category: Category
-      save: Save
+      edit: Edit
     new:
       new: New
-      steps:
-        step1: Create an entry
-        step2: Enrich the content
-        step3: Complete

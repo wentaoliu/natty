@@ -8,9 +8,9 @@ class ApplicationController < ActionController::Base
 
   before_action :set_locale
 
-  def set_locale
-    if params[:locale]
-      cookies.permanent[:locale] = params[:locale]
+  def set_locale(locale = params[:locale])
+    if locale
+      cookies.permanent[:locale] = locale
     else
       cookies.permanent[:locale] ||= I18n.default_locale
     end

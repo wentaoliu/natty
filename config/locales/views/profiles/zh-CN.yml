@@ -1,0 +1,10 @@
+zh-CN:
+  profiles:
+    edit:
+      date: 于%{created_at}加入
+      name: 姓名
+      email_public: 公开邮箱
+      position: 职位
+      grade: 年级
+      resume: 简历
+      submit: 保存

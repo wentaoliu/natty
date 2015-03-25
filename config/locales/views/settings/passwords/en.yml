@@ -1,0 +1,12 @@
+en:
+  settings:
+    passwords:
+      edit:
+        old: Old password
+        new: New password
+        repeat: Re-type password
+        submit: Submit
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in ip
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in ip

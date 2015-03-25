@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
         # Sign in successful
         sign_in(user = user, permanent = params[:session][:remember_me] == '1')
         save_sign_in_info user
-        set_custom_locale user
+        set_locale user.locale
         redirect_to root_path, notice: t('.success_html',username:current_user.name)
       else
         # Failed!
@@ -43,15 +43,6 @@ class SessionsController < ApplicationController
       last_sign_in_at: user.current_sign_in_at,
       current_sign_in_at: DateTime.now
     )
-  end
-
-  def set_custom_locale(user)
-    if user.locale
-      session[:locale] = user.locale
-    else
-      session[:locale] ||= I18n.default_locale
-    end
-    I18n.locale = session[:locale]
   end
 
 end

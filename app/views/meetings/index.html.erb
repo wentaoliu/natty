@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue briefcase icon"></i>
     <div class="content">
-      <%=t 'sidebar.meetings' %>
+      <%=t 'module.meetings' %>
     </div>
   </h2>
   <%= form_tag meetings_path, method:'GET', class:"ui form" do %>
@@ -23,11 +23,10 @@
 <table class="ui table segment">
   <thead>
     <tr>
-      <th class="five wide"><%=t '.table.title' %></th>
+      <th class="eight wide"><%=t '.table.title' %></th>
       <th class="four wide"><%=t '.table.time' %></th>
       <th class="three wide"><%=t '.table.place' %></th>
-      <th class="two wide"><%=t '.table.public' %></th>
-      <th class="two wide"></th>
+      <th class="one wide"><%=t '.table.public' %></th>
     </tr>
   </thead>
   <tbody>
@@ -38,10 +37,6 @@
         <td><%= item.place %></td>
         <td><%= item.public ? content_tag('i',nil,class:'checkmark icon')
               : content_tag('i',nil, class:'remove icon') %></td>
-        <td>
-          <%= link_to content_tag('i',nil,class:'blue edit icon'), edit_meeting_path(item) %>
-          <%= link_to content_tag('i',nil,class:'red trash icon'), item, method: :delete,
-              data: { confirm: t('.table.delete_confirm') } %></td>
       </tr>
     <% end %>
   </tbody>

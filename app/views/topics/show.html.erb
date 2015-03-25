@@ -3,7 +3,7 @@
     <div class="ui huge breadcrumb">
       <%= link_to topics_path, class:'section' do %>
         <i class="blue comments icon"></i>
-        <%=t 'sidebar.topics' %>
+        <%=t 'module.topics' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%= @topic.title %></div>
@@ -27,11 +27,18 @@
   <% end %>
 </div>
 
+<% if is_admin? %>
+  <%= link_to @topic, method: :delete, data: { confirm: t('.delete_confirm') },
+      class:"ui red labeled icon button" do %>
+    <i class="trash icon"></i><%=t '.delete' %>
+  <% end %>
+<% end %>
+
 <div class="ui comments">
   <% @topic.comments.where(reply_to: nil).each do |comment| %>
     <div class="comment">
       <a class="avatar">
-        <img src="/images/avatar/small/matt.jpg">
+        <%= image_tag comment.user.avatar.url(:thumb) %>
       </a>
       <div class="content">
         <a class="author"><%= comment.user.name %></a>
@@ -44,14 +51,14 @@
             <%=t '.reply' %>
           </a>
           <%= link_to t('.delete'), [@topic, comment], method: :delete,
-            data: { confirm: 'Are you sure?' }, class:'delete' if is_admin? %>
+            data: { confirm: t('.delete_confirm') }, class:'delete' if is_admin? %>
         </div>
         <% if comment.replies.size > 0 %>
           <div class="comments">
             <% comment.replies.each do |reply| %>
               <div class="comment">
                 <a class="avatar">
-                  <img src="/images/avatar/small/jenny.jpg">
+                  <%= image_tag reply.user.avatar.url(:thumb) %>
                 </a>
                 <div class="content">
                   <a class="author"><%= reply.user.name %></a>
@@ -66,7 +73,7 @@
                       <%=t '.reply' %>
                     </a>
                     <%= link_to t('.delete'), [@topic, comment], method: :delete,
-                          data: { confirm: 'Are you sure?' },
+                          data: { confirm: t('.delete_confirm') },
                           class:'delete' if is_admin? %>
                   </div>
                 </div>

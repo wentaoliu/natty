@@ -2,21 +2,22 @@ en:
   bulletins:
     index:
       search: Search
-      new: New Bulletin
+      new: New
       table:
         title: Title
         author: Author
         time: Time
     show:
-      message: This page was last modified on %{time} by %{author}.
       edit: Edit
-      modify: Modify
+      delete: Delete
+      delete_confirm: Are you sure?
     form:
       title: Title
       content: Content
+      public: Public?
       submit: Submit
       cancel: Cancel
     edit:
-      modify: Modify
+      edit: Edit
     new:
       new: New

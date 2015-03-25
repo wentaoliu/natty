@@ -3,7 +3,7 @@ en:
     name:
       short: RTISS
       long: Research Team Information Sharing System
-  sidebar:
+  module:
     home: Home
     topics: Topics
     wikis: Wikis

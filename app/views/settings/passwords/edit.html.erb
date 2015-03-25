@@ -1,0 +1,64 @@
+<div class="ui vertical segment">
+  <h2 class="ui header">
+    <i class="blue user icon"></i>
+    <div class="content"><%=t 'settings.header' %></div>
+  </h2>
+</div>
+
+<div class="ui blue menu">
+  <%= link_to edit_settings_username_path, class:'item' do %>
+    <i class="user icon"></i> <%=t 'settings.menu.username' %>
+  <% end %>
+  <%= link_to edit_settings_email_path, class:'item' do %>
+    <i class="mail icon"></i> <%=t 'settings.menu.email' %>
+  <% end %>
+  <%= link_to edit_settings_avatar_path, class:'item' do %>
+    <i class="camera retro icon"></i> <%=t 'settings.menu.avatar' %>
+  <% end %>
+  <%= link_to edit_settings_password_path, class:'active item' do %>
+    <i class="lock icon"></i> <%=t 'settings.menu.security' %>
+  <% end %>
+  <%= link_to edit_settings_locale_path, class:'item' do %>
+    <i class="world icon"></i> <%=t 'settings.menu.locale' %>
+  <% end %>
+</div>
+
+<%= form_for(:password, url:settings_password_path, method: :put, html:{class:'ui form segment'}) do |f| %>
+
+  <div class="field">
+    <%= f.label :old, t('.old') %>
+    <%= f.password_field :old %>
+  </div>
+
+  <div class="field">
+    <%= f.label :new, t('.new') %>
+    <%= f.password_field :new %>
+  </div>
+
+  <div class="field">
+    <%= f.label :repeat, t('.repeat') %>
+    <%= f.password_field :repeat %>
+  </div>
+
+  <%= f.submit t('.submit'), class: "ui blue button" %>
+
+<% end %>
+
+<div class="ui list">
+  <div class="item">
+    <div class="header"><%=t '.last_sign_in_at' %></div>
+    <%=l current_user.last_sign_in_at, format: :long %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.last_sign_in_ip' %></div>
+    <%= current_user.last_sign_in_ip %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.current_sign_in_at' %></div>
+    <%=l current_user.current_sign_in_at, format: :long %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.current_sign_in_ip' %></div>
+    <%= current_user.current_sign_in_ip %>
+  </div>
+</div>

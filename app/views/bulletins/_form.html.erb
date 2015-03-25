@@ -21,6 +21,13 @@
     <%= f.text_area :content, class:'editor'%>
   </div>
 
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :public %>
+      <%= f.label :public, t('.public') %>
+    </div>
+  </div>
+
   <%= f.submit t('.submit'), class:"ui blue button" %>
   <%= link_to t('.cancel'), bulletins_path, class:"ui button" %>
 <% end %>

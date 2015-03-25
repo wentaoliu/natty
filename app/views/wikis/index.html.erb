@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue pencil icon"></i>
     <div class="content">
-      <%=t 'sidebar.wikis' %>
+      <%=t 'module.wikis' %>
     </div>
   </h2>
   <%= form_tag wikis_path, method:'GET', class:"ui form" do %>
@@ -24,8 +24,7 @@
   <thead>
     <tr>
       <th class="twelve wide"><%=t '.table.title' %></th>
-      <th class="three wide"><%=t '.table.updated_at' %></th>
-      <th class="one wide"></th>
+      <th class="four wide"><%=t '.table.updated_at' %></th>
     </tr>
   </thead>
   <tbody>
@@ -33,12 +32,6 @@
       <tr>
         <td><%= link_to wiki.title, wiki_path(wiki) %></td>
         <td><%=l wiki.updated_at,:format=>:long %></td>
-        <% if is_admin? %>
-          <td>
-            <%= link_to content_tag('i',nil,class:'red trash icon'), wiki, method: :delete,
-                  data: { confirm: '.table.delete_confirm' } %>
-          </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>

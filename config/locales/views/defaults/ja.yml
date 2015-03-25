@@ -3,7 +3,7 @@ ja:
     name:
       short: RTISS
       long: 研究チームの情報管理システム
-  sidebar:
+  module:
     home: ホームページ
     topics: フォーラム
     wikis: ウィキ

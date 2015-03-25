@@ -1,0 +1,9 @@
+en:
+  settings:
+    header: Settings
+    menu:
+      username: Username
+      email: Email
+      avatar: Avatar
+      security: Security
+      locale: Locale

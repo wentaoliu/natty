@@ -24,10 +24,14 @@ Rails.application.routes.draw do
   resources :schedules
   resources :meetings
   resources :messages
-  resource :profile
-  namespace :settings, only: [:edit, :update] do
-    get '/' => 'avatars#edit'
-    resource :avatar
+  resource :profile, only: [:edit, :update]
+  namespace :settings do
+    get '/' => 'usernames#edit'
+    resource :username, only: [:edit, :update]
+    resource :email, only: [:edit, :update]
+    resource :avatar, only: [:edit, :update]
+    resource :password, only: [:edit, :update]
+    resource :locale, only: [:edit, :update]
   end
   resources :pictures, only: [:create]
 end

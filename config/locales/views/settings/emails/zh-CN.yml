@@ -1,0 +1,6 @@
+zh-CN:
+  settings:
+    emails:
+      edit:
+        email: 邮箱
+        submit: 确认

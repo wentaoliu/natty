@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue users icon"></i>
     <div class="content">
-      <%=t 'sidebar.users' %>
+      <%=t 'module.users' %>
     </div>
   </h2>
   <%= link_to new_user_path, class:"ui green labeled icon button" do %>
@@ -20,7 +20,6 @@
       <th class="four wide"><%=t '.table.email' %></th>
       <th class="two wide"><%=t '.table.state' %></th>
       <th class="two wide"><%=t '.table.admin' %></th>
-      <th class="two wide"></th>
     </tr>
   </thead>
 
@@ -30,14 +29,9 @@
         <td><%= link_to user.name, user %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
-        <td><%= t('.table.state_names')[user.state] %></td>
+        <td><%= t('.table.states')[user.state] %></td>
         <td><%= user.admin ? content_tag('i',nil,class:'checkmark icon') :
                   content_tag('i',nil,class:'remove icon')%></td>
-        <td>
-          <%= link_to content_tag('i',nil,class:'edit icon'), edit_user_path(user) %>
-          <%= link_to content_tag('i',nil,class:'red trash icon'), user, method: :delete,
-                data: { confirm: t('.table.delete_confirm') } %>
-        </td>
       </tr>
     <% end %>
   </tbody>

@@ -8,10 +8,10 @@ en:
         author: Author
         time: Time
         comments: Comments
-        delete_confirm: Are you sure?
     show:
       reply: Reply
       delete: Delete
+      delete_confirm: Are you sure?
       comment: Add Comment
       modal:
         submit: Submit

@@ -12,18 +12,18 @@ class InstrumentsController < ApplicationController
     if params[:search].nil?
       count = Instrument.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @instruments = Instrument.limit(NUM_PER_PAGE).offset(@offset)
+      @instruments = Instrument.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     else
-      count = Instrument.where("title LIKE ?", "%#{params[:search]}%").count
+      count = Instrument.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil
-      @instruments = Instrument.where("title LIKE ?", "%#{params[:search]}%").limit(NUM_PER_PAGE).offset(@offset)
+      @instruments = Instrument.where(title: /.*#{params[:search]}.*/i)
+                    .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     end
   end
 
   # GET /instruments/1
   # GET /instruments/1.json
   def show
-    @article = @instrument.articles.order(created_at: :desc).first()
   end
 
   # GET /instruments/new
@@ -39,10 +39,10 @@ class InstrumentsController < ApplicationController
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
-
+    @instrument.user = current_user
     respond_to do |format|
       if @instrument.save
-        format.html { redirect_to new_instrument_article_path(@instrument),
+        format.html { redirect_to instruments_path(@instrument),
                       notice: 'Instrument was successfully created.' }
         format.json { render :show, status: :created, location: @instrument }
       else
@@ -56,12 +56,12 @@ class InstrumentsController < ApplicationController
   # PATCH/PUT /instruments/1.json
   def update
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @instrument.update(instrument_params)
+        format.html { redirect_to @instrument, notice: 'instrument was successfully updated.' }
+        format.json { render :show, status: :ok, location: @instrument }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @instrument.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -69,9 +69,9 @@ class InstrumentsController < ApplicationController
   # DELETE /instruments/1
   # DELETE /instruments/1.json
   def destroy
-    @user.destroy
+    @instrument.destroy
     respond_to do |format|
-      format.html { redirect_to instruments_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to instruments_url, notice: 'instrument was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,6 +84,6 @@ class InstrumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def instrument_params
-    params.require(:instrument).permit(:title, :category, :tags)
+    params.require(:instrument).permit(:title, :content, :maintainer, :public)
   end
 end

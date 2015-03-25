@@ -6,7 +6,6 @@ en:
       table:
         title: Title
         updated_at: Updated at
-        delete_confirm: Are you sure?
     show:
       info: This page was last modified by %{author} on %{time}.
       warning: This is an old version of this page, as edited by %{author} on %{time}.
@@ -14,6 +13,8 @@ en:
       latest: Latest Version
       edit: Edit
       versions: Versions
+      delete: Delete
+      delete_confirm: Are you sure?
     form:
       title: Title
       content: Content

@@ -13,27 +13,27 @@
   <!-- left navigation sidebar -->
   <div class="ui left vertical inverted blue thin icon labeled sidebar menu">
     <%= link_to content_tag('i',nil,class:'large home icon') +
-          t('sidebar.home'), root_path, class:'item' %>
+          t('module.home'), root_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large comments icon') +
-          t('sidebar.topics'), topics_path, class:'item' %>
+          t('module.topics'), topics_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large pencil icon') +
-          t('sidebar.wikis'), wikis_path, class:'item' %>
+          t('module.wikis'), wikis_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large calendar icon') +
-          t('sidebar.schedule'), schedules_path, class:'item' %>
+          t('module.schedule'), schedules_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large folder open icon') +
-          t('sidebar.resources'), resources_path, class:'item' %>
+          t('module.resources'), resources_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large newspaper outline icon') +
-          t('sidebar.news'), news_index_path, class:'item' %>
+          t('module.news'), news_index_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large briefcase icon') +
-          t('sidebar.meetings'), meetings_path, class:'item' %>
+          t('module.meetings'), meetings_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large flag icon') +
-          t('sidebar.achievements'), achievements_path, class:'item' %>
+          t('module.achievements'), achievements_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large cube icon') +
-          t('sidebar.instruments'), instruments_path, class:'item' %>
+          t('module.instruments'), instruments_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large bullhorn icon') +
-          t('sidebar.bulletin'), bulletins_path, class:'item' %>
+          t('module.bulletin'), bulletins_path, class:'item' %>
     <%= link_to content_tag('i',nil,class:'large users icon') +
-          t('sidebar.users'), users_path, class:'item' if is_admin? %>
+          t('module.users'), users_path, class:'item' if is_admin? %>
   </div>
   <!-- right chat room sidebar -->
   <div class="ui right vertical wide sidebar segment">
@@ -51,7 +51,7 @@
     <div class="ui locale dropdown item" data-content="<%=t 'menu.popup.languages' %>">
       <i class="world icon"></i>
       <div class="menu">
-        <% for k,v in all_locales %>
+        <% for k,v in avaliable_locales %>
           <%= link_to v, {:locale=> k}, class:'item' %>
         <% end %>
       </div>
@@ -65,7 +65,7 @@
           <%= current_user.name %>
         </div>
         <div class="menu">
-          <%= link_to profile_path, class:'item' do %>
+          <%= link_to edit_profile_path, class:'item' do %>
             <i class="user icon"></i><%=t 'menu.profile' %>
           <% end %>
           <%= link_to settings_path, class:'item' do %>

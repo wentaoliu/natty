@@ -1,0 +1,26 @@
+<div class="ui vertical segment">
+
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to achievements_path, class:'section' do %>
+        <i class="blue flag icon"></i>
+        <%=t 'module.achievements' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= @achievement.title %></div>
+    </div>
+  </div>
+
+  <p>
+    <%= link_to edit_achievement_path(@achievement), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%= t '.edit' %>
+    <% end %>
+    <% if is_admin? %>
+      <%= link_to @achievement, method: :delete, data: { confirm: t('.delete_confirm') },
+          class:"ui red labeled icon button" do %>
+        <i class="trash icon"></i><%=t '.delete' %>
+      <% end %>
+    <% end %>
+  </p>
+</div>
+<div class="ui piled segment"><%= raw @achievement.content %></div>

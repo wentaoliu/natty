@@ -1,20 +1,29 @@
 class AchievementsController < ApplicationController
   before_filter :require_signin
   before_filter :require_admin, only: [:destroy]
-  
+  before_action :set_achievement, only: [:show, :edit, :update, :destroy]
+
+  NUM_PER_PAGE = 15
+
   # GET /admin/research/
   # GET /admin/research/index
   def index
-    @per_page = 15
-    @offset = 0
-    @offset = @per_page * (params[:page].to_i - 1) unless params[:page].nil?
+    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
     if params[:search].nil?
-      @count = Achievement.count
-      @achievements = Achievement.limit(@per_page).offset(@offset)
+      count = Achievement.count
+      @pages = (count / NUM_PER_PAGE).ceil
+      @achievements = Achievement.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     else
-      @count = Achievement.where("title LIKE ?", "%#{params[:search]}%").count
-      @achievements = Achievement.where("title LIKE ?", "%#{params[:search]}%").limit(@per_page).offset(@offset)
+      count = Achievement.where(title: /.*#{params[:search]}.*/i).count
+      @pages = (count / NUM_PER_PAGE).ceil
+      @achievements = Achievement.where(title: /.*#{params[:search]}.*/i)
+                  .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     end
+  end
+
+  # GET /users/1
+  # GET /users/1.json
+  def show
   end
 
   # GET /admin/research/new
@@ -25,46 +34,51 @@ class AchievementsController < ApplicationController
   # POST /admin/research/create
   def create
     @achievement = Achievement.new(achievement_params)
-    if @achievement.save
-      # Handle a successful save
-      redirect_to :action=>'index'
-    else
-      # Something went wrong
-      render 'new'
+    respond_to do |format|
+      if @achievement.save
+        format.html { redirect_to @achievement, notice: 'achievement was successfully created.' }
+        format.json { render :show, status: :created, location: @achievement }
+      else
+        format.html { render :new }
+        format.json { render json: @achievement.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  # GET /admin/research/edit
+  # GET /admin/achievement/edit
   def edit
-    @achievement = Achievement.find(params[:id])
-    access_denied unless @achievement.author == current_user.username or admin?
   end
 
-  # POST /admin/research/update/:id
+  # POST /admin/achievement/update/:id
   def update
-    @achievement=Research.find(params[:id])
-    redirect_to :action=>'index' and return false if @research==nil
-    access_denied unless @achievement.author == current_user.username or admin?
-    if @achievement.update_attributes(params[:research])
-      # Handle a successful update.
-      redirect_to :action=>'index'
-    else
-      render 'edit'
+    respond_to do |format|
+      if @achievement.update(achievement_params)
+        format.html { redirect_to @achievement, notice: 'achievement was successfully updated.' }
+        format.json { render :show, status: :ok, location: @achievement }
+      else
+        format.html { render :edit }
+        format.json { render json: @achievement.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  # GET /admin/research/destroy/:id
+  # GET /achievement/destroy/:id
   def destroy
-    @achievement = Research.find(params[:id])
-    #redirect_to :action=>'index' and return false if @research==nil
-    #access_denied unless @research.author == current_user.username or admin?
     @achievement.destroy
-    redirect_to achievements_path
+    respond_to do |format|
+      format.html { redirect_to achievements_url, notice: 'achievement was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_achievement
+    @achievement = Achievement.find(params[:id])
+  end
+
   def achievement_params
-    params.require(:achievement).permit(:title,:author,:link,:date,:content,:context)
+    params.require(:achievement).permit(:title,:author,:link,:type,:date,:content)
   end
 end

@@ -1,0 +1,12 @@
+zh-CN:
+  settings:
+    passwords:
+      edit:
+        old: 现密码
+        new: 新密码
+        repeat: 重复密码
+        submit: 确认
+        last_sign_in_at: 上次登录时间
+        last_sign_in_ip: 上次登录IP地址
+        current_sign_in_at: 本次登录时间
+        current_sign_in_ip: 本次登录IP地址

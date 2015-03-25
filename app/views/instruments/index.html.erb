@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue cube icon"></i>
     <div class="content">
-      <%=t 'sidebar.instruments' %>
+      <%=t 'module.instruments' %>
     </div>
   </h2>
   <%= form_tag instruments_path, method:'GET', class:"ui form" do %>
@@ -23,21 +23,15 @@
 <table class="ui table segment">
   <thead>
     <tr>
-        <th class="eight wide"><%=t '.table.title' %></th>
-        <th class="six wide"><%=t '.table.time' %></th>
-        <th class="two wide"></th>
+        <th class="twelve wide"><%=t '.table.title' %></th>
+        <th class="four wide"><%=t '.table.maintainer' %></th>
     </tr>
   </thead>
   <tbody>
     <% @instruments.each do |instrument| %>
     <tr>
-        <td><%= link_to instrument.title, instrument_path(instrument) %></td>
-        <td><%=l instrument.updated_at,:format=>:long %></td>
-        <td>
-          <%= link_to content_tag('i',nil,class:'edit icon'), edit_instrument_path(instrument) %>
-          <%= link_to content_tag('i',nil,class:'red trash icon'), instrument, method: :delete,
-                data: { confirm: t('.table.delete_confirm') } %>
-        </td>
+      <td><%= link_to instrument.title, instrument_path(instrument) %></td>
+      <td><%= User.find(instrument.maintainer).name %></td>
     </tr>
     <% end %>
   </tbody>

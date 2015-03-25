@@ -11,6 +11,7 @@ zh-CN:
         author: 创建者
         created_at: 时间
         delete: 删除
+        delete_confirm: 你确定吗？
       modal:
         button:
           submit: 确认

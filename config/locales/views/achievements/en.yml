@@ -1,29 +1,32 @@
 en:
   achievements:
     index:
-      button:
-        search: Search
-        new: New Achievement
-      previous: Previous
-      next: Next
+      search: Search
+      new: New
       table:
         title: Title
+        type: Type
         author: Author
-        time: Time
-        read_times: Read Times
+        date: Date
     show:
-      message: This page was last modified on %{time} by %{author}.
       edit: Edit
-      modify: Modify
+      delete: Delete
+      delete_confirm: Are you sure?
     form:
       title: Title
-      category: Category
+      author: Author
+      link: Link
+      date: Date
+      type: Type
+      types:
+      - Paper
+      - Patent
+      - Award
+      - English Paper
+      content: Content
       submit: Submit
+      cancel: Cancel
     edit:
-      modify: Modify
+      edit: Edit
     new:
       new: New
-      steps:
-        step1: Create an entry
-        step2: Enrich the content
-        step3: Complete

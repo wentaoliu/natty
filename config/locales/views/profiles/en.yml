@@ -1,0 +1,10 @@
+en:
+  profiles:
+    edit:
+      date: Joined in %{created_at}
+      name: Name
+      email_public: Public email
+      position: Position
+      grade: Grade
+      resume: Resume
+      submit: Save

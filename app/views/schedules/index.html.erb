@@ -1,7 +1,7 @@
 <% content_for :head do %>
   <style>
     th{
-      width:14.2857%!important;
+      width:14.2857% !important;
     }
   </style>
 <% end %>
@@ -10,7 +10,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue calendar icon"></i>
     <div class="content">
-      <%=t 'sidebar.schedule' %>
+      <%=t 'module.schedule' %>
     </div>
   </h2>
   <%= form_tag schedules_path, method:'GET', class:"ui form" do %>
@@ -47,7 +47,7 @@
     <% end %>
     <% (1..@days_of_month).each do |i| %>
       <td>
-        <div class="ui huge circular label"><%= i %></div>
+        <div class="ui small circular label"><%= i %></div>
         <div class="ui bulleted list">
           <% @schedules.each do |item| %>
             <% tmp_date = Date.new(@date.year,@date.month,i) %>

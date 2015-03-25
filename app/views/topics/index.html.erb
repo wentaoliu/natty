@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue comments icon"></i>
     <div class="content">
-      <%=t 'sidebar.topics' %>
+      <%=t 'module.topics' %>
     </div>
   </h2>
   <%= form_tag topics_path, method:'GET', class:"ui floated right form" do %>
@@ -23,11 +23,10 @@
 <table class="ui table segment">
   <thead>
     <tr>
-      <th class="nine wide"><%=t '.table.title' %></th>
+      <th class="ten wide"><%=t '.table.title' %></th>
       <th class="two wide"><%=t '.table.author' %></th>
       <th class="three wide"><%=t '.table.time' %></th>
       <th class="one wide"><%=t '.table.comments' %></th>
-      <th class="one wide"></th>
     </tr>
   </thead>
   <tbody>
@@ -40,12 +39,6 @@
         <td><%= topic.user.name %></td>
         <td><%=l topic.updated_at,:format=>:long %></td>
         <td><%= topic.comments.size %></td>
-        <% if is_admin? %>
-          <td>
-            <%= link_to content_tag('i',nil,class:'red trash icon'), topic, method: :delete,
-                  data: { confirm: t('.table.delete_confirm') } %>
-          </td>
-        <% end %>
       </tr>
     <% end %>
   </tbody>

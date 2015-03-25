@@ -5,24 +5,20 @@ zh-CN:
       new: 新增仪器
       table:
         title: 标题
-        time: 时间
+        maintainer: 维护者
     show:
-      message: 本条目由%{author}最后编辑于%{time}。
+      maintainer: 维护者
       edit: 编辑
-      modify: 修改
-      history: 查看历史版本
+      delete: 删除
+      delete_confirm: 你确定吗？
     form:
       title: 标题
-      category: 分类
-      save: 保存
-      tags: 标签
+      maintainer: 维护者
+      content: 内容
+      public: 公开？
       submit: 确认
       cancel: 取消
     edit:
-      modify: 修改
+      edit: 编辑
     new:
       new: 新增
-      steps:
-        step1: 创建条目
-        step2: 完善内容
-        step3: 完成

@@ -3,7 +3,7 @@ zh-CN:
     name:
       short: RTISS
       long: 科研团队信息管理系统
-  sidebar:
+  module:
     home: 主页
     topics: 话题
     wikis: 维基

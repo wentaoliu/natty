@@ -4,7 +4,7 @@
     <div class="ui huge breadcrumb">
       <%= link_to bulletins_path, class:'section' do %>
         <i class="blue bullhorn icon"></i>
-        <%=t 'sidebar.bulletin' %>
+        <%=t 'module.bulletin' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%= @bulletin.title %></div>
@@ -12,7 +12,15 @@
   </div>
 
   <p>
-    <%= link_to t('.edit'), edit_bulletin_path(@bulletin), class:"ui button" %>
+    <%= link_to edit_bulletin_path(@bulletin), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%= t '.edit' %>
+    <% end %>
+    <% if is_admin? %>
+      <%= link_to @bulletin, method: :delete, data: { confirm: t('.delete_confirm') },
+          class:"ui red labeled icon button" do %>
+        <i class="trash icon"></i><%=t '.delete' %>
+      <% end %>
+    <% end %>
   </p>
 </div>
 <div class="ui piled segment"><%= raw @bulletin.content %></div>

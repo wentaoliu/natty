@@ -34,8 +34,9 @@
       <%= f.date_field :date %>
     </div>
     <div class="field">
-      <%= f.label :type, t('.context') %>
-      <%= f.select :type, [['Paper','paper'],['Patent','patent'],['Award','award']],
+      <%= f.label :type, t('.type') %>
+      <%= f.select :type,
+        Achievement.types.map{|k,v| [t('.types')[v], v]},
         {},{class:"ui dropdown"} %>
     </div>
   </div>
@@ -45,11 +46,5 @@
   </div>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), achievements_path, class:"ui button" %>
 <% end %>
-<script>
-$(document).on("ready page:load", function() {
-  $('select.dropdown')
-    .dropdown()
-  ;
-});
-</script>

@@ -16,7 +16,7 @@
     <div class="ui dropdown item" data-content="<%=t 'menu.popup.languages' %>">
       <i class="world icon"></i>
       <div class="menu">
-        <% for k,v in all_locales %>
+        <% for k,v in avaliable_locales %>
           <%= link_to v, {:locale=> k}, class:'item' %>
         <% end %>
       </div>

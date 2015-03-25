@@ -8,14 +8,54 @@ en:
         email: Email
         state: State
         state_names:
+        - Inactive
         - Normal
-        - Disabled
+        - Blocked
         admin: Administrator?
         delete_confirm: Are you sure?
-    form:
+    new:
       username: Username
       name: Name
       email: Email
       password: Password
-      password_confirmation: Password Confirmation
+      password_confirmation: Password confirmation
       submit: Submit
+      cancel: Cancel
+    show:
+      edit: Edit
+      delete: Delete
+      delete_confirm: Are you sure?
+      username: Username
+      email: Email
+      email_verified: Email verified?
+      email_public: Public email
+      locale: Locale
+      position: Position
+      grade: Grade
+      rank: Rank
+      last_sign_in_at: Last sign in at
+      last_sign_in_ip: Last sign in ip
+      current_sign_in_at: Current sign in at
+      current_sign_in_ip: Current sign in ip
+      state: State
+      admin: Administrtor?
+      avatar: Avatar
+      photo: Photo
+      resume: Resume
+    edit:
+      edit: Edit
+      username: Username
+      name: Name
+      email: Email
+      email_public: Public email
+      locale: Locale
+      position: Position
+      grade: Grade
+      rank: Rank
+      state: State
+      admin: Administrtor?
+      avatar: Avatar
+      photo: Photo
+      resume: Resume
+      submit: Submit
+      cancel: Cancel

@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue bullhorn icon"></i>
     <div class="content">
-      <%=t 'sidebar.bulletin' %>
+      <%=t 'module.bulletin' %>
     </div>
   </h2>
   <%= form_tag bulletins_path, method:'GET', class:"ui form" do %>
@@ -23,10 +23,9 @@
 <table class="ui table segment">
   <thead>
     <tr>
-      <th class="six wide"><%=t '.table.title' %></th>
-      <th class="two wide"><%=t '.table.author' %></th>
-      <th class="two wide"><%=t '.table.time' %></th>
-      <th class="two wide"></th>
+      <th class="ten wide"><%=t '.table.title' %></th>
+      <th class="three wide"><%=t '.table.author' %></th>
+      <th class="three wide"><%=t '.table.time' %></th>
     </tr>
   </thead>
   <tbody>
@@ -35,9 +34,6 @@
         <td><%= link_to item.title, bulletin_path(item) %></td>
         <td><%= item.user.name %></td>
         <td><%=l item.created_at, :format=>:short %></td>
-        <td>
-          <%= link_to 'Edit', edit_bulletin_path(item) %>
-          <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

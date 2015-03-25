@@ -3,7 +3,7 @@
     <div class="ui huge breadcrumb">
       <%= link_to schedules_path, class:'section' do %>
         <i class="blue calendar icon"></i>
-        <%=t 'sidebar.schedule' %>
+        <%=t 'module.schedule' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%= @schedule.title %></div>
@@ -18,10 +18,14 @@
       place: @schedule.place } %>
   </div>
   <p>
-    <%= link_to t('.edit'), edit_schedule_path(@schedule), class:"ui button" %>
+    <%= link_to edit_schedule_path(@schedule), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%=t '.edit' %>
+    <% end %>
     <% if current_user?(@schedule.user) %>
-      <%= link_to t('.delete'), @schedule, method: :delete,
-          data: { confirm: t('.delete_confirm') }, class:'ui red button' %>
+      <%= link_to @schedule, method: :delete, data: { confirm: t('.delete_confirm') },
+          class:'ui red labeled icon button' do %>
+        <i class="edit icon"></i><%=t '.delete' %>
+      <% end %>
     <% end %>
   </p>
 </div>

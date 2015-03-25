@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="circular inverted blue folder open outline icon"></i>
     <div class="content">
-      <%=t 'sidebar.resources' %>
+      <%=t 'module.resources' %>
     </div>
   </h2>
   <p>
@@ -27,11 +27,11 @@
 <table class="ui table segment">
   <thead>
     <tr>
-      <th><%=t '.table.title' %></th>
-      <th></th>
-      <th><%=t '.table.author' %></th>
-      <th><%=t '.table.created_at' %></th>
-      <th><%=t '.table.delete' %></th>
+      <th class="eight wide"><%=t '.table.title' %></th>
+      <th class="one wide"></th>
+      <th class="three wide"><%=t '.table.author' %></th>
+      <th class="three wide"><%=t '.table.created_at' %></th>
+      <th class="one wide"></th>
     </tr>
   </thead>
   </tbody>
@@ -56,8 +56,10 @@
         <td><%= item.user.name %></td>
         <td><%=l item.updated_at,format: :long %></td>
         <td>
-          <%= link_to item, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="trash red icon"></i>
+          <% if is_admin? %>
+            <%= link_to item, method: :delete, data: { confirm: t('.table.delete_confirm') } do %>
+              <i class="trash red icon"></i>
+            <% end %>
           <% end %>
         </td>
       </tr>

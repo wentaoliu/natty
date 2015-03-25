@@ -7,15 +7,55 @@ zh-CN:
         username: 用户名
         email: 邮箱
         state: 状态
-        state_names:
+        states:
+        - 未激活
         - 正常
-        - 禁用
+        - 禁止登录
         admin: 管理员？
         delete_confirm: 你确定吗？
-    form:
+    new:
       username: 用户名
       name: 姓名
       email: 电子邮箱
       password: 密码
       password_confirmation: 确认密码
       submit: 确认
+      cancel: 取消
+    show:
+      edit: 编辑
+      delete: 删除
+      delete_confirm: 你确定吗？
+      username: 用户名
+      email: 电子邮箱
+      email_verified: 邮箱已验证？
+      email_public: 公开邮箱
+      locale: 语言
+      position: 职务
+      grade: 年级
+      rank: 排序等级
+      last_sign_in_at: 上次登录时间
+      last_sign_in_ip: 上次登录IP地址
+      current_sign_in_at: 本次登录时间
+      current_sign_in_ip: 本次登录IP地址
+      state: 状态
+      admin: 管理员？
+      avatar: 头像
+      photo: 照片
+      resume: 简历
+    edit:
+      edit: 编辑
+      username: 用户名
+      name: 姓名
+      email: 电子邮箱
+      email_public: 公开邮箱
+      locale: 语言
+      position: 职务
+      grade: 年级
+      rank: 排序等级
+      state: 状态
+      admin: 管理员？
+      avatar: 头像
+      photo: 照片
+      resume: 简历
+      submit: 确认
+      cancel: 取消

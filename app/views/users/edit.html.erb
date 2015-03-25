@@ -3,11 +3,98 @@
     <div class="ui huge breadcrumb">
       <%= link_to wikis_path, class:'section' do %>
         <i class="blue users icon"></i>
-        <%=t 'sidebar.users' %>
+        <%=t 'module.users' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%=t '.edit' %></div>
     </div>
   </div>
 </div>
-<%= render 'form' %>
+<% if @user.errors.any? %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for(@user, html:{class:'ui form segment'}) do |f| %>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :username, t('.username') %>
+      <%= f.text_field :username %>
+    </div>
+
+    <div class="field">
+      <%= f.label :name, t('.name') %>
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :email, t('.email') %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :email_public, t('.email_public') %>
+      <%= f.email_field :email_public %>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :position, t('.position') %>
+      <%= f.email_field :position %>
+    </div>
+
+    <div class="field">
+      <%= f.label :grade, t('.grade') %>
+      <%= f.text_field :grade %>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :avatar, t('.avatar') %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="field">
+      <%= f.label :photo, t('.photo') %>
+      <%= f.file_field :photo %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :resume, t('.resume') %>
+    <%= f.text_area :resume, class: 'editor' %>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :state, t('.state') %>
+      <%= f.email_field :state %>
+    </div>
+
+    <div class="field">
+      <%= f.label :rank, t('.rank') %>
+      <%= f.text_field :rank %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :admin %>
+      <%= f.label :admin, t('.admin') %>
+    </div>
+  </div>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), users_path, class:"ui button" %>
+<% end %>

@@ -41,7 +41,7 @@ class BulletinsController < ApplicationController
 
   def create
     @bulletin = Bulletin.new(bulletin_params)
-
+    @bulletin.user = current_user
     respond_to do |format|
       if @bulletin.save
         format.html { redirect_to @bulletin, notice: 'bulletin was successfully created.' }

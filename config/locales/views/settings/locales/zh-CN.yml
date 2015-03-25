@@ -1,0 +1,6 @@
+zh-CN:
+  settings:
+    locales:
+      edit:
+        locale: 语言
+        submit: 确认

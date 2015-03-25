@@ -4,7 +4,7 @@
     <div class="ui huge breadcrumb">
       <%= link_to users_path, class:'section' do %>
         <i class="blue users icon"></i>
-        <%=t 'sidebar.users' %>
+        <%=t 'module.users' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%= @user.name %></div>
@@ -12,18 +12,83 @@
   </div>
 
   <p>
-    <%= link_to t('.edit'), edit_user_path(@user), class:"ui button" %>
+    <%= link_to edit_user_path(@user), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%= t '.edit' %>
+    <% end %>
+    <%= link_to @user, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"ui red labeled icon button" do %>
+      <i class="minus circle icon"></i><%=t '.delete' %>
+    <% end %>
   </p>
 </div>
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="ui list">
+  <div class="item">
+    <div class="header"><%=t '.username' %></div>
+    <%= @user.username %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.email' %></div>
+    <%= @user.email %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.email_verified' %></div>
+    <%= @user.email_verified %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.email_public' %></div>
+    <%= @user.email_public %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.locale' %></div>
+    <%= @user.locale %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.position' %></div>
+    <%= @user.position %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.grade' %></div>
+    <%= @user.grade %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.rank' %></div>
+    <%= @user.rank %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.last_sign_in_at' %></div>
+    <%=l @user.last_sign_in_at, format: :long %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.last_sign_in_ip' %></div>
+    <%= @user.last_sign_in_ip %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.current_sign_in_at' %></div>
+    <%=l @user.current_sign_in_at, format: :long %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.current_sign_in_ip' %></div>
+    <%= @user.current_sign_in_ip %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.state' %></div>
+    <%= t('users.index.table.states')[@user.state] %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.admin' %></div>
+    <%= @user.admin %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.avatar' %></div>
+    <%= image_tag @user.avatar.url(:thumb) %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.photo' %></div>
+    <%= image_tag @user.photo.url(:small), class:'ui image' %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.resume' %></div>
+    <%=raw @user.resume %>
+  </div>
+</div>

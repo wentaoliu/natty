@@ -7,10 +7,11 @@ zh-CN:
         title: 标题
         time: 时间
         place: 地点
-        public: 公开的？
-        delete_confirm: 你确定吗？
+        public: 公开？
     show:
       edit: 编辑
+      delete: 删除
+      delete_confirm: 你确定吗？
     form:
       title: 标题
       starts_at: 开始时间

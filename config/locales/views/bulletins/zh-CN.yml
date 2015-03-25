@@ -8,15 +8,16 @@ zh-CN:
         author: 作者
         time: 时间
     show:
-      message: 本条目由%{author}最后编辑于%{time}。
       edit: 编辑
-      modify: 修改
+      delete: 删除
+      delete_confirm: 你确定吗？
     form:
       title: 标题
       content: 内容
+      public: 公开的？
       submit: 确认
       cancel: 取消
     edit:
-      modify: 修改
+      edit: 编辑
     new:
       new: 新增

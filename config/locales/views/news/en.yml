@@ -8,21 +8,17 @@ en:
         author: Author
         time: Time
         hits: Hits
-        delete_confirm: Are you sure?
     show:
-      message: This page was last modified on %{time} by %{author}.
       edit: Edit
-      modify: Modify
+      delete: Delete
+      delete_confirm: Are you sure?
     form:
       title: Title
       category: Category
+      public: Public?
       submit: Submit
       cancel: Cancel
     edit:
       edit: Edit
     new:
       new: New
-      steps:
-        step1: Create an entry
-        step2: Enrich the content
-        step3: Complete

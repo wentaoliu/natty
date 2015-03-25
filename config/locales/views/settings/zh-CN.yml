@@ -1,0 +1,9 @@
+zh-CN:
+  settings:
+    header: 设置
+    menu:
+      username: 用户名
+      email: 邮箱
+      avatar: 头像
+      security: 安全
+      locale: 语言

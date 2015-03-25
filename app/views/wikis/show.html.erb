@@ -4,7 +4,7 @@
     <div class="ui huge breadcrumb">
       <%= link_to wikis_path, class:'section' do %>
         <i class="blue pencil icon"></i>
-        <%=t 'sidebar.wikis' %>
+        <%=t 'module.wikis' %>
       <% end %>
       <i class="right chevron icon divider"></i>
       <div class="active section"><%= @wiki.title %></div>
@@ -26,8 +26,18 @@
           time:(l @wiki.created_at, format: :long) } %>
     </div>
     <p>
-      <%= link_to t('.edit'), edit_wiki_path(@wiki), class:"ui button" %>
-      <%= link_to t('.versions'), versions_wiki_path(@wiki), class:'ui button' %>
+      <%= link_to edit_wiki_path(@wiki), class:"ui labeled icon button" do %>
+        <i class="edit icon"></i><%= t '.edit' %>
+      <% end %>
+      <%= link_to versions_wiki_path(@wiki), class:'ui labeled icon button' do %>
+        <i class="history icon"></i><%= t '.versions' %>
+      <% end %>
+      <% if is_admin? %>
+        <%= link_to @wiki, method: :delete, data: { confirm: t('.delete_confirm') },
+            class:"ui red labeled icon button" do %>
+          <i class="trash icon"></i><%=t '.delete' %>
+        <% end %>
+      <% end %>
     </p>
   <% end %>
 </div>

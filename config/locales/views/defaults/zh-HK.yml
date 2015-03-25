@@ -3,7 +3,7 @@ zh-HK:
     name:
       short: RTISS
       long: 科研團隊資訊管理系統
-  sidebar:
+  module:
     home: 主頁
     topics: 話題
     wikis: 維琪

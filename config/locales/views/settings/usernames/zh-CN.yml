@@ -1,0 +1,6 @@
+zh-CN:
+  settings:
+    usernames:
+      edit:
+        username: 用户名
+        submit: 确认

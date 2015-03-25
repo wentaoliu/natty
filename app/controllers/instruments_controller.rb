@@ -3,7 +3,7 @@ class InstrumentsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /instruments
   # GET /instruments.json
@@ -12,12 +12,13 @@ class InstrumentsController < ApplicationController
     if params[:search].nil?
       count = Instrument.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @instruments = Instrument.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+      @instruments = Instrument.limit(NUM_PER_PAGE).offset(@offset)
+                      .order(updated_at: :desc)
     else
       count = Instrument.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil
       @instruments = Instrument.where(title: /.*#{params[:search]}.*/i)
-                    .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+                      .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     end
   end
 

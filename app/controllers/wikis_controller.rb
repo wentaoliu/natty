@@ -3,7 +3,7 @@ class WikisController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_wiki, only: [:show, :edit, :update, :destroy, :versions]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /wikis
   # GET /wikis.json

@@ -12,11 +12,12 @@ class NewsController < ApplicationController
     if params[:search].nil?
       count = News.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @news = News.limit(NUM_PER_PAGE).offset(@offset)
+      @news = News.limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
     else
-      count = News.where("title LIKE ?", "%#{params[:search]}%").count
+      count = News.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil
-      @news = News.where("title LIKE ?", "%#{params[:search]}%").limit(NUM_PER_PAGE).offset(@offset)
+      @news = News.where(title: /.*#{params[:search]}.*/i)
+                .limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
     end
   end
 

@@ -17,6 +17,7 @@ en:
     expense: Expense
     bulletin: Bulletin
     users: Users
+    messages: Messages
   menu:
     language: Language
     profile: Profile

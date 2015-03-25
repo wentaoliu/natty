@@ -1,0 +1,8 @@
+en:
+  messages:
+    index:
+      new: New Message
+      mark_as_read: Mark as read
+      content: Message
+      submit: Submit
+      cancel: Cancel

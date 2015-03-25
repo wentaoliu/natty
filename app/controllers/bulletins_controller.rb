@@ -3,7 +3,7 @@ class BulletinsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_user, only: [:edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /bulletins
   # GET /bulletins.json
@@ -12,11 +12,12 @@ class BulletinsController < ApplicationController
     if params[:search].nil?
       count = Bulletin.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @bulletins = Bulletin.limit(NUM_PER_PAGE).offset(@offset)
+      @bulletins = Bulletin.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     else
-      count = Bulletin.where("title LIKE ?", "%#{params[:search]}%").count
+      count = Bulletin.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil
-      @bulletins = Bulletin.where("title LIKE ?", "%#{params[:search]}%").limit(NUM_PER_PAGE).offset(@offset)
+      @bulletins = Bulletin.where(title: /.*#{params[:search]}.*/i)
+                    .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
     end
   end
 

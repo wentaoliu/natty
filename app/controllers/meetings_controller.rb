@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /meeting
   # GET /meeting.json
@@ -12,11 +12,12 @@ class MeetingsController < ApplicationController
     if params[:search].nil?
       count = Meeting.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @meetings = Meeting.limit(NUM_PER_PAGE).offset(@offset)
+      @meetings = Meeting.limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
     else
-      count = Meeting.where("title LIKE ?", "%#{params[:search]}%").count
+      count = Meeting.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil
-      @meetings = Meeting.where("title LIKE ?", "%#{params[:search]}%").limit(@per_page).offset(@offset)
+      @meetings = Meeting.where(title: /.*#{params[:search]}.*/i)
+                    .limit(@per_page).offset(@offset).order(created_at: :desc)
     end
   end
 

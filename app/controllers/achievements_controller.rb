@@ -3,7 +3,7 @@ class AchievementsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_achievement, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /admin/research/
   # GET /admin/research/index
@@ -12,7 +12,8 @@ class AchievementsController < ApplicationController
     if params[:search].nil?
       count = Achievement.count
       @pages = (count / NUM_PER_PAGE).ceil
-      @achievements = Achievement.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+      @achievements = Achievement.limit(NUM_PER_PAGE).offset(@offset)
+                        .order(updated_at: :desc)
     else
       count = Achievement.where(title: /.*#{params[:search]}.*/i).count
       @pages = (count / NUM_PER_PAGE).ceil

@@ -10,7 +10,11 @@
       <div class="active section"><%= @meeting.title %></div>
     </div>
   </div>
-
+  <div class="ui visible message">
+    <%= t '.info', { starts_at: (l @meeting.starts_at, :format=>:long),
+      ends_at:(l @meeting.ends_at, :format=>:long),
+      place: @meeting.place } %>
+  </div>
   <p>
     <%= link_to edit_meeting_path(@meeting), class:"ui labeled icon button" do %>
       <i class="edit icon"></i><%= t '.edit' %>

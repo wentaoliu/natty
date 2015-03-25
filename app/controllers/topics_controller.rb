@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_topic, only: [:show, :destroy]
 
-  NUM_PER_PAGE = 15
+  NUM_PER_PAGE = 15.to_f
 
   # GET /topics
   # GET /topics.json

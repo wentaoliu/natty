@@ -2,7 +2,18 @@ en:
   home:
     index:
       messages:
-        header: Messages
         none: No unread message.
         only_one: You have one unread message.
         more_than_one: You have %{number} unread messages.
+      meetings:
+        info: At %{place}, from %{starts_at} to %{ends_at}
+        none: No meeting today.
+        only_one: You have one meeting today.
+        more_than_one: You have %{number} meetings today.
+      schedule:
+        info: At %{place}, from %{starts_at} to %{ends_at}
+        none: No todo today.
+        only_one: You have one todo today.
+        more_than_one: You have %{number} todos today.
+      news:
+        none: No news.

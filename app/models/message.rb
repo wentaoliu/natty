@@ -4,4 +4,8 @@ class Message
   include Mongoid::Paranoia
 
   belongs_to :user
+
+  field :content, type: String
+  field :read,  type: Array
+
 end

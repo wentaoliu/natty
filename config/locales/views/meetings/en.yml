@@ -12,6 +12,7 @@ en:
       edit: Edit
       delete: Delete
       delete_confirm: Are you sure?
+      info: At %{place}, from %{starts_at} to %{ends_at}.
     form:
       title: Title
       starts_at: Starts at

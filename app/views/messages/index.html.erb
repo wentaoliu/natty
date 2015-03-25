@@ -1,35 +1,63 @@
 <div class="ui vertical segment">
-  <%= link_to new_message_path, class:"ui green labeled icon button" do %>
-    <i class="plus icon"></i><%=t '.header.new' %>
-  <% end %>
+  <h2 class="ui header">
+    <i class="blue user icon"></i>
+    <div class="content"><%=t 'module.messages' %></div>
+  </h2>
+
+  <button type="button" id="new-message-btn" class="ui green labeled icon button">
+    <i class="plus icon"></i><%=t '.new' %></button>
 </div>
 
-<p id="notice"><%= notice %></p>
 
-<table class="ui table segment">
-  <thead>
-    <tr>
-      <th class="three wide"><%=t '.table.name' %></th>
-      <th class="three wide"><%=t '.table.messagename' %></th>
-      <th class="four wide"><%=t '.table.email' %></th>
-      <th class="two wide"><%=t '.table.state' %></th>
-      <th class="two wide"><%=t '.table.admin' %></th>
-      <th class="two wide"></th>
-    </tr>
-  </thead>
+<% @messages.each do |message| %>
+  <% if message.read and message.read.include? current_user.id %>
+    <div class="ui message">
+      <div class="header">
+        <%= message.user.name %>
+      </div>
+      <p><%= message.content %></p>
+    </div>
+  <% else %>
+    <div class="ui info message">
+      <div class="header">
+        <%= message.user.name %>
+        <%=l message.created_at, format: :long %>
+      </div>
+      <p><%= message.content %></p>
+      <td>
+        <%= link_to t('.mark_as_read'), message, method: :put %>
+      </td>
+    </div>
+  <% end %>
+<% end if @messages %>
 
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= link_to message.title message %></td>
-        <td><%= message.user.name %></td>
-        <td><%= message.content %></td>
-        <td>
-          <%= link_to content_tag('i',nil,class:'edit icon'), edit_message_path(message) %>
-          <%= link_to content_tag('i',nil,class:'red trash icon'), message, method: :delete,
-                data: { confirm: t('.table.delete_confirm') } %>
-        </td>
-      </tr>
-    <% end if @messages %>
-  </tbody>
-</table>
+<%= pagination messages_path, params[:page], @pages %>
+
+
+<div class="ui standard modal" id="new-message-modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <h4><%=t '.new' %></h4>
+  </div>
+  <div class="content">
+    <%= form_for @message,html:{class:"ui form",id:"new-message-form"} do |f| %>
+      <div class="field">
+        <%= f.label :content, t('.content') %>
+        <%= f.text_area :content %>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <button type="button" class="ui blue button"
+        onClick="$('#new-message-form').submit();"><%=t '.submit' %></button>
+    <button type="button" class="ui button"><%=t '.cancel' %></button>
+  </div>
+</div>
+
+<script>
+$(document).on("ready page:load", function() {
+  $('#new-message-modal')
+    .modal('attach events', '#new-message-btn', 'show')
+  ;
+});
+</script>

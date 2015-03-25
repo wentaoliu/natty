@@ -12,6 +12,7 @@ zh-CN:
       edit: 编辑
       delete: 删除
       delete_confirm: 你确定吗？
+      info: 从%{starts_at}到%{ends_at}，在%{place}。
     form:
       title: 标题
       starts_at: 开始时间

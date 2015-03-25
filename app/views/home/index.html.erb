@@ -1,19 +1,115 @@
-<div class="ui internally celled grid">
-  <div class="row">
-    <div class="eight wide column">
-      <div class="ui info message">
-          <div class="header">
-            <i class="envelope icon"></i><%=t '.messages.header' %>
-          </div>
-          <% @messages = 2 %>
-          <% if @messages == 0 %>
-            <p><%= link_to t('.messages.none'), nil %></p>
-          <% elsif @messages == 1 %>
-            <p><%= link_to t('.messages.only_one'), nil %></p>
-          <% else %>
-            <p><%= link_to t('.messages.more_than_one',{number: @messages}), nil %></p>
-          <% end %>
+<div class="ui stackable grid">
+  <div class="eight wide column">
+    <div class="ui segment">
+      <div class="ui blue header">
+        <i class="envelope icon"></i>
+        <div class="content"><%=t 'module.messages' %></div>
       </div>
+      <div class="ui divider"></div>
+      <% if @messages.count == 0 %>
+        <p><%=t '.messages.none' %></p>
+      <% elsif @messages.count == 1 %>
+        <p><%= link_to t('.messages.only_one'), messages_path %></p>
+      <% else %>
+        <p><%= link_to t('.messages.more_than_one',{number: @messages}), messages_path %></p>
+      <% end %>
+      <% if @messages.count > 0 %>
+        <div class="ui divided list">
+          <% @messages.each do |message| %>
+            <div class="item">
+              <div class="content">
+                <div class="header"><%= message.user.name %></div>
+                <%= message.content %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="eight wide column">
+    <div class="ui segment">
+      <div class="ui blue header">
+        <i class="briefcase icon"></i>
+        <div class="content"><%=t 'module.meetings' %></div>
+      </div>
+      <div class="ui divider"></div>
+      <% if @meetings.count == 0 %>
+        <p><%=t '.meetings.none' %></p>
+      <% elsif @meetings.count == 1 %>
+        <p><%= link_to t('.meetings.only_one'), meetings_path %></p>
+      <% else %>
+        <p><%= link_to t('.meetings.more_than_one',{number: @meetings}), meetings_path %></p>
+      <% end %>
+      <% if @meetings.count > 0 %>
+        <div class="ui divided list">
+          <% @meetings.each do |meeting| %>
+            <div class="item">
+              <div class="content">
+                <%= link_to meeting.title, meeting, class:'header' %>
+                <%= t '.meetings.info', { starts_at: (l meeting.starts_at, :format=>:long),
+                  ends_at:(l meeting.ends_at, :format=>:long),
+                  place: meeting.place } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="eight wide column">
+    <div class="ui segment">
+      <div class="ui blue header">
+        <i class="calendar icon"></i>
+        <div class="content"><%=t 'module.schedule' %></div>
+      </div>
+      <div class="ui divider"></div>
+      <% if @schedule.count == 0 %>
+        <p><%=t '.schedule.none' %></p>
+      <% elsif @schedule.count == 1 %>
+        <p><%= link_to t('.schedule.only_one'), schedules_path %></p>
+      <% else %>
+        <p><%= link_to t('.schedule.more_than_one',{number: @schedule}), schedules_path %></p>
+      <% end %>
+      <% if @schedule.count > 0 %>
+        <div class="ui divided list">
+          <% @schedule.each do |item| %>
+            <div class="item">
+              <div class="content">
+                <%= link_to item.title, item, class:'header' %>
+                <%= t '.meetings.info', { starts_at: (l item.starts_at, :format=>:long),
+                  ends_at:(l item.ends_at, :format=>:long),
+                  place: item.place } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="eight wide column">
+    <div class="ui segment">
+      <div class="ui blue header">
+        <i class="newspaper icon"></i>
+        <div class="content"><%=t 'module.news' %></div>
+      </div>
+      <div class="ui divider"></div>
+      <% if @news.count > 0 %>
+        <div class="ui divided list">
+          <% @news.each do |news| %>
+            <div class="item">
+              <div class="content">
+                <a class="header"><%= news.title %></a>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p><%=t '.news.none' %></p>
+      <% end %>
     </div>
   </div>
 </div>

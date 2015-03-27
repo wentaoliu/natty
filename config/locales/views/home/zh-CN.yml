@@ -3,11 +3,17 @@ zh-CN:
     index:
       messages:
         none: 您没有未读消息。
-        only_one: 您有1条未读消息。
+        only_one: 您有一条未读消息。
         more_than_one: 您有%{number}条未读消息。
       meetings:
         info: 从%{starts_at}到%{ends_at}，在%{place}
         none: 今天没有会议。
+        only_one: 今天有一个会议。
+        more_than_one: 今天有%{number}个会议。
       schedule:
         info: 从%{starts_at}到%{ends_at}，在%{place}
         none: 今天没有待办事项。
+        only_one: 今天有一个待办事项。
+        more_than_one: 今天有%{number}个待办事项。
+      news:
+        none: 没有新闻。

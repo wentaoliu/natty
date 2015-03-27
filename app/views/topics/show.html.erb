@@ -72,7 +72,7 @@
                     <a class="reply reply-btn" data-id="<%= comment.id %>">
                       <%=t '.reply' %>
                     </a>
-                    <%= link_to t('.delete'), [@topic, comment], method: :delete,
+                    <%= link_to t('.delete'), [@topic, reply], method: :delete,
                           data: { confirm: t('.delete_confirm') },
                           class:'delete' if is_admin? %>
                   </div>

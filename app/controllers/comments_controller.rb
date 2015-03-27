@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_filter :require_signin
   before_filter :require_admin, only: [:destroy]
-  before_action :set_topic
+  before_action :set_topic, only: [:create, :destroy]
 
   # POST /comments(.:format)
   def create
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
   # DELETE /topics/:topic_id/comments/:id(.:format)
   def destroy
-    Comment.find(params[:id]).destroy
+    @topic.comments.find(params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to @topic, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }

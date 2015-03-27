@@ -1,5 +1,4 @@
 en:
   simple_captcha:
     placeholder: Enter the image value
-    label: Validation Code
     refresh_button_text: Refresh

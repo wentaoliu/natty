@@ -80,6 +80,7 @@ class AchievementsController < ApplicationController
   end
 
   def achievement_params
-    params.require(:achievement).permit(:title,:author,:link,:type,:date,:content)
+    params.require(:achievement)
+      .permit(:title, :author, :link, :type, :date, :content, :public)
   end
 end

@@ -47,7 +47,8 @@
 <div class="ui list">
   <div class="item">
     <div class="header"><%=t '.last_sign_in_at' %></div>
-    <%=l current_user.last_sign_in_at, format: :long %>
+    <%= current_user.last_sign_in_at ?
+          l(current_user.last_sign_in_at, format: :long) : '' %>
   </div>
   <div class="item">
     <div class="header"><%=t '.last_sign_in_ip' %></div>
@@ -55,7 +56,8 @@
   </div>
   <div class="item">
     <div class="header"><%=t '.current_sign_in_at' %></div>
-    <%=l current_user.current_sign_in_at, format: :long %>
+    <%= current_user.current_sign_in_at ?
+          l(current_user.current_sign_in_at, format: :long) : '' %>
   </div>
   <div class="item">
     <div class="header"><%=t '.current_sign_in_ip' %></div>

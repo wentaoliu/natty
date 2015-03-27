@@ -12,12 +12,16 @@
 <% end %>
 <%= form_for(:session, url: sessions_path,html:{class:'ui form segment'}) do |f| %>
   <div class="field">
-    <%= f.label :username, t('.username') %>
-    <%= f.text_field :username, placeholder: t('.username'), required: :required %>
+    <div class="ui icon input">
+      <%= f.text_field :username, placeholder: t('.username'), required: :required %>
+      <i class="user icon"></i>
+    </div>
   </div>
   <div class="field">
-    <%= f.label :password, t('.password') %>
-    <%= f.password_field :password, placeholder: t('.password'), required: :required  %>
+    <div class="ui icon input">
+      <%= f.password_field :password, placeholder: t('.password'), required: :required  %>
+      <i class="lock icon"></i>
+    </div>
   </div>
   <div class="field">
     <%= show_simple_captcha %>

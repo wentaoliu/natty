@@ -1,5 +1,4 @@
 zh-CN:
   simple_captcha:
     placeholder: 请输入图中字母
-    label: 验证码
     refresh_button_text: 刷新

@@ -101,12 +101,17 @@ zh-CN:
       success: 照片更新成功。
   settings:
     avatars:
-      update: 头像更新成功。
+      update:
+        success: 头像更新成功。
     emails:
-      update: 邮箱更新成功。
+      update:
+        success: 邮箱更新成功。
     locales:
-      update: 语言更新成功。
+      update:
+        success: 语言更新成功。
     passwords:
-      update: 密码更新成功。
+      update:
+        success: 密码更新成功。
     usernames:
-      update: 用户名更新成功。
+      update:
+        success: 用户名更新成功。

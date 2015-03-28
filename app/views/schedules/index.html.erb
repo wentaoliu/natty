@@ -1,10 +1,3 @@
-<% content_for :head do %>
-  <style>
-    th{
-      width:14.2857% !important;
-    }
-  </style>
-<% end %>
 
 <div class="ui vertical segment">
   <h2 class="ui header">
@@ -20,9 +13,6 @@
               options_for_select(User.pluck(:name,:id),[@user.name,@user.id]),
               class:'ui search dropdown' %>
       </div>
-      <div class="field">
-        <%= date_field_tag :date, @date %>
-      </div>
       <%= submit_tag t('.search'), class:"ui blue button" %>
     </div>
   <% end %>
@@ -31,42 +21,15 @@
   <% end %>
 </div>
 
-<table class="ui celled table">
-  <thead>
-    <tr>
-      <% (0..6).each do |i| %>
-        <th><%= t("date.day_names")[i] %></th>
+<div class="ui vertical segment calendar">
+  <%= month_calendar table: {class: "ui celled table"}, header: {class: "ui header"} do |date| %>
+    <div class="ui small circular label"><%= date.day %></div>
+    <div class="ui bulleted list">
+      <% @schedules.each do |item| %>
+        <% if (item.starts_at.to_date <= date) and (item.ends_at.to_date >= date) %>
+          <%= link_to item.title, item, class:'item' %>
+        <% end %>
       <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% day = @first_day_weekday + 1%>
-    <tr>
-    <% (1..@first_day_weekday).each do |i| %>
-      <td></td>
-    <% end %>
-    <% (1..@days_of_month).each do |i| %>
-      <td>
-        <div class="ui small circular label"><%= i %></div>
-        <div class="ui bulleted list">
-          <% @schedules.each do |item| %>
-            <% tmp_date = Date.new(@date.year,@date.month,i) %>
-            <% if (item.starts_at.to_date <= tmp_date) and (item.ends_at.to_date >= tmp_date) %>
-              <%= link_to item.title, item, class:'item' %>
-            <% end %>
-          <% end %>
-        </div>
-        <% day = day + 1 %>
-      </td>
-      <% if day > 7 and i < @days_of_month %>
-        <tr>
-        <% day = 1 %>
-      <% end %>
-    <% end %>
-    <% if @days_of_month % 7 + @first_day_weekday > 0 %>
-      <% ((@days_of_month % 7 + @first_day_weekday)..6).each do |i| %>
-          <td></td>
-      <% end %>
-    <% end %>
-    </tr>
-</table>
+    </div>
+  <% end %>
+</div>

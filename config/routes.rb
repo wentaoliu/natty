@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   resource :password, only: [:new, :create, :edit, :update]
-  resources :users
+  resources :users do
+    get 'verify', on: :collection
+  end
   resources :wikis do
     member do
       get :versions

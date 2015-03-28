@@ -27,10 +27,4 @@ zh-CN:
       languages: 语言和地区
       username: 个人资料与设置
       messages: 消息
-      chat: 在线聊天
-  chat:
-    chat_online: 在线聊天
-    chat_room: 聊天室
-    users_list: 用户列表
-    say_something: 说句话吧...
-    send: 发送
+    

@@ -1,1 +1,8 @@
-<h1>There is a new comment on your blog</h1>
+<p>请将以下地址复制到地址栏中访问</p>
+
+<p>
+  <%= url_for(controller: 'users', action: 'verify'
+      token: @user.verify_email_token, only_path: false) %>
+</p>
+
+<p>有效期至<%=l @user.verify_email_time + 3.day %></p>

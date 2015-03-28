@@ -3,7 +3,10 @@ class HomeController < ApplicationController
 
   # GET /
   def index
-    @messages = Message.where(:read.nin => [current_user.id])
+    @messages = Message.where(
+                  :read.nin => [current_user.id],
+                  :created_at.gt => current_user.created_at
+                )
     @meetings = Meeting.where(
                   :starts_at.lte => DateTime.now,
                   :ends_at.gte => DateTime.now

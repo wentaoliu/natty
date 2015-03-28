@@ -33,6 +33,9 @@ class User
   field :current_sign_in_at,    type: DateTime
   field :current_sign_in_ip,    type: String
 
+  field :verify_email_token,    type: String
+  field :verify_email_time,    type: DateTime
+
   field :reset_password_token,  type: String
   field :reset_password_time,   type: DateTime
 

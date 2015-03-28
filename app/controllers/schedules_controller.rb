@@ -6,24 +6,9 @@ class SchedulesController < ApplicationController
   # GET /schedule
   # GET /schedule.json
   def index
-    @date = params[:date].nil? ? Date.today : params[:date].to_date
-    if params[:user]
-      @user = User.find(params[:user])
-    else
-      @user = current_user
-    end
-    @begin_date = Date.new(@date.year, @date.month, 1)
-    @first_day_weekday = @begin_date.wday
-    @days_of_month = Time.days_in_month(@date.month,@date.year)
-    @end_date = @begin_date + @days_of_month.to_i
-    @schedule = Schedule.new
-    if params[:search].nil?
-      @count = Schedule.count
-      @schedules = Schedule.limit(@per_page).offset(@offset)
-    else
-      @count = Schedule.where("title LIKE ?", "%#{params[:search]}%").count
-      @schedules = Schedule.where("title LIKE ?", "%#{params[:search]}%").limit(@per_page).offset(@offset)
-    end
+    @start_date = params[:start_date].nil? ? Date.today : params[:start_date].to_date
+    @user = params[:user].nil? ? current_user : User.find(params[:user])
+    @schedules = Schedule.find_by_user_and_month(@user, @start_date.year, @start_date.month)
   end
 
   # GET /schedule/1

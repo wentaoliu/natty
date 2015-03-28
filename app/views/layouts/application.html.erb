@@ -35,10 +35,7 @@
     <%= link_to content_tag('i',nil,class:'large users icon') +
           t('module.users'), users_path, class:'item' if is_admin? %>
   </div>
-  <!-- right chat room sidebar -->
-  <div class="ui right vertical wide sidebar segment">
-    <%= render 'layouts/chat'%>
-  </div>
+
   <!-- top fixed menu -->
   <div class="ui top fixed inverted blue menu">
     <a class="item left-sidebar-toggle">
@@ -78,9 +75,6 @@
       </div>
       <%= link_to content_tag('i',nil,class:'envelope icon'), messages_path,
           class:'item', 'data-content':t('menu.popup.messages') %>
-      <a class="item right-sidebar-toggle" data-content="<%=t 'menu.popup.chat' %>">
-        <i class="chat icon"></i>
-      </a>
     </div>
   </div>
   <!-- main -->

@@ -11,7 +11,7 @@
       <% elsif @messages.count == 1 %>
         <p><%= link_to t('.messages.only_one'), messages_path %></p>
       <% else %>
-        <p><%= link_to t('.messages.more_than_one',{number: @messages}), messages_path %></p>
+        <p><%= link_to t('.messages.more_than_one',{number: @messages.count}), messages_path %></p>
       <% end %>
       <% if @messages.count > 0 %>
         <div class="ui divided list">
@@ -40,7 +40,7 @@
       <% elsif @meetings.count == 1 %>
         <p><%= link_to t('.meetings.only_one'), meetings_path %></p>
       <% else %>
-        <p><%= link_to t('.meetings.more_than_one',{number: @meetings}), meetings_path %></p>
+        <p><%= link_to t('.meetings.more_than_one',{number: @meetings.count}), meetings_path %></p>
       <% end %>
       <% if @meetings.count > 0 %>
         <div class="ui divided list">
@@ -71,7 +71,7 @@
       <% elsif @schedule.count == 1 %>
         <p><%= link_to t('.schedule.only_one'), schedules_path %></p>
       <% else %>
-        <p><%= link_to t('.schedule.more_than_one',{number: @schedule}), schedules_path %></p>
+        <p><%= link_to t('.schedule.more_than_one',{number: @schedule.count}), schedules_path %></p>
       <% end %>
       <% if @schedule.count > 0 %>
         <div class="ui divided list">

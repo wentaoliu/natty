@@ -1,4 +1,5 @@
 module ApplicationHelper
+
   def avaliable_locales
     {
       'en'=>'English',

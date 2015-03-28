@@ -4,7 +4,6 @@
 #= require semantic-ui
 #= require turbolinks
 #= require simditor
-#= require socket.io
 #= require_tree .
 
 $(document).on 'ready page:load', ->
@@ -12,8 +11,6 @@ $(document).on 'ready page:load', ->
   # Initialize sidebar module
   $('.left-sidebar-toggle').click ->
     $('.sidebar.left').sidebar 'toggle'
-  $('.right-sidebar-toggle').click ->
-    $('.sidebar.right').sidebar('setting', 'transition', 'overlay').sidebar 'toggle'
 
   # Initialize popup module
   $('.right.menu > .item').popup position: 'bottom right'

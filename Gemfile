@@ -43,13 +43,13 @@ gem 'semantic-ui-sass', '~> 1.11.4.0'
 gem 'rails-i18n', '~> 4.0.0'
 # Captcha
 gem 'simple_captcha2', '~> 0.3.4'
-# Socket.io
-gem 'socket.io-rails', '~> 1.3.3'
 # ImageMagick
 gem 'mini_magick', '~> 4.1.0'
 # Paperclip
 gem 'paperclip', '~> 4.2.1'
 gem 'mongoid-paperclip', '~> 0.0.9', :require => "mongoid_paperclip"
+# Calendar
+gem "simple_calendar", "~> 1.1.0"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

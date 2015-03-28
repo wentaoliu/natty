@@ -10,7 +10,7 @@
 
 
 <% @messages.each do |message| %>
-  <% if message.read and message.read.include? current_user.id %>
+  <% if (message.read and message.read.include? current_user.id) or message.created_at <= current_user.created_at %>
     <div class="ui message">
       <div class="header">
         <%= message.user.name %>

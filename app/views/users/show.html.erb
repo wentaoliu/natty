@@ -57,7 +57,7 @@
   </div>
   <div class="item">
     <div class="header"><%=t '.last_sign_in_at' %></div>
-    <%=l @user.last_sign_in_at, format: :long %>
+    <%=l(@user.last_sign_in_at, format: :long) if @user.last_sign_in_at %>
   </div>
   <div class="item">
     <div class="header"><%=t '.last_sign_in_ip' %></div>
@@ -65,7 +65,7 @@
   </div>
   <div class="item">
     <div class="header"><%=t '.current_sign_in_at' %></div>
-    <%=l @user.current_sign_in_at, format: :long %>
+    <%=l(@user.current_sign_in_at, format: :long) if @user.current_sign_in_at %>
   </div>
   <div class="item">
     <div class="header"><%=t '.current_sign_in_ip' %></div>

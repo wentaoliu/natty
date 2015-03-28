@@ -35,6 +35,16 @@
       <div class="ui one column centered grid">
         <div class="doubling two column centered row">
           <div class="column">
+            <% if notice %>
+              <div class="row">
+                <div class="sixteen wide column">
+                  <div class="ui blue message">
+                    <i class="close icon"></i>
+                    <%=raw notice %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
             <%= yield %>
           </div>
         </div>

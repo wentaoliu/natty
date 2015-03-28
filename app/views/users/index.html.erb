@@ -29,7 +29,11 @@
         <td><%= link_to user.name, user %></td>
         <td><%= user.username %></td>
         <td><%= user.email %></td>
+        <% if user.state == 1 %>
         <td><%= t('.table.states')[user.state] %></td>
+        <% else %>
+        <td style="color:red;"><%= t('.table.states')[user.state] %></td>
+        <% end %>
         <td><%= user.admin ? content_tag('i',nil,class:'checkmark icon') :
                   content_tag('i',nil,class:'remove icon')%></td>
       </tr>

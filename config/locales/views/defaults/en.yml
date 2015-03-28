@@ -27,10 +27,4 @@ en:
       languages: Languages and locales
       username: Profile and settings
       messages: Messages
-      chat: Chat online
-  chat:
-    chat_online: Chat Online
-    chat_room: Chat room
-    users_list: Users List
-    say_something: Say something...
-    send: Send
+      

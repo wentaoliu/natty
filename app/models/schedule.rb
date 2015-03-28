@@ -14,4 +14,13 @@ class Schedule
   validates :title, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
+
+  def self.find_by_user_and_month(user, year, month)
+    start_date = DateTime.new(year,month)
+    end_date = DateTime.new(year,month + 1)
+    where(user: user)
+      .any_of({:starts_at.gte => start_date, :starts_at.lt => end_date},
+              {:ends_at.gte => start_date, :ends_at.lt => end_date })
+  end
+
 end

@@ -40,3 +40,16 @@
     background-color: rgba(255,255,255,0.8);
   }
 }
+
+.calendar {
+  .header {
+    text-align: center;
+    a {
+      padding: 0 0.5em;
+      font-size: 120%;
+    }
+  }
+  th{
+    width:14.2857% !important;
+  }
+}

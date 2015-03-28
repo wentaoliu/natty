@@ -83,7 +83,7 @@ en:
     verify:
       invalid: The link is invalid.
       expired: The link has expired.
-      success: Your email was successfully verified. 
+      success: Your email was successfully verified.
       failure: Email verification failed.
   passwords:
     verify_token:
@@ -106,7 +106,7 @@ en:
       update: Email was successfully updated.
     locales:
       update: Locale was successfully updated.
-    password:
+    passwords:
       update: Password was successfully updated.
-    username:
+    usernames:
       update: Username was successfully updated.

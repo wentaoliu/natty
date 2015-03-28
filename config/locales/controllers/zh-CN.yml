@@ -106,7 +106,7 @@ zh-CN:
       update: 邮箱更新成功。
     locales:
       update: 语言更新成功。
-    password:
+    passwords:
       update: 密码更新成功。
-    username:
+    usernames:
       update: 用户名更新成功。

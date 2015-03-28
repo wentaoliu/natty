@@ -3,4 +3,6 @@ en:
     emails:
       edit:
         email: Email
+        verified: Verified
+        unverified: Unverified
         submit: Submit

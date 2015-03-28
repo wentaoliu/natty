@@ -3,4 +3,6 @@ zh-CN:
     emails:
       edit:
         email: 邮箱
+        verified: 已验证
+        unverified: 未验证
         submit: 确认

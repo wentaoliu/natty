@@ -27,7 +27,18 @@
 
   <div class="field">
     <%= f.label :email, t('.email') %>
-    <%= f.text_field :email %>
+    <div class="ui right labeled input">
+      <%= f.email_field :email %>
+      <% if @user.email_verified %>
+        <div class="ui tag label">
+          <%=t '.verified' %>
+        </div>
+      <% else %>
+        <div class="ui red tag label">
+          <%=t '.unverified' %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>

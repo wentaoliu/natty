@@ -83,7 +83,7 @@ zh-CN:
     verify:
       invalid: 链接无效。
       expired: 链接已过期。
-      success: 邮箱验证成功。请耐心等待管理员审核您的请求。
+      success: 邮箱验证成功。
       failure: 邮箱验证失败。
   passwords:
     verify_token:
@@ -99,3 +99,14 @@ zh-CN:
       success: 个人资料更新成功。
     photo:
       success: 照片更新成功。
+  settings:
+    avatars:
+      update: 头像更新成功。
+    emails:
+      update: 邮箱更新成功。
+    locales:
+      update: 语言更新成功。
+    password:
+      update: 密码更新成功。
+    username:
+      update: 用户名更新成功。

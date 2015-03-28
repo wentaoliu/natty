@@ -8,7 +8,7 @@ class Settings::AvatarsController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_settings_avatar_path , notice: 'User was successfully updated.' }
+        format.html { redirect_to edit_settings_avatar_path , notice: t('.success') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -22,7 +22,7 @@ class Settings::AvatarsController < ApplicationController
     def set_user
       @user = current_user
     end
-    
+
     def user_params
       params.require(:user).permit(:avatar)
     end

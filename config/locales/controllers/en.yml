@@ -83,7 +83,7 @@ en:
     verify:
       invalid: The link is invalid.
       expired: The link has expired.
-      success: Your email was successfully verified. Please patiently wait for the administrator to review your request.
+      success: Your email was successfully verified. 
       failure: Email verification failed.
   passwords:
     verify_token:
@@ -99,3 +99,14 @@ en:
       success: Profile was successfully updated.
     photo:
       success: Photo was successfully updated.
+  settings:
+    avatars:
+      update: Avatar was successfully updated.
+    emails:
+      update: Email was successfully updated.
+    locales:
+      update: Locale was successfully updated.
+    password:
+      update: Password was successfully updated.
+    username:
+      update: Username was successfully updated.

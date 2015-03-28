@@ -8,7 +8,9 @@ class Settings::EmailsController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to edit_settings_email_path , notice: 'User was successfully updated.' }
+        @user.update_attributes(email_verified: false)
+        PasswordMailer.reset_password_email(@user).deliver_now
+        format.html { redirect_to edit_settings_email_path , notice: t('.success') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

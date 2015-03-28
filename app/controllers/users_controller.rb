@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       respond_to do |format|
         if @user.save
           UserMailer.verify_email(@user).deliver_now
-          format.html { redirect_to root_path, notice: 'please check your inbox' }
+          format.html { redirect_to root_path, notice: t('.success') }
           format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -52,9 +52,15 @@ class UsersController < ApplicationController
   def update
     state = @user.state
     respond_to do |format|
-      if @user.update(params.require(:user)
-          .permit(:username, :name, :email, :position, :grade, :photo, :avatar,
-                  :resume, :state, :rank))
+      user_params =
+        if current_user.superadmin?
+          params.require(:user).permit(:username, :name, :email, :position,
+            :grade, :photo, :avatar, :resume, :state, :rank, :email_public, :admin)
+        else
+          params.require(:user).permit(:username, :name, :email, :position,
+            :grade, :photo, :avatar, :resume, :state, :rank, :email_public)
+        end
+      if @user.update(user_params)
         if state == 0
           if @user.state == 1
             UserMailer.permit_email(@user).deliver_now
@@ -62,7 +68,7 @@ class UsersController < ApplicationController
             UserMailer.refuse_email(@user).deliver_now
           end
         end
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: t('.success') }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -76,25 +82,25 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end
 
   def verify
     @user = User.where(verify_email_token: params[:token]).first
-    redirect_to root_path, notice: 'invalid link' and return false unless @user
+    redirect_to root_path, notice: t('.invalid') and return false unless @user
 
     if @user.verify_email_time + 3.day < DateTime.now
-      redirect_to root_path, notice: 'address expired' and return false
+      redirect_to root_path, notice: t('.expired') and return false
     end
 
     respond_to do |format|
       if @user.update(email_verified: true)
-        format.html { redirect_to root_path, notice: 'email was successfully verified' }
+        format.html { redirect_to root_path, notice: t('.success') }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { redirect_to root_path, notice: 'email verification failed' }
+        format.html { redirect_to root_path, notice: t('.failure') }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

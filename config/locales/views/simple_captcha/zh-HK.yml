@@ -1,5 +1,0 @@
-zh-HK:
-  simple_captcha:
-    placeholder: 請輸入圖中字母
-    label: 驗證碼
-    refresh_button_text: 刷新

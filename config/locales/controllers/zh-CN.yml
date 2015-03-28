@@ -1,0 +1,101 @@
+zh-CN:
+  achievements:
+    create:
+      success: 成果创建成功。
+    update:
+      success: 成果更新成功。
+    destroy:
+      success: 成果删除成功。
+  bulletins:
+    create:
+      success: 公告创建成功。
+    update:
+      success: 公告更新成功。
+    destroy:
+      success: 公告删除成功。
+  comments:
+    create:
+      success: 评论创建成功。
+    destroy:
+      success: 评论删除成功。
+  instruments:
+    create:
+      success: 仪器创建成功。
+    update:
+      success: 仪器更新成功。
+    destroy:
+      success: 仪器删除成功。
+  meetings:
+    create:
+      success: 会议创建成功。
+    update:
+      success: 会议更新成功。
+    destroy:
+      success: 会议删除成功。
+  messages:
+    create:
+      success: 消息创建成功。
+    destroy:
+      success: 消息删除成功。
+  news:
+    create:
+      success: 新闻创建成功。
+    update:
+      success: 新闻更新成功。
+    destroy:
+      success: 新闻删除成功。
+  resources:
+    create:
+      success: 资源创建成功。
+    destroy:
+      success: 资源删除成功。
+  schedules:
+    create:
+      success: 日程创建成功。
+    update:
+      success: 日程更新成功。
+    destroy:
+      success: 日程删除成功。
+  sessions:
+    create:
+      password_error: 用户名或密码错误
+      code_error: 验证码输入错误
+      success_html: <div class="header">登录成功</div><p>%{username}，欢迎回来！</p>
+  topics:
+    create:
+      success: 话题创建成功。
+    destroy:
+      success: 话题删除成功。
+  wikis:
+    create:
+      success: 维基创建成功。
+    update:
+      success: 维基更新成功。
+    destroy:
+      success: 维基删除成功。
+  users:
+    create:
+      success: 验证邮件已发送。请检查您的收件箱。
+    update:
+      success: 用户更新成功。
+    destroy:
+      success: 用户删除成功。
+    verify:
+      invalid: 链接无效。
+      expired: 链接已过期。
+      success: 邮箱验证成功。请耐心等待管理员审核您的请求。
+      failure: 邮箱验证失败。
+  passwords:
+    verify_token:
+      invalid: 链接无效。
+      expired: 链接已过期。
+    create:
+      success: 验证邮件已发送。请检查您的收件箱。
+    update:
+      success: 密码更新成功。
+      incorrect: 两次输入密码不一致。
+  profiles:
+    update:
+      success: 个人资料更新成功。
+    photo:
+      success: 照片更新成功。

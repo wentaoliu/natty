@@ -21,6 +21,8 @@ class Achievement
   }
 
   validates :title, presence: true
+  validates :content, presence: true
+  validates :date, presence: true
 
   def self.types
     return TYPE

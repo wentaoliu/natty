@@ -2,7 +2,7 @@
   <h2 class="ui header">
     <i class="blue user icon"></i>
     <div class="content">
-      资料
+      <%= t '.profile' %>
     </div>
   </h2>
 </div>
@@ -16,9 +16,8 @@
           <div class="ui dimmer">
             <div class="content">
               <div class="center">
-                <%= link_to edit_profile_path, class:"ui labeled icon button" do %>
-                  <i class="edit icon"></i><%= t '.edit' %>
-                <% end %>
+                <button type="button" id="edit-photo-btn" class="ui labeled icon button">
+                  <i class="edit icon"></i><%=t '.photo' %></button>
               </div>
             </div>
           </div>
@@ -32,52 +31,39 @@
             </span>
           </div>
         </div>
-        <div class="extra content">
-          <a>
-            <i class="users icon"></i>
-            2 Members
-          </a>
-        </div>
       </div>
     </div>
   </div>
 
   <div class="eleven wide column">
-    <%= form_for(@user, url: edit_profile_path, html:{class:'ui form segment'}) do |f| %>
+    <%= form_for(@user, url: profile_path, method: :put, html:{class:'ui form segment'}) do |f| %>
 
       <div class="field">
-        <%= f.label :name %>
+        <%= f.label :name, t('.name') %>
         <%= f.text_field :name %>
       </div>
 
       <div class="field">
-        <%= f.label :email_public %>
+        <%= f.label :email_public, t('.email_public') %>
         <%= f.email_field :email_public %>
       </div>
 
       <div class="two fields">
         <div class="field">
-          <%= f.label :postion %>
-          <select id="position" name="position" class="form-control">
-          {% set positions={0:"毕业生",1:"本科生",2:"硕士生",3:"博士生",4:"博士后",5:"讲师",6:"副教授",7:"教授"} %}
-          {% for key,value in positions.items() %}
-              {% if key==user.position %}
-              <option value="{{key}}" selected="selected">{{value}}</option>
-              {% else %}
-              <option value="{{key}}">{{value}}</option>
-              {% endif %}
-          {% endfor %}
-          </select>
+          <%= f.label :postion, t('.position') %>
+          <%= f.select :position,
+            User.positions.map{|k,v| [t('.positions')[v], v]},
+            {},{class:"ui dropdown"} %>
         </div>
 
         <div class="field">
-          <%= f.label :grade %>
+          <%= f.label :grade, t('.grade') %>
           <%= f.text_field :grade %>
         </div>
       </div>
 
       <div class="field">
-        <%= f.label :resume %>
+        <%= f.label :resume, t('.resume') %>
         <%= f.text_area :resume, class:'editor' %>
       </div>
 
@@ -85,7 +71,26 @@
       <%= link_to t('.cancel'), profile_path, class: "ui button" %>
     <% end %>
   </div>
+</div>
 
+<div class="ui small modal" id="edit-photo-modal">
+  <i class="close icon"></i>
+  <div class="header">
+    <h4><%=t '.photo' %></h4>
+  </div>
+  <div class="content">
+    <%= form_for :user, url: photo_profile_path, method: :put,
+        html:{class:"ui form",id:"edit-photo-form"} do |f| %>
+      <div class="field">
+        <%= f.file_field :photo %>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions">
+    <button type="button" class="ui blue button"
+        onClick="$('#edit-photo-form').submit();"><%=t '.submit' %></button>
+    <button type="button" class="ui button"><%=t '.cancel' %></button>
+  </div>
 </div>
 
 <script>
@@ -93,5 +98,8 @@ $(document).on("ready page:load", function(){
   $('.special.cards .image').dimmer({
     on: 'hover'
   });
+  $('#edit-photo-modal')
+    .modal('attach events', '#edit-photo-btn', 'show')
+  ;
 });
 </script>

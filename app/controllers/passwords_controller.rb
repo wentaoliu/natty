@@ -11,12 +11,12 @@ class PasswordsController < ApplicationController
   def create
     if simple_captcha_valid?
       @user = User.where(username: params[:user][:username],
-                        email:    params[:user][:email]).first
+                         email:    params[:user][:email]).first
       if @user
         if @user.email_verified
           @user.update_attribute(:reset_password_token, User.new_remember_token)
           PasswordMailer.reset_password_email(@user).deliver_now
-          redirect_to root_path, notice: 'please check your inbox.'
+          redirect_to root_path, notice: t('.success')
         else
           render :new # email address didn't verified
         end
@@ -37,7 +37,7 @@ class PasswordsController < ApplicationController
       password_confirmation = BCrypt::Password.create(password[:new])
       respond_to do |format|
         if @user.update(password: password[:new], reset_password_token: '')
-          format.html { redirect_to root_path, notice: 'password was successfully changed' }
+          format.html { redirect_to root_path, notice: t('.success') }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit }
@@ -45,7 +45,7 @@ class PasswordsController < ApplicationController
         end
       end
     else
-      render :edit, notice: "Incorrect Password."
+      render :edit, notice: t('.incorrect')
     end
   end
 
@@ -53,10 +53,10 @@ class PasswordsController < ApplicationController
 
   def verify_token
     @user = User.where(reset_password_token: params[:token]||params[:password][:token]).first
-    redirect_to root_path, notice: 'invalid link' and return false unless @user
+    redirect_to root_path, notice: t('passwords.verify_token.invalid') and return false unless @user
 
     if @user.reset_password_time + 3.day < DateTime.now
-      redirect_to root_path, notice: 'address expired' and return false
+      redirect_to root_path, notice: t('passwords.verify_token.expired') and return false
     end
   end
 

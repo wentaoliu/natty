@@ -4,12 +4,53 @@ zh-CN:
       topic: 话题
       comment: 评论
       wiki: 维基
+      achievement: 成果
+      bulletin: 公告
+      instrument: 仪器
+      meeting: 会议
+      message: 消息
+      news: 新闻
+      resource: 资源
+      schedule: 日程
+      user: 用户
     attributes:
       topic:
         title: 标题
         content: 内容
-        category: 分类
-        tags: 标签
       wiki:
         title: 标题
-        category: 分类
+        comment: 注释
+        content: 内容
+      achievement:
+        title: 标题
+        content: 内容
+        date: 日期
+      bulletin:
+        title: 标题
+        content: 内容
+      comment:
+        content: 内容
+      instrument:
+        title: 标题
+        content: 内容
+      meeting:
+        title: 标题
+        content: 内容
+        starts_at: 开始时间
+        ends_at: 结束时间
+      message:
+        content: 内容
+      news:
+        title: 标题
+        content: 内容
+      resource:
+        title: 标题
+      schedule:
+        title: 标题
+        starts_at: 开始时间
+        ends_at: 结束时间
+      user:
+        username: 用户名
+        name: 姓名
+        email: 邮箱
+        password: 密码

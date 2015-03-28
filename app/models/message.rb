@@ -8,4 +8,6 @@ class Message
   field :content, type: String
   field :read,  type: Array
 
+  validates :content, presence: true
+
 end

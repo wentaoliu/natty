@@ -22,18 +22,26 @@ class ResourcesController < ApplicationController
                     .permit(:title, :parent, :public, :is_folder, :document))
     end
     @resource.user = current_user
-    # Attempt to save into the datebase
-    @resource.save
-    # Handle a successful save
-    redirect_to resources_path(parent: params[:resource][:parent])
+    respond_to do |format|
+      if @resource.save
+        format.html { redirect_to resources_path(parent: params[:resource][:parent]),
+                      notice: t('.success') }
+        format.json { render :show, status: :created, location: @resource }
+      else
+        format.html { render :new }
+        format.json { render json: @resource.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def destroy
     @resource = Resource.find(params[:id])
-    #redirect_to :action=>'index' and return false if @resource==nil
-    #access_denied unless @resource.author == current_user.username or admin?
     @resource.destroy
-    redirect_to resources_path
+    respond_to do |format|
+      format.html { redirect_to resources_url, notice: t('.success') }
+      format.json { head :no_content }
+    end
   end
 
 end

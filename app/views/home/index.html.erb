@@ -98,13 +98,14 @@
       </div>
       <div class="ui divider"></div>
       <% if @news.count > 0 %>
-        <div class="ui divided list">
-          <% @news.each do |news| %>
-            <div class="item">
-              <div class="content">
-                <a class="header"><%= news.title %></a>
+        <div class="ui divided selection list">
+          <% @news.each do |item| %>
+            <%= link_to item, class: 'item' do %>
+              <div class="ui horizontal label">
+                <%=l item.created_at, format: :short %>
               </div>
-            </div>
+              <%= item.title %>
+            <% end %>
           <% end %>
         </div>
       <% else %>

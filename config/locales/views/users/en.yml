@@ -7,7 +7,7 @@ en:
         username: Username
         email: Email
         state: State
-        state_names:
+        states:
         - Inactive
         - Normal
         - Blocked

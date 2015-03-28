@@ -13,6 +13,7 @@ class Meeting
   field :public, type: Boolean, default: false
 
   validates :title, presence: true
+  validates :content, presence: true
   validates :starts_at, presence: true
   validates :ends_at, presence: true
 end

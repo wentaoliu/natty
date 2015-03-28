@@ -25,8 +25,10 @@ Rails.application.routes.draw do
   resources :achievements
   resources :schedules
   resources :meetings
-  resources :messages
-  resource :profile, only: [:edit, :update]
+  resources :messages, only: [:index, :create, :destroy]
+  resource :profile, only: [:edit, :update] do
+    put 'photo', on: :member
+  end
   namespace :settings do
     get '/' => 'usernames#edit'
     resource :username, only: [:edit, :update]

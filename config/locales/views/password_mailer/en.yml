@@ -1,0 +1,6 @@
+en:
+  password_mailer:
+    reset_password_email:
+      subject: '%{user}, please reset your password.'
+      copy_to_browser: Please copy the link into your browser.
+      expire: The link will be expired on %{time}.

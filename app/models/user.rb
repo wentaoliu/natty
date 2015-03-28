@@ -24,6 +24,24 @@ class User
   field :email_public,          type: String
   field :locale,                type: String,   default: I18n.default_locale
   field :position,              type: Integer,  default: 0
+
+  POSITIONS = {
+    undergraduate: 0,
+    postgraduate: 1,
+    doctoral: 2,
+    postdoctoral: 3,
+    associate: 4,
+    professor: 5,
+    graduate: 6,
+    lecturer: 7,
+    assistant: 8,
+    engineer: 9,
+  }
+
+  def self.positions
+    return POSITIONS
+  end
+
   field :grade,                 type: Integer,  default: Date.today.year
   field :rank,                  type: Integer,  default: 0
   field :resume,                type: String
@@ -42,14 +60,22 @@ class User
   STATE = {
     inactive: 0,
     normal: 1,
-    blocked: 2
+    blocked: 2,
   }
+
+  def self.states
+    return STATE
+  end
 
   field :state,               type: Integer,  default: STATE[:inactive]
   field :admin,               type: Boolean,  default: false
 
   def normal?
     return self.state == STATE[:normal]
+  end
+
+  def superadmin?
+    return self.username == 'admin'
   end
 
   before_save { self.username = username.downcase }

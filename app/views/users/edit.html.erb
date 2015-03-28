@@ -49,9 +49,12 @@
 
   <div class="two fields">
     <div class="field">
-      <%= f.label :position, t('.position') %>
-      <%= f.text_field :position %>
+      <%= f.label :postion, t('.position') %>
+      <%= f.select :position,
+        User.positions.map{|k,v| [t('profiles.edit.positions')[v], v]},
+        {},{class:"ui dropdown"} %>
     </div>
+
 
     <div class="field">
       <%= f.label :grade, t('.grade') %>
@@ -79,8 +82,11 @@
   <div class="two fields">
     <div class="field">
       <%= f.label :state, t('.state') %>
-      <%= f.text_field :state %>
+      <%= f.select :state,
+        User.states.map{|k,v| [t('users.index.table.states')[v], v]},
+        {},{class:"ui dropdown"} %>
     </div>
+
 
     <div class="field">
       <%= f.label :rank, t('.rank') %>
@@ -88,12 +94,14 @@
     </div>
   </div>
 
-  <div class="field">
-    <div class="ui toggle checkbox">
-      <%= f.check_box :admin %>
-      <%= f.label :admin, t('.admin') %>
+  <% if current_user.superadmin? %>
+    <div class="field">
+      <div class="ui toggle checkbox">
+        <%= f.check_box :admin %>
+        <%= f.label :admin, t('.admin') %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
   <%= link_to t('.cancel'), users_path, class:"ui button" %>

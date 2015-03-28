@@ -1,0 +1,101 @@
+en:
+  achievements:
+    create:
+      success: Achievement was successfully created.
+    update:
+      success: Achievement was successfully updated.
+    destroy:
+      success: Achievement was successfully destroyed.
+  bulletin:
+    create:
+      success: Bulletin was successfully created.
+    update:
+      success: Bulletin was successfully updated.
+    destroy:
+      success: Bulletin was successfully destroyed.
+  comments:
+    create:
+      success: Comment was successfully created.
+    destroy:
+      success: Comment was successfully destroyed.
+  instruments:
+    create:
+      success: Instrument was successfully created.
+    update:
+      success: Instrument was successfully updated.
+    destroy:
+      success: Instrument was successfully destroyed.
+  meetings:
+    create:
+      success: Meetings was successfully created.
+    update:
+      success: Meetings was successfully updated.
+    destroy:
+      success: Meetings was successfully destroyed.
+  messages:
+    create:
+      success: Message was successfully created.
+    destroy:
+      success: Message was successfully destroyed.
+  news:
+    create:
+      success: News was successfully created.
+    update:
+      success: News was successfully updated.
+    destroy:
+      success: News was successfully destroyed.
+  resources:
+    create:
+      success: Resource was successfully created.
+    destroy:
+      success: Resource was successfully destroyed.
+  schedules:
+    create:
+      success: Schedule was successfully created.
+    update:
+      success: Schedule was successfully updated.
+    destroy:
+      success: Schedule was successfully destroyed.
+  sessions:
+    create:
+      password_error: Invalid username/password combination
+      code_error: Validation Code did not match with the Image
+      success_html: <div class="header">Login successful</div><p>%{username},welcome back!</p>
+  topics:
+    create:
+      success: Topic was successfully created.
+    destroy:
+      success: Topic was successfully destroyed.
+  wikis:
+    create:
+      success: Wiki was successfully created.
+    update:
+      success: Wiki was successfully updated.
+    destroy:
+      success: Wiki was successfully destroyed.
+  users:
+    create:
+      success: Verification email has been sent. Please check your inbox.
+    update:
+      success: User was successfully updated.
+    destroy:
+      success: User was successfully destroyed.
+    verify:
+      invalid: The link is invalid.
+      expired: The link has expired.
+      success: Your email was successfully verified. Please patiently wait for the administrator to review your request.
+      failure: Email verification failed.
+  passwords:
+    verify_token:
+      invalid: The link is invalid.
+      expired: The link has expired.
+    create:
+      success: Verification email has been sent. Please check your inbox.
+    update:
+      success: Password was successfully updated.
+      incorrect: Passwords do not match
+  profiles:
+    update:
+      success: Profile was successfully updated.
+    photo:
+      success: Photo was successfully updated.

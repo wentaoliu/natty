@@ -45,7 +45,7 @@ class BulletinsController < ApplicationController
     @bulletin.user = current_user
     respond_to do |format|
       if @bulletin.save
-        format.html { redirect_to @bulletin, notice: 'bulletin was successfully created.' }
+        format.html { redirect_to @bulletin, notice: t('.success') }
         format.json { render :show, status: :created, location: @bulletin }
       else
         format.html { render :new }
@@ -58,7 +58,7 @@ class BulletinsController < ApplicationController
   def update
     respond_to do |format|
       if @bulletin.update(bulletin_params)
-        format.html { redirect_to @bulletin, notice: 'Bulletin was successfully updated.' }
+        format.html { redirect_to @bulletin, notice: t('.success') }
         format.json { render :show, status: :ok, location: @bulletin }
       else
         format.html { render :edit }
@@ -72,7 +72,7 @@ class BulletinsController < ApplicationController
   def destroy
     @bulletin.destroy
     respond_to do |format|
-      format.html { redirect_to bulletins_url, notice: 'Bulletin was successfully destroyed.' }
+      format.html { redirect_to bulletins_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

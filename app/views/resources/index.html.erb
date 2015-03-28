@@ -95,7 +95,7 @@
     <h4><%=t '.new.resource' %></h4>
   </div>
   <div class="content">
-    <%= form_for @resource,html:{class:"ui form",id:"new-file-form",enctype:"multipart/form-data"} do |f| %>
+    <%= form_for @resource,html:{class:"ui form",id:"new-file-form"} do |f| %>
       <div class="field">
         <%= f.label :title, t('.modal.resource.title') %>
         <%= f.text_field :title %>

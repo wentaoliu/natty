@@ -1,10 +1,24 @@
 en:
   profiles:
     edit:
+      profile: Profile
       date: Joined in %{created_at}
       name: Name
       email_public: Public email
       position: Position
+      positions:
+      - Undergraduate student
+      - Postgraduate student
+      - Doctoral student
+      - postdoctoral fellow
+      - Associate professor
+      - Professor
+      - Graduate student
+      - Lecturer
+      - Assistant
+      - Engineer
       grade: Grade
       resume: Resume
+      photo: Upload photo
       submit: Save
+      cancel: Cancel

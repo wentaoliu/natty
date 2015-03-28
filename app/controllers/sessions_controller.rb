@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
         sign_in(user = user, permanent = params[:session][:remember_me] == '1')
         save_sign_in_info user
         set_locale user.locale
-        redirect_to root_path, notice: t('.success_html',username:current_user.name)
+        redirect_to root_path, notice: t('.success_html', username:current_user.name)
       else
         # Failed!
         flash.now[:error] = t('.password_error')

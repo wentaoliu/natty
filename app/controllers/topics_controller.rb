@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
     @topic.user = current_user
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to topics_path, notice: 'Topic was successfully created.' }
+        format.html { redirect_to topics_path, notice: t('.success') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -55,7 +55,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to topics_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

@@ -10,7 +10,3 @@ zh-CN:
       or: 或
       apply: 申请加入
       powered_by_html: 由%{link}提供技术支持
-    create:
-      password_error: 用户名或密码错误
-      code_error: 验证码输入错误
-      success_html: <div class="header">登录成功</div><p>%{username}，欢迎回来！</p>

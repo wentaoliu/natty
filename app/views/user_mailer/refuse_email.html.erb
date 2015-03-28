@@ -1,1 +1,7 @@
-<p><%= @user.name %>, your application to join RTISS has been refused.</p>
+<p>
+  <%= t('.subject', user: @user.name) %>
+</p>
+
+<p>
+  <%= t('app.name.long') %>
+</p>

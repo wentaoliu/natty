@@ -4,12 +4,53 @@ en:
       topic: Topic
       comment: Comment
       wiki: Wiki
+      achievement: Achievement
+      bulletin: Bulletin
+      instrument: Instrument
+      meeting: Meeting
+      message: Message
+      news: News
+      resource: Resource
+      schedule: Schedule
+      user: User
     attributes:
       topic:
         title: Title
         content: Content
-        category: Category
-        tags: Tags
       wiki:
         title: Title
-        category: Category
+        comment: Comment
+        content: Content
+      achievement:
+        title: Title
+        content: Content
+        date: Date
+      bulletin:
+        title: Title
+        content: Content
+      comment:
+        content: Content
+      instrument:
+        title: Title
+        content: Content
+      meeting:
+        title: Title
+        content: Content
+        starts_at: Starts at
+        ends_at: Ends_at
+      message:
+        content: Content
+      news:
+        title: Title
+        content: Content
+      resource:
+        title: Title
+      schedule:
+        title: Title
+        starts_at: Starts at
+        ends_at: Ends_at
+      user:
+        username: Username
+        name: Name
+        email: Email
+        password: Password

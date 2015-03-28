@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @topic.touch
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @topic, notice: 'User was successfully created.' }
+        format.html { redirect_to @topic, notice: t('.success') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { redirect_to @topic }
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   def destroy
     @topic.comments.find(params[:id]).destroy
     respond_to do |format|
-      format.html { redirect_to @topic, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to @topic, notice: t('.success') }
       format.json { head :no_content }
     end
   end

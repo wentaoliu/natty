@@ -1,10 +1,24 @@
 zh-CN:
   profiles:
     edit:
+      profile: 资料
       date: 于%{created_at}加入
       name: 姓名
       email_public: 公开邮箱
       position: 职位
+      positions:
+      - 本科生
+      - 硕士研究生
+      - 博士研究生
+      - 博士后研究员
+      - 副教授
+      - 教授
+      - 毕业生
+      - 讲师
+      - 助理
+      - 工程师
       grade: 年级
       resume: 简历
+      photo: 上传照片
       submit: 保存
+      cancel: 取消

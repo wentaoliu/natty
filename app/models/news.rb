@@ -11,4 +11,5 @@ class News
   field :public, type: Boolean, default: false
 
   validates :title, presence: true
+  validates :content, presence: true
 end

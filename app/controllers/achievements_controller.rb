@@ -37,7 +37,7 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.new(achievement_params)
     respond_to do |format|
       if @achievement.save
-        format.html { redirect_to @achievement, notice: 'achievement was successfully created.' }
+        format.html { redirect_to @achievement, notice: t('.success') }
         format.json { render :show, status: :created, location: @achievement }
       else
         format.html { render :new }
@@ -54,7 +54,7 @@ class AchievementsController < ApplicationController
   def update
     respond_to do |format|
       if @achievement.update(achievement_params)
-        format.html { redirect_to @achievement, notice: 'achievement was successfully updated.' }
+        format.html { redirect_to @achievement, notice: t('.success') }
         format.json { render :show, status: :ok, location: @achievement }
       else
         format.html { render :edit }
@@ -67,7 +67,7 @@ class AchievementsController < ApplicationController
   def destroy
     @achievement.destroy
     respond_to do |format|
-      format.html { redirect_to achievements_url, notice: 'achievement was successfully destroyed.' }
+      format.html { redirect_to achievements_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

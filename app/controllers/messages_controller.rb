@@ -23,25 +23,10 @@ class MessagesController < ApplicationController
     @message.user = current_user
     respond_to do |format|
       if @message.save
-        format.html { redirect_to messages_url, notice: 'Message was successfully created.' }
+        format.html { redirect_to messages_url, notice: t('.success') }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /messages/1
-  # PATCH/PUT /messages/1.json
-  def update
-    @message.read << current_user.id
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to messages_url, notice: 'Message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @message }
-      else
-        format.html { render :edit }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +37,7 @@ class MessagesController < ApplicationController
   def destroy
     @message.destroy
     respond_to do |format|
-      format.html { redirect_to messages_url, notice: 'Message was successfully destroyed.' }
+      format.html { redirect_to messages_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

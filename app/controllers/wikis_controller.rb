@@ -43,7 +43,7 @@ class WikisController < ApplicationController
     @wiki.user = current_user
     respond_to do |format|
       if @wiki.save
-        format.html { redirect_to @wiki, notice: 'Wiki was successfully created.' }
+        format.html { redirect_to @wiki, notice: t('.success') }
         format.json { render :show, status: :created, location: @wiki }
       else
         format.html { render :new }
@@ -57,7 +57,7 @@ class WikisController < ApplicationController
   def update
     respond_to do |format|
       if @wiki.update(wiki_params)
-        format.html { redirect_to @wiki, notice: 'User was successfully updated.' }
+        format.html { redirect_to @wiki, notice: t('.success') }
         format.json { render :show, status: :ok, location: @wiki }
       else
         format.html { render :edit }
@@ -71,7 +71,7 @@ class WikisController < ApplicationController
   def destroy
     @wiki.destroy
     respond_to do |format|
-      format.html { redirect_to wikis_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to wikis_url, notice: t('.success') }
       format.json { head :no_content }
     end
   end

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       @user.verify_email_token = User.new_remember_token
       respond_to do |format|
         if @user.save
-          UserMailer.verify_email(@user).deliver_now
+          #UserMailer.verify_email(@user).deliver_now
           format.html { redirect_to root_path, notice: t('.success') }
           format.json { render :show, status: :created, location: @user }
         else

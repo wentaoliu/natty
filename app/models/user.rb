@@ -82,7 +82,8 @@ class User
   before_create :create_remember_token
 
   validates :username,  presence: true, uniqueness: true,
-                        length: { minimum: 4, maximum: 20 }
+            length:     { minimum: 4, maximum: 20 },
+            format:     { with: /\A[a-zA-Z0-9]+\Z/ }
 
   validates :name,      presence: true
   validates :email,     presence: true,

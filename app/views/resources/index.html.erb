@@ -43,7 +43,7 @@
               <i class="folder icon"></i><%= item.title %>
             <% end %>
           <% else %>
-            <%= link_to ENV["RAILS_RELATIVE_URL_ROOT"]||'' + item.document.url do %>
+            <%= link_to (ENV["RAILS_RELATIVE_URL_ROOT"]||'') + item.document.url do %>
               <i class="file icon"></i><%= item.title %>
             <% end %>
           <% end %>

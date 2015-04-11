@@ -36,7 +36,7 @@ gem 'mongoid', '~> 4.0.2'
 gem 'mongoid-paranoia', '~> 1.0.0'
 gem 'mongoid-versioning', '~> 1.0.0'
 # Simditor
-gem 'simditor', '~> 2.1.5.1'
+gem 'simditor', '~> 2.1.6.0'
 # Semantic UI
 gem 'semantic-ui-sass', '~> 1.11.5.0'
 # I18n

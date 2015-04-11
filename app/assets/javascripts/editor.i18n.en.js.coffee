@@ -13,6 +13,7 @@ $(document).on 'ready page:load', ->
       'uploadError': 'Upload error'
       'imageUrl': 'Image url'
       'imageSize': 'Image size'
+      'imageAlt': 'Alternative'
       'restoreImageSize': 'Restore image size'
       'uploading': 'Uploading'
       'indent': 'Indent'

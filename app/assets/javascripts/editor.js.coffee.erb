@@ -16,7 +16,7 @@ $(document).on 'ready page:load', ->
       upload: url: '<%= (ENV["RAILS_RELATIVE_URL_ROOT"]||'') + "/pictures" %>'
       allowedTags: [
         'br', 'a', 'img', 'b', 'strong', 'i', 'u', 'font', 'p', 'ul', 'ol',
-        'li', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'hr', 'embed'
+        'li', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'hr', 'embed', 'iframe'
       ]
       allowedAttributes:
         img: ['src', 'alt', 'width', 'height', 'data-image-src',
@@ -31,4 +31,5 @@ $(document).on 'ready page:load', ->
         h4: ['data-indent']
         embed: ['src', 'allowFullScreen', 'quality', 'width', 'height', 'align',
           'allowScriptAccess', 'type']
+        iframe: ['height', 'width', 'src', 'frameborder', 'allowfullscreen']
     )

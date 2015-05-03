@@ -14,3 +14,7 @@ $(document).on 'ready page:load', ->
       pasteImage: true
       defaultImage: '<%= image_path "upload-loading.png" %>'
       upload: url: '<%= (ENV["RAILS_RELATIVE_URL_ROOT"]||'') + "/pictures" %>')
+      allowTags: [
+        'br', 'a', 'img', 'b', 'strong', 'i', 'u', 'font', 'p', 'ul', 'ol'
+        'li', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'hr', 'embed'
+      ]

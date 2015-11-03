@@ -1,4 +1,4 @@
-en:
+en-US:
   password_mailer:
     reset_password_email:
       subject: '%{user}, please reset your password.'

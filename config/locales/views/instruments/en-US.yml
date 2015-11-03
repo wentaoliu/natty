@@ -1,28 +1,19 @@
-en:
-  achievements:
+en-US:
+  instruments:
     index:
       search: Search
-      new: New
+      new: Add Instrument
       table:
         title: Title
-        type: Type
-        author: Author
-        date: Date
+        maintainer: Maintainer
     show:
+      maintainer: Maintainer
       edit: Edit
       delete: Delete
       delete_confirm: Are you sure?
     form:
       title: Title
-      author: Author
-      link: Link
-      date: Date
-      type: Type
-      types:
-      - Paper
-      - Patent
-      - Award
-      - English Paper
+      maintainer: Maintainer
       content: Content
       public: Public?
       submit: Submit

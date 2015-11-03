@@ -1,4 +1,4 @@
-en:
+en-US:
   mongoid:
     models:
       topic: Topic

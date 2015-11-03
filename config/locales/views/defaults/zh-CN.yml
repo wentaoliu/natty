@@ -27,4 +27,9 @@ zh-CN:
       languages: 语言和地区
       username: 个人资料与设置
       messages: 消息
-    
+  pagination:
+    first: "&laquo; 首页"
+    last: "末页 &raquo;"
+    previous: "&lsaquo; 前页"
+    next: "后页 &rsaquo;"
+    truncate: "&hellip;"

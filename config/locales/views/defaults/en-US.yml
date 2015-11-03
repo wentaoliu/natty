@@ -1,4 +1,4 @@
-en:
+en-US:
   app:
     name:
       short: RTISS
@@ -27,4 +27,9 @@ en:
       languages: Languages and locales
       username: Profile and settings
       messages: Messages
-      
+  pagination:
+    first: "&laquo; First"
+    last: "Last &raquo;"
+    previous: "&lsaquo; Prev"
+    next: "Next &rsaquo;"
+    truncate: "&hellip;"

@@ -1,0 +1,6 @@
+en-US:
+  settings:
+    usernames:
+      edit:
+        username: Username
+        submit: Submit

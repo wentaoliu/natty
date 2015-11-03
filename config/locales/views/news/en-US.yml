@@ -1,25 +1,21 @@
-en:
-  meetings:
+en-US:
+  news:
     index:
       search: Search
-      new: New Meeting
+      new: Post News
       table:
         title: Title
+        author: Author
         time: Time
-        place: Place
-        public: Public?
+        hits: Hits
     show:
       edit: Edit
       delete: Delete
       delete_confirm: Are you sure?
-      info: At %{place}, from %{starts_at} to %{ends_at}.
     form:
       title: Title
-      starts_at: Starts at
-      ends_at: Ends at
-      place: Place
-      public: Public?
       category: Category
+      public: Public?
       submit: Submit
       cancel: Cancel
     edit:

@@ -1,4 +1,4 @@
-en:
+en-US:
   user_mailer:
     verify_email:
       subject: '%{user}, please verify your email.'

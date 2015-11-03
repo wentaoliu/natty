@@ -1,4 +1,4 @@
-en:
+en-US:
   simple_captcha:
     placeholder: Enter the image value
     refresh_button_text: Refresh

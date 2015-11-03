@@ -1,6 +1,6 @@
-en:
+en-US:
   settings:
-    usernames:
+    locales:
       edit:
-        username: Username
+        locale: Locale
         submit: Submit

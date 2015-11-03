@@ -14,7 +14,7 @@ zh-CN:
     form:
       title: 标题
       content: 内容
-      public: 公开的？
+      hidden: 隐藏？
       submit: 确认
       cancel: 取消
     edit:

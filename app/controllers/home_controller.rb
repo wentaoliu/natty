@@ -16,7 +16,7 @@ class HomeController < ApplicationController
                   :ends_at.gte => DateTime.now,
                   :user => current_user
                 )
-    @news = News.limit(3).order(created: :desc)
+    @news = News.order(created: :desc).limit(3)
   end
 
 end

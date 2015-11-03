@@ -3,23 +3,16 @@ class InstrumentsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 15
 
   # GET /instruments
   # GET /instruments.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    if params[:search].nil?
-      count = Instrument.count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @instruments = Instrument.limit(NUM_PER_PAGE).offset(@offset)
-                      .order(updated_at: :desc)
-    else
-      count = Instrument.where(title: /.*#{params[:search]}.*/i).count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @instruments = Instrument.where(title: /.*#{params[:search]}.*/i)
-                      .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+    res = Instrument.where(hidden: false)
+    if params[:search].present?
+      res = res.where(title: /.*#{params[:search]}.*/i)
     end
+    @instruments = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
 
   # GET /instruments/1
@@ -85,6 +78,6 @@ class InstrumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def instrument_params
-    params.require(:instrument).permit(:title, :content, :maintainer, :public)
+    params.require(:instrument).permit(:title, :content, :maintainer, :hidden)
   end
 end

@@ -14,7 +14,7 @@ en-US:
     form:
       title: Title
       content: Content
-      public: Public?
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

@@ -15,7 +15,7 @@ en-US:
     form:
       title: Title
       category: Category
-      public: Public?
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

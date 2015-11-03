@@ -7,7 +7,6 @@ en-US:
         title: Title
         time: Time
         place: Place
-        public: Public?
     show:
       edit: Edit
       delete: Delete
@@ -18,7 +17,7 @@ en-US:
       starts_at: Starts at
       ends_at: Ends at
       place: Place
-      public: Public?
+      hidden: Hidden?
       category: Category
       submit: Submit
       cancel: Cancel

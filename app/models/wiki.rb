@@ -6,9 +6,9 @@ class Wiki
 
   belongs_to :user
 
-  field :title, type: String
-  field :hits, type: String, default: 0
-  field :public, type: Boolean, default: false
+  field :title,   type: String
+  field :hits,    type: String,   default: 0
+  field :hidden,  type: Boolean,  default: false
   field :comment
   field :content
 

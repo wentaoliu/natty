@@ -7,7 +7,6 @@ zh-CN:
         title: 标题
         time: 时间
         place: 地点
-        public: 公开？
     show:
       edit: 编辑
       delete: 删除
@@ -18,7 +17,7 @@ zh-CN:
       starts_at: 开始时间
       ends_at: 结束时间
       place: 地点
-      public: 公开的?
+      hidden: 隐藏?
       content: 内容
       submit: 确认
       cancel: 取消

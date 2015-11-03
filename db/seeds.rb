@@ -5,5 +5,5 @@ User.create!(
   password_confirmation: 'password',
   admin: true,
   state: 1,
-  email: 'admin@rtiss.org'
+  email: 'admin@example.com'
 )

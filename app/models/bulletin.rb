@@ -5,9 +5,9 @@ class Bulletin
 
   belongs_to :user
 
-  field :title, type: String
+  field :title,   type: String
   field :content, type: String
-  field :public, type: Boolean, default: false
+  field :hidden,  type: Boolean, default: false
 
   validates :title, presence: true
   validates :content, presence: true

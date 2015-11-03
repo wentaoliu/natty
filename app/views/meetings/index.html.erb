@@ -25,8 +25,7 @@
     <tr>
       <th class="eight wide"><%=t '.table.title' %></th>
       <th class="four wide"><%=t '.table.time' %></th>
-      <th class="three wide"><%=t '.table.place' %></th>
-      <th class="one wide"><%=t '.table.public' %></th>
+      <th class="four wide"><%=t '.table.place' %></th>
     </tr>
   </thead>
   <tbody>
@@ -35,11 +34,9 @@
         <td><%= link_to item.title, item %></td>
         <td><%= "#{l item.starts_at,format: :short} - #{l item.ends_at,format: :short}" %></td>
         <td><%= item.place %></td>
-        <td><%= item.public ? content_tag('i',nil,class:'checkmark icon')
-              : content_tag('i',nil, class:'remove icon') %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= pagination meetings_path, params[:page], @pages %>
+<%= paginate @meetings %>

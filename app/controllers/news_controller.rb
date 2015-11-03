@@ -3,21 +3,16 @@ class NewsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_news, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 15
 
   # GET /news
   # GET /news.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    if params[:search].nil?
-      count = News.count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @news = News.limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
-    else
-      count = News.where(title: /.*#{params[:search]}.*/i).count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @news = News.where(title: /.*#{params[:search]}.*/i)
-                .limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
+    res = News.where(hidden: false)
+    if params[:search].present?
+      res = res.where(title: /.*#{params[:search]}.*/i)
+    end
+    @news = res.order(created_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
     end
   end
 
@@ -84,6 +79,6 @@ class NewsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def news_params
-    params.require(:news).permit(:title, :content, :public)
+    params.require(:news).permit(:title, :content, :hidden)
   end
 end

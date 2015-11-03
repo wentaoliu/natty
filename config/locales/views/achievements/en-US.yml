@@ -24,7 +24,7 @@ en-US:
       - Award
       - English Paper
       content: Content
-      public: Public?
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

@@ -15,7 +15,7 @@ zh-CN:
       title: 标题
       maintainer: 维护者
       content: 内容
-      public: 公开？
+      hidden: 隐藏？
       submit: 确认
       cancel: 取消
     edit:

@@ -13,7 +13,6 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 * Achievements
 * Instruments
 * Bulletins
-* Chat
 
 ## Deployment
 
@@ -21,12 +20,12 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
   CentOS/Fedora:
 
-  ```shell
+  ```
   yum install ImageMagick
   ```
   Debian/Ubuntu:
 
-  ```shell
+  ```
   apt-get install imagemagick
   ```
 
@@ -36,19 +35,19 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
 4. Initialize database:
 
-  ```ruby
+  ```
   rake RAILS_ENV=production db:seed
   ```
 
 5. Precompile static files:
 
-  ```ruby
+  ```
   rake RAILS_ENV=production assets:precompile
   ```
 
   If you deploy to a sub url, add:
 
-  ```ruby
+  ```
   RAILS_RELATIVE_URL_ROOT='/<YOUR_SUB_URL>'
   ```
 
@@ -58,7 +57,7 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
 8. Start:
 
-  ```shell
+  ```
   rails server -e production
   ```
 

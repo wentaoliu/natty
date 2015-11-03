@@ -3,22 +3,16 @@ class TopicsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_topic, only: [:show, :destroy]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 1
 
   # GET /topics
   # GET /topics.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    if params[:search].nil?
-      count = Topic.count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @topics = Topic.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
-    else
-      count = Topic.where(title: /.*#{params[:search]}.*/i).count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @topics = Topic.where(title: /.*#{params[:search]}.*/i)
-                  .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+    res = Topic.where(hidden: false)
+    if params[:search].present?
+      res = res.where(title: /.*#{params[:search]}.*/i)
     end
+    @topics = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
 
   # GET /topics/1

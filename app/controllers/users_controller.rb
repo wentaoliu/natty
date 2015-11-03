@@ -5,15 +5,12 @@ class UsersController < ApplicationController
 
   layout 'layouts/visitor', only: [:new, :create]
 
-  NUM_PER_PAGE = 20.to_f
+  NUM_PER_PAGE = 20
 
   # GET /users
   # GET /users.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    count = User.count
-    @pages = (count / NUM_PER_PAGE).ceil
-    @users = User.limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
+    @users = User.order(created_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
 
   # GET /users/1

@@ -15,7 +15,7 @@ en-US:
       title: Title
       maintainer: Maintainer
       content: Content
-      public: Public?
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

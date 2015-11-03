@@ -3,21 +3,16 @@ class BulletinsController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_user, only: [:edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 15
 
   # GET /bulletins
   # GET /bulletins.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    if params[:search].nil?
-      count = Bulletin.count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @bulletins = Bulletin.limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
-    else
-      count = Bulletin.where(title: /.*#{params[:search]}.*/i).count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @bulletins = Bulletin.where(title: /.*#{params[:search]}.*/i)
-                    .limit(NUM_PER_PAGE).offset(@offset).order(updated_at: :desc)
+    res = Bulletin.where(hidden: false)
+    if params[:search].present?
+      res = res.where(title: /.*#{params[:search]}.*/i)
+    end
+    @bulletins = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
     end
   end
 
@@ -85,6 +80,6 @@ class BulletinsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def bulletin_params
-    params.require(:bulletin).permit(:title, :content)
+    params.require(:bulletin).permit(:title, :content, :hidden)
   end
 end

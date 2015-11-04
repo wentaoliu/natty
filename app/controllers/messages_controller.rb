@@ -3,15 +3,12 @@ class MessagesController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 10
 
   # GET /messages
   # GET /messages.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    count = Message.count
-    @pages = (count / NUM_PER_PAGE).ceil
-    @messages = Message.limit(NUM_PER_PAGE).offset(@offset).order(created_at: :desc)
+    @messages = Message.order(created_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
     @message = Message.new
   end
 

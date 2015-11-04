@@ -13,7 +13,6 @@ class NewsController < ApplicationController
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
     @news = res.order(created_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
-    end
   end
 
   # GET /news/1

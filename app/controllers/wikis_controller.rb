@@ -3,22 +3,16 @@ class WikisController < ApplicationController
   before_filter :require_admin, only: [:destroy]
   before_action :set_wiki, only: [:show, :edit, :update, :destroy, :versions]
 
-  NUM_PER_PAGE = 15.to_f
+  NUM_PER_PAGE = 15
 
   # GET /wikis
   # GET /wikis.json
   def index
-    @offset = params[:page].nil? ? 0 : NUM_PER_PAGE * (params[:page].to_i - 1)
-    if params[:search].nil?
-      count = Wiki.count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @wikis = Wiki.limit(NUM_PER_PAGE).offset(@offset)
-    else
-      count = Wiki.where(title: /.*#{params[:search]}.*/i).count
-      @pages = (count / NUM_PER_PAGE).ceil
-      @wikis = Wiki.where(title: /.*#{params[:search]}.*/i)
-                .limit(@per_page).offset(@offset)
+    res = Wiki.where(hidden: false)
+    if params[:search].present?
+      res = res.where(title: /.*#{params[:search]}.*/i)
     end
+    @wikis = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
 
   # GET /wikis/1

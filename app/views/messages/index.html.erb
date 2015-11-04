@@ -31,7 +31,7 @@
   <% end %>
 <% end if @messages %>
 
-<%= pagination messages_path, params[:page], @pages %>
+<%= paginate @messages %>
 
 
 <div class="ui standard modal" id="new-message-modal">
@@ -48,9 +48,11 @@
     <% end %>
   </div>
   <div class="actions">
-    <button type="button" class="ui blue button"
-        onClick="$('#new-message-form').submit();"><%=t '.submit' %></button>
-    <button type="button" class="ui button"><%=t '.cancel' %></button>
+    <button type="button" class="ui positive right labeled icon button"
+      onClick="$('#new-message-form').submit();">
+      <%=t '.submit' %><i class="checkmark icon"></i>
+    </button>
+    <button type="button" class="ui cancel button"><%=t '.cancel' %></button>
   </div>
 </div>
 

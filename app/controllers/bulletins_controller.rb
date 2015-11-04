@@ -13,7 +13,6 @@ class BulletinsController < ApplicationController
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
     @bulletins = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
-    end
   end
 
   # GET /bulletin/1

@@ -56,11 +56,12 @@
     <div class="right menu">
       <div class="ui dropdown item" data-content="<%=t 'menu.popup.username' %>"
         style="padding-top:5px;padding-bottom:5px;">
-        <div class="ui image label"
-          style="padding-left:3px;padding-top:7px;padding-bottom:7px;margin-top:0;margin-bottom:0;">
-          <%= image_tag current_user.avatar.url(:thumb) %>
+        <div class="text">
+          <%= image_tag current_user.avatar.url(:thumb), class: 'ui avatar image' %>
+
           <%= current_user.name %>
         </div>
+        <i class="dropdown icon"></i>
         <div class="menu">
           <%= link_to edit_profile_path, class:'item' do %>
             <i class="user icon"></i><%=t 'menu.profile' %>
@@ -79,22 +80,16 @@
   </div>
   <!-- main -->
   <div class="pusher">
-    <div class="ui page grid" style="padding-top:40px;">
+    <div class="ui container" style="margin-top:50px;">
       <% if notice %>
-        <div class="row">
-          <div class="sixteen wide column">
-            <div class="ui blue message">
-              <i class="close icon"></i>
-              <%=raw notice %>
-            </div>
-          </div>
+        <div class="ui blue message">
+          <i class="close icon"></i>
+          <%=raw notice %>
         </div>
       <% end %>
-      <div class="row">
-        <div class="sixteen wide column">
-          <%= yield %>
-        </div>
-      </div>
+
+      <%= yield %>
+
     </div>
   </div>
 </body>

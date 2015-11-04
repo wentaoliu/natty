@@ -12,8 +12,7 @@ class AchievementsController < ApplicationController
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
-      @achievements = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
-    end
+    @achievements = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
 
   # GET /users/1

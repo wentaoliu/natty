@@ -42,6 +42,12 @@ zh-CN:
       avatar: 头像
       photo: 照片
       resume: 简历
+      modules: 板块
+      permissions: 权限
+      read: 查看
+      create: 创建
+      edit: 更改
+      delete: 删除
     edit:
       edit: 编辑
       username: 用户名

@@ -27,12 +27,10 @@
   <% end %>
 </div>
 
-<% if is_admin? %>
-  <%= link_to @topic, method: :delete, data: { confirm: t('.delete_confirm') },
-      class:"ui red labeled icon button" do %>
-    <i class="trash icon"></i><%=t '.delete' %>
-  <% end %>
-<% end %>
+<%= link_to @topic, method: :delete, data: { confirm: t('.delete_confirm') },
+    class:"ui red labeled icon button" do %>
+  <i class="trash icon"></i><%=t '.delete' %>
+<% end if can? :destroy, @topic %>
 
 <div class="ui comments">
   <% @topic.comments.where(reply_to: nil).each do |comment| %>
@@ -92,36 +90,38 @@
     <%= f.button class:"ui fluid blue labeled submit icon button" do %>
       <i class="edit icon"></i><%= t('.comment') %>
     <% end %>
-  <% end %>
+  <% end if can? :create, Comment %>
 </div>
 
-<div class="ui small modal" id="reply-modal">
-  <i class="close icon"></i>
-  <div class="header">
-    <h4><%=t '.reply' %></h4>
+<% if can? :create, Comment %>
+  <div class="ui small modal" id="reply-modal">
+    <i class="close icon"></i>
+    <div class="header">
+      <h4><%=t '.reply' %></h4>
+    </div>
+    <div class="content">
+      <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
+            html:{class:"ui form",id:"reply-form"} do |f| %>
+        <div class="field">
+          <%= f.text_area :content %>
+        </div>
+        <%= f.hidden_field :reply_to %>
+      <% end %>
+    </div>
+    <div class="actions">
+      <button type="button" class="ui blue button"
+          onClick="$('#reply-form').submit();"><%=t '.modal.submit' %></button>
+      <button type="button" class="ui button"><%=t '.modal.cancel' %></button>
+    </div>
   </div>
-  <div class="content">
-    <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
-          html:{class:"ui form",id:"reply-form"} do |f| %>
-      <div class="field">
-        <%= f.text_area :content %>
-      </div>
-      <%= f.hidden_field :reply_to %>
-    <% end %>
-  </div>
-  <div class="actions">
-    <button type="button" class="ui blue button"
-        onClick="$('#reply-form').submit();"><%=t '.modal.submit' %></button>
-    <button type="button" class="ui button"><%=t '.modal.cancel' %></button>
-  </div>
-</div>
 
-<script>
-$(document).on("ready page:load", function() {
-  $('.reply-btn').click(function(){
-    var reply_to = $(this).attr('data-id');
-    $('#comment_reply_to').val(reply_to);
-    $('#reply-modal').modal('show');
+  <script>
+  $(document).on("ready page:load", function() {
+    $('.reply-btn').click(function(){
+      var reply_to = $(this).attr('data-id');
+      $('#comment_reply_to').val(reply_to);
+      $('#reply-modal').modal('show');
+    });
   });
-});
-</script>
+  </script>
+<% end %>

@@ -18,13 +18,11 @@
   <p>
     <%= link_to edit_meeting_path(@meeting), class:"ui labeled icon button" do %>
       <i class="edit icon"></i><%= t '.edit' %>
-    <% end %>
-    <% if is_admin? %>
-      <%= link_to @meeting, method: :delete, data: { confirm: t('.delete_confirm') },
-          class:"ui red labeled icon button" do %>
-        <i class="trash icon"></i><%=t '.delete' %>
-      <% end %>
-    <% end %>
+    <% end if can? :update, @meeting %>
+    <%= link_to @meeting, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"ui red labeled icon button" do %>
+      <i class="trash icon"></i><%=t '.delete' %>
+    <% end if can? :destroy, @meeting %>
   </p>
 </div>
 <div class="ui piled segment"><%= raw @meeting.content %></div>

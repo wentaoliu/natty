@@ -19,6 +19,7 @@ zh-CN:
       title: 标题
       content: 内容
       comment: 注释
+      hidden: 隐藏？
       submit: 确认
       cancel: 取消
     edit:

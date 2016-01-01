@@ -14,13 +14,11 @@
   <p>
     <%= link_to edit_news_path(@news), class:"ui labeled icon button" do %>
       <i class="edit icon"></i><%= t '.edit' %>
-    <% end %>
-    <% if is_admin? %>
-      <%= link_to @news, method: :delete, data: { confirm: t('.delete_confirm') },
-          class:"ui red labeled icon button" do %>
-        <i class="trash icon"></i><%=t '.delete' %>
-      <% end %>
-    <% end %>
+    <% end if can? :update, @news %>
+    <%= link_to @news, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"ui red labeled icon button" do %>
+      <i class="trash icon"></i><%=t '.delete' %>
+    <% end if can? :destroy, @news %>
   </p>
 </div>
 <div class="ui piled segment"><%= raw @news.content %></div>

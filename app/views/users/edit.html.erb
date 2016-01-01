@@ -94,14 +94,84 @@
     </div>
   </div>
 
-  <% if current_user.superadmin? %>
-    <div class="field">
-      <div class="ui toggle checkbox">
-        <%= f.check_box :admin %>
-        <%= f.label :admin, t('.admin') %>
-      </div>
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :admin %>
+      <%= f.label :admin, t('.admin') %>
     </div>
-  <% end %>
+  </div>
+
+  <h4 class="ui dividing header"><%= t('profiles.edit.permission') %></h4>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :auth_topic, t('profiles.edit.auth_topic') %>
+      <%= f.select :auth_topic,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :auth_comment, t('profiles.edit.auth_comment') %>
+      <%= f.select :auth_comment,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :auth_achievement, t('profiles.edit.auth_achievement') %>
+      <%= f.select :auth_achievement,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :auth_bulletin, t('profiles.edit.auth_bulletin') %>
+      <%= f.select :auth_bulletin,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :auth_instrument, t('profiles.edit.auth_instrument') %>
+      <%= f.select :auth_instrument,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :auth_meeting, t('profiles.edit.auth_meeting') %>
+      <%= f.select :auth_meeting,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :auth_news, t('profiles.edit.auth_news') %>
+      <%= f.select :auth_news,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+
+    <div class="field">
+      <%= f.label :auth_resource, t('profiles.edit.auth_resource') %>
+      <%= f.select :auth_resource,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :auth_wiki, t('profiles.edit.auth_wiki') %>
+      <%= f.select :auth_wiki,
+        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
+        {},{class:"ui dropdown"} %>
+    </div>
+  </div>
+
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
   <%= link_to t('.cancel'), users_path, class:"ui button" %>

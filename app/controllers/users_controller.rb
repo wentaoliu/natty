@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
-  before_filter :require_admin, except: [:new, :create, :verify]
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   layout 'layouts/visitor', only: [:new, :create]
@@ -54,14 +54,11 @@ class UsersController < ApplicationController
   def update
     state = @user.state
     respond_to do |format|
-      user_params =
-        if current_user.superadmin?
-          params.require(:user).permit(:username, :name, :email, :position,
-            :grade, :photo, :avatar, :resume, :state, :rank, :email_public, :admin)
-        else
-          params.require(:user).permit(:username, :name, :email, :position,
-            :grade, :photo, :avatar, :resume, :state, :rank, :email_public)
-        end
+      user_params = params.require(:user)
+        .permit(:username, :name, :email, :position,
+          :grade, :photo, :avatar, :resume, :state, :rank, :email_public, :admin,
+          :auth_topic, :auth_comment, :auth_achievement, :auth_bulletin,
+          :auth_instrument, :auth_meeting, :auth_news, :auth_resource, :auth_wiki)
       if @user.update(user_params)
         if state == 0
           if @user.state == 1

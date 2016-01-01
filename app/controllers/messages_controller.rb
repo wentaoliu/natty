@@ -1,6 +1,4 @@
 class MessagesController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   NUM_PER_PAGE = 10

@@ -1,6 +1,4 @@
 class PicturesController < ApplicationController
-  before_filter :require_signin
-
   def create
     @picture = Picture.new(image: params[:upload_file])
     @picture.save

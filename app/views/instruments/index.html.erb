@@ -17,7 +17,7 @@
   <% end %>
   <%= link_to new_instrument_path, class:"ui green labeled icon button" do %>
     <i class="plus icon"></i><%=t '.new' %>
-  <% end %>
+  <% end if can? :create, Instrument %>
 </div>
 
 <table class="ui table segment">

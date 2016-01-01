@@ -14,13 +14,11 @@
   <p>
     <%= link_to edit_achievement_path(@achievement), class:"ui labeled icon button" do %>
       <i class="edit icon"></i><%= t '.edit' %>
-    <% end %>
-    <% if is_admin? %>
-      <%= link_to @achievement, method: :delete, data: { confirm: t('.delete_confirm') },
-          class:"ui red labeled icon button" do %>
-        <i class="trash icon"></i><%=t '.delete' %>
-      <% end %>
-    <% end %>
+    <% end if can? :update, @achievement %>
+    <%= link_to @achievement, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"ui red labeled icon button" do %>
+      <i class="trash icon"></i><%=t '.delete' %>
+    <% end if can? :destroy, @achievement %>
   </p>
 </div>
 <div class="ui piled segment"><%= raw @achievement.content %></div>

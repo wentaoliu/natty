@@ -1,6 +1,5 @@
 class WikisController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_wiki, only: [:show, :edit, :update, :destroy, :versions]
 
   NUM_PER_PAGE = 15
@@ -8,7 +7,7 @@ class WikisController < ApplicationController
   # GET /wikis
   # GET /wikis.json
   def index
-    res = Wiki.where(hidden: false)
+    res = can?(:create, Wiki) ? Wiki : Wiki.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
@@ -82,6 +81,6 @@ class WikisController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def wiki_params
-    params.require(:wiki).permit(:title, :content, :comment)
+    params.require(:wiki).permit(:title, :content, :comment, :hidden)
   end
 end

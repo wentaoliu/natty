@@ -20,5 +20,21 @@ en-US:
       grade: Grade
       resume: Resume
       photo: Upload photo
+      permission: Permission
+      permissions:
+      - Ban
+      - Read
+      - Create
+      - Edit
+      - Delete
+      auth_topic: Topic Permission
+      auth_comment: Comment Permission
+      auth_achievement: Achievement Permission
+      auth_bulletin: Bulletin Permission
+      auth_instrument: Instrument Permission
+      auth_meeting: Meeting Permission
+      auth_news: News Permission
+      auth_resource: Resource Permission
+      auth_wiki: Wiki Permission
       submit: Save
       cancel: Cancel

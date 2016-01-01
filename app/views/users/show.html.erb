@@ -14,11 +14,11 @@
   <p>
     <%= link_to edit_user_path(@user), class:"ui labeled icon button" do %>
       <i class="edit icon"></i><%= t '.edit' %>
-    <% end %>
+    <% end if can? :update, @user %>
     <%= link_to @user, method: :delete, data: { confirm: t('.delete_confirm') },
         class:"ui red labeled icon button" do %>
       <i class="minus circle icon"></i><%=t '.delete' %>
-    <% end %>
+    <% end if can? :destroy, @user %>
   </p>
 </div>
 
@@ -45,7 +45,7 @@
   </div>
   <div class="item">
     <div class="header"><%=t '.position' %></div>
-    <%= @user.position %>
+    <%= t('profiles.edit.positions')[@user.position] %>
   </div>
   <div class="item">
     <div class="header"><%=t '.grade' %></div>
@@ -92,3 +92,55 @@
     <%=raw @user.resume %>
   </div>
 </div>
+
+<table class="ui celled structured table">
+  <thead>
+    <tr>
+      <th rowspan="2" class="center aligned"><%=t '.modules' %></th>
+      <th colspan="4" class="center aligned"><%=t '.permissions' %></th>
+    </tr>
+    <tr>
+      <th class="center aligned"><%=t '.read' %></th>
+      <th class="center aligned"><%=t '.create' %></th>
+      <th class="center aligned"><%=t '.edit' %></th>
+      <th class="center aligned"><%=t '.delete' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% modules = [Achievement, Bulletin, Comment, Instrument, Meeting, News,
+      Resource, Topic, Wiki] %>
+    <% for m in modules %>
+      <tr>
+        <td><%=t "profiles.edit.auth_#{m.to_s.downcase}" %></td>
+        <td class="center aligned">
+          <% if @user.can? :read, m %>
+            <i class="large green checkmark icon"></i>
+          <% else %>
+            <i class="large red remove icon"></i>
+          <% end %>
+        </td>
+        <td class="center aligned">
+          <% if @user.can? :create, m %>
+            <i class="large green checkmark icon"></i>
+          <% else %>
+            <i class="large red remove icon"></i>
+          <% end %>
+        </td>
+        <td class="center aligned">
+          <% if @user.can? :update, m %>
+            <i class="large green checkmark icon"></i>
+          <% else %>
+            <i class="large red remove icon"></i>
+          <% end %>
+        </td>
+        <td class="center aligned">
+          <% if @user.can? :destroy, m %>
+            <i class="large green checkmark icon"></i>
+          <% else %>
+            <i class="large red remove icon"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -18,10 +18,10 @@
       place: @schedule.place } %>
   </div>
   <p>
-    <%= link_to edit_schedule_path(@schedule), class:"ui labeled icon button" do %>
-      <i class="edit icon"></i><%=t '.edit' %>
-    <% end %>
-    <% if current_user?(@schedule.user) %>
+    <% if can? :manage, @schedule %>
+      <%= link_to edit_schedule_path(@schedule), class:"ui labeled icon button" do %>
+        <i class="edit icon"></i><%=t '.edit' %>
+      <% end %>
       <%= link_to @schedule, method: :delete, data: { confirm: t('.delete_confirm') },
           class:'ui red labeled icon button' do %>
         <i class="edit icon"></i><%=t '.delete' %>

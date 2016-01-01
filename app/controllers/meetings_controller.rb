@@ -1,6 +1,5 @@
 class MeetingsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
   NUM_PER_PAGE = 15
@@ -8,7 +7,7 @@ class MeetingsController < ApplicationController
   # GET /meeting
   # GET /meeting.json
   def index
-    res = Meeting.where(hidden: false)
+    res = can?(:create, Meeting) ? Meeting : Meeting.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end

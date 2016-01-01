@@ -21,6 +21,12 @@
       <%= f.label :comment, t('.comment') %>
       <%= f.text_field :comment, value:''%>
   </div>
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :hidden %>
+      <%= f.label :hidden, t('.hidden') %>
+    </div>
+  </div>
   <%= f.submit t('.submit'), class:"ui blue button" %>
   <%= link_to t('.cancel'), wikis_path, class:"ui button" %>
 <% end %>

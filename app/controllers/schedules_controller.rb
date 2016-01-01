@@ -1,6 +1,5 @@
 class SchedulesController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /schedule
@@ -74,6 +73,6 @@ class SchedulesController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def schedule_params
     params.require(:schedule)
-      .permit(:title, :content, :starts_at, :ends_at, :place, :public, :description)
+      .permit(:title, :content, :starts_at, :ends_at, :place, :hidden, :description)
   end
 end

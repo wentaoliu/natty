@@ -1,6 +1,5 @@
 class InstrumentsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
   NUM_PER_PAGE = 15
@@ -8,7 +7,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments
   # GET /instruments.json
   def index
-    res = Instrument.where(hidden: false)
+    res = can?(:create, Instrument) ? Instrument : Instrument.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end

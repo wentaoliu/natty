@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_topic, only: [:create, :destroy]
 
   # POST /comments(.:format)

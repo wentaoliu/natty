@@ -31,37 +31,6 @@
   <div class="eight wide column">
     <div class="ui segment">
       <div class="ui blue header">
-        <i class="briefcase icon"></i>
-        <div class="content"><%=t 'module.meetings' %></div>
-      </div>
-      <div class="ui divider"></div>
-      <% if @meetings.count == 0 %>
-        <p><%=t '.meetings.none' %></p>
-      <% elsif @meetings.count == 1 %>
-        <p><%= link_to t('.meetings.only_one'), meetings_path %></p>
-      <% else %>
-        <p><%= link_to t('.meetings.more_than_one',{number: @meetings.count}), meetings_path %></p>
-      <% end %>
-      <% if @meetings.count > 0 %>
-        <div class="ui divided list">
-          <% @meetings.each do |meeting| %>
-            <div class="item">
-              <div class="content">
-                <%= link_to meeting.title, meeting, class:'header' %>
-                <%= t '.meetings.info', { starts_at: (l meeting.starts_at, :format=>:long),
-                  ends_at:(l meeting.ends_at, :format=>:long),
-                  place: meeting.place } %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="eight wide column">
-    <div class="ui segment">
-      <div class="ui blue header">
         <i class="calendar icon"></i>
         <div class="content"><%=t 'module.schedule' %></div>
       </div>
@@ -82,6 +51,37 @@
                 <%= t '.meetings.info', { starts_at: (l item.starts_at, :format=>:long),
                   ends_at:(l item.ends_at, :format=>:long),
                   place: item.place } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="eight wide column">
+    <div class="ui segment">
+      <div class="ui blue header">
+        <i class="briefcase icon"></i>
+        <div class="content"><%=t 'module.meetings' %></div>
+      </div>
+      <div class="ui divider"></div>
+      <% if @meetings.count == 0 %>
+        <p><%=t '.meetings.none' %></p>
+      <% elsif @meetings.count == 1 %>
+        <p><%= link_to t('.meetings.only_one'), meetings_path %></p>
+      <% else %>
+        <p><%= link_to t('.meetings.more_than_one',{number: @meetings.count}), meetings_path %></p>
+      <% end %>
+      <% if @meetings.count > 0 %>
+        <div class="ui divided list">
+          <% @meetings.each do |meeting| %>
+            <div class="item">
+              <div class="content">
+                <%= link_to meeting.title, meeting, class:'header' %>
+                <%= t '.meetings.info', { starts_at: (l meeting.starts_at, :format=>:long),
+                  ends_at:(l meeting.ends_at, :format=>:long),
+                  place: meeting.place } %>
               </div>
             </div>
           <% end %>

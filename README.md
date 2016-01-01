@@ -1,5 +1,7 @@
 # RTISS
 
+[![Dependency Status](https://gemnasium.com/wentaoliu/rtiss.svg)](https://gemnasium.com/wentaoliu/rtiss)
+
 RTISS (Research Team Information Sharing System) is a web application based on Ruby on Rails, providing a platform for research team members to exchange information quickly and easily.
 
 ## Features

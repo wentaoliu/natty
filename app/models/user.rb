@@ -52,7 +52,7 @@ class User
   field :current_sign_in_ip,    type: String
 
   field :verify_email_token,    type: String
-  field :verify_email_time,    type: DateTime
+  field :verify_email_time,     type: DateTime
 
   field :reset_password_token,  type: String
   field :reset_password_time,   type: DateTime
@@ -78,6 +78,10 @@ class User
     return self.username == 'admin'
   end
 
+  def admin?
+    return self.admin || superadmin?
+  end
+
   before_save { self.username = username.downcase }
   before_create :create_remember_token
 
@@ -94,15 +98,51 @@ class User
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
   validates_attachment :photo,  content_type: { content_type: /\Aimage\/.*\Z/ }
 
-  has_many :topics,     dependent: :destroy
+  PERMISSION = {
+    none: 0,
+    read: 1,
+    create: 2,
+    update: 3,
+    manage: 4,
+  }
+
+  def self.permissions
+    return PERMISSION
+  end
+
+  has_many :topics,        dependent: :destroy
+  field :auth_topic,       type: Integer,  default: 1
+  field :auth_comment,     type: Integer,  default: 1
+
   has_many :wikis
+  field :auth_wiki,        type: Integer,  default: 1
+
   has_many :news
+  field :auth_news,        type: Integer,  default: 1
+
   has_many :resources
+  field :auth_resource,    type: Integer,  default: 1
+
+  has_many :achievements
+  field :auth_achievement, type: Integer,  default: 1
+
   has_many :schedules
+
   has_many :instruments
+  field :auth_instrument,  type: Integer,  default: 1
+
   has_many :bulletins
+  field :auth_bulletin,    type: Integer,  default: 1
+
   has_many :meetings
+  field :auth_meeting,     type: Integer,  default: 1
+
   has_many :messages
+
+  def ability
+    @ability ||= Ability.new(self)
+  end
+  delegate :can?, :cannot?, :to => :ability
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

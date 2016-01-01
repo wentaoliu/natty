@@ -5,12 +5,14 @@
       <%=t 'module.resources' %>
     </div>
   </h2>
-  <p>
-    <button type="button" id="new-folder-btn" class="ui green labeled icon button">
-      <i class="folder outline icon"></i><%=t '.new.folder' %></button>
-    <button type="button" id="new-file-btn" class="ui green labeled icon button">
-      <i class="cloud upload icon"></i><%=t '.new.resource' %></button>
-  </p>
+  <% if can? :create, Resource %>
+    <p>
+      <button type="button" id="new-folder-btn" class="ui green labeled icon button">
+        <i class="folder outline icon"></i><%=t '.new.folder' %></button>
+      <button type="button" id="new-file-btn" class="ui green labeled icon button">
+        <i class="cloud upload icon"></i><%=t '.new.resource' %></button>
+    </p>
+  <% end %>
 </div>
 <div class="ui breadcrumb">
   <%= link_to t('.breadcrumb.root'), resources_path, class:"section" %>
@@ -49,7 +51,7 @@
           <% end %>
         </td>
         <td>
-          <% if !item.public %>
+          <% if item.hidden %>
               <i class="lock icon"></i>
           <% end %>
         </td>
@@ -66,6 +68,8 @@
     <% end %>
   </tbody>
 </table>
+
+<% if can? :create, Resource %>
 
 <div class="ui small modal" id="new-folder-modal">
   <i class="close icon"></i>
@@ -108,8 +112,8 @@
       </div>
       <div class="field">
         <div class="ui toggle checkbox">
-          <%= f.check_box :public %>
-          <%= f.label :public, t('.modal.resource.public') %>
+          <%= f.check_box :hidden %>
+          <%= f.label :hidden, t('.modal.resource.hidden') %>
         </div>
         <p><%=t '.modal.resource.help' %></p>
       </div>
@@ -139,3 +143,5 @@ $(document).on("ready page:load", function() {
   ;
 });
 </script>
+
+<% end %>

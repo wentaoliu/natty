@@ -21,5 +21,5 @@ en-US:
         resource:
           title: Title
           document: Document
-          public: Public?
+          hidden: Hidden?
           help: Public files can be accessed from Application Programming Interface (API). Make sure you have the right distributing this file.

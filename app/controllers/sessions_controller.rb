@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :require_signin, only: [:destroy]
+  skip_before_action :require_signin, except: [:destroy]
   include SimpleCaptcha::ControllerHelpers
 
   layout 'layouts/visitor'

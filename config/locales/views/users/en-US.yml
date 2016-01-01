@@ -42,6 +42,12 @@ en-US:
       avatar: Avatar
       photo: Photo
       resume: Resume
+      modules: Modules
+      permissions: Permissions
+      read: Read
+      create: Create
+      edit: Edit
+      delete: Delete
     edit:
       edit: Edit
       username: Username

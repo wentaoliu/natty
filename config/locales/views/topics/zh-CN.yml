@@ -24,5 +24,6 @@ zh-CN:
       category: 分类
       tags: 标签
       tags_helper: 请使用斜杠（/）分隔多个标签
+      hidden: 隐藏？
       submit: 确认
       cancel: 取消

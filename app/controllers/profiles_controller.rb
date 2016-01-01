@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-  before_filter :require_signin
   before_action :set_user
 
   def edit

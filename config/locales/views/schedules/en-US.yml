@@ -14,7 +14,7 @@ en-US:
       ends_at: Ends at
       place: Place
       content: Details
-      public: Public?
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

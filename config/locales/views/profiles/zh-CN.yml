@@ -20,5 +20,21 @@ zh-CN:
       grade: 年级
       resume: 简历
       photo: 上传照片
+      permission: 权限
+      permissions:
+      - 禁止
+      - 查看
+      - 创建
+      - 更改
+      - 删除
+      auth_topic: 话题权限
+      auth_comment: 评论权限
+      auth_achievement: 成果权限
+      auth_bulletin: 公告权限
+      auth_instrument: 仪器权限
+      auth_meeting: 会议权限
+      auth_news: 新闻权限
+      auth_resource: 资源权限
+      auth_wiki: 维基权限
       submit: 保存
       cancel: 取消

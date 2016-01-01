@@ -1,6 +1,5 @@
 class BulletinsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_user, only: [:edit, :update, :destroy]
 
   NUM_PER_PAGE = 15
@@ -8,7 +7,7 @@ class BulletinsController < ApplicationController
   # GET /bulletins
   # GET /bulletins.json
   def index
-    res = Bulletin.where(hidden: false)
+    res = can?(:create, Bulletin) ? Bulletin : Bulletin.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end

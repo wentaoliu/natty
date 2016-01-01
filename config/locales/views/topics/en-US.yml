@@ -24,5 +24,6 @@ en-US:
       category: Category
       tags: Tags
       tags_helper: Separate tags with slashes (/)
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel

@@ -19,6 +19,7 @@ en-US:
       title: Title
       content: Content
       comment: Comment
+      hidden: Hidden?
       submit: Submit
       cancel: Cancel
     edit:

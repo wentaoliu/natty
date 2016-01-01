@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-  #before_filter :require_signin
+  skip_before_action :require_signin
   before_action :verify_token, only: [:edit, :update]
   include SimpleCaptcha::ControllerHelpers
 

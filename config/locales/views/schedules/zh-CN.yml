@@ -14,7 +14,7 @@ zh-CN:
       ends_at: 结束
       place: 地点
       content: 内容
-      public: 公开?
+      hidden: 隐藏?
       submit: 确定
       cancel: 取消
     edit:

@@ -1,14 +1,13 @@
 class TopicsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_topic, only: [:show, :destroy]
 
-  NUM_PER_PAGE = 1
+  NUM_PER_PAGE = 15
 
   # GET /topics
   # GET /topics.json
   def index
-    res = Topic.where(hidden: false)
+    res = can?(:create, Topic) ? Topic : Topic.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
@@ -62,6 +61,6 @@ class TopicsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def topic_params
-    params.require(:topic).permit(:title, :content, :category)
+    params.require(:topic).permit(:title, :content, :category, :hidden)
   end
 end

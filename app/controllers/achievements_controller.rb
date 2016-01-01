@@ -1,6 +1,5 @@
 class AchievementsController < ApplicationController
-  before_filter :require_signin
-  before_filter :require_admin, only: [:destroy]
+  load_and_authorize_resource
   before_action :set_achievement, only: [:show, :edit, :update, :destroy]
 
   NUM_PER_PAGE = 15
@@ -8,7 +7,7 @@ class AchievementsController < ApplicationController
   # GET /admin/research/
   # GET /admin/research/index
   def index
-    res = Achievement.where(hidden: false)
+    res = can?(:create, Achievement) ? Achievement : Achievement.where(hidden: false)
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
@@ -28,6 +27,7 @@ class AchievementsController < ApplicationController
   # POST /admin/research/create
   def create
     @achievement = Achievement.new(achievement_params)
+    @achievement.user = current_user
     respond_to do |format|
       if @achievement.save
         format.html { redirect_to @achievement, notice: t('.success') }
@@ -74,6 +74,6 @@ class AchievementsController < ApplicationController
 
   def achievement_params
     params.require(:achievement)
-      .permit(:title, :author, :link, :type, :date, :content, :public)
+      .permit(:title, :author, :link, :type, :date, :content, :hidden)
   end
 end

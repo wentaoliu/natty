@@ -28,16 +28,14 @@
     <p>
       <%= link_to edit_wiki_path(@wiki), class:"ui labeled icon button" do %>
         <i class="edit icon"></i><%= t '.edit' %>
-      <% end %>
+      <% end if can? :update, @wiki %>
       <%= link_to versions_wiki_path(@wiki), class:'ui labeled icon button' do %>
         <i class="history icon"></i><%= t '.versions' %>
       <% end %>
-      <% if is_admin? %>
-        <%= link_to @wiki, method: :delete, data: { confirm: t('.delete_confirm') },
-            class:"ui red labeled icon button" do %>
-          <i class="trash icon"></i><%=t '.delete' %>
-        <% end %>
-      <% end %>
+      <%= link_to @wiki, method: :delete, data: { confirm: t('.delete_confirm') },
+          class:"ui red labeled icon button" do %>
+        <i class="trash icon"></i><%=t '.delete' %>
+      <% end if can? :destroy, @wiki %>
     </p>
   <% end %>
 </div>

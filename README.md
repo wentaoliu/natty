@@ -20,16 +20,9 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
 1. Install ImageMagick:
 
-  CentOS/Fedora:
+  CentOS/Fedora: `yum install ImageMagick`
 
-  ```
-  yum install ImageMagick
-  ```
-  Debian/Ubuntu:
-
-  ```
-  apt-get install imagemagick
-  ```
+  Debian/Ubuntu: `apt-get install imagemagick`
 
 2. Clone the repository.
 
@@ -67,6 +60,6 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
 ## License
 
-Copyright(c) 2014-2015 [Wentao Liu](https://github.com/wentaoliu)
+Copyright(c) 2014-2016 [Wentao Liu](https://github.com/wentaoliu)
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)

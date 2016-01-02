@@ -26,7 +26,7 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 
 2. Clone the repository.
 
-3. Run `bundle install RAILS_ENV=production`.
+3. Run `bundle install`.
 
 4. Initialize database:
 

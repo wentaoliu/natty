@@ -8,7 +8,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="sessions" style="background-image: url('<%= asset_path("background.jpg") %>');">
+<body class="sessions" style="background-color: #F5F5F5;">
   <div class="ui menu">
     <%= link_to root_path, class:"item" do %>
       <b><%= t 'app.name.long' %></b>
@@ -51,5 +51,6 @@
       </div>
     </div>
   </div>
+  <canvas id="canvas" style="position:absolute;top:0px;left:0px;z-index:-1;"></canvas>
 </body>
 </html>

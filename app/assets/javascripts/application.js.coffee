@@ -4,6 +4,7 @@
 #= require semantic-ui
 #= require turbolinks
 #= require simditor
+#= require particles.js/particles.js
 #= require_tree .
 
 $(document).on 'ready page:load', ->
@@ -30,3 +31,5 @@ $(document).on 'ready page:load', ->
   error_fields = $('.field_with_errors')
   error_fields.parent('.field').addClass 'error'
   error_fields.children().unwrap()
+
+  particlesJS.load 'canvas', 'assets/particles.json'

@@ -31,5 +31,3 @@ $(document).on 'ready page:load', ->
   error_fields = $('.field_with_errors')
   error_fields.parent('.field').addClass 'error'
   error_fields.children().unwrap()
-
-  particlesJS.load 'canvas', '<%= asset_path "particles.json" %>'

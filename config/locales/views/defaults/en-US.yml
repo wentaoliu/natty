@@ -17,6 +17,7 @@ en-US:
     expense: Expense
     bulletin: Bulletin
     users: Users
+    groups: Groups
     messages: Messages
   menu:
     language: Language

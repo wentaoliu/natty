@@ -34,6 +34,8 @@
           t('module.bulletin'), bulletins_path, class:'item' if can? :read, Bulletin %>
     <%= link_to content_tag('i',nil,class:'large users icon') +
           t('module.users'), users_path, class:'item' if can? :read, User %>
+    <%= link_to content_tag('i',nil,class:'large sitemap icon') +
+          t('module.groups'), groups_path, class:'item' if can? :read, Group %>
   </div>
 
   <!-- top fixed menu -->

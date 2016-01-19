@@ -4,6 +4,9 @@ class User
   include Mongoid::Paperclip
   include ActiveModel::SecurePassword
 
+  has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'
+  has_and_belongs_to_many :member_of, inverse_of: :members, class_name: 'Group'
+
   field :username,              type: String
   field :password_digest,       type: String
   has_secure_password
@@ -110,33 +113,24 @@ class User
     return PERMISSION
   end
 
-  has_many :topics,        dependent: :destroy
-  field :auth_topic,       type: Integer,  default: 1
-  field :auth_comment,     type: Integer,  default: 1
+  embeds_one :permission, autobuild: true
 
+  def merged_permission
+    permissions_array = [self.permission, self.member_of.map(&:permission)].flatten
+    permissions_array.reduce do |a, b|
+      a.merge(b) { |key, v1, v2| v1 > v2 ? v1 : v2 }
+    end
+  end
+
+  has_many :topics, dependent: :destroy
   has_many :wikis
-  field :auth_wiki,        type: Integer,  default: 1
-
   has_many :news
-  field :auth_news,        type: Integer,  default: 1
-
   has_many :resources
-  field :auth_resource,    type: Integer,  default: 1
-
   has_many :achievements
-  field :auth_achievement, type: Integer,  default: 1
-
   has_many :schedules
-
   has_many :instruments
-  field :auth_instrument,  type: Integer,  default: 1
-
   has_many :bulletins
-  field :auth_bulletin,    type: Integer,  default: 1
-
   has_many :meetings
-  field :auth_meeting,     type: Integer,  default: 1
-
   has_many :messages
 
   def ability

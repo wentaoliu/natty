@@ -1,0 +1,24 @@
+en-US:
+  groups:
+    index:
+      search: Search
+      new: New Group
+      table:
+        name: Group Name
+        admins: Administrators
+        members: Members
+    show:
+      reply: Reply
+      delete: Delete
+      delete_confirm: Are you sure?
+      comment: Add Comment
+      modal:
+        submit: Submit
+        cancel: Cancel
+    new:
+      new: New
+    form:
+      name: Group Name
+      description: Description
+      submit: Submit
+      cancel: Cancel

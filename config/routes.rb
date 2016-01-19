@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     get 'verify', on: :collection
   end
+  resources :groups
   resources :wikis do
     member do
       get :versions

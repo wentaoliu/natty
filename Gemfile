@@ -38,7 +38,7 @@ gem 'mongoid-versioning', '~> 1.2.0'
 # Simditor
 gem 'simditor', '~> 2.3.6'
 # Semantic UI
-gem 'semantic-ui-sass', '~> 2.1.6.0'
+gem 'semantic-ui-sass', '~> 2.1.8.0'
 # I18n
 gem 'rails-i18n', '~> 4.0.0'
 # Captcha

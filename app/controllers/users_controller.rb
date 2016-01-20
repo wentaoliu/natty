@@ -57,10 +57,10 @@ class UsersController < ApplicationController
     state = @user.state
     respond_to do |format|
       user_params = params.require(:user)
-        .permit(:username, :name, :email, :position,
-          :grade, :photo, :avatar, :resume, :state, :rank, :email_public, :admin,
-          :auth_topic, :auth_comment, :auth_achievement, :auth_bulletin,
-          :auth_instrument, :auth_meeting, :auth_news, :auth_resource, :auth_wiki)
+        .permit(:username, :name, :email, :position, :grade, :photo, :avatar,
+          :resume, :state, :rank, :email_public, :admin,
+          permission_attributes: [:topic, :comment, :achievement, :bulletin,
+            :instrument, :meeting, :news, :resource, :wiki])
       if @user.update(user_params)
         if state == 0
           if @user.state == 1

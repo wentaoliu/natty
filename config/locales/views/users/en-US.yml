@@ -63,5 +63,21 @@ en-US:
       avatar: Avatar
       photo: Photo
       resume: Resume
+      permission: Permission
+      permissions:
+      - Ban
+      - Read
+      - Create
+      - Edit
+      - Delete
+      permission_topic: Topics Permission
+      permission_comment: Comments Permission
+      permission_achievement: Achievements Permission
+      permission_bulletin: Bulletins Permission
+      permission_instrument: Instruments Permission
+      permission_meeting: Meetings Permission
+      permission_news: News Permission
+      permission_resource: Resources Permission
+      permission_wiki: Wiki Permission
       submit: Submit
       cancel: Cancel

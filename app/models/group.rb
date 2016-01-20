@@ -6,6 +6,7 @@ class Group
   has_and_belongs_to_many :members, inverse_of: :member_of, class_name: 'User'
 
   embeds_one :permission, autobuild: true
+  accepts_nested_attributes_for :permission
 
   field :name,  type: String
   field :description

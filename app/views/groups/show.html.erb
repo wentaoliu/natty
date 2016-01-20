@@ -24,7 +24,7 @@
 
 <div class="ui list">
   <div class="item">
-    <div class="header"><%=t '.groupname' %></div>
+    <div class="header"><%=t '.name' %></div>
     <%= @group.name %>
   </div>
   <div class="item">
@@ -32,8 +32,12 @@
     <%= @group.description %>
   </div>
   <div class="item">
-    <div class="header"><%=t '.admin' %></div>
+    <div class="header"><%=t '.admins' %></div>
     <%= @group.admins.map(&:name).join(',') %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.members' %></div>
+    <%= @group.members.map(&:name).join(',') %>
   </div>
 </div>
 
@@ -55,7 +59,7 @@
       Resource, Topic, Wiki] %>
     <% for m in modules %>
       <tr>
-        <td><%=t "profiles.edit.auth_#{m.to_s.downcase}" %></td>
+        <td><%=t "users.edit.permission_#{m.to_s.downcase}" %></td>
         <td class="center aligned">
           <% if @group.permission.send(m.to_s.downcase) >= 1 %>
             <i class="large green checkmark icon"></i>

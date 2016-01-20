@@ -111,7 +111,7 @@
       Resource, Topic, Wiki] %>
     <% for m in modules %>
       <tr>
-        <td><%=t "profiles.edit.auth_#{m.to_s.downcase}" %></td>
+        <td><%=t "users.edit.permission_#{m.to_s.downcase}" %></td>
         <td class="center aligned">
           <% if @user.can? :read, m %>
             <i class="large green checkmark icon"></i>

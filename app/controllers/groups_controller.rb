@@ -69,7 +69,9 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group)
+      .permit(:name, :description, {admin_ids:[]}, {member_ids:[]},
+        permission_attributes: [:topic, :comment, :achievement, :bulletin,
+          :instrument, :meeting, :news, :resource, :wiki])
   end
-
 end

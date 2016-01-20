@@ -85,6 +85,13 @@ en-US:
       expired: The link has expired.
       success: Your email was successfully verified.
       failure: Email verification failed.
+  groups:
+    create:
+      success: Group was successfully created.
+    update:
+      success: Group was successfully updated.
+    destroy:
+      success: Group was successfully destroyed.
   passwords:
     verify_token:
       invalid: The link is invalid.

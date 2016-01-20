@@ -13,6 +13,7 @@ en-US:
       resource: Resource
       schedule: Schedule
       user: User
+      Group: Group
     attributes:
       topic:
         title: Title
@@ -54,3 +55,6 @@ en-US:
         name: Name
         email: Email
         password: Password
+      group:
+        name: Group name
+        description: Description

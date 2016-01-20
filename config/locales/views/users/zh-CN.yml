@@ -63,5 +63,21 @@ zh-CN:
       avatar: 头像
       photo: 照片
       resume: 简历
+      permission: 权限
+      permissions:
+      - 禁止
+      - 查看
+      - 创建
+      - 更改
+      - 删除
+      permission_topic: 话题权限
+      permission_comment: 评论权限
+      permission_achievement: 成果权限
+      permission_bulletin: 公告权限
+      permission_instrument: 仪器权限
+      permission_meeting: 会议权限
+      permission_news: 新闻权限
+      permission_resource: 资源权限
+      permission_wiki: 维基权限
       submit: 确认
       cancel: 取消

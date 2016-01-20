@@ -101,77 +101,84 @@
     </div>
   </div>
 
-  <h4 class="ui dividing header"><%= t('profiles.edit.permission') %></h4>
+  <h4 class="ui dividing header"><%= t('.permission') %></h4>
 
-  <div class="two fields">
-    <div class="field">
-      <%= f.label :auth_topic, t('profiles.edit.auth_topic') %>
-      <%= f.select :auth_topic,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
+  <%= f.fields_for :permission, @user.permission do |ff| %>
 
-    <div class="field">
-      <%= f.label :auth_comment, t('profiles.edit.auth_comment') %>
-      <%= f.select :auth_comment,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <%= f.label :auth_achievement, t('profiles.edit.auth_achievement') %>
-      <%= f.select :auth_achievement,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
+    <div class="two fields">
+      <div class="field">
+        <%= ff.label :topic, t('.permission_topic') %>
+        <%= ff.select :topic,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
+
+      <div class="field">
+        <%= ff.label :comment, t('.permission_comment') %>
+        <%= ff.select :comment,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :auth_bulletin, t('profiles.edit.auth_bulletin') %>
-      <%= f.select :auth_bulletin,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <%= f.label :auth_instrument, t('profiles.edit.auth_instrument') %>
-      <%= f.select :auth_instrument,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
+    <div class="two fields">
+      <div class="field">
+        <%= ff.label :achievement, t('.permission_achievement') %>
+        <%= ff.select :achievement,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
+
+      <div class="field">
+        <%= ff.label :bulletin, t('.permission_bulletin') %>
+        <%= ff.select :bulletin,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :auth_meeting, t('profiles.edit.auth_meeting') %>
-      <%= f.select :auth_meeting,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <%= f.label :auth_news, t('profiles.edit.auth_news') %>
-      <%= f.select :auth_news,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
+    <div class="two fields">
+      <div class="field">
+        <%= ff.label :instrument, t('.permission_instrument') %>
+        <%= ff.select :instrument,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
+
+      <div class="field">
+        <%= ff.label :meeting, t('.permission_meeting') %>
+        <%= ff.select :meeting,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :auth_resource, t('profiles.edit.auth_resource') %>
-      <%= f.select :auth_resource,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
-  </div>
-  <div class="two fields">
-    <div class="field">
-      <%= f.label :auth_wiki, t('profiles.edit.auth_wiki') %>
-      <%= f.select :auth_wiki,
-        User.permissions.map{|k,v| [t('profiles.edit.permissions')[v], v]},
-        {},{class:"ui dropdown"} %>
-    </div>
-  </div>
+    <div class="two fields">
+      <div class="field">
+        <%= ff.label :news, t('.permission_news') %>
+        <%= ff.select :news,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
 
+      <div class="field">
+        <%= ff.label :resource, t('.permission_resource') %>
+        <%= ff.select :resource,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
+    </div>
+
+    <div class="two fields">
+      <div class="field">
+        <%= ff.label :wiki, t('.permission_wiki') %>
+        <%= ff.select :wiki,
+          User.permissions.map{|k,v| [t('.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
+    </div>
+
+  <% end %>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
   <%= link_to t('.cancel'), users_path, class:"ui button" %>

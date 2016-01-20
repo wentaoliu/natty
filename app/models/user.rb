@@ -114,11 +114,12 @@ class User
   end
 
   embeds_one :permission, autobuild: true
+  accepts_nested_attributes_for :permission
 
   def merged_permission
     permissions_array = [self.permission, self.member_of.map(&:permission)].flatten
     permissions_array.reduce do |a, b|
-      a.merge(b) { |key, v1, v2| v1 > v2 ? v1 : v2 }
+      a.attributes.merge(b.attributes) { |key, v1, v2| v1 > v2 ? v1 : v2 }
     end
   end
 

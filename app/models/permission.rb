@@ -1,6 +1,9 @@
 class Permission
   include Mongoid::Document
 
+  embedded_in :user
+  embedded_in :group
+
   field :topic,       type: Integer,  default: 1
   field :comment,     type: Integer,  default: 1
   field :wiki,        type: Integer,  default: 1

@@ -8,17 +8,23 @@ en-US:
         admins: Administrators
         members: Members
     show:
-      reply: Reply
+      name: Group Name
+      description: Description
+      admins: Administrators
+      members: Members
+      modules: Modules
+      permissions: Permissions
+      read: Read
+      create: Create
+      edit: Edit
       delete: Delete
       delete_confirm: Are you sure?
-      comment: Add Comment
-      modal:
-        submit: Submit
-        cancel: Cancel
     new:
       new: New
     form:
       name: Group Name
       description: Description
+      admins: Administrators
+      members: Members
       submit: Submit
       cancel: Cancel

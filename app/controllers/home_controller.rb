@@ -17,9 +17,9 @@ class HomeController < ApplicationController
                   :user => current_user
                 )
     @news = if can?(:create, News)
-      News.order(created: :desc).limit(3)
+      News.order(created_at: :desc).limit(3)
     else
-      News.where(hidden: false).order(created: :desc).limit(3)
+      News.where(hidden: false).order(created_at: :desc).limit(3)
     end
   end
 

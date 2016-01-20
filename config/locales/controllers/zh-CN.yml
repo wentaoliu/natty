@@ -85,6 +85,13 @@ zh-CN:
       expired: 链接已过期。
       success: 邮箱验证成功。
       failure: 邮箱验证失败。
+  groups:
+    create:
+      success: 群组创建成功。
+    update:
+      success: 群组更新成功。
+    destroy:
+      success: 群组删除成功。        
   passwords:
     verify_token:
       invalid: 链接无效。

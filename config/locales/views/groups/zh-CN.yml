@@ -2,28 +2,29 @@ zh-CN:
   groups:
     index:
       search: 搜索
-      new: 新增话题
+      new: 新增群组
       table:
-        title: 标题
-        author: 作者
-        time: 时间
-        comments: 评论
+        name: 群组名称
+        admins: 管理员
+        members: 成员
     show:
-      reply: 回复
+      name: 群组名称
+      description: 简介
+      admins: 管理员
+      members: 成员
+      modules: 板块
+      permissions: 权限
+      read: 查看
+      create: 创建
+      edit: 更改
       delete: 删除
       delete_confirm: 你确定吗？
-      comment: 添加评论
-      modal:
-        submit: 确定
-        cancel: 取消
     new:
       new: 新增
     form:
-      title: 标题
-      content: 内容
-      category: 分类
-      tags: 标签
-      tags_helper: 请使用斜杠（/）分隔多个标签
-      hidden: 隐藏？
+      name: 群组名称
+      description: 简介
+      admins: 管理员
+      members: 成员
       submit: 确认
       cancel: 取消

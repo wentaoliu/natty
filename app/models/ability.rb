@@ -15,7 +15,7 @@ class Ability
       modules = [Achievement, Bulletin, Comment, Instrument, Meeting, News,
         Resource, Topic, Wiki]
       for m in modules
-        case user.merged_permission.send(m.to_s.downcase)
+        case user.merged_permission[m.to_s.downcase]
         when 1
           can :read, m, :hidden => false
         when 2

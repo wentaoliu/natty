@@ -42,9 +42,9 @@ gem 'semantic-ui-sass', '~> 2.1.8.0'
 # I18n
 gem 'rails-i18n', '~> 4.0.0'
 # Captcha
-gem 'simple_captcha2', '~> 0.3.4'
+gem 'simple_captcha2', '~> 0.4.0'
 # ImageMagick
-gem 'mini_magick', '~> 4.1.0'
+gem 'mini_magick', '~> 4.3.6'
 # Paperclip
 gem 'paperclip', '~> 4.3.2'
 gem 'mongoid-paperclip', '~> 0.0.10', :require => "mongoid_paperclip"

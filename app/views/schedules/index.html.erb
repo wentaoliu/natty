@@ -22,7 +22,7 @@
 </div>
 
 <div class="ui vertical segment calendar">
-  <%= month_calendar table: {class: "ui celled table"}, header: {class: "ui header"} do |date| %>
+  <%= month_calendar do |date| %>
     <div class="ui small circular label"><%= date.day %></div>
     <div class="ui bulleted list">
       <% @schedules.each do |item| %>

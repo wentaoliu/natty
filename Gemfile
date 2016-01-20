@@ -13,7 +13,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 4.0'
+gem 'jquery-rails', '~> 4.1.0'
 gem 'jquery-cookie-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -43,13 +43,11 @@ gem 'semantic-ui-sass', '~> 2.1.8.0'
 gem 'rails-i18n', '~> 4.0.0'
 # Captcha
 gem 'simple_captcha2', '~> 0.4.0'
-# ImageMagick
-gem 'mini_magick', '~> 4.3.6'
 # Paperclip
 gem 'paperclip', '~> 4.3.2'
 gem 'mongoid-paperclip', '~> 0.0.10', :require => "mongoid_paperclip"
 # Calendar
-gem "simple_calendar", "~> 1.1.10"
+gem "simple_calendar", "~> 2.0.3"
 # Paginator
 gem 'kaminari', '~> 0.16.3'
 # Authorization
@@ -64,7 +62,7 @@ group :development, :test do
   gem 'byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console', '~> 3.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

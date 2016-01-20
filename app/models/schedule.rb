@@ -17,7 +17,7 @@ class Schedule
 
   def self.find_by_user_and_month(user, year, month)
     start_date = DateTime.new(year,month)
-    end_date = DateTime.new(year,month + 1)
+    end_date = start_date + 1.month
     where(user: user)
       .any_of({:starts_at.gte => start_date, :starts_at.lt => end_date},
               {:ends_at.gte => start_date, :ends_at.lt => end_date })

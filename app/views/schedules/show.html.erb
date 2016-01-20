@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="ui visible message">
-    <% if !@schedule.public %>
+    <% if @schedule.hidden %>
       <i class="lock icon"></i>
     <% end %>
     <%= t '.info', { starts_at: (l @schedule.starts_at, :format=>:long),

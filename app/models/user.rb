@@ -133,6 +133,7 @@ class User
   has_many :bulletins
   has_many :meetings
   has_many :messages
+  has_many :inventories
 
   def ability
     @ability ||= Ability.new(self)

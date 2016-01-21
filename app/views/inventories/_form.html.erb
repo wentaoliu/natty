@@ -1,0 +1,104 @@
+<% if @inventory.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@inventory.errors.count, "error") %> prohibited this news from being saved:</h2>
+
+    <ul>
+    <% @inventory.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for(@inventory, :html=>{:class => "ui form segment"}) do |f| %>
+  <div class="field">
+    <%= f.label :item_name, t('.item_name') %>
+    <%= f.text_field :item_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price, t('.price') %>
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :quantity, t('.quantity') %>
+      <%= f.text_field :quantity %>
+    </div>
+
+    <div class="field">
+      <%= f.label :unit_size, t('.unit_size') %>
+      <%= f.text_field :unit_size %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :url, t('.url') %>
+    <div class="ui labeled input">
+      <div class="ui label">http://</div>
+      <%= f.text_field :url %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :technical_details, t('.technical_details') %>
+    <%= f.text_area :technical_details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :expiration_date, t('.expiration_date') %>
+    <%= f.date_field :expiration_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cas_number, t('.cas_number') %>
+    <%= f.text_field :cas_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :serial_number, t('.serial_number') %>
+    <%= f.text_field :serial_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bought_from, t('.bought_from') %>
+    <%= f.text_field :bought_from %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, t('.location') %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sub_location, t('.sub_location') %>
+    <%= f.text_field :sub_location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location_details, t('.location_details') %>
+    <%= f.text_field :location_details %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type, t('.type') %>
+    <%= f.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vendor_name, t('.vendor_name') %>
+    <%= f.text_field :vendor_name %>
+  </div>
+
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :hidden %>
+      <%= f.label :hidden, t('.hidden') %>
+    </div>
+  </div>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), inventories_path, class:"ui button" %>
+<% end %>

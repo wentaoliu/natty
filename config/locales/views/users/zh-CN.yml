@@ -79,5 +79,6 @@ zh-CN:
       permission_news: 新闻权限
       permission_resource: 资源权限
       permission_wiki: 维基权限
+      permission_inventory: 库存权限
       submit: 确认
       cancel: 取消

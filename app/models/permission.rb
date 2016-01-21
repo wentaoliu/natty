@@ -9,6 +9,7 @@ class Permission
   field :wiki,        type: Integer,  default: 1
   field :news,        type: Integer,  default: 1
   field :resource,    type: Integer,  default: 1
+  field :inventory,   type: Integer,  default: 1
   field :achievement, type: Integer,  default: 1
   field :instrument,  type: Integer,  default: 1
   field :bulletin,    type: Integer,  default: 1

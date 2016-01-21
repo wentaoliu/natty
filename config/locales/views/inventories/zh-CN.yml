@@ -1,0 +1,54 @@
+zh-CN:
+  inventories:
+    index:
+      search: 搜索
+      new: 新增库存
+      table:
+        item_name: 项目名称
+        serial_number: 序列号
+        quantity: 数量
+        location: 位置
+        type: 种类
+        vendor_name: 供应商名称
+    show:
+      item_name: 项目名称
+      price: 价格
+      quantity: 数量
+      unit_size: 单位
+      url: 链接
+      technical_details: 技术细节
+      expiration_date: 过期日期
+      cas_number: CAS编号
+      serial_number: 序列号
+      bought_from: 购买于
+      location: 位置
+      sub_location: 子位置
+      location_details: 具体位置
+      type: 类型
+      vendor_name: 供应商名称
+      edit: 编辑
+      delete: 删除
+      delete_confirm: 你确定吗？
+    form:
+      item_name: 项目名称
+      price: 价格
+      quantity: 数量
+      unit_size: 单位
+      url: 链接
+      technical_details: 技术细节
+      expiration_date: 过期日期
+      cas_number: CAS编号
+      serial_number: 序列号
+      bought_from: 购买于
+      location: 位置
+      sub_location: 子位置
+      location_details: 具体位置
+      type: 类型
+      vendor_name: 供应商名称
+      hidden: 隐藏？
+      submit: 确认
+      cancel: 取消
+    edit:
+      edit: 编辑
+    new:
+      new: 新增

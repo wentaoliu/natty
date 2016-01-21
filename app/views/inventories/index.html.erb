@@ -1,0 +1,48 @@
+<div class="ui vertical segment">
+  <h2 class="ui header">
+    <i class="circular inverted blue lab icon"></i>
+    <div class="content">
+      <%=t 'module.inventories' %>
+    </div>
+  </h2>
+  <%= form_tag inventories_path, method:'GET', class:"ui form" do %>
+    <div class="inline fields">
+      <div class="field">
+        <%= text_field_tag :search, params[:search], placeholder:t('.search') %>
+      </div>
+      <div class="field">
+        <%= submit_tag t('.search'), class:"ui blue button" %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to new_inventory_path, class:"ui green labeled icon button" do %>
+    <i class="plus icon"></i><%=t '.new' %>
+  <% end if can? :create, Inventory %>
+</div>
+
+<table class="ui table segment">
+  <thead>
+    <tr>
+        <th class="three wide"><%=t '.table.item_name' %></th>
+        <th class="two wide"><%=t '.table.serial_number' %></th>
+        <th class="two wide"><%=t '.table.quantity' %></th>
+        <th class="four wide"><%=t '.table.location' %></th>
+        <th class="two wide"><%=t '.table.type' %></th>
+        <th class="three wide"><%=t '.table.vendor_name' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inventories.each do |inventory| %>
+    <tr>
+      <td><%= link_to inventory.item_name, inventory_path(inventory) %></td>
+      <td><%= inventory.serial_number %></td>
+      <td><%= inventory.quantity.to_s + inventory.unit_size %></td>
+      <td><%= inventory.location + inventory.sub_location %></td>
+      <td><%= inventory.type %></td>
+      <td><%= inventory.vendor_name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @inventories %>

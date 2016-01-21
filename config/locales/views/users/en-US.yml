@@ -79,5 +79,6 @@ en-US:
       permission_news: News Permission
       permission_resource: Resources Permission
       permission_wiki: Wiki Permission
+      permission_inventory: Inventory Permission
       submit: Submit
       cancel: Cancel

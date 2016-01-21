@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   resources :achievements
   resources :schedules
   resources :meetings
+  resources :inventories
   resources :messages, only: [:index, :create, :destroy]
   resource :profile, only: [:edit, :update] do
     put 'photo', on: :member

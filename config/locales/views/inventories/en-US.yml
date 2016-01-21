@@ -1,0 +1,54 @@
+en-US:
+  inventories:
+    index:
+      search: Search
+      new: Add Inventory Item
+      table:
+        item_name: Item name
+        serial_number: Serial Number
+        quantity: Quantity
+        location: location
+        type: Type
+        vendor_name: Vendor Name
+    show:
+      item_name: Item Name
+      price: Price
+      quantity: Quantity
+      unit_size: Unit Size
+      url: Url
+      technical_details: Technical Details
+      expiration_date: Expiration Date
+      cas_number: CAS Number
+      serial_number: Serial Number
+      bought_from: Bought From
+      location: Location
+      sub_location: Sub Location
+      location_details: Location Details
+      type: Type
+      vendor_name: Vendor Name
+      edit: Edit
+      delete: Delete
+      delete_confirm: Are you sure?
+    form:
+      item_name: Item Name
+      price: Price
+      quantity: Quantity
+      unit_size: Unit Size
+      url: Url
+      technical_details: Technical Details
+      expiration_date: Expiration Date
+      cas_number: CAS Number
+      serial_number: Serial Number
+      bought_from: Bought From
+      location: Location
+      sub_location: Sub Location
+      location_details: Location Details
+      type: Type
+      vendor_name: Vendor Name
+      hidden: Hidden?
+      submit: Submit
+      cancel: Cancel
+    edit:
+      edit: Edit
+    new:
+      new: New

@@ -1,0 +1,86 @@
+<div class="ui vertical segment">
+
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to inventories_path, class:'section' do %>
+        <i class="blue lab icon"></i>
+        <%=t 'module.inventories' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= @inventory.item_name %></div>
+    </div>
+  </div>
+
+  <p>
+    <%= link_to edit_inventory_path(@inventory), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%= t '.edit' %>
+    <% end if can? :update, @inventory %>
+    <%= link_to @inventory, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"ui red labeled icon button" do %>
+      <i class="trash icon"></i><%=t '.delete' %>
+    <% end if can? :destroy, @inventory %>
+  </p>
+</div>
+
+<div class="ui list">
+  <div class="item">
+    <div class="header"><%=t '.item_name' %></div>
+    <%= @inventory.item_name %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.price' %></div>
+    <%= @inventory.price %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.quantity' %></div>
+    <%= @inventory.quantity %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.unit_size' %></div>
+    <%= @inventory.unit_size %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.url' %></div>
+    <%= @inventory.url %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.technical_details' %></div>
+    <%= @inventory.technical_details %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.expiration_date' %></div>
+    <%= @inventory.expiration_date %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.cas_number' %></div>
+    <%= @inventory.cas_number %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.serial_number' %></div>
+    <%= @inventory.serial_number %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.bought_from' %></div>
+    <%= @inventory.bought_from %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.location' %></div>
+    <%= @inventory.location %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.sub_location' %></div>
+    <%= @inventory.sub_location %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.location_details' %></div>
+    <%= @inventory.location_details %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.type' %></div>
+    <%= @inventory.type %>
+  </div>
+  <div class="item">
+    <div class="header"><%=t '.vendor_name' %></div>
+    <%= @inventory.vendor_name %>
+  </div>
+</div>

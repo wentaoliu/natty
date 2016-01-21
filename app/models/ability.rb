@@ -13,7 +13,7 @@ class Ability
       end
     else
       modules = [Achievement, Bulletin, Comment, Instrument, Meeting, News,
-        Resource, Topic, Wiki]
+        Resource, Topic, Wiki, Inventory]
       for m in modules
         case user.merged_permission[m.to_s.downcase]
         when 1

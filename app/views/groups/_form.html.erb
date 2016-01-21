@@ -109,6 +109,13 @@
           User.permissions.map{|k,v| [t('users.edit.permissions')[v], v]},
           {},{class:"ui dropdown"} %>
       </div>
+
+      <div class="field">
+        <%= ff.label :inventory, t('users.edit.permission_inventory') %>
+        <%= ff.select :inventory,
+          User.permissions.map{|k,v| [t('users.edit.permissions')[v], v]},
+          {},{class:"ui dropdown"} %>
+      </div>
     </div>
 
   <% end %>

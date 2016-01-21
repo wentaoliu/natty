@@ -22,6 +22,8 @@
           t('module.schedule'), schedules_path, class:'item' if can? :read, Schedule %>
     <%= link_to content_tag('i',nil,class:'large folder open icon') +
           t('module.resources'), resources_path, class:'item' if can? :read, Resource %>
+    <%= link_to content_tag('i',nil,class:'large lab icon') +
+          t('module.inventories'), inventories_path, class:'item' if can? :read, Inventory %>
     <%= link_to content_tag('i',nil,class:'large newspaper outline icon') +
           t('module.news'), news_index_path, class:'item' if can? :read, News %>
     <%= link_to content_tag('i',nil,class:'large briefcase icon') +

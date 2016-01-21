@@ -21,4 +21,5 @@ class Inventory
   field :vendor_name
   field :hidden,            type: Boolean,  default: false
 
+  validates :item_name,     presence: true
 end

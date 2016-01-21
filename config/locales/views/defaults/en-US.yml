@@ -16,7 +16,7 @@ en-US:
     instruments: Instruments
     inventories: Inventory
     expense: Expense
-    bulletin: Bulletin
+    orders: Orders
     users: Users
     groups: Groups
     messages: Messages

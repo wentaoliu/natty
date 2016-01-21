@@ -79,6 +79,6 @@ class InventoriesController < ApplicationController
       params.require(:inventory).permit(:item_name, :price, :quantity,
         :unit_size, :url, :technical_details, :expiration_date, :cas_number,
         :serial_number, :bought_from, :location, :sub_location,
-        :location_details, :type, :vendor_name)
+        :location_details, :type, :vendor_name, :hidden)
     end
 end

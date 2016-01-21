@@ -63,8 +63,8 @@
       </div>
 
       <div class="field">
-        <%= ff.label :bulletin, t('users.edit.permission_bulletin') %>
-        <%= ff.select :bulletin,
+        <%= ff.label :order, t('users.edit.permission_order') %>
+        <%= ff.select :order,
           User.permissions.map{|k,v| [t('users.edit.permissions')[v], v]},
           {},{class:"ui dropdown"} %>
       </div>

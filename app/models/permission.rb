@@ -12,6 +12,6 @@ class Permission
   field :inventory,   type: Integer,  default: 1
   field :achievement, type: Integer,  default: 1
   field :instrument,  type: Integer,  default: 1
-  field :bulletin,    type: Integer,  default: 1
+  field :order,    type: Integer,  default: 1
   field :meeting,     type: Integer,  default: 1
 end

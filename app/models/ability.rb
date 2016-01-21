@@ -12,7 +12,7 @@ class Ability
         u.admin? and u.username != user.username
       end
     else
-      modules = [Achievement, Bulletin, Comment, Instrument, Meeting, News,
+      modules = [Achievement, Order, Comment, Instrument, Meeting, News,
         Resource, Topic, Wiki, Inventory]
       for m in modules
         case user.merged_permission[m.to_s.downcase]

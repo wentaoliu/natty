@@ -32,8 +32,8 @@
           t('module.achievements'), achievements_path, class:'item' if can? :read, Achievement %>
     <%= link_to content_tag('i',nil,class:'large cube icon') +
           t('module.instruments'), instruments_path, class:'item' if can? :read, Instrument %>
-    <%= link_to content_tag('i',nil,class:'large bullhorn icon') +
-          t('module.bulletin'), bulletins_path, class:'item' if can? :read, Bulletin %>
+    <%= link_to content_tag('i',nil,class:'large payment icon') +
+          t('module.orders'), orders_path, class:'item' if can? :read, Order %>
     <%= link_to content_tag('i',nil,class:'large users icon') +
           t('module.users'), users_path, class:'item' if can? :read, User %>
     <%= link_to content_tag('i',nil,class:'large sitemap icon') +

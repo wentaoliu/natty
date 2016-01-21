@@ -26,14 +26,15 @@ zh-CN:
         title: 标题
         content: 内容
         date: 日期
-      bulletin:
+      order:
         title: 标题
-        content: 内容
       comment:
         content: 内容
       instrument:
         title: 标题
         content: 内容
+      inventory:
+        item_name: 项目名称
       meeting:
         title: 标题
         content: 内容

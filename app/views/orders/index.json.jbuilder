@@ -1,5 +1,5 @@
 json.items do
-  json.array!(@bulletins) do |item|
+  json.array!(@orders) do |item|
     json.extract! item, :id, :title, :content, :updated_at
   end
 end

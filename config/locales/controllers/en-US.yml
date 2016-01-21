@@ -6,13 +6,13 @@ en-US:
       success: Achievement was successfully updated.
     destroy:
       success: Achievement was successfully destroyed.
-  bulletin:
+  order:
     create:
-      success: Bulletin was successfully created.
+      success: Order was successfully created.
     update:
-      success: Bulletin was successfully updated.
+      success: Order was successfully updated.
     destroy:
-      success: Bulletin was successfully destroyed.
+      success: Order was successfully destroyed.
   comments:
     create:
       success: Comment was successfully created.
@@ -25,6 +25,13 @@ en-US:
       success: Instrument was successfully updated.
     destroy:
       success: Instrument was successfully destroyed.
+  inventories:
+    create:
+      success: Inventory item was successfully created.
+    update:
+      success: Inventory item was successfully updated.
+    destroy:
+      success: Inventory item was successfully destroyed.
   meetings:
     create:
       success: Meetings was successfully created.

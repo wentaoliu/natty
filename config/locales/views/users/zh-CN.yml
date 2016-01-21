@@ -73,7 +73,7 @@ zh-CN:
       permission_topic: 话题权限
       permission_comment: 评论权限
       permission_achievement: 成果权限
-      permission_bulletin: 公告权限
+      permission_order: 订单权限
       permission_instrument: 仪器权限
       permission_meeting: 会议权限
       permission_news: 新闻权限

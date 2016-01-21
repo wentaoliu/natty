@@ -6,13 +6,13 @@ zh-CN:
       success: 成果更新成功。
     destroy:
       success: 成果删除成功。
-  bulletins:
+  orders:
     create:
-      success: 公告创建成功。
+      success: 订单创建成功。
     update:
-      success: 公告更新成功。
+      success: 订单更新成功。
     destroy:
-      success: 公告删除成功。
+      success: 订单删除成功。
   comments:
     create:
       success: 评论创建成功。
@@ -25,6 +25,13 @@ zh-CN:
       success: 仪器更新成功。
     destroy:
       success: 仪器删除成功。
+  inventories:
+    create:
+      success: 库存项目创建成功。
+    update:
+      success: 库存项目更新成功。
+    destroy:
+      success: 库存项目删除成功。
   meetings:
     create:
       success: 会议创建成功。
@@ -91,7 +98,7 @@ zh-CN:
     update:
       success: 群组更新成功。
     destroy:
-      success: 群组删除成功。        
+      success: 群组删除成功。
   passwords:
     verify_token:
       invalid: 链接无效。

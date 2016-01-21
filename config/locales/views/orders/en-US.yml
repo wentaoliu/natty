@@ -1,0 +1,41 @@
+en-US:
+  orders:
+    index:
+      search: Search
+      new: New
+      table:
+        title: Title
+        total_price: Total Price
+        updated_at: Updated At
+    show:
+      title: Title
+      quantity: Quantity
+      unit_size: Unit Size
+      unit_price: Unit Price
+      total_price: Total Price
+      bought_from: Bought From
+      type: Type
+      vendor_name: Vendor Name
+      invoice: Invoice No.
+      notes: Notes
+      edit: Edit
+      delete: Delete
+      delete_confirm: Are you sure?
+    form:
+      title: Title
+      quantity: Quantity
+      unit_size: Unit Size
+      unit_price: Unit Price
+      total_price: Total Price
+      bought_from: Bought From
+      type: Type
+      vendor_name: Vendor Name
+      invoice: Invoice No.
+      notes: Notes
+      hidden: Hidden?
+      submit: Submit
+      cancel: Cancel
+    edit:
+      edit: Edit
+    new:
+      new: New

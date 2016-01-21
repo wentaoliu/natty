@@ -26,14 +26,15 @@ en-US:
         title: Title
         content: Content
         date: Date
-      bulletin:
+      order:
         title: Title
-        content: Content
       comment:
         content: Content
       instrument:
         title: Title
         content: Content
+      inventory:
+        item_name: Item Name
       meeting:
         title: Title
         content: Content

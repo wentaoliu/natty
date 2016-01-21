@@ -1,0 +1,78 @@
+<% if @order.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+    <ul>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(@order, html:{class:'ui form segment'}) do |f| %>
+
+  <div class="field">
+    <%= f.label :title, t('.title') %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :quantity, t('.quantity') %>
+      <%= f.text_field :quantity %>
+    </div>
+
+    <div class="field">
+      <%= f.label :unit_size, t('.unit_size') %>
+      <%= f.text_field :unit_size %>
+    </div>
+  </div>
+
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :unit_price, t('.unit_price') %>
+      <%= f.text_field :unit_price %>
+    </div>
+
+    <div class="field">
+      <%= f.label :total_price, t('.total_price') %>
+      <%= f.text_field :total_price %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.label :bought_from, t('.bought_from') %>
+    <%= f.text_field :bought_from %>
+  </div>
+
+  <div class="field">
+    <%= f.label :type, t('.type') %>
+    <%= f.text_field :type %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vendor_name, t('.vendor_name') %>
+    <%= f.text_field :vendor_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :invoice, t('.invoice') %>
+    <%= f.text_field :invoice %>
+  </div>
+
+  <div class="field">
+    <%= f.label :notes, t('.notes') %>
+    <%= f.text_area :notes %>
+  </div>
+
+  <div class="field">
+    <div class="ui toggle checkbox">
+      <%= f.check_box :hidden %>
+      <%= f.label :hidden, t('.hidden') %>
+    </div>
+  </div>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), orders_path, class:"ui button" %>
+<% end %>

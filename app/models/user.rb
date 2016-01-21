@@ -130,7 +130,7 @@ class User
   has_many :achievements
   has_many :schedules
   has_many :instruments
-  has_many :bulletins
+  has_many :orders
   has_many :meetings
   has_many :messages
   has_many :inventories

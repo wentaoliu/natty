@@ -1,8 +1,4 @@
 zh-CN:
   messages:
     index:
-      new: 新消息
-      mark_as_read: 标为已读
-      content: 内容
-      submit: 确定
-      cancel: 取消
+      more: 更多

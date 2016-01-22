@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_message, only: [:show, :like, :destroy]
 
   NUM_PER_PAGE = 10
 
@@ -7,24 +7,33 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     @messages = Message.order(created_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
-    @message = Message.new
   end
 
   # POST /messages
   # POST /messages.json
   def create
     @message = Message.new(message_params)
-    @message.read = []
     @message.user = current_user
     respond_to do |format|
       if @message.save
-        format.html { redirect_to messages_url, notice: t('.success') }
+        format.html { redirect_to root_path, notice: t('.success') }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /messages/1/like
+  def like
+    if @message.like.include? current_user.id
+      @message.like.delete(current_user.id)
+    else
+      @message.like.push(current_user.id)
+    end
+    @message.save!
+    render :like
   end
 
   # DELETE /messages/1

@@ -21,14 +21,10 @@ zh-CN:
     groups: 群组
     messages: 消息
   menu:
-    language: 语言
+    languages: 语言和地区
     profile: 资料
     settings: 设置
     signout: 退出
-    popup:
-      languages: 语言和地区
-      username: 个人资料与设置
-      messages: 消息
   pagination:
     first: "&laquo; 首页"
     last: "末页 &raquo;"

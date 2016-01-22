@@ -6,7 +6,7 @@ class Message
   belongs_to :user
 
   field :content, type: String
-  field :read,  type: Array
+  field :like,    type: Array,  default: []
 
   validates :content, presence: true
 

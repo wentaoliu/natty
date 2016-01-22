@@ -2,10 +2,8 @@ class HomeController < ApplicationController
 
   # GET /
   def index
-    @messages = Message.where(
-                  :read.nin => [current_user.id],
-                  :created_at.gt => current_user.created_at
-                )
+    @messages = Message.order(created_at: :desc).page(1).per(10)
+    @message = Message.new
     @meetings = if can?(:create, Meeting)
       Meeting.where(:starts_at.lte => DateTime.now, :ends_at.gte => DateTime.now)
     else

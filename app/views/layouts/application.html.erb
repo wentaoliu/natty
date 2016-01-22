@@ -49,7 +49,7 @@
         <%= t 'app.name.short' %>
       </b>
     </a>
-    <div class="ui locale dropdown item" data-content="<%=t 'menu.popup.languages' %>">
+    <div class="ui locale dropdown item" data-content="<%=t 'menu.languages' %>">
       <i class="world icon"></i>
       <div class="menu">
         <% for k,v in avaliable_locales %>
@@ -58,28 +58,19 @@
       </div>
     </div>
     <div class="right menu">
-      <div class="ui dropdown item" data-content="<%=t 'menu.popup.username' %>"
-        style="padding-top:5px;padding-bottom:5px;">
-        <div class="text">
-          <%= image_tag current_user.avatar.url(:thumb), class: 'ui avatar image' %>
-
-          <%= current_user.name %>
-        </div>
-        <i class="dropdown icon"></i>
-        <div class="menu">
-          <%= link_to edit_profile_path, class:'item' do %>
-            <i class="user icon"></i><%=t 'menu.profile' %>
-          <% end %>
-          <%= link_to settings_path, class:'item' do %>
-            <i class="settings icon"></i><%=t 'menu.settings' %>
-          <% end %>
-          <%= link_to signout_path, method: :delete,class:'item' do %>
-            <i class="sign out icon"></i><%=t 'menu.signout' %>
-          <% end %>
-        </div>
-      </div>
-      <%= link_to content_tag('i',nil,class:'envelope icon'), messages_path,
-          class:'item', 'data-content' => t('menu.popup.messages') %>
+      <%= link_to edit_profile_path, 'data-content' => t('menu.profile'),
+          class:'item', style:"padding-top:5px;padding-bottom:5px;" do %>
+        <%= image_tag current_user.avatar.url(:thumb), class: 'ui avatar image' %>
+        <%= current_user.name %>
+      <% end %>
+      <%= link_to settings_path,
+          class:'item', 'data-content' => t('menu.settings') do %>
+        <i class="settings icon"></i>
+      <% end %>
+      <%= link_to signout_path, method: :delete,
+          class:'item', 'data-content' => t('menu.signout') do %>
+        <i class="sign out icon"></i>
+      <% end %>
     </div>
   </div>
   <!-- main -->

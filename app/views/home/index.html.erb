@@ -1,34 +1,26 @@
 <div class="ui stackable grid">
-  <div class="eight wide column">
+  <div class="ten wide column">
     <div class="ui segment">
       <div class="ui blue header">
         <i class="envelope icon"></i>
         <div class="content"><%=t 'module.messages' %></div>
       </div>
-      <div class="ui divider"></div>
-      <% if @messages.count == 0 %>
-        <p><%=t '.messages.none' %></p>
-      <% elsif @messages.count == 1 %>
-        <p><%= link_to t('.messages.only_one'), messages_path %></p>
-      <% else %>
-        <p><%= link_to t('.messages.more_than_one',{number: @messages.count}), messages_path %></p>
-      <% end %>
-      <% if @messages.count > 0 %>
-        <div class="ui divided list">
-          <% @messages.each do |message| %>
-            <div class="item">
-              <div class="content">
-                <div class="header"><%= message.user.name %></div>
-                <%= message.content %>
-              </div>
-            </div>
-          <% end %>
+
+      <%= form_for @message, html:{class:"ui form"} do |f| %>
+        <div class="field">
+          <%= f.text_area :content, rows: '3' %>
         </div>
+        <%= f.submit t('.messages.post'), class:"ui fluid button" %>
       <% end %>
+      <div class="ui feed">
+        <%= render 'messages/index' %>
+      </div>
     </div>
   </div>
 
-  <div class="eight wide column">
+
+
+  <div class="six wide column">
     <div class="ui segment">
       <div class="ui blue header">
         <i class="calendar icon"></i>
@@ -57,9 +49,7 @@
         </div>
       <% end %>
     </div>
-  </div>
 
-  <div class="eight wide column">
     <div class="ui segment">
       <div class="ui blue header">
         <i class="briefcase icon"></i>
@@ -88,9 +78,7 @@
         </div>
       <% end %>
     </div>
-  </div>
 
-  <div class="eight wide column">
     <div class="ui segment">
       <div class="ui blue header">
         <i class="newspaper icon"></i>

@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   resources :schedules
   resources :meetings
   resources :inventories
-  resources :messages, only: [:index, :create, :destroy]
+  resources :messages, only: [:index, :create, :destroy] do
+    put 'like', on: :member
+  end
   resource :profile, only: [:edit, :update] do
     put 'photo', on: :member
   end

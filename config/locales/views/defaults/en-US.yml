@@ -21,14 +21,10 @@ en-US:
     groups: Groups
     messages: Messages
   menu:
-    language: Language
+    languages: Languages and locales
     profile: Profile
     settings: Settings
     signout: Sign out
-    popup:
-      languages: Languages and locales
-      username: Profile and settings
-      messages: Messages
   pagination:
     first: "&laquo; First"
     last: "Last &raquo;"

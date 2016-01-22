@@ -8,14 +8,15 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 ## Features
 
 * Topics
-* Wikis
+* Wiki
 * Schedule
 * Resources
 * News
 * Meetings
 * Achievements
 * Instruments
-* Bulletins
+* Inventory
+* Messages
 
 ## Deployment
 

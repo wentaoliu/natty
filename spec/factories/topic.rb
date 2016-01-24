@@ -1,11 +1,10 @@
 FactoryGirl.define do
-  factory :news do
-    association :user, factory: :admin
+  factory :topic do
 
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraphs.join('\n') }
 
-    factory :invalid_news do
+    factory :invalid_topic do
       title nil
     end
   end

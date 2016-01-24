@@ -1,17 +1,19 @@
 require 'rails_helper'
 
-describe News do
+describe Wiki do
 
   it "has a valid factory" do
-    expect(build(:news)).to be_valid
+    expect(build(:wiki)).to be_valid
   end
 
   it { is_expected.to be_timestamped_document }
   it { is_expected.to be_paranoid_document }
+  it { is_expected.to be_versioned_document }
   it { is_expected.to belong_to(:user).of_type(User) }
 
   it { is_expected.to validate_presence_of :title }
-  it { is_expected.to validate_presence_of :content }
+  it { is_expected.to validate_presence_of :comment }
+  it { is_expected.to validate_length_of(:content).greater_than(50) }
   it { is_expected.to have_field(:hits).of_type(Integer).with_default_value_of(0) }
   it { is_expected.to have_field(:hidden).of_type(Mongoid::Boolean).with_default_value_of(false) }
 

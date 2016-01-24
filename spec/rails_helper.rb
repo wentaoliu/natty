@@ -39,6 +39,8 @@ RSpec.configure do |config|
   # Include Factory Girl syntax to simplify calls to factories
   config.include FactoryGirl::Syntax::Methods
 
+  config.include Mongoid::Matchers, type: :model
+
   # Configure DatabaseCleaner to reset data between tests
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation

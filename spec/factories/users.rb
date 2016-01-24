@@ -1,11 +1,14 @@
 FactoryGirl.define do
   factory :user do
-    username 'admin'
-    name 'Administrator'
-    password 'secret'
+    username 'TestUser'
+    name { Faker::Name.name }
+    password { Faker::Internet.password }
     password_confirmation { password }
-    admin true
     state 1
-    email 'admin@example.com'
+    email { Faker::Internet.email }
+
+    factory :admin do
+      admin true
+    end
   end
 end

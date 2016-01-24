@@ -80,5 +80,5 @@ group :test do
   gem 'faker', '~> 1.6.1'
   gem 'capybara', '~> 2.6.0'
   gem 'database_cleaner', '~> 1.5.1'
-  gem 'shoulda-matchers', '~> 3.1.0'
+  gem 'mongoid-rspec', '~> 3.0'
 end

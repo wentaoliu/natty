@@ -7,6 +7,21 @@ class User
   has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'
   has_and_belongs_to_many :member_of, inverse_of: :members, class_name: 'Group'
 
+  has_many :topics, dependent: :destroy
+  has_many :wikis
+  has_many :news
+  has_many :resources
+  has_many :achievements
+  has_many :schedules
+  has_many :instruments
+  has_many :orders
+  has_many :meetings
+  has_many :messages
+  has_many :inventories
+
+  embeds_one :permission, autobuild: true
+  accepts_nested_attributes_for :permission
+
   field :username,              type: String
   field :password_digest,       type: String
   has_secure_password
@@ -14,7 +29,9 @@ class User
   field :name,                  type: String
   field :email,                 type: String
   field :email_verified,        type: Boolean,  default: false
+
   field :remember_token,        type: String
+  field :api_token,             type: String
 
   has_mongoid_attached_file :avatar,
     :styles => { :thumb => ["35x35!", :png] },
@@ -86,7 +103,9 @@ class User
   end
 
   before_save { self.username = username.downcase }
-  before_create :create_remember_token
+  before_create :generate_api_token
+  before_create :generate_remember_token
+  before_create :generate_verify_email_token
 
   validates :username,  presence: true, uniqueness: true,
             length:     { minimum: 4, maximum: 20 },
@@ -113,9 +132,6 @@ class User
     return PERMISSION
   end
 
-  embeds_one :permission, autobuild: true
-  accepts_nested_attributes_for :permission
-
   def merged_permission
     permissions_array = [self.permission, self.member_of.map(&:permission)].flatten
     permissions_array.reduce do |a, b|
@@ -123,35 +139,45 @@ class User
     end
   end
 
-  has_many :topics, dependent: :destroy
-  has_many :wikis
-  has_many :news
-  has_many :resources
-  has_many :achievements
-  has_many :schedules
-  has_many :instruments
-  has_many :orders
-  has_many :meetings
-  has_many :messages
-  has_many :inventories
-
   def ability
     @ability ||= Ability.new(self)
   end
   delegate :can?, :cannot?, :to => :ability
 
-  def User.new_remember_token
-    SecureRandom.urlsafe_base64
+  # Find by email or username
+  def self.find_and_authenticate(who, password)
+    user = any_of({ email: who.downcase }, { username: who }).first
+    user if user && user.authenticate(password)
+  end
+
+  def generate_api_token
+    self.api_token = User.digest(SecureRandom.urlsafe_base64)
+  end
+
+  def generate_api_token!
+    raw_token = SecureRandom.urlsafe_base64
+    self.api_token = User.digest(raw_token)
+    save!
+    return raw_token
+  end
+
+  def generate_remember_token
+    self.remember_token = User.digest(SecureRandom.urlsafe_base64)
+  end
+
+  def generate_remember_token!
+    raw_token = SecureRandom.urlsafe_base64
+    self.remember_token = User.digest(raw_token)
+    save!
+    return raw_token
+  end
+
+  def generate_verify_email_token
+    self.verify_email_token = SecureRandom.urlsafe_base64
   end
 
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
-  end
-
-  private
-
-  def create_remember_token
-    self.remember_token = User.digest(User.new_remember_token)
   end
 
 end

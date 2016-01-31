@@ -2,7 +2,7 @@ zh-CN:
   sessions:
     new:
       signin: 登录
-      username: 用户名
+      username: 用户名/邮箱
       password: 密码
       remember_me: 记住我？
       forgot_password: 忘记密码？

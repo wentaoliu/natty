@@ -164,7 +164,7 @@ describe NewsController do
 
       it "redirects to news#index" do
         delete :destroy, id: @news
-        expect(response).to redirect_to news_url
+        expect(response).to redirect_to news_index_url
       end
     end
   end

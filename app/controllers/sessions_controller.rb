@@ -9,23 +9,30 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if simple_captcha_valid?
-      user = User.where(username: params[:session][:username].downcase).first
-      if user and user.authenticate(params[:session][:password]) and user.normal?
+    params.require(:session)
+    @user = User.find_and_authenticate(
+      params[:session][:username], params[:session][:password]
+    )
+    respond_to do |format|
+      if @user
         # Sign in successful
-        sign_in(user = user, permanent = params[:session][:remember_me] == '1')
-        save_sign_in_info user
-        set_locale user.locale
-        redirect_to root_path, notice: t('.success_html', username:current_user.name)
+        token = sign_in(user = @user, permanent = params[:session][:remember_me] == '1')
+        format.html {
+          save_sign_in_info @user
+          set_locale @user.locale
+          redirect_to root_path, notice: t('.success_html', username: current_user.name)
+        }
+        format.json {
+          render json: { token: token, user_id: @user._id.to_s }
+        }
       else
         # Failed!
-        flash.now[:error] = t('.password_error')
-        render 'new'
+        format.html {
+          flash.now[:error] = t('.password_error')
+          render 'new'
+        }
+        format.json { render json: { error: t('.password_error') } }
       end
-    else
-      # Failed!
-      flash.now[:error] = t('.code_error')
-      render 'new'
     end
   end
 

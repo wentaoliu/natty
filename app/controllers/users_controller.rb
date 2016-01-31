@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:create]
   skip_authorize_resource only: [:new, :create, :verify]
   skip_before_action :require_signin, only: [:new, :create, :verify]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -33,12 +33,12 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     if simple_captcha_valid?
-      @user = User.new(params.require(:user)
-        .permit(:username, :name, :email, :password, :password_confirmation))
-      @user.verify_email_token = User.new_remember_token
+      user_params = params.require(:user)
+        .permit(:username, :name, :email, :password, :password_confirmation)
+      @user = User.new(user_params)
       respond_to do |format|
         if @user.save
-          #UserMailer.verify_email(@user).deliver_now
+          UserMailer.verify_email(@user).deliver_now
           format.html { redirect_to root_path, notice: t('.success') }
           format.json { render :show, status: :created, location: @user }
         else

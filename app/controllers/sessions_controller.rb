@@ -16,14 +16,19 @@ class SessionsController < ApplicationController
     respond_to do |format|
       if @user
         # Sign in successful
-        token = sign_in(user = @user, permanent = params[:session][:remember_me] == '1')
         format.html {
+          sign_in_with_cookie(@user, params[:session][:remember_me] == '1')
           save_sign_in_info @user
           set_locale @user.locale
           redirect_to root_path, notice: t('.success_html', username: current_user.name)
         }
         format.json {
-          render json: { token: token, user_id: @user._id.to_s }
+          token = sign_in_with_token(@user)
+          render json: {
+            token: token, username: @user.username,
+            name: @user.name, email: @user.email,
+            avatar: ActionController::Base.helpers.image_path(@user.avatar.url(:thumb))
+          }
         }
       else
         # Failed!

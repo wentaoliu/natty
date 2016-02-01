@@ -1,7 +1,6 @@
 class Comment
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Paranoia
 
   embedded_in :topic, counter_cache: :comments_count
 

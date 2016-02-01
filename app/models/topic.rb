@@ -1,7 +1,6 @@
 class Topic
   include Mongoid::Document
   include Mongoid::Timestamps
-  include Mongoid::Paranoia
 
   belongs_to :user
   embeds_many :comments

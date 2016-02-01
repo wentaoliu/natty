@@ -2,6 +2,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include Mongoid::Paperclip
+  include Mongoid::Paranoia
   include ActiveModel::SecurePassword
 
   has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'

@@ -31,7 +31,7 @@ class SessionsController < ApplicationController
           flash.now[:error] = t('.password_error')
           render 'new'
         }
-        format.json { render json: { error: t('.password_error') } }
+        format.json { render json: { error: t('.password_error') }, status: :unprocessable_entity }
       end
     end
   end

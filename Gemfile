@@ -5,7 +5,7 @@ else
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 # Mongoid
-gem 'mongoid', '~> 5.0.2'
+gem 'mongoid', '~> 5.1.0'
 gem 'mongoid-paranoia', '~> 1.3.0'
 gem 'mongoid-versioning', '~> 1.2.0'
 # Simditor
@@ -55,6 +55,9 @@ gem "simple_calendar", "~> 2.0.3"
 gem 'kaminari', '~> 0.16.3'
 # Authorization
 gem 'cancancan', '~> 1.13.1'
+# API
+gem 'grape', '~> 0.14.0'
+gem 'grape-entity', '~> 0.5.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-particles.js', '~> 2.0.0'

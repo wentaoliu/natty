@@ -42,4 +42,7 @@ Rails.application.routes.draw do
     resource :locale, only: [:edit, :update]
   end
   resources :pictures, only: [:create]
+
+  # API
+  mount Dispatch => '/api'
 end

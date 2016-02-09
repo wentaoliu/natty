@@ -1,8 +1,9 @@
-<header class="page-header" role="banner">
-  <h1><%= t('.title') %></h1>
-</header>
+<h2 class="ui center aligned icon header">
+  <i class="circular info icon"></i>
+  <%= t('.title') %>
+</h2>
 
-<main role="main">
+<div class="ui segment">
   <p class="h4">
     <%= raw t('.prompt', client_name: "<strong class=\"text-info\">#{ @pre_auth.client.name }</strong>") %>
   </p>
@@ -19,22 +20,23 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="ui buttons">
     <%= form_tag oauth_authorization_path, method: :post do %>
       <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
       <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
       <%= hidden_field_tag :state, @pre_auth.state %>
       <%= hidden_field_tag :response_type, @pre_auth.response_type %>
       <%= hidden_field_tag :scope, @pre_auth.scope %>
-      <%= submit_tag t('doorkeeper.authorizations.buttons.authorize'), class: "btn btn-success btn-lg btn-block" %>
+      <%= submit_tag t('doorkeeper.authorizations.buttons.authorize'), class: "ui positive button" %>
     <% end %>
+    <div class="or"></div>
     <%= form_tag oauth_authorization_path, method: :delete do %>
       <%= hidden_field_tag :client_id, @pre_auth.client.uid %>
       <%= hidden_field_tag :redirect_uri, @pre_auth.redirect_uri %>
       <%= hidden_field_tag :state, @pre_auth.state %>
       <%= hidden_field_tag :response_type, @pre_auth.response_type %>
       <%= hidden_field_tag :scope, @pre_auth.scope %>
-      <%= submit_tag t('doorkeeper.authorizations.buttons.deny'), class: "btn btn-danger btn-lg btn-block" %>
+      <%= submit_tag t('doorkeeper.authorizations.buttons.deny'), class: "ui negative button" %>
     <% end %>
   </div>
-</main>
+</div>

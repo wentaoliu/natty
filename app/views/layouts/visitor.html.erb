@@ -21,6 +21,7 @@
         <% end %>
       </div>
     </div>
+    <% unless signed_in? %>
     <div class="right menu">
       <div class="item">
         <%= link_to t('sessions.new.signin'), signin_path, class:'ui blue button' %>
@@ -29,6 +30,7 @@
         <%= link_to t('sessions.new.apply'), new_user_path, class:'ui green button' %>
       </div>
     </div>
+    <% end %>
   </div>
   <div class="ui page grid">
     <div class="ui column">

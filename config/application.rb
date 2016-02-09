@@ -38,7 +38,7 @@ module Rtiss
       Doorkeeper::ApplicationsController.layout "application"
 
       # Only Authorization endpoint
-      Doorkeeper::AuthorizationsController.layout "application"
+      Doorkeeper::AuthorizationsController.layout "visitor"
 
       # Only Authorized Applications
       Doorkeeper::AuthorizedApplicationsController.layout "application"

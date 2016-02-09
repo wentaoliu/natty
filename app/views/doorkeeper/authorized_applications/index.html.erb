@@ -1,0 +1,36 @@
+<div class="ui vertical segment">
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to oauth_applications_path, class:'section' do %>
+        <i class="blue plug icon"></i>
+        <%=t 'module.oauth' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= t('doorkeeper.authorized_applications.index.title') %></div>
+    </div>
+  </div>
+</div>
+
+<table class="ui table segment">
+  <thead>
+    <tr>
+      <th class="six wide"><%= t('doorkeeper.authorized_applications.index.application') %></th>
+      <th class="eight wide"><%= t('doorkeeper.authorized_applications.index.created_at') %></th>
+      <th class="two wide"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @applications.each do |application| %>
+    <tr>
+      <td><%= application.name %></td>
+      <td><%= application.created_at.strftime(t('doorkeeper.authorized_applications.index.date_format')) %></td>
+      <td>
+        <%= link_to t('doorkeeper.authorized_applications.buttons.revoke'),
+            oauth_authorized_application_path(application), method: :delete,
+            data: { confirm: t('doorkeeper.authorized_applications.confirmations.revoke') },
+            class:"ui red tiny button" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

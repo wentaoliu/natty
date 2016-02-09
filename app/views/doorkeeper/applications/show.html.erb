@@ -1,0 +1,58 @@
+<div class="ui vertical segment">
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to oauth_applications_path, class:'section' do %>
+        <i class="blue comments icon"></i>
+        <%=t 'module.oauth' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= @application.name %></div>
+    </div>
+  </div>
+  <p>
+    <%= link_to edit_oauth_application_path(@application), class:"ui labeled icon button" do %>
+      <i class="edit icon"></i><%= t 'doorkeeper.applications.buttons.edit' %>
+    <% end %>
+    <%= link_to oauth_application_path(@application), method: :delete, data: { confirm: t('doorkeeper.applications.confirmations.destroy') },
+        class:"ui red labeled icon button" do %>
+      <i class="trash icon"></i><%=t 'doorkeeper.applications.buttons.destroy' %>
+    <% end %>
+  </p>
+</div>
+
+<div class="ui segments">
+  <div class="ui segment">
+    <h4><%= t('.application_id') %>:</h4>
+    <p><code id="application_id"><%= @application.uid %></code></p>
+  </div>
+  <div class="ui segment">
+    <h4><%= t('.secret') %>:</h4>
+    <p><code id="secret"><%= @application.secret %></code></p>
+  </div>
+  <div class="ui segment">
+    <h4><%= t('.scopes') %>:</h4>
+    <p><code id="scopes"><%= @application.scopes %></code></p>
+  </div>
+</div>
+
+<table class="ui celled striped table">
+  <thead>
+    <tr>
+      <th colspan="2"><%= t('.callback_urls') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @application.redirect_uri.split.each do |uri| %>
+    <tr>
+      <td class="fourteen wide">
+        <code><%= uri %></code>
+      </td>
+      <td class="two wide">
+        <%= link_to t('doorkeeper.applications.buttons.authorize'),
+            oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code'),
+            class: 'ui blue tiny button', target: '_blank' %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

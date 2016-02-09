@@ -1,0 +1,37 @@
+<%= form_for application, url: doorkeeper_submit_path(application), html: {class: 'ui form segment', role: 'form'} do |f| %>
+  <% if application.errors.any? %>
+    <div class="alert alert-danger" data-alert><p><%= t('doorkeeper.applications.form.error') %></p></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= doorkeeper_errors_for application, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :redirect_uri %>
+    <%= f.text_area :redirect_uri %>
+    <%= doorkeeper_errors_for application, :redirect_uri %>
+    <span class="help-block">
+      <%= t('doorkeeper.applications.help.redirect_uri') %>
+    </span>
+    <% if Doorkeeper.configuration.native_redirect_uri %>
+        <span class="help-block">
+          <%= raw t('doorkeeper.applications.help.native_redirect_uri', native_redirect_uri: "<code>#{ Doorkeeper.configuration.native_redirect_uri }</code>") %>
+        </span>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :scopes %>
+    <%= f.text_field :scopes %>
+    <%= doorkeeper_errors_for application, :scopes %>
+    <span class="help-block">
+      <%= t('doorkeeper.applications.help.scopes') %>
+    </span>
+  </div>
+
+  <%= f.submit t('doorkeeper.applications.buttons.submit'), class: "ui blue button" %>
+  <%= link_to t('doorkeeper.applications.buttons.cancel'), oauth_applications_path, :class => "ui button" %>
+<% end %>

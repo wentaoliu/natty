@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  use_doorkeeper
+
   get 'signin' => 'sessions#new', as: :signin
   delete 'signout' => 'sessions#destroy', as: :signout
   resources :sessions, only: [:new, :create, :destroy]

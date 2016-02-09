@@ -19,6 +19,7 @@ en-US:
     orders: Orders
     users: Users
     groups: Groups
+    oauth: OAuth
     messages: Messages
   menu:
     languages: Languages and locales

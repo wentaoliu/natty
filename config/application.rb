@@ -32,5 +32,16 @@ module Rtiss
     # Auto-load grape API
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+    config.to_prepare do
+      # Only Applications list
+      Doorkeeper::ApplicationsController.layout "application"
+
+      # Only Authorization endpoint
+      Doorkeeper::AuthorizationsController.layout "application"
+
+      # Only Authorized Applications
+      Doorkeeper::AuthorizedApplicationsController.layout "application"
+    end
   end
 end

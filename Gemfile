@@ -59,6 +59,10 @@ gem 'cancancan', '~> 1.13.1'
 gem 'grape', '~> 0.14.0'
 gem 'grape-entity', '~> 0.5.0'
 
+gem 'doorkeeper', '~> 3.1'
+gem "doorkeeper-mongodb", github: "doorkeeper-gem/doorkeeper-mongodb"
+gem 'doorkeeper-i18n', '~> 3.0'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-particles.js', '~> 2.0.0'
 end

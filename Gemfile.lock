@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/doorkeeper-gem/doorkeeper-mongodb.git
+  revision: 432fab9457054ef71b4bae839bf033a15a99b204
+  specs:
+    doorkeeper-mongodb (3.0.0)
+      doorkeeper (>= 3.0.0)
+
 GEM
   remote: https://ruby.taobao.org/
   remote: https://rails-assets.org/
@@ -74,6 +81,9 @@ GEM
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     diff-lcs (1.2.5)
+    doorkeeper (3.1.0)
+      railties (>= 3.2)
+    doorkeeper-i18n (3.0.0)
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -268,6 +278,9 @@ DEPENDENCIES
   capybara (~> 2.6.0)
   coffee-rails (~> 4.1.0)
   database_cleaner (~> 1.5.1)
+  doorkeeper (~> 3.1)
+  doorkeeper-i18n (~> 3.0)
+  doorkeeper-mongodb!
   factory_girl_rails (~> 4.5.0)
   faker (~> 1.6.1)
   grape (~> 0.14.0)

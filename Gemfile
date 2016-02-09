@@ -58,6 +58,7 @@ gem 'cancancan', '~> 1.13.1'
 # API
 gem 'grape', '~> 0.14.0'
 gem 'grape-entity', '~> 0.5.0'
+gem 'grape-cancan', '~> 0.0.2'
 
 gem 'doorkeeper', '~> 3.1'
 gem "doorkeeper-mongodb", github: "doorkeeper-gem/doorkeeper-mongodb"

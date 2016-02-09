@@ -19,7 +19,7 @@ zh-CN:
     orders: 订单
     users: 用户
     groups: 群组
-    oauth: OAuth
+    oauth: 应用
     messages: 消息
   menu:
     languages: 语言和地区

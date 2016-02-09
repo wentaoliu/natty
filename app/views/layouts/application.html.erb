@@ -39,7 +39,7 @@
     <%= link_to content_tag('i',nil,class:'large sitemap icon') +
           t('module.groups'), groups_path, class:'item' if can? :read, Group %>
     <%= link_to content_tag('i',nil,class:'large plug icon') +
-          t('module.oauth'), oauth_applications_path, class:'item' if current_user.admin? %>
+          t('module.oauth'), oauth_authorized_applications_path, class:'item' %>
   </div>
 
   <!-- top fixed menu -->

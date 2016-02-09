@@ -1,3 +1,5 @@
+require 'doorkeeper/grape/helpers'
+
 module V1
   class Root < Grape::API
     version 'v1'
@@ -12,13 +14,18 @@ module V1
           error: 'Invalid parameters.',
           validation_errors: e.full_messages
         }.to_json], 400, {}).finish
+      when CanCan::AccessDenied
+        Rack::Response.new([{
+          error: 'Access Denied.',
+        }.to_json], 401, {}).finish
       else
         Rails.logger.error "Api V3 Error: #{e}\n#{e.backtrace.join("\n")}"
         Rack::Response.new([{ error: "API unavailable" }.to_json], 500, {}).finish
       end
     end
 
-    #helpers V1::Helpers
+    helpers Doorkeeper::Grape::Helpers
+    helpers V1::Helpers
 
     mount V1::Messages
 

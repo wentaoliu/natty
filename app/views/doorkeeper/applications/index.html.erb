@@ -1,16 +1,14 @@
 <div class="ui vertical segment">
-  <h2 class="ui header">
-    <i class="circular inverted blue plug icon"></i>
-    <div class="content">
-      <%=t 'module.oauth' %>
+  <div class="ui header">
+    <div class="ui huge breadcrumb">
+      <%= link_to oauth_authorized_applications_path, class:'section' do %>
+        <i class="blue plug icon"></i>
+        <%=t 'module.oauth' %>
+      <% end %>
+      <i class="right chevron icon divider"></i>
+      <div class="active section"><%= t('doorkeeper.applications.index.title') %></div>
     </div>
-  </h2>
-  <%= link_to oauth_authorized_applications_path, class:"ui blue labeled icon button" do %>
-    <i class="list layout icon"></i><%=t('doorkeeper.authorized_applications.index.title') %>
-  <% end %>
-  <%= link_to new_oauth_application_path, class:"ui green labeled icon button" do %>
-    <i class="plus icon"></i><%=t '.new' %>
-  <% end %>
+  </div>
 </div>
 
 <table class="ui table segment">

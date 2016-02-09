@@ -1,0 +1,11 @@
+en-US:
+  doorkeeper:
+    applications:
+      form:
+        name: Application name
+        redirect_uri: Redirect URI
+        scope: Scope
+      help:
+        scopes: Separate scopes with spaces. Leave blank to use the default scopes.
+      index:
+        title: All applications

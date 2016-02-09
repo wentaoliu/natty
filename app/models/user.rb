@@ -145,6 +145,10 @@ class User
   end
   delegate :can?, :cannot?, :to => :ability
 
+  def self.find_by_remember_token(token)
+    where(remember_token: User.digest(token)).first
+  end
+
   # Find by email or username
   def self.find_and_authenticate(who, password)
     user = any_of({ email: who.downcase }, { username: who }).first

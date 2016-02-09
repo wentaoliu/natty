@@ -1,0 +1,11 @@
+zh-CN:
+  doorkeeper:
+    applications:
+      form:
+        name: 应用名称
+        redirect_uri: 回调地址
+        scope: 申请权限范围
+      help:
+        scopes: 使用空格分隔多个权限范围，留空使用默认权限范围
+      index:
+        title: 所有应用

@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session, if: :format_js?
 
   before_action :set_locale
+  before_action :store_return_to
   before_action :require_signin
 
   def set_locale(locale = params[:locale])
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
       cookies.permanent[:locale] ||= I18n.default_locale
     end
     I18n.locale = cookies.permanent[:locale]
+  end
+
+  def store_return_to
+    session[:return_to] = request.url
   end
 
   # Permission denied

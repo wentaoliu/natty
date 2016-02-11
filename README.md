@@ -1,5 +1,7 @@
 # RTISS
 
+<img align="right" height="150" src="https://wentaoliu.github.io/rtiss/img/rtiss-logo.svg">
+
 [![Build Status](https://travis-ci.org/wentaoliu/rtiss.svg?branch=master)](https://travis-ci.org/wentaoliu/rtiss)
 [![Dependency Status](https://gemnasium.com/wentaoliu/rtiss.svg)](https://gemnasium.com/wentaoliu/rtiss)
 
@@ -17,6 +19,9 @@ RTISS (Research Team Information Sharing System) is a web application based on R
 * Instruments
 * Inventory
 * Messages
+* Group
+* OAuth
+* API
 
 ## Deployment
 

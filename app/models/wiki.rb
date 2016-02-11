@@ -15,4 +15,18 @@ class Wiki
   validates :title, presence: true
   validates :comment, presence: true
   validates :content, length: { minimum: 50 }
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :content
+    expose :hits
+    expose :comment
+    expose :created_at
+    expose :user_id
+  end
 end

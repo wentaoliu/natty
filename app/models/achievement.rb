@@ -27,4 +27,19 @@ class Achievement
     return TYPE
   end
 
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :content
+    expose :author
+    expose :link
+    expose :date
+    expose :type
+    expose :created_at
+    expose :user_id
+  end
 end

@@ -22,4 +22,15 @@ class Comment
   def replies
     parent.comments.where(reply_to: self.id)
   end
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :reply_to
+    expose :content
+    expose :user_id
+  end
 end

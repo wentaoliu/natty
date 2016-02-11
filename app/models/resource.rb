@@ -33,4 +33,19 @@ class Resource
       self.ancestors = parent_ancestors.push(parent)
     end
   end
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :parent
+    expose :ancestors
+    expose :is_folder
+    expose :hits
+    expose :created_at
+    expose :user_id
+  end
 end

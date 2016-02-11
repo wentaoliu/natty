@@ -15,4 +15,18 @@ class Topic
 
   validates :title, presence: true
   validates :content, length: { minimum: 50 }
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :content
+    expose :category
+    expose :tags
+    expose :created_at
+    expose :user_id
+  end
 end

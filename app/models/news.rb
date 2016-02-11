@@ -11,4 +11,17 @@ class News
 
   validates :title, presence: true
   validates :content, presence: true
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :content
+    expose :hits
+    expose :created_at
+    expose :user_id
+  end
 end

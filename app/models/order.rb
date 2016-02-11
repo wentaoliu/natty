@@ -17,4 +17,24 @@ class Order
   field :hidden,            type: Boolean,  default: false
 
   validates :title,         presence: true
+
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :title
+    expose :quantity
+    expose :unit_size
+    expose :unit_price
+    expose :total_price
+    expose :bought_from
+    expose :type
+    expose :vendor_name
+    expose :invoice
+    expose :notes
+    expose :hidden
+    expose :created_at
+    expose :user_id
+  end
 end

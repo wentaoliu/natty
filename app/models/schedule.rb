@@ -23,4 +23,18 @@ class Schedule
               {:ends_at.gte => start_date, :ends_at.lt => end_date })
   end
 
+  def entity
+    Entity.new(self)
+  end
+
+  class Entity < Grape::Entity
+    expose :id
+    expose :title
+    expose :content
+    expose :starts_at
+    expose :ends_at
+    expose :place
+    expose :created_at
+    expose :user_id
+  end
 end

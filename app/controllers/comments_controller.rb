@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   before_action :set_topic, only: [:create, :destroy]
 
   # POST /comments(.:format)
@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
       format.html { redirect_to @topic, notice: t('.success') }
       format.json { head :no_content }
     end
+    return
   end
 
   private

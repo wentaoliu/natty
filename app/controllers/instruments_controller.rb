@@ -35,8 +35,7 @@ class InstrumentsController < ApplicationController
     @instrument.user = current_user
     respond_to do |format|
       if @instrument.save
-        format.html { redirect_to instruments_path(@instrument),
-                      notice: t('.success') }
+        format.html { redirect_to @instrument, notice: t('.success') }
         format.json { render :show, status: :created, location: @instrument }
       else
         format.html { render :new }

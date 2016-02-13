@@ -30,11 +30,11 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = Topic.new(topic_params)
-    @topic.tags = params[:topic][:tags].split('/')
+    @topic.tags = params[:topic][:tags]&.split('/')
     @topic.user = current_user
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to topics_path, notice: t('.success') }
+        format.html { redirect_to @topic, notice: t('.success') }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }

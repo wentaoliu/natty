@@ -67,7 +67,7 @@ en-US:
     create:
       password_error: Invalid username/password combination
       code_error: Validation Code did not match with the Image
-      success_html: <div class="header">Login successful</div><p>%{username},welcome back!</p>
+      success_html: <div class="header">Login successful</div><p>%{username}, welcome back!</p>
   topics:
     create:
       success: Topic was successfully created.

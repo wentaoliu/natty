@@ -2,7 +2,7 @@ $(document).on 'ready page:load', ->
   # Initialize Simditor
   textarea = $('.editor')
   if textarea.length > 0
-    Simditor.locale = $.cookie 'locale'
+    Simditor.locale = Cookies.get 'locale'
     editor = new Simditor(
       textarea: textarea
       toolbar: [

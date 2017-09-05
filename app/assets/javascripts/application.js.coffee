@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require jquery.cookie
+#= require js.cookie
 #= require semantic-ui
 #= require turbolinks
 #= require simditor

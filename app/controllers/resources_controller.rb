@@ -1,6 +1,6 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
-  before_filter :require_admin, only: [:destroy]
+  before_action :require_admin, only: [:destroy]
 
   def index
     parent = params[:parent]

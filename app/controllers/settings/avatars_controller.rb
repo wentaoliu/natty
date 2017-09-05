@@ -1,5 +1,5 @@
 class Settings::AvatarsController < ApplicationController
-  before_filter :require_signin
+  before_action :require_signin
   before_action :set_user, only: [:edit, :update]
 
   def edit

@@ -5,81 +5,50 @@
 [![Build Status](https://travis-ci.org/wentaoliu/rtiss.svg?branch=master)](https://travis-ci.org/wentaoliu/rtiss)
 [![Dependency Status](https://gemnasium.com/wentaoliu/rtiss.svg)](https://gemnasium.com/wentaoliu/rtiss)
 
-RTISS - _Research Team Information Sharing System_ - is a content management system (CMS) customized for research teams. Any team, large or small, have  immediate access to the handy features after a plain, out-of-the-box installation.
+RTISS - _Research Team Information Sharing System_ - is a content management system (CMS) designed for research teams.
 
-While is designed to have several build-in function modules for those who have little knowledge of web development, RTISS is easily extendible for those who intend to add new features.
+RTISS provides immediate access to a number of handy features after a plain, out-of-the-box installation, thus is suitable for teams with little experience of web development.
 
 ## Features
 
-* __Topics__ - forum
+* __Topics__ - Forum
 
-  Like a typical Internet forum, users can create a new topic which could be replied by others.
+* __Wiki__ - Simplified 'wikipedia'
 
-* __Wiki__ - knowledge sharing system
+* __Schedule__ - Calendar
 
-  The wiki invites all users to edit any page or to create new pages. Since there is no review before modifications are accepted, wiki keeps a record of changes made to wiki pages. Indeed every version of the page is stored, which means that users can view an older version of the page.
+* __Resources__ - File hosting
 
-* __Schedule__ - calendar
+* __News__ - Tracking and sharing
 
-  Users can create their own schedules and look for others' schedules by name and date.
+* __Meetings__ - Meeting arrangement and records
 
-* __Resources__ - file hosting
+* __Achievements__ - Papers, patents and awards
 
-  Uploaded files can be classified by recursive folders.
+* __Instruments__ - Equipment register and booking
 
-* __News__ - sharing news
+* __Inventory__ - Chemicals and supplies
 
-  News articles, complete with text and graphics, describe the events related to your lab.
+* __Orders__ - Simple order management
 
-* __Meetings__ - meeting arrangement and notice
+* __Messages__ - Sending messages to colleagues
 
-  Remind users of the date of meetings.
+* __Group__ - Access control
 
-* __Achievements__ - papers, patents and awards
+* __OAuth__
 
-  Achievements could be showed and archived by type.
+* __API__
 
-* __Instruments__ - equipment register and booking
+* __Internationalization__
 
-  Book the instrument you would use in advance.
-
-* __Inventory__ - chemicals and supplies
-
-  Manage quantities, locations and expiry date for chemicals and supplies.
-
-* __Orders__ - simple finanical management
-
-  Recorded order's details makes it easy to gather statistics and reimburse.
-
-* __Messages__ - send messages to colleagues
-
-  Messages can be marked as _liked_ and are visible to all users.
-
-* __Group__ - access control
-
-  For research teams, access control to resources may be a significant issue. Usually, you will want to assign individual users to groups and then assign permissions based on these groups. Of course, you can assign permissions to the individuals instead of groups.
-
-
-* __OAuth__ - OAuth2 provider
-
-  OAuth is commonly used as a way for users to log into third-party websites or applications using their RTISS account without exposing their password.
-
-* __API__ - JSON interface
-
-  This would make it drastically simpler to create third-party applications that interact with your RTISS website.
-
-* __Internationalization__ - using RTISS in your own language
-
-  Avaliable locales:
+  Currently avaliable locales:
   > en-US (English), zh-CN (Simplified Chinese)
-
-  Maybe your language is not avaliable or up-to-date? Please help us by adding translations to this application into your language or languages you care about.
 
 ## Dependencies
 
 * Linux
 
-  Mac OS and Windows are not supported.
+  Support of Windows is not guaranteed.
 
 * Ruby >=2.3.0
 
@@ -147,6 +116,6 @@ While is designed to have several build-in function modules for those who have l
 
 ## License
 
-Copyright(c) 2014-2016 [Wentao Liu](https://github.com/wentaoliu)
+Copyright(c) 2014-2017 [Wentao Liu](https://github.com/wentaoliu)
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)

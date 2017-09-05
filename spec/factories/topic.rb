@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :topic do
+    association :user, factory: :admin
 
     title { Faker::Lorem.sentence }
     content { Faker::Lorem.paragraphs.join('\n') }

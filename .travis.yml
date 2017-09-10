@@ -5,14 +5,11 @@ rvm:
 
 sudo: false
 
-env:
-  - USE_OFFICIAL_GEM_SOURCE=1
-
 services:
   - mongodb
 
 before_script:
-  - mongo rtiss_test --eval 'db.addUser("travis", "test");'
+  - mongo natty_test --eval 'db.addUser("travis", "test");'
 
 script:
   - RAILS_ENV=test bundle exec rspec spec

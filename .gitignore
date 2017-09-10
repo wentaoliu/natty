@@ -13,3 +13,5 @@
 /tmp
 
 /public/system/*
+
+.DS_Store

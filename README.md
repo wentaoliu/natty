@@ -1,13 +1,13 @@
-# RTISS
+# Natty
 
-<img align="right" height="150" src="https://wentaoliu.github.io/rtiss/img/rtiss-logo.svg">
+<img align="right" height="150" src="https://wentaoliu.github.io/natty/img/logo.svg">
 
-[![Build Status](https://travis-ci.org/wentaoliu/rtiss.svg?branch=master)](https://travis-ci.org/wentaoliu/rtiss)
-[![Dependency Status](https://gemnasium.com/wentaoliu/rtiss.svg)](https://gemnasium.com/wentaoliu/rtiss)
+[![Build Status](https://travis-ci.org/wentaoliu/natty.svg?branch=master)](https://travis-ci.org/wentaoliu/natty)
+[![Dependency Status](https://gemnasium.com/wentaoliu/natty.svg)](https://gemnasium.com/wentaoliu/natty)
 
-RTISS - _Research Team Information Sharing System_ - is a content management system (CMS) designed for research teams.
+Natty is a content management system (CMS) designed for research teams.
 
-RTISS provides immediate access to a number of handy features after a plain, out-of-the-box installation, thus is suitable for teams with little experience of web development.
+Natty provides immediate access to a number of handy features after a plain, out-of-the-box installation, thus is suitable for teams with little experience of web development.
 
 ## Features
 

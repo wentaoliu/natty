@@ -7,7 +7,7 @@
 #= require particles.js/particles.js
 #= require_tree .
 
-$(document).on 'ready page:load', ->
+$(document).on 'turbolinks:load', ->
   # Semantic-UI
   # Initialize sidebar module
   $('.left-sidebar-toggle').click ->

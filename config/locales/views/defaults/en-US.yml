@@ -1,8 +1,8 @@
 en-US:
   app:
     name:
-      short: RTISS
-      long: Research Team Information Sharing System
+      short: Natty
+      long: Natty
   module:
     home: Home
     topics: Topics

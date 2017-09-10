@@ -1,4 +1,4 @@
-$(document).on 'ready page:load', ->
+$(document).on 'turbolinks:load', ->
   if $('#canvas').length > 0
     particlesJS "canvas",
       particles:

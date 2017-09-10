@@ -1,8 +1,8 @@
 zh-CN:
   app:
     name:
-      short: RTISS
-      long: 科研团队信息管理系统
+      short: Natty
+      long: Natty
   module:
     home: 主页
     topics: 话题

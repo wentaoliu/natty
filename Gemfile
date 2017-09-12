@@ -50,8 +50,11 @@ gem "simple_calendar", "~> 2.0.6"
 # Paginator
 gem 'kaminari', '~> 1.0.0'
 gem 'kaminari-mongoid', '~> 1.0.0'
+# Authentication
+gem 'devise', '~> 4.3'
 # Authorization
 gem 'cancancan', '~> 2.0.0'
+gem 'cancancan-mongoid', '~> 2.0.0.beta1'
 # API
 gem 'grape', '~> 1.0.0'
 gem 'grape-entity', '~> 0.6.1'

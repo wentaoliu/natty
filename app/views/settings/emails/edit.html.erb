@@ -6,9 +6,6 @@
 </div>
 
 <div class="ui blue menu">
-  <%= link_to edit_settings_username_path, class:'item' do %>
-    <i class="user icon"></i> <%=t 'settings.menu.username' %>
-  <% end %>
   <%= link_to edit_settings_email_path, class:'active item' do %>
     <i class="mail icon"></i> <%=t 'settings.menu.email' %>
   <% end %>
@@ -29,7 +26,7 @@
     <%= f.label :email, t('.email') %>
     <div class="ui right labeled input">
       <%= f.email_field :email %>
-      <% if @user.email_verified %>
+      <% if @user.confirmed_at %>
         <div class="ui tag label">
           <%=t '.verified' %>
         </div>

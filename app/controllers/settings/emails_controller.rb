@@ -1,5 +1,4 @@
 class Settings::EmailsController < ApplicationController
-  before_action :require_signin
   before_action :set_user, only: [:edit, :update]
 
   def edit

@@ -1,9 +1,9 @@
-User.create!(
-  username: 'admin',
+user = User.new(
+  email: 'admin@example.com',
   name: 'Administrator',
   password: 'password',
   password_confirmation: 'password',
-  admin: true,
-  state: 1,
-  email: 'admin@example.com'
+  admin: true
 )
+user.skip_confirmation!
+user.save!

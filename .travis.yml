@@ -9,7 +9,7 @@ services:
   - mongodb
 
 before_script:
-  - mongo natty_test --eval 'db.addUser("travis", "test");'
+  - mongo natty_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]};'
 
 script:
   - RAILS_ENV=test bundle exec rspec spec

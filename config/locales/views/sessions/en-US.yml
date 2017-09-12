@@ -2,7 +2,7 @@ en-US:
   sessions:
     new:
       signin: Sign In
-      username: Username/Password
+      email: Email
       password: Password
       remember_me: Remember me?
       forgot_password: Forgot password?

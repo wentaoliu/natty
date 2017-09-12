@@ -3,7 +3,11 @@ class User
   include Mongoid::Timestamps
   include Mongoid::Paperclip
   include Mongoid::Paranoia
-  include ActiveModel::SecurePassword
+
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, #:confirmable,
+         :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'
   has_and_belongs_to_many :member_of, inverse_of: :members, class_name: 'Group'
@@ -23,13 +27,34 @@ class User
   embeds_one :permission, autobuild: true
   accepts_nested_attributes_for :permission
 
-  field :username,              type: String
-  field :password_digest,       type: String
-  has_secure_password
+  ## Database authenticatable
+  field :email,              type: String, default: ""
+  field :encrypted_password, type: String, default: ""
 
-  field :name,                  type: String
-  field :email,                 type: String
-  field :email_verified,        type: Boolean,  default: false
+  ## Recoverable
+  field :reset_password_token,   type: String
+  field :reset_password_sent_at, type: Time
+
+  ## Rememberable
+  field :remember_created_at, type: Time
+
+  ## Trackable
+  field :sign_in_count,      type: Integer, default: 0
+  field :current_sign_in_at, type: Time
+  field :last_sign_in_at,    type: Time
+  field :current_sign_in_ip, type: String
+  field :last_sign_in_ip,    type: String
+
+  ## Confirmable
+  field :confirmation_token,   type: String
+  field :confirmed_at,         type: Time
+  field :confirmation_sent_at, type: Time
+  field :unconfirmed_email,    type: String # Only if using reconfirmable
+
+  ## Lockable
+  # field :failed_attempts, type: Integer, default: 0 # Only if lock strategy is :failed_attempts
+  # field :unlock_token,    type: String # Only if unlock strategy is :email or :both
+  # field :locked_at,       type: Time
 
   field :remember_token,        type: String
 
@@ -41,6 +66,7 @@ class User
     :styles => { :small => ["300x300", :png] },
     :default_url => 'default/user/photo/:style/missing.png'
 
+  field :name,                  type: String
   field :email_public,          type: String
   field :locale,                type: String,   default: I18n.default_locale
   field :position,              type: Integer,  default: 0
@@ -66,17 +92,6 @@ class User
   field :rank,                  type: Integer,  default: 0
   field :resume,                type: String
 
-  field :last_sign_in_at,       type: DateTime
-  field :last_sign_in_ip,       type: String
-  field :current_sign_in_at,    type: DateTime
-  field :current_sign_in_ip,    type: String
-
-  field :verify_email_token,    type: String
-  field :verify_email_time,     type: DateTime
-
-  field :reset_password_token,  type: String
-  field :reset_password_time,   type: DateTime
-
   STATE = {
     inactive: 0,
     normal: 1,
@@ -95,26 +110,16 @@ class User
   end
 
   def superadmin?
-    return self.username == 'admin'
+    return self.name == 'admin'
   end
 
   def admin?
     return self.admin || superadmin?
   end
 
-  before_save { self.username = username.downcase }
   before_create :generate_remember_token
-  before_create :generate_verify_email_token
-
-  validates :username,  presence: true, uniqueness: true,
-            length:     { minimum: 4, maximum: 20 },
-            format:     { with: /\A[a-zA-Z0-9]+\Z/ }
 
   validates :name,      presence: true
-  validates :email,     presence: true,
-            format:     { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i },
-            uniqueness: { case_sensitive: false }
-  validates :password,  length: { minimum: 6 }, :if => :password_digest_changed?
 
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
   validates_attachment :photo,  content_type: { content_type: /\Aimage\/.*\Z/ }
@@ -147,12 +152,6 @@ class User
     where(remember_token: User.digest(token)).first
   end
 
-  # Find by email or username
-  def self.find_and_authenticate(who, password)
-    user = any_of({ email: who.downcase }, { username: who }).first
-    user if user && user.authenticate(password)
-  end
-
   def generate_remember_token
     self.remember_token = User.digest(SecureRandom.urlsafe_base64)
   end
@@ -162,10 +161,6 @@ class User
     self.remember_token = User.digest(raw_token)
     save!
     return raw_token
-  end
-
-  def generate_verify_email_token
-    self.verify_email_token = SecureRandom.urlsafe_base64
   end
 
   def User.digest(token)

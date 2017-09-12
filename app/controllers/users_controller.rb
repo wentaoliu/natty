@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   include SimpleCaptcha::ControllerHelpers
   load_and_authorize_resource except: [:create]
   skip_authorize_resource only: [:new, :create, :verify]
-  skip_before_action :require_signin, only: [:new, :create, :verify]
+  skip_before_action :authenticate_user!, only: [:new, :create, :verify]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   layout 'layouts/visitor', only: [:new, :create]

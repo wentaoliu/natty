@@ -63,7 +63,7 @@ module V1
           requires :is_folder, type: Boolean, desc: 'Is folder?'
           requires :hidden, type: Boolean, desc: 'Hidden?'
         end
-        put '', authorize: [:update, News] do
+        put '', authorize: [:update, Resource] do
           @resource = Resource.find(params[:id])
           if @resource.update(title: params[:title], parent: params[:parent],
                         ancestors: params[:ancestors], is_folder: params[:is_folder],

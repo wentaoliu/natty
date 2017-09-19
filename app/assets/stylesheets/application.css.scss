@@ -5,32 +5,56 @@
  *= require_self
  */
 
-@media only screen and (max-width : 768px) {
-  .hidden-xs { display: none !important; }
-  .visible-xs-block { display: block; }
-  .visible-xs-inline { display: inline; }
-  .visible-xs-inline-block { display: inline-block; }
+ .ui.menu {
+   .header.item,
+   .dropdown.icon.item {
+     padding-top: 0.5em;
+     padding-bottom: 0.5em;
+
+     img {
+       margin-right: 0.5em;
+     }
+   }
+ }
+
+body.visitor {
+  background-color: #F5F5F5;
+  overflow: hidden;
 }
 
-@media only screen and (min-width : 768px) and (max-width : 992px) {
-  .hidden-sm { display: none !important; }
-  .visible-sm-block { display: block; }
-  .visible-sm-block { display: inline; }
-  .visible-sm-inline-block { display: inline-block; }
-}
+body.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-@media only screen and (min-width : 992px) and (max-width : 1200px) {
-  .hidden-md { display: none !important; }
-  .visible-md-block { display: block; }
-  .visible-md-block { display: inline; }
-  .visible-md-inline-block { display: inline-block; }
-}
+  .ui.menu {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
 
-@media only screen and (min-width : 1200px) {
-  .hidden-lg { display: none !important; }
-  .visible-lg-block { display: block; }
-  .visible-lg-block { display: inline; }
-  .visible-lg-inline-block { display: inline-block; }
+  .ui.vertical.menu {
+    overflow: auto;
+  }
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    .ui.container {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      display: block;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+
+      .ui.grid {
+        margin: 0;
+      }
+    }
+  }
 }
 
 .calendar {

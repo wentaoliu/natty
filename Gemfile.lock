@@ -7,14 +7,6 @@ GIT
       mongoid (~> 6.0)
       rspec (~> 3.3)
 
-GIT
-  remote: git://github.com/niksosf/mongoid-versioning.git
-  revision: 043f866e6d7d2ca243172b8d3edb3163427133f3
-  specs:
-    mongoid-versioning (2.1.0)
-      activesupport (>= 4.0)
-      mongoid (>= 4.0.0, < 7.0.0)
-
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -347,7 +339,6 @@ DEPENDENCIES
   mongoid (~> 6.2.1)
   mongoid-paperclip (~> 0.0.11)
   mongoid-rspec!
-  mongoid-versioning!
   mongoid_paranoia (~> 0.3.0)
   paperclip (~> 5.1.0)
   rails (~> 5.1.3)

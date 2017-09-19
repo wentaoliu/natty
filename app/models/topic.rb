@@ -3,12 +3,13 @@ class Topic
   include Mongoid::Timestamps
 
   belongs_to :user
+  belongs_to :forum
   embeds_many :comments
 
   field :title,           type: String
   field :content,         type: String
   field :category,        type: String
-  field :tags,            type: Array
+  field :tags,            type: String#Array
   field :comments_count,  type: Integer
   field :hits,            type: Integer, default: 0
   field :hidden,          type: Boolean, default: false

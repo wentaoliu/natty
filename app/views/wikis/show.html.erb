@@ -1,42 +1,43 @@
-<div class="ui vertical segment">
-
-  <div class="ui header">
+<div class="ui secondary menu">
+  <div class="item">
     <div class="ui huge breadcrumb">
       <%= link_to wikis_path, class:'section' do %>
-        <i class="blue pencil icon"></i>
         <%=t 'module.wikis' %>
       <% end %>
-      <i class="right chevron icon divider"></i>
+      <i class="right angle icon divider"></i>
       <div class="active section"><%= @wiki.title %></div>
     </div>
   </div>
-
-  <% if params[:version] %>
-    <div class="ui warning message">
-      <%=t '.warning',{ author: @wiki.user.name,
-          time:(l @wiki.created_at, format: :long) } %>
-    </div>
-    <p>
-      <%= link_to t('.back'), versions_wiki_path(id: params[:id]), class:"ui button" %>
-      <%= link_to t('.latest'), wiki_path(id: params[:id]), class:"ui button" %>
-    </p>
-  <% else %>
-    <div class="ui message">
-      <%=t '.info',{ author: @wiki.user.name,
-          time:(l @wiki.created_at, format: :long) } %>
-    </div>
-    <p>
-      <%= link_to edit_wiki_path(@wiki), class:"ui labeled icon button" do %>
+  <div class="right menu">
+    <% if params[:version] %>
+      <%= link_to t('.back'), versions_wiki_path(id: params[:id]), class:"item" %>
+      <%= link_to t('.latest'), wiki_path(id: params[:id]), class:"item" %>
+    <% else %>
+      <%= link_to edit_wiki_path(@wiki), class:"item" do %>
         <i class="edit icon"></i><%= t '.edit' %>
       <% end if can? :update, @wiki %>
-      <%= link_to versions_wiki_path(@wiki), class:'ui labeled icon button' do %>
+      <%= link_to versions_wiki_path(@wiki), class:'item' do %>
         <i class="history icon"></i><%= t '.versions' %>
       <% end %>
       <%= link_to @wiki, method: :delete, data: { confirm: t('.delete_confirm') },
-          class:"ui red labeled icon button" do %>
-        <i class="trash icon"></i><%=t '.delete' %>
+          class:"item" do %>
+        <i class="red trash icon"></i><%=t '.delete' %>
       <% end if can? :destroy, @wiki %>
-    </p>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-<div class="ui piled segment"><%= raw @wiki.content %></div>
+
+
+<% if params[:version] %>
+  <div class="ui warning message">
+    <%=t '.warning',{ author: @wiki.user.name,
+        time:(l @wiki.created_at, format: :long) } %>
+  </div>
+<% else %>
+  <div class="ui message">
+    <%=t '.info',{ author: @wiki.user.name,
+        time:(l @wiki.created_at, format: :long) } %>
+  </div>
+<% end %>
+
+<div class="ui segment"><%= raw @wiki.content %></div>

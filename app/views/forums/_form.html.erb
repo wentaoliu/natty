@@ -1,0 +1,22 @@
+<% if @forum.errors.any? %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <% @forum.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<%= form_for @forum, html: { class: 'ui form segment' } do |f| %>
+  <div class="field">
+    <%= f.label :name, t('.name') %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description, t('.description') %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+  <%= link_to t('.cancel'), forums_path, class:"ui button" %>
+<% end %>

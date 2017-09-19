@@ -25,7 +25,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user %></td>
-        <td><%= user.username %></td>
         <td><%= user.email %></td>
         <% if user.state == 1 %>
         <td><%= t('.table.states')[user.state] %></td>

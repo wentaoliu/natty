@@ -65,7 +65,7 @@ module V1
           requires :place, type: String, desc: 'Place'
           requires :hidden, type: Boolean, desc: 'Hidden?'
         end
-        put '', authorize: [:update, News] do
+        put '', authorize: [:update, Schedule] do
           @schedule = Schedule.find(params[:id])
           if @schedule.update(title: params[:title], content: params[:content],
                              starts_at: params[:starts_at], ends_at: params[:ends_at],

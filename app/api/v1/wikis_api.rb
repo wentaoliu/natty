@@ -60,7 +60,7 @@ module V1
           requires :comment, type: String, desc: 'Comment'
           requires :hidden, type: Boolean, desc: 'Hidden?'
         end
-        put '', authorize: [:update, News] do
+        put '', authorize: [:update, Wiki] do
           @wiki = Wiki.find(params[:id])
           if @wiki.update(title: params[:title], content: params[:content],
                           comment: params[:comment], hidden: params[:hidden])

@@ -5,10 +5,10 @@ en-US:
       long: Natty
   module:
     home: Home
-    topics: Topics
-    wikis: Wikis
+    topics: Discussions
+    wikis: Wiki
     schedule: Schedule
-    resources: Resources
+    resources: Files
     teamworks: Teamworks
     news: News
     meetings: Meetings

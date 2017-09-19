@@ -27,18 +27,14 @@ module V1
     helpers Doorkeeper::Grape::Helpers
     helpers V1::Helpers
 
-    mount V1::AchievementsAPI
     mount V1::InstrumentsAPI
     mount V1::InventoriesAPI
-    mount V1::MeetingsAPI
     mount V1::MessagesAPI
-    mount V1::NewsAPI
-    mount V1::OrdersAPI
     mount V1::ResourcesAPI
     mount V1::SchedulesAPI
     mount V1::TopicsAPI
     mount V1::WikisAPI
-    
+
     desc 'Test'
     params do
       optional :limit, type: Integer, values: 0..100

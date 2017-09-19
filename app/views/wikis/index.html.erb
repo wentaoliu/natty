@@ -1,23 +1,23 @@
-<div class="ui vertical segment">
-  <h2 class="ui header">
-    <i class="circular inverted blue pencil icon"></i>
-    <div class="content">
-      <%=t 'module.wikis' %>
+<div class="ui secondary menu">
+  <div class="item">
+    <div class="ui huge breadcrumb">
+      <a class="section"><%=t 'module.wikis' %></a>
+      <i class="right angle icon divider"></i>
+      <div class="active section">List</div>
     </div>
-  </h2>
-  <%= form_tag wikis_path, method:'GET', class:"ui form" do %>
-    <div class="inline fields">
-      <div class="field">
-        <%= text_field_tag :search, params[:search], placeholder: t('.search') %>
+  </div>
+  <div class="right menu">
+    <%= link_to new_wiki_path, class:"item" do %>
+      <i class="plus icon"></i><%=t '.new' %>
+    <% end if can? :create, Wiki %>
+
+    <%= form_tag wikis_path, method:'GET', class:"item" do %>
+      <div class="ui icon input">
+        <%= text_field_tag :search, params[:search], placeholder:t('.search') %>
+        <i class="search link icon"></i>
       </div>
-      <div class="field">
-        <%= submit_tag t('.search'), class:"ui blue button" %>
-      </div>
-    </div>
-  <% end %>
-  <%= link_to new_wiki_path, class:"ui green labeled icon button" do %>
-    <i class="plus icon"></i><%=t '.new' %>
-  <% end if can? :create, Wiki %>
+    <% end %>
+  </div>
 </div>
 
 <table class="ui table segment">

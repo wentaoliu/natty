@@ -1,6 +1,18 @@
-<h2>Change your password</h2>
+<h2 class="ui center aligned icon header">
+  <i class="circular unlock icon"></i>
+  <%= t '.reset_password' %>
+</h2>
+<% if flash[:error] %>
+  <div class="ui icon error message">
+    <i class="attention circle icon"></i>
+    <div class="content">
+      <p><%= flash[:error] %></p>
+    </div>
+  </div>
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name),
+    html: { method: :put, class:'ui form segment' }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
@@ -17,9 +29,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+  <%= f.submit t('.submit'), class: "fluid ui blue button" %>
 <% end %>
 
 <%= render "devise/shared/links" %>

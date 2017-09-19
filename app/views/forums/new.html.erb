@@ -1,0 +1,10 @@
+
+<div class="ui huge breadcrumb">
+  <%= link_to forums_path, class:'section' do %>
+    <%=t 'module.topics' %>
+  <% end %>
+  <i class="right chevron icon divider"></i>
+  <div class="active section"><%=t '.new' %></div>
+</div>
+
+<%= render 'form' %>

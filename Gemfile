@@ -33,7 +33,6 @@ gem 'bcrypt', '~> 3.1.7'
 # Mongoid
 gem 'mongoid', '~> 6.2.1'
 gem 'mongoid_paranoia', '~> 0.3.0'
-gem 'mongoid-versioning', github: 'niksosf/mongoid-versioning'
 # Simditor
 gem 'simditor', '~> 2.3.6'
 # Semantic UI

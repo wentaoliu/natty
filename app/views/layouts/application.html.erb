@@ -9,75 +9,70 @@
   <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <!-- left navigation sidebar -->
-  <div class="ui left vertical inverted blue thin icon labeled sidebar menu">
-    <%= link_to content_tag('i',nil,class:'large home icon') +
-          t('module.home'), root_path, class:'item' %>
-    <%= link_to content_tag('i',nil,class:'large comments icon') +
-          t('module.topics'), topics_path, class:'item' if can? :read, Topic %>
-    <%= link_to content_tag('i',nil,class:'large pencil icon') +
-          t('module.wikis'), wikis_path, class:'item' if can? :read, Wiki %>
-    <%= link_to content_tag('i',nil,class:'large calendar icon') +
-          t('module.schedule'), schedules_path, class:'item' if can? :read, Schedule %>
-    <%= link_to content_tag('i',nil,class:'large folder open icon') +
-          t('module.resources'), resources_path, class:'item' if can? :read, Resource %>
-    <%= link_to content_tag('i',nil,class:'large lab icon') +
-          t('module.inventories'), inventories_path, class:'item' if can? :read, Inventory %>
-    <%= link_to content_tag('i',nil,class:'large newspaper outline icon') +
-          t('module.news'), news_index_path, class:'item' if can? :read, News %>
-    <%= link_to content_tag('i',nil,class:'large briefcase icon') +
-          t('module.meetings'), meetings_path, class:'item' if can? :read, Meeting %>
-    <%= link_to content_tag('i',nil,class:'large flag icon') +
-          t('module.achievements'), achievements_path, class:'item' if can? :read, Achievement %>
-    <%= link_to content_tag('i',nil,class:'large cube icon') +
-          t('module.instruments'), instruments_path, class:'item' if can? :read, Instrument %>
-    <%= link_to content_tag('i',nil,class:'large payment icon') +
-          t('module.orders'), orders_path, class:'item' if can? :read, Order %>
-    <%= link_to content_tag('i',nil,class:'large users icon') +
-          t('module.users'), users_path, class:'item' if can? :read, User %>
-    <%= link_to content_tag('i',nil,class:'large sitemap icon') +
-          t('module.groups'), groups_path, class:'item' if can? :read, Group %>
-    <%= link_to content_tag('i',nil,class:'large plug icon') +
-          t('module.oauth'), oauth_authorized_applications_path, class:'item' %>
-  </div>
+<body class="layout">
 
   <!-- top fixed menu -->
-  <div class="ui top fixed inverted blue menu">
-    <a class="item left-sidebar-toggle">
-      <i class="content icon"></i>
-      <b class="hidden-xs"><%= t 'app.name.long' %></b>
-      <b class="visible-xs-inline-block hidden-sm hidden-md hidden-lg">
-        <%= t 'app.name.short' %>
-      </b>
-    </a>
-    <div class="ui locale dropdown item" data-content="<%=t 'menu.languages' %>">
-      <i class="world icon"></i>
-      <div class="menu">
-        <% for k,v in avaliable_locales %>
-          <%= link_to v, {:locale=> k}, class:'item' %>
-        <% end %>
-      </div>
-    </div>
+  <div class="ui top attached inverted blue menu">
+    <%= link_to root_path, class: "header item" do %>
+      <%= image_tag "logo_o.svg" %>
+      <%= t 'app.name.long' %>
+    <% end %>
     <div class="right menu">
-      <%= link_to edit_profile_path, 'data-content' => t('menu.profile'),
-          class:'item', style:"padding-top:5px;padding-bottom:5px;" do %>
+      <%= link_to root_path, class:'icon item' do %>
+        <i class="icons">
+          <i class="inbox icon"></i>
+          <i class="top right corner red circle icon"></i>
+        </i>
+      <% end %>
+      <div class="ui dropdown icon item">
         <%= image_tag current_user.avatar.url(:thumb), class: 'ui avatar image' %>
         <%= current_user.name %>
-      <% end %>
-      <%= link_to settings_path,
-          class:'item', 'data-content' => t('menu.settings') do %>
-        <i class="settings icon"></i>
-      <% end %>
-      <%= link_to destroy_user_session_path, method: :delete,
-          class:'item', 'data-content' => t('menu.signout') do %>
-        <i class="sign out icon"></i>
-      <% end %>
+        <i class="dropdown icon"></i>
+        <div class="menu">
+          <%= link_to edit_profile_path, class:'item' do %>
+            <i class="user icon"></i>
+            <%= t('menu.profile') %>
+          <% end %>
+          <%= link_to settings_path, class:'item' do %>
+            <i class="setting icon"></i>
+            <%= t 'menu.settings' %>
+          <% end %>
+          <%= link_to content_tag('i', nil, class:'users icon') +
+                t('module.users'), users_path, class:'item' if can? :read, User %>
+          <%= link_to content_tag('i',nil,class:'sitemap icon') +
+                t('module.groups'), groups_path, class:'item' if can? :read, Group %>
+          <%= link_to content_tag('i',nil,class:'plug icon') +
+                t('module.oauth'), oauth_authorized_applications_path, class:'item' %>
+          <%= link_to destroy_user_session_path, method: :delete, class:'item' do %>
+            <i class="sign out icon"></i>
+            <%=t '.menu.signout' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- main -->
-  <div class="pusher">
-    <div class="ui container" style="margin-top:50px;">
+
+  <div class="main">
+
+    <!-- left vertical navigation menu -->
+    <div class="ui vertical labeled icon menu">
+      <%= link_to content_tag('i',nil,class:'large blue comments icon') +
+            t('module.topics'), forums_path, class:'item' if can? :read, Topic %>
+      <%= link_to content_tag('i',nil,class:'large blue pencil icon') +
+            t('module.wikis'), wikis_path, class:'item' if can? :read, Wiki %>
+      <%= link_to content_tag('i',nil,class:'large blue calendar icon') +
+            t('module.schedule'), schedules_path, class:'item' if can? :read, Schedule %>
+      <%= link_to content_tag('i',nil,class:'large blue folder open icon') +
+            t('module.resources'), resources_path, class:'item' if can? :read, Resource %>
+      <%= link_to content_tag('i',nil,class:'large blue lab icon') +
+            t('module.inventories'), inventories_path, class:'item' if can? :read, Inventory %>
+      <%= link_to content_tag('i',nil,class:'large blue cube icon') +
+            t('module.instruments'), instruments_path, class:'item' if can? :read, Instrument %>
+    </div>
+
+
+    <!-- main -->
+    <div class="ui container">
       <% if notice %>
         <div class="ui blue message">
           <i class="close icon"></i>

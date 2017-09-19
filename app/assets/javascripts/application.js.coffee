@@ -9,14 +9,6 @@
 
 $(document).on 'turbolinks:load', ->
   # Semantic-UI
-  # Initialize sidebar module
-  $('.left-sidebar-toggle').click ->
-    $('.sidebar.left').sidebar 'toggle'
-
-  # Initialize popup module
-  $('.right.menu > .item').popup position: 'bottom right'
-  $('.locale').popup position: 'bottom left'
-
   # Initialize dropdown module
   $('.dropdown').dropdown()
 
@@ -31,3 +23,7 @@ $(document).on 'turbolinks:load', ->
   error_fields = $('.field_with_errors')
   error_fields.parent('.field').addClass 'error'
   error_fields.children().unwrap()
+
+  $('#new-folder-modal').modal('attach events', '#new-folder-btn', 'show')
+  $('#new-file-modal').modal('attach events', '#new-file-btn', 'show')
+  $('.ui.checkbox').checkbox()

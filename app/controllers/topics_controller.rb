@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   load_and_authorize_resource
+  before_action :set_forum, only: [:index, :new, :create]
   before_action :set_topic, only: [:show, :destroy]
 
   NUM_PER_PAGE = 15
@@ -29,8 +30,8 @@ class TopicsController < ApplicationController
   # POST /topics
   # POST /topics.json
   def create
-    @topic = Topic.new(topic_params)
-    @topic.tags = params[:topic][:tags]&.split('/')
+    @topic = @forum.topics.new(topic_params)
+    #@topic.tags = params[:topic][:tags]&.split('/')
     @topic.user = current_user
     respond_to do |format|
       if @topic.save
@@ -54,6 +55,10 @@ class TopicsController < ApplicationController
   end
 
   private
+  def set_forum
+    @forum = Forum.find(params[:forum_id])
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_topic
     @topic = Topic.find(params[:id])
@@ -61,6 +66,6 @@ class TopicsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def topic_params
-    params.require(:topic).permit(:title, :content, :category, :hidden)
+    params.require(:topic).permit(:title, :content, :category, :tags, :hidden)
   end
 end

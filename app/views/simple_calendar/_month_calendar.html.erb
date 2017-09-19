@@ -1,7 +1,11 @@
 <header class="ui header">
-  <%= link_to "«", start_date: date_range.first - 1.day  %>
+  <%= link_to start_date: date_range.first - 1.day do %>
+    <i class="arrow left icon"></i>
+  <% end %>
   <span><%= I18n.t("date.month_names")[start_date.month] %> <%= start_date.year %></span>
-  <%= link_to "»", start_date: date_range.last + 1.day  %>
+  <%= link_to start_date: date_range.last + 1.day do %>
+    <i class="arrow right icon"></i>
+  <% end %>
 </header>
 
 <table class="ui celled table">

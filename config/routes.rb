@@ -14,8 +14,12 @@ Rails.application.routes.draw do
     end
   end
   resources :instruments
-  resources :topics, except: [:edit, :update] do
-    resources :comments, only: [:create, :destroy]
+  shallow do
+    resources :forums do
+      resources :topics do
+        resources :comments, only: [:create, :destroy]
+      end
+    end
   end
   resources :resources
   resources :news

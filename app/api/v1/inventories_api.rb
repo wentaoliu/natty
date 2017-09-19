@@ -93,7 +93,7 @@ module V1
           requires :vendor_name, type: String, desc: 'Vendor name'
           requires :hidden, type: Boolean, desc: 'Hidden?'
         end
-        put '', authorize: [:update, News] do
+        put '', authorize: [:update, Inventory] do
           @inventory = Inventory.find(params[:id])
           if @inventory.update(item_name: params[:item_name], price: params[:price],
                         quantity: params[:quantity], unit_size: params[:unit_size],

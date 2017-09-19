@@ -9,8 +9,8 @@ class User
   devise :database_authenticatable, :registerable, #:confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'
-  has_and_belongs_to_many :member_of, inverse_of: :members, class_name: 'Group'
+  #has_and_belongs_to_many :admin_of,  inverse_of: :admins, class_name: 'Group'
+  #has_and_belongs_to_many :member_of, inverse_of: :members, class_name: 'Group'
 
   has_many :topics, dependent: :destroy
   has_many :wikis
@@ -23,9 +23,6 @@ class User
   has_many :meetings
   has_many :messages
   has_many :inventories
-
-  embeds_one :permission, autobuild: true
-  accepts_nested_attributes_for :permission
 
   ## Database authenticatable
   field :email,              type: String, default: ""
@@ -102,8 +99,21 @@ class User
     return STATE
   end
 
+  PERMISSION = {
+    none: 0,
+    read: 1,
+    create: 2,
+    update: 3,
+    manage: 4,
+  }
+
+  def self.permissions
+    return PERMISSION
+  end
+
   field :state,               type: Integer,  default: STATE[:inactive]
   field :admin,               type: Boolean,  default: false
+  field :permission,          type: Integer,  default: PERMISSION[:create]
 
   def normal?
     return self.state == STATE[:normal]
@@ -123,25 +133,6 @@ class User
 
   validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
   validates_attachment :photo,  content_type: { content_type: /\Aimage\/.*\Z/ }
-
-  PERMISSION = {
-    none: 0,
-    read: 1,
-    create: 2,
-    update: 3,
-    manage: 4,
-  }
-
-  def self.permissions
-    return PERMISSION
-  end
-
-  def merged_permission
-    permissions_array = [self.permission, self.member_of.map(&:permission)].flatten
-    permissions_array.reduce do |a, b|
-      a.attributes.merge(b.attributes) { |key, v1, v2| v1 > v2 ? v1 : v2 }
-    end
-  end
 
   def ability
     @ability ||= Ability.new(self)

@@ -1,30 +1,30 @@
-<div class="ui vertical segment">
-  <h2 class="ui header">
-    <i class="circular inverted blue folder open outline icon"></i>
-    <div class="content">
-      <%=t 'module.resources' %>
+<div class="ui secondary menu">
+  <div class="item">
+    <div class="ui huge breadcrumb">
+      <%= link_to t('.breadcrumb.root'), resources_path, class:"section" %>
+      <% if @parent %>
+        <% @parent.ancestors.each do |item| %>
+          <i class="right chevron icon divider"></i>
+          <%= link_to Resource.find(item).title, resources_path(parent:item), class:"section" %>
+        <% end if @parent.ancestors.size > 0 %>
+        <i class="right chevron icon divider"></i>
+        <div class="active section"><%= @parent.title %></div>
+      <% end %>
     </div>
-  </h2>
+  </div>
   <% if can? :create, Resource %>
-    <p>
-      <button type="button" id="new-folder-btn" class="ui green labeled icon button">
-        <i class="folder outline icon"></i><%=t '.new.folder' %></button>
-      <button type="button" id="new-file-btn" class="ui green labeled icon button">
-        <i class="cloud upload icon"></i><%=t '.new.resource' %></button>
-    </p>
+    <div class="right menu">
+      <a id="new-folder-btn" class="item">
+        <i class="folder outline icon"></i><%=t '.new.folder' %>
+      </a>
+      <a id="new-file-btn" class="item">
+        <i class="cloud upload icon"></i><%=t '.new.resource' %>
+      </a>
+    </div>
   <% end %>
 </div>
-<div class="ui breadcrumb">
-  <%= link_to t('.breadcrumb.root'), resources_path, class:"section" %>
-  <% if @parent %>
-    <% @parent.ancestors.each do |item| %>
-      <i class="right chevron icon divider"></i>
-      <%= link_to Resource.find(item).title, resources_path(parent:item), class:"section" %>
-    <% end if @parent.ancestors.size > 0 %>
-    <i class="right chevron icon divider"></i>
-    <div class="active section"><%= @parent.title %></div>
-  <% end %>
-</div>
+
+
 
 <table class="ui table segment">
   <thead>
@@ -129,19 +129,5 @@
     <button type="button" class="ui cancel button"><%=t '.modal.button.cancel' %></button>
   </div>
 </div>
-
-<script>
-$(document).on("ready page:load", function() {
-  $('#new-folder-modal')
-    .modal('attach events', '#new-folder-btn', 'show')
-  ;
-  $('#new-file-modal')
-    .modal('attach events', '#new-file-btn', 'show')
-  ;
-  $('.ui.checkbox')
-    .checkbox()
-  ;
-});
-</script>
 
 <% end %>

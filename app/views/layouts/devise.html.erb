@@ -8,10 +8,11 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="sessions" style="background-color: #F5F5F5; overflow: hidden;">
+<body class="visitor">
   <div class="ui menu">
-    <%= link_to root_path, class:"item" do %>
-      <b><%= t 'app.name.long' %></b>
+    <%= link_to root_path, class:"header item" do %>
+      <%= image_tag "logo.svg" %>
+      <%= t 'app.name.long' %>
     <% end %>
     <div class="ui dropdown item" data-content="<%=t 'menu.languages' %>">
       <i class="world icon"></i>

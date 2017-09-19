@@ -60,7 +60,7 @@ module V1
           requires :maintainer, type: String, desc: 'Maintainer'
           requires :hidden, type: Boolean, desc: 'Hidden?'
         end
-        put '', authorize: [:update, News] do
+        put '', authorize: [:update, Instrument] do
           @instrument = Instrument.find(params[:id])
           if @instrument.update(title: params[:title], content: params[:content],
                              maintainer: params[:maintainer], hidden: params[:hidden])

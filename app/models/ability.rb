@@ -12,23 +12,20 @@ class Ability
         u.admin? and u.username != user.username
       end
     else
-      modules = [Achievement, Order, Comment, Instrument, Meeting, News,
-        Resource, Topic, Wiki, Inventory]
-      for m in modules
-        case user.merged_permission[m.to_s.downcase]
-        when 1
-          can :read, m, :hidden => false
-        when 2
-          can [:read, :create], m
-        when 3
-          can [:read, :create, :update], m
-        when 4
-          can :manage, m
-        end
+      case user.permission
+      when 1
+        can :read, :all, :hidden => false
+      when 2
+        can [:read, :create], :all
+      when 3
+        can [:read, :create, :update], :all
+      when 4
+        can :manage, :all
       end
       can :manage, Schedule do |s|
         s.user = user
       end
+      cannot :manage, User
     end
   end
 end

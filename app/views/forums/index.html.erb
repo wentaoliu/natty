@@ -10,22 +10,15 @@
     <%= link_to new_forum_path, class:"item" do %>
       <i class="plus icon"></i><%=t '.new' %>
     <% end if can? :create, Forum %>
-
-    <%= form_tag forums_path, method:'GET', class:"item" do %>
-      <div class="ui icon input">
-        <%= text_field_tag :search, params[:search], placeholder:t('.search') %>
-        <i class="search link icon"></i>
-      </div>
-    <% end %>
   </div>
 </div>
 
-<table class="ui table segment">
+<table class="ui fixed table">
   <thead>
     <tr>
       <th class="four wide"><%=t '.table.title' %></th>
-      <th class="nine wide"><%=t '.table.author' %></th>
-      <th class="three wide"><%=t '.table.time' %></th>
+      <th class="nine wide"><%=t '.table.description' %></th>
+      <th class="three wide"><%=t '.table.last_updated_at' %></th>
     </tr>
   </thead>
   <tbody>

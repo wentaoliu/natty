@@ -30,7 +30,6 @@
   <thead>
     <tr>
       <th class="eight wide"><%=t '.table.title' %></th>
-      <th class="one wide"></th>
       <th class="three wide"><%=t '.table.author' %></th>
       <th class="three wide"><%=t '.table.created_at' %></th>
       <th class="one wide"></th>
@@ -46,19 +45,14 @@
             <% end %>
           <% else %>
             <%= link_to (ENV["RAILS_RELATIVE_URL_ROOT"]||'') + item.document.url do %>
-              <i class="file icon"></i><%= item.title %>
+              <i class="file icon"></i><%= item.title + File.extname(item.document_file_name) %>
             <% end %>
-          <% end %>
-        </td>
-        <td>
-          <% if item.hidden %>
-              <i class="lock icon"></i>
           <% end %>
         </td>
         <td><%= item.user.name %></td>
         <td><%=l item.updated_at,format: :long %></td>
         <td>
-          <% if is_admin? %>
+          <% if current_user.admin %>
             <%= link_to item, method: :delete, data: { confirm: t('.table.delete_confirm') } do %>
               <i class="trash red icon"></i>
             <% end %>
@@ -109,13 +103,6 @@
       <div class="field">
         <%= f.label :document, t('.modal.resource.document') %>
         <%= f.file_field :document %>
-      </div>
-      <div class="field">
-        <div class="ui toggle checkbox">
-          <%= f.check_box :hidden %>
-          <%= f.label :hidden, t('.modal.resource.hidden') %>
-        </div>
-        <p><%=t '.modal.resource.help' %></p>
       </div>
       <%= f.hidden_field :is_folder, value: false %>
       <%= f.hidden_field :parent %>

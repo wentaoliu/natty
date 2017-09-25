@@ -4,30 +4,18 @@ class Schedule
 
   belongs_to :user
 
-  field :title, type: String
-  field :starts_at, type: DateTime, default: ->{ DateTime.now }
-  field :ends_at, type: DateTime, default: ->{ DateTime.now + 1.hour }
-  field :place, type: String
-  field :content, type: String
-  field :hidden, type: Boolean, default: false
-
-  # Meeting
   field :title,     type: String
-  field :content,   type: String
-  field :starts_at, type: DateTime, default: -> { DateTime.now }
-  field :ends_at,   type: DateTime, default: -> { DateTime.now + 1.hour }
+  field :starts_at, type: DateTime, default: ->{ DateTime.now }
+  field :ends_at,   type: DateTime, default: ->{ DateTime.now + 1.hour }
+  field :category,  type: String
   field :place,     type: String
-  field :hidden,    type: Boolean,  default: false
+  field :content,   type: String
+  field :bulletin,  type: Boolean,  default: false
+  field :private,   type: Boolean,  default: false
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :title,     presence: true
   validates :starts_at, presence: true
-  validates :ends_at, presence: true
-
-
-  validates :title, presence: true
-  validates :starts_at, presence: true
-  validates :ends_at, presence: true
+  validates :ends_at,   presence: true
 
   def self.find_by_user_and_month(user, year, month)
     start_date = DateTime.new(year,month)

@@ -14,13 +14,19 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
+      <%= f.label :category, t('.category') %>
+      <%= f.text_field :category %>
+  </div>
+  <div class="field">
       <%= f.label :content, t('.content') %>
       <%= f.text_area :content, class:'editor'%>
   </div>
-  <div class="field">
+  <% if action_name == 'edit' %>
+    <div class="field">
       <%= f.label :comment, t('.comment') %>
-      <%= f.text_field :comment, value:''%>
-  </div>
+      <%= f.text_field :comment %>
+    </div>
+  <% end %>
   <div class="field">
     <div class="ui toggle checkbox">
       <%= f.check_box :hidden %>
@@ -28,5 +34,5 @@
     </div>
   </div>
   <%= f.submit t('.submit'), class:"ui blue button" %>
-  <%= link_to t('.cancel'), wikis_path, class:"ui button" %>
+
 <% end %>

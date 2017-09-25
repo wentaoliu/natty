@@ -29,23 +29,38 @@
     <%= f.text_field :place %>
   </div>
   <div class="field">
+    <%= f.label :category, t('.category') %>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
     <%= f.label :content, t('.content') %>
     <%= f.text_area :content, class:"editor" %>
   </div>
   <div class="field">
-    <div class="ui toggle checkbox">
-      <%= f.check_box :hidden %>
-      <%= f.label :hidden, t('.hidden') %>
+    <div class="ui toggle checkbox bulletin-checkbox">
+      <%= f.check_box :bulletin %>
+      <%= f.label :bulletin, t('.bulletin') %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui toggle checkbox private-checkbox">
+      <%= f.check_box :private %>
+      <%= f.label :private, t('.private') %>
     </div>
   </div>
   <%= f.submit t('.submit'), class:'ui blue button' %>
-  <%= link_to t('.cancel'), schedules_path, class:'ui button' %>
 <% end %>
 
 <script>
-$(document).on("ready page:load", function() {
-  $('.ui.checkbox')
-    .checkbox()
-  ;
+$(document).on("turbolinks:load", function() {
+  $('.ui.checkbox.private-checkbox').checkbox();
+  $('.ui.checkbox.bulletin-checkbox').checkbox({
+    onChecked: function() {
+      $('.ui.checkbox.private-checkbox').checkbox('uncheck').checkbox('disable');
+    },
+    onUnchecked: function() {
+      $('.ui.checkbox.private-checkbox').checkbox('enable');
+    }
+  });
 });
 </script>

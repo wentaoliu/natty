@@ -2,15 +2,16 @@ class Instrument
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  belongs_to :user
+  has_many :bookings
 
-  field :title,       type: String
-  field :content,     type: String
-  field :maintainer,  type: BSON::ObjectId
-  field :hidden,      type: Boolean, default: false
+  field :name,          type: String
+  field :location,      type: String
+  field :serial_number, type: String
+  field :description,   type: String
+  field :maintainer,    type: BSON::ObjectId
+  field :available,     type: Boolean,  default: true
 
-  validates :title, presence: true
-  validates :content, presence: true
+  validates :name, presence: true
 
   def entity
     Entity.new(self)

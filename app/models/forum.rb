@@ -7,4 +7,6 @@ class Forum
   field :name,        type: String
   field :description, type: String
   field :hidden,      type: Boolean
+
+  validates :name, presence: true
 end

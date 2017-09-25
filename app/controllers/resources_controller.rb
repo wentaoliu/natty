@@ -1,10 +1,9 @@
 class ResourcesController < ApplicationController
   load_and_authorize_resource
-  before_action :require_admin, only: [:destroy]
 
   def index
     parent = params[:parent]
-    res = can?(:create, Resource) ? Resource : Resource.where(hidden: false)
+    res = Resource
     if parent.nil? or parent == ''
       @resources = res.where(parent: nil)
     else
@@ -15,13 +14,7 @@ class ResourcesController < ApplicationController
   end
 
   def create
-    if params[:resource][:is_folder] == true
-      @resource = Resource.new(params.require(:resource)
-                    .permit(:title, :parent, :is_folder))
-    else
-      @resource = Resource.new(params.require(:resource)
-                    .permit(:title, :parent, :hidden, :is_folder, :document))
-    end
+    @resource = Resource.new(resource_params)
     @resource.user = current_user
     respond_to do |format|
       if @resource.save
@@ -43,6 +36,14 @@ class ResourcesController < ApplicationController
       format.html { redirect_to resources_url, notice: t('.success') }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def resource_params
+    params.require(:resource)
+      .permit(:title, :parent, :is_folder, :document)
   end
 
 end

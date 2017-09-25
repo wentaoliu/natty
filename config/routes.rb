@@ -7,33 +7,25 @@ Rails.application.routes.draw do
   use_doorkeeper
 
   resources :users
-  resources :groups
   resources :wikis do
-    member do
-      get :versions
-    end
+    resources :versions
   end
-  resources :instruments
-  shallow do
-    resources :forums do
-      resources :topics do
-        resources :comments, only: [:create, :destroy]
-      end
-    end
+  resources :instruments do
+    resources :bookings
+  end
+  resources :forums do
+    resources :topics, only: [:index, :new, :create]
+  end
+  resources :topics, only: [:show, :edit, :update, :destroy] do
+    resources :comments, only: [:create, :destroy]
   end
   resources :resources
-  resources :news
-  resources :orders
-  resources :achievements
   resources :schedules
-  resources :meetings
   resources :inventories
   resources :messages, only: [:index, :create, :destroy] do
     put 'like', on: :member
   end
-  resource :profile, only: [:edit, :update] do
-    put 'photo', on: :member
-  end
+  resources :profiles
   namespace :settings do
     get '/' => 'emails#edit'
     resource :email, only: [:edit, :update]

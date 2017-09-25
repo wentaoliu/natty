@@ -20,21 +20,23 @@
   </div>
 </div>
 
-<table class="ui table segment">
-  <thead>
-    <tr>
-        <th class="twelve wide"><%=t '.table.title' %></th>
-        <th class="four wide"><%=t '.table.maintainer' %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @instruments.each do |instrument| %>
-    <tr>
-      <td><%= link_to instrument.title, instrument_path(instrument) %></td>
-      <td><%= User.find(instrument.maintainer).name %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="ui hidden divider"></div>
+
+<div class="ui cards">
+  <% @instruments.each do |instrument| %>
+    <div class="card">
+      <div class="content">
+        <div class="header">
+          <%= link_to instrument.name, instrument %>
+        </div>
+        <div class="meta"><%= instrument.location %></div>
+        <div class="description">
+          <%= strip_tags(instrument.description).truncate_words(30) %>
+        </div>
+      </div>
+      <%= link_to "Booking", instrument_bookings_path(instrument), class: "ui bottom attached button" %>
+    </div>
+  <% end %>
+</div>
 
 <%= paginate @instruments %>

@@ -1,7 +1,6 @@
 <% if @instrument.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this news from being saved:</h2>
-
     <ul>
     <% @instrument.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -10,11 +9,20 @@
   </div>
 <% end %>
 
-
 <%= form_for(@instrument, :html=>{:class => "ui form segment"}) do |f| %>
   <div class="field">
-    <%= f.label :title, t('.title') %>
-    <%= f.text_field :title %>
+    <%= f.label :name, t('.name') %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :location, t('.location') %>
+    <%= f.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= f.label :serial_number, t('.serial_number') %>
+    <%= f.text_field :serial_number %>
   </div>
 
   <div class="field">
@@ -24,17 +32,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :content, t('.content') %>
-    <%= f.text_area :content, class:'editor' %>
+    <%= f.label :description, t('.description') %>
+    <%= f.text_area :description, class:'editor' %>
   </div>
 
   <div class="field">
     <div class="ui toggle checkbox">
-      <%= f.check_box :hidden %>
-      <%= f.label :hidden, t('.hidden') %>
+      <%= f.check_box :available %>
+      <%= f.label :available, t('.available') %>
     </div>
   </div>
 
   <%= f.submit t('.submit'), class:"ui blue button" %>
-  <%= link_to t('.cancel'), instruments_path, class:"ui button" %>
 <% end %>

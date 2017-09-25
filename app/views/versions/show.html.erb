@@ -1,0 +1,31 @@
+<div class="ui secondary menu">
+  <div class="item">
+    <div class="ui huge breadcrumb">
+      <%= link_to wikis_path, class:'section' do %>
+        <%=t 'module.wikis' %>
+      <% end %>
+      <i class="right angle icon divider"></i>
+      <%= link_to @wiki.title, wiki_path(@wiki), class: "section" %>
+      <i class="right angle icon divider"></i>
+      <%= link_to "Versions", wiki_versions_path(@wiki), class: "section" %>
+      <i class="right angle icon divider"></i>
+      <div class="active section"><%=l @version.updated_at, format: :long %></div>
+    </div>
+  </div>
+  <div class="right menu">
+    <%= link_to t('.back'), wiki_versions_path(@wiki), class:"item" %>
+  </div>
+</div>
+
+<div class="ui message">
+  This version is edited by <%= @version.user.name %> at <%=l @version.updated_at, format: :long %>.
+  <% if @version.comment %>
+    <p><%= @version.comment %></p>
+  <% end %>
+</div>
+
+
+
+<div class="ui segment">
+  <%= raw @version.content %>
+</div>

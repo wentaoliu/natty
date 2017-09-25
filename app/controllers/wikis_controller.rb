@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   load_and_authorize_resource
-  before_action :set_wiki, only: [:show, :edit, :update, :destroy, :versions]
+  before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   NUM_PER_PAGE = 15
 
@@ -34,8 +34,9 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
+
     respond_to do |format|
-      if @wiki.save
+      if @wiki.save and @wiki.create_version
         format.html { redirect_to @wiki, notice: t('.success') }
         format.json { render :show, status: :created, location: @wiki }
       else
@@ -69,10 +70,6 @@ class WikisController < ApplicationController
     end
   end
 
-  def versions
-
-  end
-
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_wiki
@@ -81,6 +78,6 @@ class WikisController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def wiki_params
-    params.require(:wiki).permit(:title, :content, :comment, :hidden)
+    params.require(:wiki).permit(:title, :category, :content, :comment, :locked)
   end
 end

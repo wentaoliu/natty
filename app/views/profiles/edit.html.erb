@@ -2,14 +2,14 @@
   <h2 class="ui header">
     <i class="blue user icon"></i>
     <div class="content">
-      <%= t '.profile' %>
+      <%= @profile.user.name %>
     </div>
   </h2>
 </div>
 
 <div class="ui stackable two column grid">
 
-  <div class="five wide column">
+  <div class="four wide column">
     <div class="ui special cards">
       <div class="card">
         <div class="dimmable image">
@@ -21,13 +21,13 @@
               </div>
             </div>
           </div>
-          <%= image_tag @user.photo.url(:small) %>
+          <%= image_tag @profile.photo.url(:small) %>
         </div>
         <div class="content">
-          <div class="header"><%= @user.name %></div>
+          <div class="header"><%= @profile.user.name %></div>
           <div class="meta">
             <span class="date">
-              <%=t '.date', created_at: l(@user.created_at, format: :long) %>
+              <%=t '.date', created_at: l(@profile.user.created_at, format: :long) %>
             </span>
           </div>
         </div>
@@ -35,13 +35,8 @@
     </div>
   </div>
 
-  <div class="eleven wide column">
-    <%= form_for(@user, url: profile_path, method: :put, html:{class:'ui form segment'}) do |f| %>
-
-      <div class="field">
-        <%= f.label :name, t('.name') %>
-        <%= f.text_field :name %>
-      </div>
+  <div class="twelve wide column">
+    <%= form_for(@profile, method: :put, html:{class:'ui form segment'}) do |f| %>
 
       <div class="field">
         <%= f.label :email_public, t('.email_public') %>
@@ -52,7 +47,7 @@
         <div class="field">
           <%= f.label :postion, t('.position') %>
           <%= f.select :position,
-            User.positions.map{|k,v| [t('.positions')[v], v]},
+            Profile.positions.map{|k,v| [t('.positions')[v], v]},
             {},{class:"ui dropdown"} %>
         </div>
 
@@ -79,8 +74,8 @@
     <h4><%=t '.photo' %></h4>
   </div>
   <div class="content">
-    <%= form_for :user, url: photo_profile_path, method: :put,
-        html:{class:"ui form",id:"edit-photo-form"} do |f| %>
+    <%= form_for @profile, method: :put,
+        html:{class:"ui form", id:"edit-photo-form"} do |f| %>
       <div class="field">
         <%= f.file_field :photo %>
       </div>
@@ -88,8 +83,8 @@
   </div>
   <div class="actions">
     <button type="button" class="ui blue button"
-        onClick="$('#edit-photo-form').submit();"><%=t '.submit' %></button>
-    <button type="button" class="ui button"><%=t '.cancel' %></button>
+        form="edit-photo-form" value="Submit"><%=t '.submit' %></button>
+    <button type="button" class="ui cancel button"><%=t '.cancel' %></button>
   </div>
 </div>
 

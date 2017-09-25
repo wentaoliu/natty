@@ -8,6 +8,11 @@
       <div class="active section"><%=t '.new' %></div>
     </div>
   </div>
+  <div class="right menu">
+    <%= link_to forum_topics_path(@forum), class:"item" do %>
+      <i class="remove icon"></i><%=t '.cancel' %>
+    <% end %>
+  </div>
 </div>
 
 <%= render 'form' %>

@@ -7,7 +7,7 @@ class InstrumentsController < ApplicationController
   # GET /instruments
   # GET /instruments.json
   def index
-    res = can?(:create, Instrument) ? Instrument : Instrument.where(hidden: false)
+    res = Instrument
     if params[:search].present?
       res = res.where(title: /.*#{params[:search]}.*/i)
     end
@@ -32,7 +32,7 @@ class InstrumentsController < ApplicationController
   # POST /instruments.json
   def create
     @instrument = Instrument.new(instrument_params)
-    @instrument.user = current_user
+    
     respond_to do |format|
       if @instrument.save
         format.html { redirect_to @instrument, notice: t('.success') }
@@ -76,6 +76,6 @@ class InstrumentsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def instrument_params
-    params.require(:instrument).permit(:title, :content, :maintainer, :hidden)
+    params.require(:instrument).permit(:name, :location, :serial_number, :description, :maintainer, :available)
   end
 end

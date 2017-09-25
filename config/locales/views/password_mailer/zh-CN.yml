@@ -1,6 +1,0 @@
-zh-CN:
-  password_mailer:
-    reset_password_email:
-      subject: '%{user}，请重置您的密码。'
-      copy_to_browser: 请将以下地址复制到地址栏中访问。
-      expire: 链接有效期至%{time}。

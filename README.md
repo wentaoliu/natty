@@ -19,17 +19,9 @@ Natty provides immediate access to a number of handy features after a plain, out
 
 * __Resources__ - File hosting
 
-* __News__ - Tracking and sharing
-
-* __Meetings__ - Meeting arrangement and records
-
-* __Achievements__ - Papers, patents and awards
-
 * __Instruments__ - Equipment register and booking
 
 * __Inventory__ - Chemicals and supplies
-
-* __Orders__ - Simple order management
 
 * __Messages__ - Sending messages to colleagues
 

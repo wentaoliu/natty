@@ -18,9 +18,6 @@ class Resource
     file_name: { matches: [/png\Z/, /jpe?g\Z/, /gif\Z/, /docx?\Z/, /xlsx?\Z/,
       /pptx?\X/, /rar\Z/, /zip\Z/, /exe\Z/, /pdf\Z/] }
 
-  field :hidden, type: Boolean, default: false
-  field :hits, type: Integer, default: 0
-
   before_save :set_ancestors
 
   validates :title, presence: true

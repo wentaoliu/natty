@@ -20,21 +20,32 @@
   </div>
 </div>
 
-<table class="ui table segment">
-  <thead>
-    <tr>
-      <th class="twelve wide"><%=t '.table.title' %></th>
-      <th class="four wide"><%=t '.table.updated_at' %></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @wikis.each do |wiki| %>
-      <tr>
-        <td><%= link_to wiki.title, wiki_path(wiki) %></td>
-        <td><%=l wiki.updated_at,:format=>:long %></td>
-      </tr>
+<div class="ui hidden divider"></div>
+
+<div class="ui three stackable cards">
+  <% @wikis.each do |wiki| %>
+    <%= link_to wiki_path(wiki), class: "ui card" do %>
+      <div class="content">
+        <div class="header">
+          <% if wiki.locked %><i class="lock icon"></i><% end %>
+          <%= wiki.title %>
+        </div>
+        <div class="meta">
+          <span class="right floated time"><%=l wiki.updated_at,:format=>:long %></span>
+          <span class="category"><%= wiki.category %></span>
+        </div>
+        <div class="description">
+          <p><%= strip_tags(wiki.content).truncate_words(50) %></p>
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="right floated author">
+          <%= image_tag wiki.user.avatar.url(:thumb), class: 'ui avatar image' %>
+          <%= wiki.user.name %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  <% end %>
+</div>
 
 <%= paginate @wikis %>

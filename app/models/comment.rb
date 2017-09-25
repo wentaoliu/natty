@@ -4,9 +4,11 @@ class Comment
 
   embedded_in :topic, counter_cache: :comments_count
 
-  field :user_id, type: BSON::ObjectId
-  field :reply_to, type: BSON::ObjectId
-  field :content, type: String
+  field :user_id,   type: BSON::ObjectId
+  field :reply_to,  type: BSON::ObjectId
+  field :content,   type: String
+  field :proved,    type: Boolean, default: false
+  field :hidden,    type: Boolean, default: false
 
   validates :content, presence: true
 

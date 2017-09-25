@@ -1,0 +1,32 @@
+<% if @instrument.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@instrument.errors.count, "error") %> prohibited this news from being saved:</h2>
+    <ul>
+    <% @instrument.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@instrument, @booking], :html=>{:class => "ui form segment"}) do |f| %>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :starts_at, t('.starts_at') %>
+      <%= f.datetime_local_field :starts_at %>
+    </div>
+    <div class="field">
+      <%= f.label :ends_at, t('.ends_at') %>
+      <%= f.datetime_local_field :ends_at %>
+    </div>
+  </div>
+
+  <% if action_name == "edit" %>
+    <div class="field">
+      <%= f.label :record, t('.record') %>
+      <%= f.text_area :record, class:"editor" %>
+    </div>
+  <% end %>
+
+  <%= f.submit t('.submit'), class:"ui blue button" %>
+<% end %>

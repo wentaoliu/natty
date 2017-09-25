@@ -1,5 +1,17 @@
 en-US:
   profiles:
+    show:
+      positions:
+      - Undergraduate student
+      - Postgraduate student
+      - Doctoral student
+      - postdoctoral fellow
+      - Associate professor
+      - Professor
+      - Graduate student
+      - Lecturer
+      - Assistant
+      - Engineer
     edit:
       profile: Profile
       date: Joined in %{created_at}

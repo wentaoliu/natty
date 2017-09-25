@@ -8,30 +8,49 @@
       <div class="active section"><%= @topic.title %></div>
     </div>
   </div>
+  <div class="right menu">
+    <% if @topic.allow_comments %>
+      <%= link_to topic_path(@topic, "topic[allow_comments]": false), class:"item", method: :put do %>
+        <i class="ban icon"></i><%=t '.disable_comments' %>
+      <% end if can? :edit, @topic %>
+    <% else %>
+      <%= link_to topic_path(@topic, "topic[allow_comments]": true), class:"item", method: :put do %>
+        <i class="checkmark icon"></i><%=t '.allow_comments' %>
+      <% end if can? :edit, @topic %>
+    <% end %>
+
+    <%= link_to edit_topic_path(@topic), class:"item" do %>
+      <i class="edit icon"></i>Edit
+    <% end if can? :edit, @topic %>
+
+    <%= link_to @topic, method: :delete, data: { confirm: t('.delete_confirm') },
+        class:"item" do %>
+      <i class="trash icon"></i><%=t '.delete' %>
+    <% end if can? :destroy, @topic %>
+  </div>
 </div>
 
 <div class="ui stacked segment">
   <p><%=raw @topic.content %></p>
-  <div class="ui label">
-    <i class="user icon"></i>
-    <%= @topic.user.name %>
-  </div>
-  <div class="ui label"><%=l @topic.updated_at,:format=>:long %></div>
-  <% if @topic.tags %>
-    <% @topic.tags.split('/').each do |tag| %>
+  <div class="ui labels">
+    <div class="ui label">
+      <i class="user icon"></i>
+      <%= @topic.user.name %>
+    </div>
+    <div class="ui label">
+      <i class="time icon"></i>
+      <%=l @topic.updated_at,:format=>:long %>
+    </div>
+    <% @topic.tags.each do |tag| %>
       <div class="ui label">
         <%= tag %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
-<%= link_to @topic, method: :delete, data: { confirm: t('.delete_confirm') },
-    class:"ui red labeled icon button" do %>
-  <i class="trash icon"></i><%=t '.delete' %>
-<% end if can? :destroy, @topic %>
-
 <div class="ui comments">
+  <h3 class="ui dividing header">Comments</h3>
   <% @topic.comments.where(reply_to: nil).each do |comment| %>
     <div class="comment">
       <a class="avatar">
@@ -44,9 +63,11 @@
         </div>
         <div class="text"><%= comment.content %></div>
         <div class="actions">
-          <a class="reply reply-btn" data-id="<%= comment.id %>">
-            <%=t '.reply' %>
-          </a>
+          <% if @topic.allow_comments %>
+            <a class="reply reply-btn" data-id="<%= comment.id %>">
+              <%=t '.reply' %>
+            </a>
+          <% end %>
           <%= link_to t('.delete'), [@topic, comment], method: :delete,
             data: { confirm: t('.delete_confirm') }, class:'delete' if current_user.admin? %>
         </div>
@@ -66,9 +87,11 @@
                   </div>
                   <div class="text"><%= reply.content %></div>
                   <div class="actions">
-                    <a class="reply reply-btn" data-id="<%= comment.id %>">
-                      <%=t '.reply' %>
-                    </a>
+                    <% if @topic.allow_comments %>
+                      <a class="reply reply-btn" data-id="<%= comment.id %>">
+                        <%=t '.reply' %>
+                      </a>
+                    <% end %>
                     <%= link_to t('.delete'), [@topic, reply], method: :delete,
                           data: { confirm: t('.delete_confirm') },
                           class:'delete' if current_user.admin? %>
@@ -81,18 +104,23 @@
       </div>
     </div>
   <% end %>
-  <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
-        html:{class:"ui reply form"} do |f| %>
-    <div class="field">
-      <%= f.text_area :content %>
-    </div>
-    <%= f.button class:"ui fluid blue labeled submit icon button" do %>
-      <i class="edit icon"></i><%= t('.comment') %>
-    <% end %>
-  <% end if can? :create, Comment %>
+  <% if @topic.allow_comments %>
+    <%= form_for @comment, :url=>topic_comments_path(@topic, @comment),
+          html:{class:"ui reply form"} do |f| %>
+      <div class="field">
+        <%= f.text_area :content %>
+      </div>
+      <%= f.button class:"ui fluid blue labeled submit icon button" do %>
+        <i class="edit icon"></i><%= t('.comment') %>
+      <% end %>
+    <% end if can? :create, Comment %>
+  <% else %>
+    <div class="ui divider"></div>
+    <p>Comments for this topic are disabled.</p>
+  <% end %>
 </div>
 
-<% if can? :create, Comment %>
+<% if can? :create, Comment and @topic.allow_comments %>
   <div class="ui small modal" id="reply-modal">
     <i class="close icon"></i>
     <div class="header">
@@ -110,12 +138,12 @@
     <div class="actions">
       <button type="button" class="ui blue button"
           onClick="$('#reply-form').submit();"><%=t '.modal.submit' %></button>
-      <button type="button" class="ui button"><%=t '.modal.cancel' %></button>
+      <button type="button" class="ui cancel button"><%=t '.modal.cancel' %></button>
     </div>
   </div>
 
   <script>
-  $(document).on("ready page:load", function() {
+  $(document).on("turbolinks:load", function() {
     $('.reply-btn').click(function(){
       var reply_to = $(this).attr('data-id');
       $('#comment_reply_to').val(reply_to);

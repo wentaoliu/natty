@@ -31,10 +31,23 @@ class TopicsController < ApplicationController
   # POST /topics.json
   def create
     @topic = @forum.topics.new(topic_params)
-    #@topic.tags = params[:topic][:tags]&.split('/')
     @topic.user = current_user
     respond_to do |format|
       if @topic.save
+        format.html { redirect_to @topic, notice: t('.success') }
+        format.json { render :show, status: :created, location: @topic }
+      else
+        format.html { render :new }
+        format.json { render json: @topic.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /topics
+  def update
+    respond_to do |format|
+      if @topic.update(topic_params)
+
         format.html { redirect_to @topic, notice: t('.success') }
         format.json { render :show, status: :created, location: @topic }
       else
@@ -66,6 +79,6 @@ class TopicsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def topic_params
-    params.require(:topic).permit(:title, :content, :category, :tags, :hidden)
+    params.require(:topic).permit(:title, :content, :tags_list, :hidden, :allow_comments)
   end
 end

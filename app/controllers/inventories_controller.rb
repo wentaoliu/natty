@@ -7,9 +7,12 @@ class InventoriesController < ApplicationController
   # GET /inventories
   # GET /inventories.json
   def index
-    res = can?(:create, Inventory) ? Inventory : Inventory.where(hidden: false)
+    res = Inventory
     if params[:search].present?
-      res = res.where(item_name: /.*#{params[:search]}.*/i)
+      res = res.or(
+        {item_name: /.*#{params[:search]}.*/i},
+        {serial_number: params[:search]},
+        {location: params[:search]})
     end
     @inventories = res.order(updated_at: :desc).page(params[:page]).per(NUM_PER_PAGE)
   end
@@ -32,6 +35,7 @@ class InventoriesController < ApplicationController
   # POST /inventories.json
   def create
     @inventory = Inventory.new(inventory_params)
+    @inventory.user = current_user
 
     respond_to do |format|
       if @inventory.save
@@ -79,6 +83,6 @@ class InventoriesController < ApplicationController
       params.require(:inventory).permit(:item_name, :price, :quantity,
         :unit_size, :url, :technical_details, :expiration_date, :cas_number,
         :serial_number, :bought_from, :location, :sub_location,
-        :location_details, :type, :vendor_name, :hidden)
+        :location_details, :type, :vendor_name)
     end
 end

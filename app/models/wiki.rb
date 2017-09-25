@@ -3,16 +3,27 @@ class Wiki
   include Mongoid::Timestamps
 
   belongs_to :user
+  embeds_many :versions
 
-  field :title,   type: String
-  field :hits,    type: Integer,  default: 0
-  field :hidden,  type: Boolean,  default: false
-  field :comment
-  field :content
+  field :title,     type: String
+  field :category,  type: String
+  field :content,   type: String
+  field :comment,   type: String
+
+  field :locked,    type: Boolean,  default: false
 
   validates :title, presence: true
-  validates :comment, presence: true
-  validates :content, length: { minimum: 50 }
+
+  def create_version
+    self.versions.create(
+      title: self.title,
+      category: self.category,
+      content: self.content,
+      comment: self.comment,
+      user_id: self.user_id,
+      current: true
+    )
+  end
 
   def entity
     Entity.new(self)

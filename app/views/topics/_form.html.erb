@@ -11,16 +11,17 @@
 <%= form_for [@forum, @topic], html: { class: 'ui form segment' } do |f| %>
   <div class="field">
     <%= f.label :title, t('.title') %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: 'Title' %>
   </div>
   <div class="field">
-    <%= f.label :category, t('.category') %>
-    <%= f.text_field :category %>
-  </div>
-  <div class="field">
-    <%= f.label :tags, t('.tags') %>
-    <%= f.text_field :tags %>
-    <p><%=t '.tags_helper' %></p>
+  <%= f.label :tags_list %>
+    <div class="ui fluid multiple search selection dropdown">
+      <%= f.hidden_field :tags_list %>
+      <i class="dropdown icon"></i>
+      <div class="default text">Tags</div>
+      <div class="menu">
+      </div>
+    </div>
   </div>
   <div class="field">
     <%= f.label :content, t('.content') %>
@@ -33,5 +34,20 @@
     </div>
   </div>
   <%= f.submit t('.submit'), class:"ui blue button" %>
-  <%= link_to t('.cancel'), forum_topics_path(@forum), class:"ui button" %>
 <% end %>
+
+<script>
+$(document).on("turbolinks:load", function() {
+  $('form').on('keyup keypress', function(e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  $('.ui.multiple.dropdown').dropdown({
+    allowAdditions: true
+  })
+});
+</script>

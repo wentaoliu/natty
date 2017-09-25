@@ -1,0 +1,28 @@
+en-US:
+  forums:
+    index:
+      search: Search
+      new: New Forum
+      table:
+        title: Title
+        description: Description
+        last_updated_at: Last updated at
+    show:
+      reply: Reply
+      delete: Delete
+      delete_confirm: Are you sure?
+      comment: Add Comment
+      modal:
+        submit: Submit
+        cancel: Cancel
+    new:
+      new: New
+    form:
+      title: Title
+      content: Content
+      category: Category
+      tags: Tags
+      tags_helper: Separate tags with slashes (/)
+      hidden: Hidden?
+      submit: Submit
+      cancel: Cancel

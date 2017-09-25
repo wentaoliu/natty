@@ -1,6 +1,6 @@
 class ForumsController < ApplicationController
   #load_and_authorize_resource
-  before_action :set_forum, only: [:show, :destroy]
+  before_action :set_forum, only: [:show, :edit, :update, :destroy]
 
   # GET /forums
   # GET /forums.json
@@ -9,16 +9,13 @@ class ForumsController < ApplicationController
     @forums = res.order(updated_at: :desc)
   end
 
-  # GET /forums/1
-  # GET /forums/1.json
-  def show
-    @forum.inc(hits: 1)
-    @comment = Comment.new
-  end
-
   # GET /forums/new
   def new
     @forum = Forum.new
+  end
+
+  # GET /forums/1/edit
+  def edit
   end
 
   # POST /forums
@@ -31,6 +28,20 @@ class ForumsController < ApplicationController
         format.json { render :show, status: :created, location: @forum }
       else
         format.html { render :new }
+        format.json { render json: @forum.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /forums/1
+  # PUT /forums/1.json
+  def update
+    respond_to do |format|
+      if @forum.update(forum_params)
+        format.html { redirect_to forums_path, notice: t('.success') }
+        format.json { render :show, status: :ok, location: @forum }
+      else
+        format.html { render :edit }
         format.json { render json: @forum.errors, status: :unprocessable_entity }
       end
     end

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  include SimpleCaptcha::ControllerHelpers
   load_and_authorize_resource except: [:create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

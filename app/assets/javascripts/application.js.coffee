@@ -17,7 +17,7 @@ $(document).on 'turbolinks:load', ->
 
   # Initialize dismissable message collection
   $('.message .close').on 'click', ->
-    $(this).closest('.message').fadeOut()
+    $(this).closest('.top-fixed-message').transition('fade')
 
   # replace rails default error tags with semantic-ui error classes
   error_fields = $('.field_with_errors')

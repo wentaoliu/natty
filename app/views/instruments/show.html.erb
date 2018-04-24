@@ -29,7 +29,8 @@
     </tr>
     <tr>
       <td><%=t '.maintainer' %></td>
-      <td><%= link_to User.find(@instrument.maintainer).name, profiles_path(@instrument.maintainer) %></td>
+      <% @maintainer = User.find(@instrument.maintainer) %>
+      <td><%= link_to @maintainer.name, profile_path(@maintainer.profile) %></td>
     </tr>
     <tr>
       <td><%=t '.available' %></td>

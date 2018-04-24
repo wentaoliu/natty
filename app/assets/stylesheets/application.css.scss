@@ -27,6 +27,12 @@ body.layout {
   flex-direction: column;
   height: 100%;
 
+  .top-fixed-message {
+    position:absolute;
+    top:-1em;
+    z-index:100;
+  }
+
   .ui.menu {
     border-radius: 0;
     margin-bottom: 0;

@@ -3,7 +3,7 @@
     <div class="ui huge breadcrumb">
       <a class="section"><%=t 'module.schedule' %></a>
       <i class="right angle icon divider"></i>
-      <div class="active section">All</div>
+      <div class="active section"><%= @user.name %></div>
     </div>
   </div>
   <div class="right menu">
@@ -21,7 +21,7 @@
 
 <div class="ui vertical segment calendar">
   <%= month_calendar do |date| %>
-    <div class="ui small circular label"><%= date.day %></div>
+    <div class="ui ribbon label"><%= date.day %></div>
     <div class="ui bulleted list">
       <% @schedules.each do |item| %>
         <% if (item.starts_at.to_date <= date) and (item.ends_at.to_date >= date) %>

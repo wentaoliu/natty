@@ -38,8 +38,6 @@ gem 'simditor', '~> 2.3.6'
 gem 'semantic-ui-sass', '~> 2.2.12'
 # I18n
 gem 'rails-i18n', '~> 5.0.0'
-# Captcha
-gem 'simple_captcha2', '~> 0.4.3'
 # Paperclip
 gem 'paperclip', '~> 5.1.0'
 gem 'mongoid-paperclip', '~> 0.0.11'
@@ -49,7 +47,7 @@ gem "simple_calendar", "~> 2.0.6"
 gem 'kaminari', '~> 1.0.0'
 gem 'kaminari-mongoid', '~> 1.0.0'
 # Authentication
-gem 'devise', '~> 4.3'
+gem 'devise', '~> 4.4.1'
 # Authorization
 gem 'cancancan', '~> 2.0.0'
 gem 'cancancan-mongoid', '~> 2.0.0.beta1'

@@ -1,17 +1,8 @@
-class Wiki
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Wiki < ApplicationRecord
 
   belongs_to :user
-  embeds_many :versions
-
-  field :title,     type: String
-  field :category,  type: String
-  field :content,   type: String
-  field :comment,   type: String
-
-  field :locked,    type: Boolean,  default: false
-
+  has_many :versions
+  
   validates :title, presence: true
 
   def create_version

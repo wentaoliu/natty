@@ -3,11 +3,8 @@
 <img align="right" height="150" src="https://wentaoliu.github.io/natty/img/logo.svg">
 
 [![Build Status](https://travis-ci.org/wentaoliu/natty.svg?branch=master)](https://travis-ci.org/wentaoliu/natty)
-[![Dependency Status](https://gemnasium.com/wentaoliu/natty.svg)](https://gemnasium.com/wentaoliu/natty)
 
-Natty is a content management system (CMS) designed for research teams.
-
-Natty provides immediate access to a number of handy features after a plain, out-of-the-box installation, thus is suitable for teams with little experience of web development.
+Natty is a knowledge management system for research teams.
 
 ## Features
 
@@ -46,9 +43,7 @@ Natty provides immediate access to a number of handy features after a plain, out
 
   The latest Ruby could be easily installed using [RVM](https://rvm.io/) or [rbenv]( https://github.com/rbenv/rbenv).
 
-* mongoDB 2.x or 3.x
-
-  Find the instructions for installing mongoDB in the [mongoDB Manual](https://docs.mongodb.org/manual/installation).
+* PostgreSQL >= 9.4
 
 * Bundler
 
@@ -81,7 +76,7 @@ Natty provides immediate access to a number of handy features after a plain, out
 3. Initialize the database:
 
   ```
-  rake RAILS_ENV=production db:seed
+  rake RAILS_ENV=production db:setup
   ```
 
 4. Precompile static files:
@@ -108,6 +103,6 @@ Natty provides immediate access to a number of handy features after a plain, out
 
 ## License
 
-Copyright(c) 2014-2017 [Wentao Liu](https://github.com/wentaoliu)
+Copyright(c) 2015-2018 [Wentao Liu](https://github.com/wentaoliu)
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)

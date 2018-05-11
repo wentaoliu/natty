@@ -6,10 +6,10 @@ rvm:
 sudo: false
 
 services:
-  - mongodb
+  - postgresql
 
 before_script:
-  - mongo natty_test --eval 'db.createUser({user:"travis",pwd:"test",roles:["readWrite"]};'
+  - psql -c 'create database natty_test;' -U postgres
 
 script:
   - RAILS_ENV=test bundle exec rspec spec

@@ -4,11 +4,9 @@ class HomeController < ApplicationController
   def index
     @messages = Message.order(created_at: :desc).page(1).per(10)
     @message = Message.new
-    @schedule = Schedule.where(
-                  :starts_at.lte => DateTime.now,
-                  :ends_at.gte => DateTime.now,
-                  :user => current_user
-                )
+    @schedule = current_user.schedules.where(
+                  'starts_at <= ? AND ends_at >= ?', 
+                    DateTime.now, DateTime.now)
   end
 
 end

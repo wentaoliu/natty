@@ -1,11 +1,6 @@
-class Message
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Message < ApplicationRecord
 
   belongs_to :user
-
-  field :content, type: String
-  field :like,    type: Array,  default: []
 
   validates :content, presence: true
 

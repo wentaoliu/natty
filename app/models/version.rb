@@ -1,15 +1,6 @@
-class Version
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Version < ApplicationRecord
 
-  embedded_in :wiki
-
-  field :user_id,   type: BSON::ObjectId
-  field :title,     type: String
-  field :category,  type: String
-  field :content,   type: String
-  field :comment,   type: String
-  field :current,   type: Boolean, default: false
+  belongs_to :wiki
 
   validates :content, presence: true
 

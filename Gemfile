@@ -1,13 +1,15 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 1.0.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
+gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 3.2'
+gem 'uglifier', '~> 4.1'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2.2'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -15,49 +17,42 @@ gem 'coffee-rails', '~> 4.2.2'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.3'
-gem 'js_cookie_rails', '~> 2.1'
+gem 'js_cookie_rails', '~> 2.2'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks', '~> 5.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 1.0.0', group: :doc
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+# gem 'bcrypt', '~> 3.1.11'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# Mongoid
-gem 'mongoid', '~> 6.2.1'
-gem 'mongoid_paranoia', '~> 0.3.0'
 # Simditor
 gem 'simditor', '~> 2.3.6'
 # Semantic UI
-gem 'semantic-ui-sass', '~> 2.2.12'
+gem 'semantic-ui-sass', '~> 2.3.1.2'
 # I18n
-gem 'rails-i18n', '~> 5.0.0'
+gem 'rails-i18n', '~> 5.1.1'
 # Paperclip
-gem 'paperclip', '~> 5.1.0'
-gem 'mongoid-paperclip', '~> 0.0.11'
+gem 'paperclip', '~> 6.0.0'
 # Calendar
-gem "simple_calendar", "~> 2.0.6"
+gem 'simple_calendar', '~> 2.2.0'
 # Paginator
-gem 'kaminari', '~> 1.0.0'
-gem 'kaminari-mongoid', '~> 1.0.0'
+gem 'kaminari', '~> 1.1.0'
 # Authentication
-gem 'devise', '~> 4.4.1'
+gem 'devise', '~> 4.4.3'
 # Authorization
-gem 'cancancan', '~> 2.0.0'
-gem 'cancancan-mongoid', '~> 2.0.0.beta1'
+gem 'cancancan', '~> 2.2.0'
 # API
 gem 'grape', '~> 1.0.0'
-gem 'grape-entity', '~> 0.6.1'
+gem 'grape-entity', '~> 0.7.1'
 gem 'grape-cancan', '~> 0.0.2'
 
-gem 'doorkeeper', '~> 4.2.6'
-gem "doorkeeper-mongodb", '~> 3.0.0'
+gem 'doorkeeper', '~> 4.3.2'
 gem 'doorkeeper-i18n', '~> 4.0'
 
 source 'https://rails-assets.org' do
@@ -68,11 +63,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Testing Framework
-  gem "rspec-rails", "~> 3.6.1"
+  gem 'rspec-rails', '~> 3.7.2'
   # Factory Gril
-  gem "factory_girl_rails", "~> 4.8.0"
-  # `assigns` has been extracted to a gem
-  gem 'rails-controller-testing', '~> 1.0.2'
+  gem 'factory_bot_rails', '~> 4.8.2'
 end
 
 group :development do
@@ -83,8 +76,8 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 3.1', '>= 3.1.2'
   gem 'faker', '~> 1.8.4'
   gem 'capybara', '~> 2.15.0'
   gem 'database_cleaner', '~> 1.5.1'
-  gem 'mongoid-rspec', github: 'mongoid-rspec/mongoid-rspec'
 end

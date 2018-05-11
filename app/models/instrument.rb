@@ -1,16 +1,7 @@
-class Instrument
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Instrument < ApplicationRecord
 
   has_many :bookings
-
-  field :name,          type: String
-  field :location,      type: String
-  field :serial_number, type: String
-  field :description,   type: String
-  field :maintainer,    type: BSON::ObjectId
-  field :available,     type: Boolean,  default: true
-
+  
   validates :name, presence: true
 
   def entity

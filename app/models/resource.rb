@@ -1,17 +1,9 @@
-class Resource
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Paperclip
+class Resource < ApplicationRecord
 
   belongs_to :user
 
-  field :title, type: String
-  field :parent, type: BSON::ObjectId
-  field :ancestors, type: Array, default: []
-  field :is_folder, type: Boolean
-
   # only for files
-  has_mongoid_attached_file :document
+  has_attached_file :document
 
   validates_attachment :document,
     size: { in: 0..10.megabytes },

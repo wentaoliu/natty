@@ -1,15 +1,7 @@
-class Comment
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Comment < ApplicationRecord
 
-  embedded_in :topic, counter_cache: :comments_count
-
-  field :user_id,   type: BSON::ObjectId
-  field :reply_to,  type: BSON::ObjectId
-  field :content,   type: String
-  field :proved,    type: Boolean, default: false
-  field :hidden,    type: Boolean, default: false
-
+  belongs_to :topic, counter_cache: :comments_count
+  
   validates :content, presence: true
 
   def user

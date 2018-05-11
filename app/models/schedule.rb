@@ -1,17 +1,6 @@
-class Schedule
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Schedule < ApplicationRecord
 
   belongs_to :user
-
-  field :title,     type: String
-  field :starts_at, type: DateTime, default: ->{ DateTime.now }
-  field :ends_at,   type: DateTime, default: ->{ DateTime.now + 1.hour }
-  field :category,  type: String
-  field :place,     type: String
-  field :content,   type: String
-  field :bulletin,  type: Boolean,  default: false
-  field :private,   type: Boolean,  default: false
 
   validates :title,     presence: true
   validates :starts_at, presence: true
@@ -21,8 +10,8 @@ class Schedule
     start_date = DateTime.new(year,month)
     end_date = start_date + 1.month
     where(user: user)
-      .any_of({:starts_at.gte => start_date, :starts_at.lt => end_date},
-              {:ends_at.gte => start_date, :ends_at.lt => end_date })
+      .where('starts_at >= ? AND starts_at < ?', start_date, end_date)
+      .or(where('ends_at >= ? AND ends_at < ?', start_date, end_date))
   end
 
   def entity

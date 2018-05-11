@@ -1,12 +1,6 @@
-class Forum
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Forum < ApplicationRecord
 
   has_many :topics
-
-  field :name,        type: String
-  field :description, type: String
-  field :hidden,      type: Boolean
 
   validates :name, presence: true
 end

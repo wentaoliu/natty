@@ -1,18 +1,8 @@
-class Topic
-  include Mongoid::Document
-  include Mongoid::Timestamps
+class Topic < ApplicationRecord
 
   belongs_to :user
   belongs_to :forum
-  embeds_many :comments
-
-  field :title,           type: String
-  field :content,         type: String
-  field :tags,            type: Array,   default: []
-  field :comments_count,  type: Integer
-  field :hits,            type: Integer, default: 0
-  field :hidden,          type: Boolean, default: false
-  field :allow_comments,  type: Boolean, default: true
+  has_many :comments
 
   validates :title, presence: true
   validates :content, presence: true

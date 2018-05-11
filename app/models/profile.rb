@@ -1,17 +1,10 @@
-class Profile
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Paperclip
+class Profile < ApplicationRecord
 
   belongs_to :user
 
-  has_mongoid_attached_file :photo,
+  has_attached_file :photo,
     :styles => { :small => ["300x300", :png] },
     :default_url => 'default/user/photo/:style/missing.png'
-
-  field :email_public,          type: String
-  field :locale,                type: String,   default: I18n.default_locale
-  field :position,              type: Integer,  default: 0
 
   POSITIONS = {
     undergraduate: 0,
@@ -29,10 +22,6 @@ class Profile
   def self.positions
     return POSITIONS
   end
-
-  field :grade,                 type: Integer,  default: Date.today.year
-  field :rank,                  type: Integer,  default: 0
-  field :resume,                type: String
 
   validates_attachment :photo,  content_type: { content_type: /\Aimage\/.*\Z/ }
 

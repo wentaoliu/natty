@@ -52,9 +52,6 @@ gem 'grape', '~> 1.0.0'
 gem 'grape-entity', '~> 0.7.1'
 gem 'grape-cancan', '~> 0.0.2'
 
-gem 'doorkeeper', '~> 4.3.2'
-gem 'doorkeeper-i18n', '~> 4.0'
-
 source 'https://rails-assets.org' do
   gem 'rails-assets-particles.js', '~> 2.0.0'
 end

@@ -5,7 +5,7 @@ module V1
       authorize_routes!
 
       before do
-        doorkeeper_authorize!
+        token_authorize!
       end
 
       desc 'Get a list of inventories'

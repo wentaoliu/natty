@@ -33,8 +33,6 @@
           <% end %>
           <%= link_to content_tag('i', nil, class:'users icon') +
                 t('module.users'), users_path, class:'item' if can? :read, User %>
-          <%= link_to content_tag('i',nil,class:'plug icon') +
-                t('module.oauth'), oauth_authorized_applications_path, class:'item' if current_user.admin %>
           <%= link_to destroy_user_session_path, method: :delete, class:'item' do %>
             <i class="sign out icon"></i>
             <%=t '.menu.signout' %>

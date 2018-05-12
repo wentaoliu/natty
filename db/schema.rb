@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(version: 2018_05_06_002531) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "remember_token"
+    t.string "authentication_token"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"

@@ -24,8 +24,6 @@ Natty is a knowledge management system for research teams.
 
 * __Group__ - Access control
 
-* __OAuth__
-
 * __API__
 
 * __Internationalization__
@@ -91,7 +89,7 @@ Natty is a knowledge management system for research teams.
   RAILS_RELATIVE_URL_ROOT='/<YOUR_SUB_URL>'
   ```
 
-6. Use `rake secret` to set the `SECRET_KEY_BASE`  environment variable.
+6. Use `rails credentials:edit` to set application credentials.
 
 7. Follow the instructions in `./config/initializes/mailer.rb` to set your mailer.
 

@@ -12,4 +12,5 @@ before_script:
   - psql -c 'create database natty_test;' -U postgres
 
 script:
-  - RAILS_ENV=test bundle exec rspec spec
+  - RAILS_ENV=test bundle exec rails db:migrate 
+  - bundle exec rspec spec

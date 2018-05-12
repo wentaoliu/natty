@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  use_doorkeeper
-
   resources :users
   resources :wikis do
     resources :versions

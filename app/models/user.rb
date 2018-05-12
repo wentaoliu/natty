@@ -55,7 +55,7 @@ class User < ApplicationRecord
     return self.admin || superadmin?
   end
 
-  before_create :generate_remember_token
+  before_create :ensure_authentication_token
   after_create :create_profile
 
   validates :name,      presence: true
@@ -67,23 +67,18 @@ class User < ApplicationRecord
   end
   delegate :can?, :cannot?, :to => :ability
 
-  def self.find_by_remember_token(token)
-    where(remember_token: User.digest(token)).first
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
   end
 
-  def generate_remember_token
-    self.remember_token = User.digest(SecureRandom.urlsafe_base64)
+  private
+  
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
   end
-
-  def generate_remember_token!
-    raw_token = SecureRandom.urlsafe_base64
-    self.remember_token = User.digest(raw_token)
-    save!
-    return raw_token
-  end
-
-  def User.digest(token)
-    Digest::SHA1.hexdigest(token.to_s)
-  end
-
 end

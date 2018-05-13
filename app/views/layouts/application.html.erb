@@ -19,7 +19,11 @@
     <% end %>
     <div class="right menu">
       <div class="ui dropdown icon item">
-        <%= image_tag current_user.avatar.url(:thumb), class: 'ui avatar image' %>
+        <% if current_user.avatar.attached? %>
+          <%= image_tag current_user.avatar.variant(resize: "100x100"), class: 'ui avatar image' %>
+        <% else %>
+          <%= image_tag 'default/user/avatar/thumb/missing.png', class: 'ui avatar image'%>
+        <% end %>
         <%= current_user.name %>
         <i class="dropdown icon"></i>
         <div class="menu">
@@ -52,8 +56,6 @@
             t('module.wikis'), wikis_path, class:'item' if can? :read, Wiki %>
       <%= link_to content_tag('i',nil,class:'large blue calendar icon') +
             t('module.schedule'), schedules_path, class:'item' if can? :read, Schedule %>
-      <%= link_to content_tag('i',nil,class:'large blue folder open icon') +
-            t('module.resources'), resources_path, class:'item' if can? :read, Resource %>
       <%= link_to content_tag('i',nil,class:'large blue lab icon') +
             t('module.inventories'), inventories_path, class:'item' if can? :read, Inventory %>
       <%= link_to content_tag('i',nil,class:'large blue cube icon') +

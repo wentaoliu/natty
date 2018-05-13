@@ -37,8 +37,8 @@ gem 'simditor', '~> 2.3.6'
 gem 'semantic-ui-sass', '~> 2.3.1.2'
 # I18n
 gem 'rails-i18n', '~> 5.1.1'
-# Paperclip
-gem 'paperclip', '~> 6.0.0'
+# Transforming uploaded images
+gem 'image_processing', '~> 1.2'
 # Calendar
 gem 'simple_calendar', '~> 2.2.0'
 # Paginator

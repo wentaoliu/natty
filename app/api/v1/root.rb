@@ -23,7 +23,6 @@ module V1
     mount V1::InstrumentsAPI
     mount V1::InventoriesAPI
     mount V1::MessagesAPI
-    mount V1::ResourcesAPI
     mount V1::SchedulesAPI
     mount V1::TopicsAPI
     mount V1::WikisAPI

@@ -12,7 +12,11 @@
   <div class="four wide column">
     <div class="ui special cards">
       <div class="card">
-        <%= image_tag @profile.photo.url(:small) %>
+        <% if @profile.photo.attached? %>
+          <%= image_tag @profile.photo.variant(resize: "300x300") %>
+        <% else %>
+          <%= image_tag 'default/user/photo/small/missing.png' %>
+        <% end %>
         <div class="content">
           <div class="header"><%= @profile.user.name %></div>
           <div class="meta">

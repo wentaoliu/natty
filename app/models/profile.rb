@@ -2,9 +2,7 @@ class Profile < ApplicationRecord
 
   belongs_to :user
 
-  has_attached_file :photo,
-    :styles => { :small => ["300x300", :png] },
-    :default_url => 'default/user/photo/:style/missing.png'
+  has_one_attached :photo
 
   POSITIONS = {
     undergraduate: 0,
@@ -22,7 +20,4 @@ class Profile < ApplicationRecord
   def self.positions
     return POSITIONS
   end
-
-  validates_attachment :photo,  content_type: { content_type: /\Aimage\/.*\Z/ }
-
 end

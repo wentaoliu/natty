@@ -17,9 +17,7 @@ class User < ApplicationRecord
   has_many :schedules
   has_one :profile
 
-  has_attached_file :avatar,
-    :styles => { :thumb => ["35x35!", :png] },
-    :default_url => 'default/user/avatar/:style/missing.png'
+  has_one_attached :avatar
 
   STATE = {
     inactive: 0,
@@ -59,8 +57,6 @@ class User < ApplicationRecord
   after_create :create_profile
 
   validates :name,      presence: true
-
-  validates_attachment :avatar, content_type: { content_type: /\Aimage\/.*\Z/ }
 
   def ability
     @ability ||= Ability.new(self)

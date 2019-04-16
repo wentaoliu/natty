@@ -2,11 +2,11 @@ module V1
   class SchedulesAPI < Grape::API
 
     resource :schedules do
-      authorize_routes!
+      # authorize_routes!
 
-      before do
-        token_authorize!
-      end
+      # before do
+      #   token_authorize!
+      # end
 
       desc 'Get a list of schedules'
       params do

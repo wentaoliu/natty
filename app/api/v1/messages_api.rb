@@ -3,9 +3,9 @@ module V1
 
     resource :messages do
 
-      before do
-        token_authorize!
-      end
+      # before do
+      #   token_authorize!
+      # end
 
       desc 'Get a list of messages'
       params do

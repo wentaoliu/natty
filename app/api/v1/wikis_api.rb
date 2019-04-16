@@ -2,11 +2,11 @@ module V1
   class WikisAPI < Grape::API
 
     resource :wikis do
-      authorize_routes!
+      # authorize_routes!
 
-      before do
-        token_authorize!
-      end
+      # before do
+      #   token_authorize!
+      # end
 
       desc 'Get a list of wiki articles'
       params do

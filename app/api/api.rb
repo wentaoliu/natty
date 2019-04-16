@@ -1,4 +1,4 @@
-class Dispatch < Grape::API
+class API < Grape::API
 
   format :json
   content_type :json, 'application/json;charset=utf-8'

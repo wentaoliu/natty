@@ -4,10 +4,10 @@ FactoryBot.define do
     name { Faker::Name.name }
     password { Faker::Internet.password }
     password_confirmation { password }
-    state 1
+    state { 1 }
 
     factory :admin do
-      admin true
+      admin { true }
     end
   end
 end

@@ -1,71 +1,54 @@
 source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0.beta3'
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 1.0.0'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '~> 4.1'
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2.2'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 4.3'
-gem 'js_cookie_rails', '~> 2.2'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks', '~> 5.0'
+gem 'sass-rails', '~> 6.0.0.beta2'
+# Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
+gem 'webpacker', '>= 4.0.0.rc.3'
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.7.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 1.0.0', group: :doc
+gem 'jbuilder', '~> 2.5'
+# Use Redis adapter to run Action Cable in production
+# gem 'redis', '~> 4.0'
+# Use Active Model has_secure_password
+# gem 'bcrypt', '~> 3.1.7'
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.11'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Simditor
-gem 'simditor', '~> 2.3.6'
-# Semantic UI
-gem 'semantic-ui-sass', '~> 2.3.1.2'
-# I18n
-gem 'rails-i18n', '~> 5.1.1'
-# Transforming uploaded images
+# Use Active Storage variant
 gem 'image_processing', '~> 1.2'
+
+# I18n
+gem 'rails-i18n', '~> 6.0.0.beta1'
 # Calendar
-gem 'simple_calendar', '~> 2.2.0'
+gem 'simple_calendar', '~> 2.3.0'
 # Paginator
 gem 'kaminari', '~> 1.1.0'
 # Authentication
-gem 'devise', '~> 4.4.3'
+gem 'devise', '~> 4.6.2'
 # Authorization
-gem 'cancancan', '~> 2.2.0'
+gem 'cancancan', '~> 3.0.1'
 # API
-gem 'grape', '~> 1.0.0'
+gem 'grape', '~> 1.2.3'
 gem 'grape-entity', '~> 0.7.1'
-gem 'grape-cancan', '~> 0.0.2'
-
-source 'https://rails-assets.org' do
-  gem 'rails-assets-particles.js', '~> 2.0.0'
-end
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.4.1', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Testing Framework
-  gem 'rspec-rails', '~> 3.7.2'
+  gem 'rspec-rails', '~> 3.8.2'
   # Factory Gril
-  gem 'factory_bot_rails', '~> 4.8.2'
+  gem 'factory_bot_rails', '~> 5.0.2'
 end
 
 group :development do
@@ -83,3 +66,6 @@ group :test do
   gem 'capybara', '~> 2.15.0'
   gem 'database_cleaner', '~> 1.5.1'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

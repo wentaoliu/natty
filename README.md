@@ -101,6 +101,6 @@ Natty is a knowledge management system for research teams.
 
 ## License
 
-Copyright(c) 2015-2018 [Wentao Liu](https://github.com/wentaoliu)
+Copyright(c) 2015-2019 [Wentao Liu](https://github.com/wentaoliu)
 
 Released under the [MIT License](http://www.opensource.org/licenses/MIT)

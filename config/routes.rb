@@ -34,5 +34,5 @@ Rails.application.routes.draw do
   resources :pictures, only: [:create]
 
   # API
-  mount Dispatch => '/api'
+  mount API => '/api'
 end

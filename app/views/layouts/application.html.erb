@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=0.5,user-scalable=no">
   <title>Natty</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= yield :head %>
   <%= csrf_meta_tags %>
 </head>

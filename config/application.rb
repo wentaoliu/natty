@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Natty
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -23,7 +23,7 @@ module Natty
     config.i18n.default_locale = 'en-US'
 
     # Auto-load grape API
-    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+    # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    # config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
   end
 end

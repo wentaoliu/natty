@@ -22,6 +22,8 @@ module Natty
     # config.i18n.default_locale = :de
     config.i18n.default_locale = 'en-US'
 
+    config.autoloader = :classic
+
     # Auto-load grape API
     # config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     # config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]

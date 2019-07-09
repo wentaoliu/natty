@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :content, t('.content') %>
-    <%= f.text_area :content, class:"editor" %>
+    <%= f.rich_text_area :content %>
   </div>
   <div class="field">
     <div class="ui toggle checkbox">
@@ -38,14 +38,6 @@
 
 <script>
 $(document).on("turbolinks:load", function() {
-  $('form').on('keyup keypress', function(e) {
-    var keyCode = e.keyCode || e.which;
-    if (keyCode === 13) {
-      e.preventDefault();
-      return false;
-    }
-  });
-
   $('.ui.multiple.dropdown').dropdown({
     allowAdditions: true
   })

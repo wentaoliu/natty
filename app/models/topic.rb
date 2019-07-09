@@ -3,6 +3,7 @@ class Topic < ApplicationRecord
   belongs_to :user
   belongs_to :forum
   has_many :comments
+  has_rich_text :content
 
   validates :title, presence: true
   validates :content, presence: true
